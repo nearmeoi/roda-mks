@@ -373,20 +373,38 @@ def extract_product_detail(html):
         if label and value:
             specs_dict[label.get_text(strip=True)] = value.get_text(strip=True)
     
-    # Try to find variant colors (Magento swatches) if not in specs
-    color_swatches = soup.select('.swatch-option')
-    if color_swatches:
-        colors = []
-        for el in color_swatches:
-            if el.get('option-label'):
-                colors.append(el['option-label'])
-            elif el.get('aria-label'):
-                colors.append(el['aria-label'])
-            elif el.get('data-option-label'):
-                colors.append(el['data-option-label'])
-        colors = list(set(colors))
-        if colors and not any(k.lower() in ['color', 'warna'] for k in specs_dict.keys()):
-            specs_dict['Color'] = " / ".join(colors)
+    # Try to find variant colors (Magento swatches) from JSON config
+    for key in ['"spConfig":', '"jsonConfig":']:
+        start_idx = html.find(key)
+        if start_idx != -1:
+            start_idx += len(key)
+            brace_idx = html.find('{', start_idx)
+            if brace_idx != -1:
+                brace_count = 0
+                end_idx = -1
+                for i in range(brace_idx, len(html)):
+                    if html[i] == '{':
+                        brace_count += 1
+                    elif html[i] == '}':
+                        brace_count -= 1
+                        if brace_count == 0:
+                            end_idx = i
+                            break
+                if end_idx != -1:
+                    json_str = html[brace_idx:end_idx+1]
+                    try:
+                        config = json.loads(json_str)
+                        attributes = config.get('attributes', {})
+                        for attr_id, attr_data in attributes.items():
+                            label = attr_data.get('code', '').lower()
+                            if label in ['color', 'warna', 'warna_sepeda']:
+                                options = attr_data.get('options', [])
+                                colors = [opt.get('label') for opt in options]
+                                if colors and not any(k.lower() in ['color', 'warna'] for k in specs_dict.keys()):
+                                    specs_dict['Color'] = " / ".join(colors)
+                                break
+                    except Exception:
+                        pass
             
     if specs_dict:
         details["specs"] = json.dumps(specs_dict, ensure_ascii=False)
