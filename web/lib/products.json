@@ -1,0 +1,131 @@
+[
+  {
+    "id": "polygon-strattos-7-blk-fa-700-b",
+    "brand": "POLYGON",
+    "model_name": "STRATTOS 7 BLK FA 700",
+    "category": "BIKE-ROAD DROP BAR",
+    "price": 25000000,
+    "sizes": [
+      { "size_code": "S1", "article_code": 503769003, "quantity": 1, "price": 25000000 },
+      { "size_code": "M", "article_code": 503769004, "quantity": 1, "price": 25000000 },
+      { "size_code": "L1", "article_code": 503769005, "quantity": 0, "price": 25000000 }
+    ],
+    "colors": ["Black"],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/503769.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_3.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_d1.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_d2.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_d3.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_1.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_2.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "Material": "Carbon",
+      "Frame": "CARBON ENDURANCE",
+      "Fork": "CARBON ENDURANCE",
+      "Shifter": "SHIMANO 105 R7120, 2x12 SPEED",
+      "Weight": "8.9 kg (Size M)"
+    },
+    "matched": true
+  },
+  {
+    "id": "polygon-strattos-s2-700c-da-1l",
+    "brand": "POLYGON",
+    "model_name": "STRATTOS S2 700C DA",
+    "category": "BIKE-ROAD DROP BAR",
+    "price": 6700000,
+    "sizes": [
+      { "size_code": "S1", "article_code": 503202002, "quantity": 2, "price": 6700000 },
+      { "size_code": "M", "article_code": 503202003, "quantity": 2, "price": 6700000 },
+      { "size_code": "L1", "article_code": 503202004, "quantity": 1, "price": 6700000 }
+    ],
+    "colors": ["Silver"],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/503769.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_d1.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "Frame": "ALLOY SPORT",
+      "Weight": "9.8 kg (Size M)"
+    },
+    "matched": true
+  },
+  {
+    "id": "polygon-cascade-5-fa-27-n",
+    "brand": "POLYGON",
+    "model_name": "CASCADE 5 FA 27",
+    "category": "BIKE-MTB FULL SUSP",
+    "price": 6300000,
+    "sizes": [
+      { "size_code": "S1", "article_code": 503443002, "quantity": 3, "price": 6300000 },
+      { "size_code": "M", "article_code": 503443003, "quantity": 3, "price": 6300000 },
+      { "size_code": "L1", "article_code": 503443004, "quantity": 1, "price": 6300000 }
+    ],
+    "colors": ["Navy"],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/503769_1.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/503769_2.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "Frame": "ALLOY MOUNTAIN",
+      "Suspension": "Fork travel 100mm"
+    },
+    "matched": true
+  },
+  {
+    "id": "polygon-razor-micro-ca-20-s",
+    "brand": "POLYGON",
+    "model_name": "RAZOR MICRO CA 20",
+    "category": "BIKE-BMX W/O ROTOR",
+    "price": 3709000,
+    "sizes": [
+      { "size_code": "08A", "article_code": 503320001, "quantity": 1, "price": 3709000 }
+    ],
+    "colors": ["Black"],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/503769_3.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "Frame": "STEEL BMX"
+    },
+    "matched": true
+  },
+  {
+    "id": "polygon-razor-micro-ca-20-g",
+    "brand": "POLYGON",
+    "model_name": "RAZOR MICRO CA 20",
+    "category": "BIKE-BMX W/O ROTOR",
+    "price": 3709000,
+    "sizes": [
+      { "size_code": "08A", "article_code": 503320002, "quantity": 1, "price": 3709000 }
+    ],
+    "colors": ["Silver"],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/503769_d2.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "Frame": "STEEL BMX"
+    },
+    "matched": true
+  },
+  {
+    "id": "wim-cycle-elena-meow-16-fa-p",
+    "brand": "WIM CYCLE",
+    "model_name": "ELENA MEOW 16 FA",
+    "category": "BIKE-KIDS 16-18\"",
+    "price": null,
+    "sizes": [
+      { "size_code": "09B", "article_code": 742669002, "quantity": 9, "price": null }
+    ],
+    "colors": [],
+    "images": [],
+    "specs": {},
+    "matched": false
+  }
+]
