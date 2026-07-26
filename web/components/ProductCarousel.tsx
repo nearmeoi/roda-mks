@@ -37,11 +37,18 @@ export function ProductCarousel({ images, alt }: { images: string[]; alt: string
         ))}
       </div>
       {images.length > 1 && (
-        <div className="mt-2 flex justify-center gap-1.5">
+        <div className="mt-3 flex justify-center gap-1.5">
           {images.map((_, i) => (
-            <span
+            <button
               key={i}
-              className={`h-1.5 w-1.5 rounded-full ${i === activeIndex ? "bg-brand-green" : "bg-gray-300"}`}
+              type="button"
+              aria-label={`Foto ${i + 1}`}
+              onClick={() => {
+                const track = trackRef.current;
+                if (track) track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" });
+                setActiveIndex(i);
+              }}
+              className={`h-1.5 rounded-full transition-all ${i === activeIndex ? "w-[18px] bg-accent" : "w-1.5 bg-black/20"}`}
             />
           ))}
         </div>

@@ -1,10 +1,8 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllProducts, getColorSiblings, getProductById } from "@/lib/products";
-import { formatPrice } from "@/lib/format";
+import { getAllProducts, getProductById } from "@/lib/products";
+import { formatPrice, getStockStatus, primaryArticleCode, totalOrderedQuantity, totalQuantity } from "@/lib/format";
 import { ProductCarousel } from "@/components/ProductCarousel";
-import { SizeChips } from "@/components/SizeChips";
-import { ColorSwatches } from "@/components/ColorSwatches";
-import { SpecsTable } from "@/components/SpecsTable";
 
 export function generateStaticParams() {
   return getAllProducts().map((p) => ({ id: p.id }));
@@ -15,19 +13,75 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const product = getProductById(id);
   if (!product) notFound();
 
-  const siblings = getColorSiblings(product, getAllProducts());
+  const qty = totalQuantity(product.sizes);
+  const ordered = totalOrderedQuantity(product.sizes);
+  const status = getStockStatus(qty);
+
+  const infoRows = [
+    { label: "Kode Artikel", value: String(primaryArticleCode(product.sizes)) },
+    { label: "Brand", value: product.brand },
+    { label: "Kategori", value: product.category },
+    { label: "Gudang", value: product.warehouse },
+    { label: "Stok Tersedia", value: `${qty} unit` },
+    { label: "Sedang Dipesan", value: `${ordered} unit` },
+  ];
 
   return (
-    <main className="mx-auto max-w-xl px-4 py-8">
-      <ProductCarousel images={product.images} alt={product.model_name} />
-      <h1 className="mt-4 text-lg font-bold text-gray-900">{product.model_name}</h1>
-      <p className="text-sm text-gray-500">
-        {product.brand} · {product.category}
-      </p>
-      <p className="mt-2 text-lg font-bold text-brand-green">{formatPrice(product.price)}</p>
-      <SizeChips sizes={product.sizes} />
-      <ColorSwatches current={product} siblings={siblings} />
-      <SpecsTable specs={product.specs} />
-    </main>
+    <div className="min-h-screen pb-12 [animation:slideInRight_0.28s_ease]">
+      <div className="sticky top-0 z-10 flex items-center border-b border-black/[0.08] bg-[#f6f6f8]/75 px-5 py-3.5 backdrop-blur-xl">
+        <Link href="/" className="flex items-center gap-1 text-base font-medium">
+          <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+            <path
+              d="M9 1L2 8L9 15"
+              stroke="var(--color-accent)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span style={{ color: "var(--color-accent)" }}>Kembali</span>
+        </Link>
+      </div>
+
+      <div className="mx-auto max-w-[560px] px-5 pt-5">
+        <ProductCarousel images={product.images} alt={product.model_name} />
+
+        <div className="mt-[22px]">
+          <div className="mb-2.5 flex flex-wrap gap-2">
+            <span
+              className="rounded-full px-2.5 py-1 text-xs font-semibold"
+              style={{ color: "var(--color-accent)", background: "color-mix(in oklab, var(--color-accent) 10%, white)" }}
+            >
+              {product.brand}
+            </span>
+            <span className="rounded-full bg-black/[0.06] px-2.5 py-1 text-xs font-semibold text-gray-500">
+              {product.category}
+            </span>
+          </div>
+
+          <h1 className="mb-1.5 text-2xl font-bold tracking-tight text-gray-900">{product.model_name}</h1>
+          <div className="mb-4 font-mono text-[13px] text-gray-500">{primaryArticleCode(product.sizes)}</div>
+          <div className="mb-5 text-[30px] font-bold text-gray-900">{formatPrice(product.price)}</div>
+
+          <div className="mb-5.5 inline-flex items-center gap-2 rounded-2xl border border-black/[0.08] bg-white/70 px-3.5 py-2">
+            <div className="h-2 w-2 rounded-full" style={{ background: status.dotColor }} />
+            <span className="text-sm font-semibold text-gray-900">{status.label}</span>
+            <span className="text-[13px] text-gray-500">· {qty} unit</span>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
+            {infoRows.map((row, i) => (
+              <div
+                key={row.label}
+                className={`flex items-center justify-between px-4 py-3.5 ${i < infoRows.length - 1 ? "border-b border-black/[0.08]" : ""}`}
+              >
+                <span className="text-sm text-gray-500">{row.label}</span>
+                <span className="text-sm font-semibold text-gray-900">{row.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -3,37 +3,71 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { SearchBar } from "@/components/SearchBar";
-import { ProductCard } from "@/components/ProductCard";
+import { ResultRow } from "@/components/ResultRow";
 import { getAllProducts } from "@/lib/products";
 import { searchProducts } from "@/lib/search";
 
+const RESULT_LIMIT = 8;
 const allProducts = getAllProducts();
 
 export default function HomePage() {
   const [query, setQuery] = useState("");
   const hasQuery = query.trim().length > 0;
-  const results = useMemo(() => searchProducts(allProducts, query), [query]);
+  const results = useMemo(() => searchProducts(allProducts, query).slice(0, RESULT_LIMIT), [query]);
+  const noResults = hasQuery && results.length === 0;
 
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center px-4 pb-10 transition-all duration-300 ${
-        hasQuery ? "justify-start pt-10" : "justify-center"
-      }`}
-    >
-      <SearchBar value={query} onChange={setQuery} />
-      {hasQuery && (
-        <div className="mt-6 flex w-full max-w-xl flex-col gap-3">
-          {results.length === 0 ? (
-            <p className="text-center text-sm text-gray-500">Tidak ada produk ditemukan.</p>
-          ) : (
-            results.map((product) => (
-              <Link key={product.id} href={`/product/${product.id}`}>
-                <ProductCard product={product} />
-              </Link>
-            ))
+    <div className="flex min-h-screen flex-col items-center px-5 pb-10 pt-6">
+      <div className="min-h-4 flex-auto" />
+
+      <div className="relative w-full max-w-[560px]">
+        <div className="pointer-events-none absolute inset-x-0 -top-[70px] h-80 overflow-visible">
+          <div className="absolute left-1/2 top-[-20px] h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-accent opacity-40 blur-[55px]" />
+          <div
+            className="absolute right-[6%] top-[60px] h-[260px] w-[260px] rounded-full opacity-30 blur-[55px]"
+            style={{ background: "oklch(75% 0.19 335)" }}
+          />
+          <div
+            className="absolute left-[4%] top-[90px] h-[240px] w-[240px] rounded-full opacity-30 blur-[55px]"
+            style={{ background: "oklch(78% 0.16 195)" }}
+          />
+          <div
+            className="absolute left-[38%] top-[130px] h-[180px] w-[180px] rounded-full opacity-20 blur-[55px]"
+            style={{ background: "oklch(82% 0.15 95)" }}
+          />
+        </div>
+
+        <div className="relative z-[1] flex flex-col items-center gap-6.5">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-black/10 bg-white shadow-sm">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="var(--color-accent)" strokeWidth="2" />
+                <circle cx="12" cy="12" r="1.6" fill="var(--color-accent)" />
+                <line x1="12" y1="12" x2="12" y2="4" stroke="var(--color-accent)" strokeWidth="1.4" />
+                <line x1="12" y1="12" x2="18" y2="15" stroke="var(--color-accent)" strokeWidth="1.4" />
+                <line x1="12" y1="12" x2="6" y2="15" stroke="var(--color-accent)" strokeWidth="1.4" />
+              </svg>
+            </div>
+            <span className="text-[15px] font-semibold tracking-tight text-gray-900">Roda Stock</span>
+          </div>
+
+          <SearchBar value={query} onChange={setQuery} hasQuery={hasQuery} onClear={() => setQuery("")} />
+
+          {noResults && <div className="pt-2 text-center text-sm text-gray-500">Barang tidak ditemukan.</div>}
+
+          {hasQuery && !noResults && (
+            <div className="flex w-full flex-col gap-2.5 [animation:fadeSlideUp_0.25s_ease]">
+              {results.map((product) => (
+                <Link key={product.id} href={`/product/${product.id}`}>
+                  <ResultRow product={product} />
+                </Link>
+              ))}
+            </div>
           )}
         </div>
-      )}
-    </main>
+      </div>
+
+      <div className="min-h-4 flex-auto" />
+    </div>
   );
 }
