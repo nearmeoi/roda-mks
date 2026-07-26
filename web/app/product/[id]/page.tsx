@@ -17,10 +17,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const ordered = totalOrderedQuantity(product.sizes);
   const status = getStockStatus(qty);
 
+  const colorDisplay = product.colors[0] ?? product.color_label;
+
   const infoRows = [
     { label: "Kode Artikel", value: String(primaryArticleCode(product.sizes)) },
     { label: "Brand", value: product.brand },
     { label: "Kategori", value: product.category },
+    ...(colorDisplay ? [{ label: "Warna", value: colorDisplay }] : []),
+    ...(product.wheel_size ? [{ label: "Ukuran Roda", value: product.wheel_size }] : []),
     { label: "Gudang", value: product.warehouse },
     ...(product.variant_extra ? [{ label: "Varian", value: product.variant_extra }] : []),
     { label: "Stok Tersedia", value: `${qty} unit` },

@@ -13,6 +13,8 @@ export interface Product {
   category: string;
   warehouse: string;
   variant_extra: string | null;
+  wheel_size: string | null;
+  color_label: string | null;
   price: number | null;
   sizes: ProductSize[];
   colors: string[];
