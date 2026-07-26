@@ -2,9 +2,31 @@ import re
 from rapidfuzz import fuzz
 
 GENERIC_WORDS = {
+    # Sepeda
     "sepeda", "bike", "gunung", "balap", "elektrik", "hybrid", "perkotaan",
     "city", "gravel", "touring", "road", "mtb", "bmx", "lipat", "anak",
     "wanita", "ebike",
+    # Frame & Fork / Spare Part
+    "frame", "fork", "drop", "out", "linkage", "spare", "part", "parts",
+    "lain", "lainnya", "bar", "end", "tape", "handle", "grip", "stem",
+    "handlebar", "headset", "rear", "shock", "bottom", "bracket",
+    "chainring", "rantai", "chain", "crank", "set", "cassette", "front",
+    "derailleur", "shifter", "brake", "lever", "cable", "pad", "rotor",
+    "hub", "jari", "pelek", "wheel", "saddle", "seat", "post", "clamp",
+    "pedal", "quick", "release", "thru", "axle", "ban", "tire", "tube",
+    "dalam", "valve", "tubeless", "kit",
+    # Apparel
+    "jersey", "celana", "jaket", "kaos", "helm", "helmet", "sarung",
+    "tangan", "gloves", "sepatu", "shoes", "kacamata", "eyewear",
+    "sunglasses", "sock", "apparel",
+    # Aksesoris & Spare Part
+    "cyclo", "computer", "carrier", "child", "baby", "rack", "botol",
+    "minum", "bottle", "cage", "tas", "bag", "tools", "stand", "pompa",
+    "kunci", "lock", "fender", "spakbor", "lampu", "light", "bel", "bell",
+    "keranjang", "basket", "peralatan", "aksesoris", "aksesori",
+    "accessories",
+    # Supplemen
+    "supplemen", "supplement",
 }
 
 
@@ -24,7 +46,7 @@ def match_products(grouped, catalog, overrides=None, threshold=55):
 
     matches, unmatched = [], []
     for product in grouped:
-        key = f'{product["brand"]}|{product["model_name"]}|{product["color_code"]}'
+        key = f'{product["brand"]}|{product["model_name"]}|{product["color_code"]}|{product.get("variant_extra")}'
         if key in overrides:
             override_url = overrides[key]
             if override_url is None:
