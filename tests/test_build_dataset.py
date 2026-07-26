@@ -42,6 +42,8 @@ def test_merge_product_combines_grouped_and_catalog_fields():
     assert result["matched"] is True
     assert result["warehouse"] == "Outlet"
     assert result["variant_extra"] is None
+    assert result["wheel_size"] == "700C"
+    assert result["color_label"] == "Hitam"
 
 
 def test_merge_unmatched_has_empty_photo_fields():
@@ -59,6 +61,21 @@ def test_merge_unmatched_has_empty_photo_fields():
     assert result["specs"] == {}
     assert result["matched"] is False
     assert result["variant_extra"] is None
+    assert result["wheel_size"] == '16"'
+    assert result["color_label"] is None
+
+
+def test_merge_unmatched_skips_variant_decoding_for_non_bike_category():
+    product = {
+        "brand": "HOZAN", "model_name": "ECOTECH CLNER & DEGREASER 12 OZ", "color_code": None,
+        "variant_extra": None, "category": "LUBRICANT/MAINTENANCE", "warehouse": "Outlet", "price": 100000,
+        "sizes": [{"size_code": None, "article_code": 1, "quantity": 5, "ordered_quantity": None, "price": 100000}],
+    }
+
+    result = merge_unmatched(product)
+
+    assert result["wheel_size"] is None
+    assert result["color_label"] is None
 
 
 def test_merge_unmatched_passes_through_variant_extra():

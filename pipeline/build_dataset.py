@@ -6,6 +6,7 @@ from pipeline.parse_stock import load_bike_rows, load_paa_rows
 from pipeline.group_products import group_rows
 from pipeline.match_catalog import match_products
 from pipeline.scrape_catalog import scrape_catalog
+from pipeline.decode_variant import decode_bike_variant
 
 
 def make_id(brand: str, model_name: str, color_code: str | None, variant_extra: str | None = None) -> str:
@@ -16,6 +17,7 @@ def make_id(brand: str, model_name: str, color_code: str | None, variant_extra: 
 
 def merge_product(matched: dict) -> dict:
     catalog = matched["catalog"]
+    wheel_size, color_label = decode_bike_variant(matched["model_name"], matched["category"])
     return {
         "id": make_id(matched["brand"], matched["model_name"], matched["color_code"], matched.get("variant_extra")),
         "brand": matched["brand"],
@@ -23,6 +25,8 @@ def merge_product(matched: dict) -> dict:
         "category": matched["category"],
         "warehouse": matched["warehouse"],
         "variant_extra": matched.get("variant_extra"),
+        "wheel_size": wheel_size,
+        "color_label": color_label,
         "price": matched["price"],
         "sizes": matched["sizes"],
         "colors": catalog["colors"],
@@ -33,6 +37,7 @@ def merge_product(matched: dict) -> dict:
 
 
 def merge_unmatched(product: dict) -> dict:
+    wheel_size, color_label = decode_bike_variant(product["model_name"], product["category"])
     return {
         "id": make_id(product["brand"], product["model_name"], product["color_code"], product.get("variant_extra")),
         "brand": product["brand"],
@@ -40,6 +45,8 @@ def merge_unmatched(product: dict) -> dict:
         "category": product["category"],
         "warehouse": product["warehouse"],
         "variant_extra": product.get("variant_extra"),
+        "wheel_size": wheel_size,
+        "color_label": color_label,
         "price": product["price"],
         "sizes": product["sizes"],
         "colors": [],
