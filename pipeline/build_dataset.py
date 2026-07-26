@@ -2,14 +2,14 @@ import argparse
 import json
 import re
 
-from pipeline.parse_stock import load_bike_rows
+from pipeline.parse_stock import load_bike_rows, load_paa_rows
 from pipeline.group_products import group_rows
 from pipeline.match_catalog import match_products
-from pipeline.scrape_catalog import scrape_bike_catalog
+from pipeline.scrape_catalog import scrape_catalog
 
 
-def make_id(brand: str, model_name: str, color_code: str) -> str:
-    raw = f"{brand}-{model_name}-{color_code}".lower()
+def make_id(brand: str, model_name: str, color_code: str | None, variant_extra: str | None = None) -> str:
+    raw = f"{brand}-{model_name}-{color_code or ''}-{variant_extra or ''}".lower()
     raw = re.sub(r"[^a-z0-9]+", "-", raw)
     return raw.strip("-")
 
@@ -17,11 +17,12 @@ def make_id(brand: str, model_name: str, color_code: str) -> str:
 def merge_product(matched: dict) -> dict:
     catalog = matched["catalog"]
     return {
-        "id": make_id(matched["brand"], matched["model_name"], matched["color_code"]),
+        "id": make_id(matched["brand"], matched["model_name"], matched["color_code"], matched.get("variant_extra")),
         "brand": matched["brand"],
         "model_name": matched["model_name"],
         "category": matched["category"],
         "warehouse": matched["warehouse"],
+        "variant_extra": matched.get("variant_extra"),
         "price": matched["price"],
         "sizes": matched["sizes"],
         "colors": catalog["colors"],
@@ -33,11 +34,12 @@ def merge_product(matched: dict) -> dict:
 
 def merge_unmatched(product: dict) -> dict:
     return {
-        "id": make_id(product["brand"], product["model_name"], product["color_code"]),
+        "id": make_id(product["brand"], product["model_name"], product["color_code"], product.get("variant_extra")),
         "brand": product["brand"],
         "model_name": product["model_name"],
         "category": product["category"],
         "warehouse": product["warehouse"],
+        "variant_extra": product.get("variant_extra"),
         "price": product["price"],
         "sizes": product["sizes"],
         "colors": [],
@@ -49,11 +51,11 @@ def merge_unmatched(product: dict) -> dict:
 
 def build(xlsx_path: str, catalog_partial_path: str, catalog_output_path: str,
           overrides_path: str, output_path: str, headless: bool = True) -> None:
-    rows = load_bike_rows(xlsx_path)
+    rows = load_bike_rows(xlsx_path) + load_paa_rows(xlsx_path)
     grouped = group_rows(rows)
     print(f"[build_dataset] {len(rows)} SKU rows grouped into {len(grouped)} products")
 
-    catalog = scrape_bike_catalog(catalog_output_path, catalog_partial_path, headless=headless)
+    catalog = scrape_catalog(catalog_output_path, catalog_partial_path, headless=headless)
     print(f"[build_dataset] scraped {len(catalog)} catalog products")
 
     with open(overrides_path, encoding="utf-8") as f:
