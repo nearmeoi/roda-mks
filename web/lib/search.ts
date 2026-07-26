@@ -16,14 +16,13 @@ function toSearchable(products: Product[]): SearchableProduct[] {
 const options = {
   keys: [
     { name: "article_codes", weight: 0.6 },
-    { name: "model_name", weight: 0.45 },
-    { name: "brand", weight: 0.25 },
-    { name: "category", weight: 0.12 },
-    { name: "color_label", weight: 0.08 },
-    { name: "wheel_size", weight: 0.06 },
-    { name: "variant_extra", weight: 0.04 },
+    { name: "model_name", weight: 0.5 },
+    { name: "brand", weight: 0.2 },
+    { name: "category", weight: 0.1 },
+    { name: "color_label", weight: 0.05 },
+    { name: "wheel_size", weight: 0.05 },
   ],
-  threshold: 0.35,
+  threshold: 0.18,
   ignoreLocation: true,
 };
 
@@ -33,26 +32,36 @@ export function searchProducts(products: Product[], query: string): Product[] {
 
   const cleanQuery = trimmed.toLowerCase();
 
-  // 1. Exact article code match (100% exact)
-  const exactArticleMatches = products.filter((p) =>
-    p.sizes.some((s) => String(s.article_code).toLowerCase() === cleanQuery)
-  );
-
-  if (exactArticleMatches.length > 0) {
-    return exactArticleMatches;
-  }
-
-  // 2. Partial article code match if query is numeric / digit-heavy
+  // 1. If query is numeric (Kode Artikel), search STRICTLY by article code
   if (/^\d+$/.test(cleanQuery)) {
-    const articlePartialMatches = products.filter((p) =>
+    // Exact match first
+    const exact = products.filter((p) =>
+      p.sizes.some((s) => String(s.article_code).toLowerCase() === cleanQuery)
+    );
+    if (exact.length > 0) return exact;
+
+    // Partial match (contains code)
+    const partial = products.filter((p) =>
       p.sizes.some((s) => String(s.article_code).toLowerCase().includes(cleanQuery))
     );
-    if (articlePartialMatches.length > 0) {
-      return articlePartialMatches;
-    }
+    // Return ONLY matching article codes, NEVER leak random products!
+    return partial;
   }
 
-  // 3. Fallback to Fuse.js fuzzy search for text queries
+  // 2. Exact model name match
+  const exactModelMatches = products.filter(
+    (p) => p.model_name.toLowerCase() === cleanQuery
+  );
+
+  // 3. Strict Fuse.js fuzzy search for general text
   const fuse = new Fuse(toSearchable(products), options);
-  return fuse.search(trimmed).map((result) => result.item);
+  const fuzzyResults = fuse.search(trimmed).map((result) => result.item);
+
+  if (exactModelMatches.length > 0) {
+    const set = new Set(exactModelMatches.map((p) => p.id));
+    const rest = fuzzyResults.filter((p) => !set.has(p.id));
+    return [...exactModelMatches, ...rest];
+  }
+
+  return fuzzyResults;
 }
