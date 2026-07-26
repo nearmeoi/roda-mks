@@ -14,7 +14,7 @@ def load_bike_rows(xlsx_path: str) -> list[dict]:
     ws = wb.active
     rows = []
     for row in ws.iter_rows(min_row=2, values_only=True):
-        warehouse, article_code, description, brand, category, quantity, _ordered, price = row
+        warehouse, article_code, description, brand, category, quantity, ordered_quantity, price = row
         if article_code is None or category is None or not category.startswith("BIKE"):
             continue
         try:
@@ -26,7 +26,9 @@ def load_bike_rows(xlsx_path: str) -> list[dict]:
             "article_code": article_code,
             "brand": brand,
             "category": category,
+            "warehouse": warehouse,
             "quantity": quantity if quantity is not None else 0,
+            "ordered_quantity": ordered_quantity,
             "price": price,
             **parsed,
         })

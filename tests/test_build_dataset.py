@@ -8,8 +8,8 @@ def test_make_id_is_slug():
 def test_merge_product_combines_grouped_and_catalog_fields():
     matched = {
         "brand": "POLYGON", "model_name": "STRATTOS 7 BLK FA 700", "color_code": "B",
-        "category": "BIKE-ROAD DROP BAR", "price": 25000000,
-        "sizes": [{"size_code": "S1", "article_code": 1, "quantity": 1, "price": 25000000}],
+        "category": "BIKE-ROAD DROP BAR", "warehouse": "Outlet", "price": 25000000,
+        "sizes": [{"size_code": "S1", "article_code": 1, "quantity": 1, "ordered_quantity": None, "price": 25000000}],
         "catalog": {
             "url": "https://www.rodalink.com/id/polygon-strattos-7-503769.html",
             "name": "Polygon Sepeda Balap Strattos 7", "brand": "Polygon",
@@ -30,13 +30,14 @@ def test_merge_product_combines_grouped_and_catalog_fields():
     assert result["images"] == ["https://media.rodalink.com/x.jpg"]
     assert result["specs"] == {"Frame": "CARBON ENDURANCE"}
     assert result["matched"] is True
+    assert result["warehouse"] == "Outlet"
 
 
 def test_merge_unmatched_has_empty_photo_fields():
     product = {
         "brand": "WIM CYCLE", "model_name": "ELENA MEOW 16 FA", "color_code": "P",
-        "category": "BIKE-KIDS 16-18\"", "price": None,
-        "sizes": [{"size_code": "09B", "article_code": 2, "quantity": 9, "price": None}],
+        "category": "BIKE-KIDS 16-18\"", "warehouse": "Outlet", "price": None,
+        "sizes": [{"size_code": "09B", "article_code": 2, "quantity": 9, "ordered_quantity": None, "price": None}],
     }
 
     result = merge_unmatched(product)

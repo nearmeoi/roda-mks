@@ -29,7 +29,7 @@ def test_load_bike_rows_filters_and_parses(tmp_path):
     ws.append(["Warehouse", "Article Code", "Description", "Brand",
                "Merchandise Category", "Quantity", "Ordered Quantity", "Price"])
     ws.append(["Outlet", 503200001, "STRATTOS S4 700C DA, S1, Z", "POLYGON",
-               "BIKE-ROAD DROP BAR", 1, None, 10600000])
+               "BIKE-ROAD DROP BAR", 1, 2, 10600000])
     ws.append(["Outlet", 503200002, "STRATTOS S4 700C DA, M, Z", "POLYGON",
                "BIKE-ROAD DROP BAR", 1, None, 10600000])
     ws.append(["Outlet", 999999999, "SOME SHOE, 42, BLK", "NIKE",
@@ -44,12 +44,15 @@ def test_load_bike_rows_filters_and_parses(tmp_path):
         "article_code": 503200001,
         "brand": "POLYGON",
         "category": "BIKE-ROAD DROP BAR",
+        "warehouse": "Outlet",
         "quantity": 1,
+        "ordered_quantity": 2,
         "price": 10600000,
         "model_name": "STRATTOS S4 700C DA",
         "size_code": "S1",
         "color_code": "Z",
     }
+    assert rows[1]["ordered_quantity"] is None
 
 
 def test_load_bike_rows_skips_unparseable_description(tmp_path, capsys):

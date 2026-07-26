@@ -8,6 +8,7 @@ def group_rows(rows: list[dict]) -> list[dict]:
                 "model_name": row["model_name"],
                 "color_code": row["color_code"],
                 "category": row["category"],
+                "warehouse": row["warehouse"],
                 "price": None,
                 "sizes": [],
             }
@@ -16,6 +17,7 @@ def group_rows(rows: list[dict]) -> list[dict]:
             "size_code": row["size_code"],
             "article_code": row["article_code"],
             "quantity": row["quantity"],
+            "ordered_quantity": row["ordered_quantity"],
             "price": row["price"],
         })
         if group["price"] is None and row["price"] is not None:
