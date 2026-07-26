@@ -1,4 +1,11 @@
-from pipeline.decode_variant import decode_bike_variant, extract_color_label, extract_wheel_size
+from pipeline.decode_variant import (
+    decode_bike_variant,
+    decode_paa_variant,
+    decode_paa_size_code,
+    extract_color_label,
+    extract_wheel_size,
+    clean_model_name,
+)
 
 
 def test_extract_wheel_size_from_inch_token():
@@ -52,7 +59,41 @@ def test_decode_bike_variant_decodes_for_bike_categories():
 
 
 def test_decode_bike_variant_skips_non_bike_categories():
-    # "12" here means fluid ounces, not a wheel size -- decoding must not run for PAA
     wheel_size, color_label = decode_bike_variant("ECOTECH CLNER & DEGREASER 12 OZ", "LUBRICANT/MAINTENANCE")
     assert wheel_size is None
     assert color_label is None
+
+
+def test_decode_paa_size_code_shoes():
+    assert decode_paa_size_code("440", "FOOTWEAR") == "44"
+    assert decode_paa_size_code("430", "FOOTWEAR") == "43"
+
+
+def test_decode_paa_size_code_apparel_and_helmets():
+    assert decode_paa_size_code("S1", "HELMET") == "S"
+    assert decode_paa_size_code("L2", "JERSEY") == "XL"
+    assert decode_paa_size_code("S2", "GLOVES") == "XS"
+
+
+def test_decode_paa_size_code_drivetrain_and_position():
+    assert decode_paa_size_code("11", "SHIFTER") == "11 Speed"
+    assert decode_paa_size_code("F", "BRAKE-CALIPER") == "Depan"
+
+
+def test_decode_paa_variant_drivetrain_speed_and_color():
+    spec, col = decode_paa_variant("CHAIN ICNHG60111126Q 11SP", "CHAIN & PART OF CHAIN", "B")
+    assert spec == "11 Speed"
+    assert col == "Hitam"
+
+
+def test_decode_paa_variant_tire_size():
+    spec, col = decode_paa_variant("TIRE ONE 700X30C P", "TIRE")
+    assert spec == "700X30C"
+    assert col is None
+
+
+def test_clean_model_name_bikes():
+    assert clean_model_name("STRATTOS 7 BLK FA 700", "BIKE-ROAD DROP BAR") == "STRATTOS 7"
+    assert clean_model_name("CASCADE 5 FA 27", "BIKE-MTB HARD TAIL") == "CASCADE 5"
+    assert clean_model_name("ELENA MEOW 16 FA", "BIKE-KIDS 16-18\"") == "ELENA MEOW"
+    assert clean_model_name("GESTALT 1 700C U RED", "BIKE-ROAD DROP BAR") == "GESTALT 1"

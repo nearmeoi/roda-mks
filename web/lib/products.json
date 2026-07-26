@@ -2,7 +2,7 @@
   {
     "id": "wim-cycle-elena-meow-16-fa-p",
     "brand": "WIM CYCLE",
-    "model_name": "ELENA MEOW 16 FA",
+    "model_name": "ELENA MEOW",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -26,7 +26,7 @@
   {
     "id": "wim-cycle-elena-meow-16-fa-k",
     "brand": "WIM CYCLE",
-    "model_name": "ELENA MEOW 16 FA",
+    "model_name": "ELENA MEOW",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -50,7 +50,7 @@
   {
     "id": "polygon-strattos-7-blk-fa-700-b",
     "brand": "POLYGON",
-    "model_name": "STRATTOS 7 BLK FA 700",
+    "model_name": "STRATTOS 7",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -81,7 +81,7 @@
   {
     "id": "polygon-strattos-6-wht-brz-fa-700-0",
     "brand": "POLYGON",
-    "model_name": "STRATTOS 6 WHT/BRZ FA 700",
+    "model_name": "STRATTOS 6",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -105,7 +105,7 @@
   {
     "id": "polygon-strattos-s4-700c-da-z",
     "brand": "POLYGON",
-    "model_name": "STRATTOS S4 700C DA",
+    "model_name": "STRATTOS S4",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -136,7 +136,7 @@
   {
     "id": "polygon-strattos-s3-700c-da-n",
     "brand": "POLYGON",
-    "model_name": "STRATTOS S3 700C DA",
+    "model_name": "STRATTOS S3",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -160,7 +160,7 @@
   {
     "id": "polygon-strattos-s2-700c-da-1l",
     "brand": "POLYGON",
-    "model_name": "STRATTOS S2 700C DA",
+    "model_name": "STRATTOS S2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -198,7 +198,7 @@
   {
     "id": "polygon-oosten-da-24-l",
     "brand": "POLYGON",
-    "model_name": "OOSTEN DA 24",
+    "model_name": "OOSTEN",
     "category": "BIKE-URBAN CITY 24\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -222,7 +222,7 @@
   {
     "id": "polygon-oosten-da-24-1p",
     "brand": "POLYGON",
-    "model_name": "OOSTEN DA 24",
+    "model_name": "OOSTEN",
     "category": "BIKE-URBAN CITY 24\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -246,7 +246,7 @@
   {
     "id": "polygon-rayz-2-ea-27-e",
     "brand": "POLYGON",
-    "model_name": "RAYZ 2 EA 27",
+    "model_name": "RAYZ 2",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -270,7 +270,7 @@
   {
     "id": "polygon-siskiu-he-p-id-da-29-p",
     "brand": "POLYGON",
-    "model_name": "SISKIU HE-P ID DA 29",
+    "model_name": "SISKIU HE-P",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -294,7 +294,7 @@
   {
     "id": "polygon-razor-micro-ca-20-s",
     "brand": "POLYGON",
-    "model_name": "RAZOR MICRO CA 20",
+    "model_name": "RAZOR MICRO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -318,7 +318,7 @@
   {
     "id": "polygon-razor-micro-ca-20-g",
     "brand": "POLYGON",
-    "model_name": "RAZOR MICRO CA 20",
+    "model_name": "RAZOR MICRO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -342,7 +342,7 @@
   {
     "id": "polygon-razor-mini-ca-20-s",
     "brand": "POLYGON",
-    "model_name": "RAZOR MINI CA 20",
+    "model_name": "RAZOR MINI",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -366,7 +366,7 @@
   {
     "id": "polygon-razor-mini-ca-20-g",
     "brand": "POLYGON",
-    "model_name": "RAZOR MINI CA 20",
+    "model_name": "RAZOR MINI",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -390,7 +390,7 @@
   {
     "id": "polygon-razor-junior-ca-20-s",
     "brand": "POLYGON",
-    "model_name": "RAZOR JUNIOR CA 20",
+    "model_name": "RAZOR JUNIOR",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -414,7 +414,7 @@
   {
     "id": "polygon-razor-junior-ca-20-g",
     "brand": "POLYGON",
-    "model_name": "RAZOR JUNIOR CA 20",
+    "model_name": "RAZOR JUNIOR",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -438,7 +438,7 @@
   {
     "id": "polygon-path-4-ea-700c-jp",
     "brand": "POLYGON",
-    "model_name": "PATH 4 EA 700C",
+    "model_name": "PATH 4",
     "category": "BIKE-HYBRID TREKKING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -469,7 +469,7 @@
   {
     "id": "polygon-cascade-4-fa-27-h",
     "brand": "POLYGON",
-    "model_name": "CASCADE 4 FA 27",
+    "model_name": "CASCADE 4",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -493,7 +493,7 @@
   {
     "id": "polygon-cascade-5-fa-27-n",
     "brand": "POLYGON",
-    "model_name": "CASCADE 5 FA 27",
+    "model_name": "CASCADE 5",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -531,7 +531,7 @@
   {
     "id": "polygon-xtrada-5-fa-29-rb",
     "brand": "POLYGON",
-    "model_name": "XTRADA 5 FA 29",
+    "model_name": "XTRADA 5",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -569,7 +569,7 @@
   {
     "id": "polygon-xtrada-6-fa-29-hb",
     "brand": "POLYGON",
-    "model_name": "XTRADA 6 FA 29",
+    "model_name": "XTRADA 6",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -607,7 +607,7 @@
   {
     "id": "polygon-alice16-ca-16-p",
     "brand": "POLYGON",
-    "model_name": "ALICE16 CA 16",
+    "model_name": "ALICE16",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -631,7 +631,7 @@
   {
     "id": "polygon-crosser16-ca-16-b",
     "brand": "POLYGON",
-    "model_name": "CROSSER16 CA 16",
+    "model_name": "CROSSER16",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -655,7 +655,7 @@
   {
     "id": "tern-20-fold-q-link-d8-00-3lp",
     "brand": "TERN",
-    "model_name": "20 FOLD Q LINK D8 00",
+    "model_name": "FOLD Q LINK D8",
     "category": "BIKE-FOLDING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -679,7 +679,7 @@
   {
     "id": "marin-gestalt-1-700c-u-red-0",
     "brand": "MARIN",
-    "model_name": "GESTALT 1 700C U RED",
+    "model_name": "GESTALT 1",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -710,7 +710,7 @@
   {
     "id": "tern-fold-aa-verge-x11-22-11sp-00-blp",
     "brand": "TERN",
-    "model_name": "FOLD AA VERGE X11 22 11SP 00",
+    "model_name": "FOLD VERGE X11 11SP",
     "category": "BIKE-FOLDING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -734,7 +734,7 @@
   {
     "id": "tern-fold-aa-verge-p10-22-10sp-00-ly",
     "brand": "TERN",
-    "model_name": "FOLD AA VERGE P10 22 10SP 00",
+    "model_name": "FOLD VERGE P10 10SP",
     "category": "BIKE-FOLDING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -758,7 +758,7 @@
   {
     "id": "tern-fold-aa-verge-d9-22-9sp-00-rrs",
     "brand": "TERN",
-    "model_name": "FOLD AA VERGE D9 22 9SP 00",
+    "model_name": "FOLD VERGE D9 9SP",
     "category": "BIKE-FOLDING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -782,7 +782,7 @@
   {
     "id": "tern-surge-pro-aa-22-10sp-3by",
     "brand": "TERN",
-    "model_name": "SURGE PRO AA 22 10SP",
+    "model_name": "SURGE PRO 10SP",
     "category": "BIKE-URBAN CITY<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -806,7 +806,7 @@
   {
     "id": "tern-surge-pro-aa-22-10sp-3br",
     "brand": "TERN",
-    "model_name": "SURGE PRO AA 22 10SP",
+    "model_name": "SURGE PRO 10SP",
     "category": "BIKE-URBAN CITY<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -830,7 +830,7 @@
   {
     "id": "tern-surge-aa-22-8sp-br",
     "brand": "TERN",
-    "model_name": "SURGE AA 22 8SP",
+    "model_name": "SURGE 8SP",
     "category": "BIKE-URBAN CITY<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -861,7 +861,7 @@
   {
     "id": "tern-surge-aa-22-8sp-gb",
     "brand": "TERN",
-    "model_name": "SURGE AA 22 8SP",
+    "model_name": "SURGE 8SP",
     "category": "BIKE-URBAN CITY<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -885,7 +885,7 @@
   {
     "id": "marin-fairfax-1-700c-v-blue-grey-0",
     "brand": "MARIN",
-    "model_name": "FAIRFAX 1 700C V BLUE GREY",
+    "model_name": "FAIRFAX 1",
     "category": "BIKE-URBAN CITY 700C",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -909,7 +909,7 @@
   {
     "id": "marin-four-corners-2-x-grey-0",
     "brand": "MARIN",
-    "model_name": "FOUR CORNERS 2 X GREY",
+    "model_name": "FOUR CORNERS 2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -933,7 +933,7 @@
   {
     "id": "marin-headlands-1-700c-x-silver-red-0",
     "brand": "MARIN",
-    "model_name": "HEADLANDS 1 700C X SILVER/RED",
+    "model_name": "HEADLANDS 1",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -957,7 +957,7 @@
   {
     "id": "marin-nicasio-1-700c-y-black-0",
     "brand": "MARIN",
-    "model_name": "NICASIO 1 700C Y BLACK",
+    "model_name": "NICASIO 1 BLACK",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -981,7 +981,7 @@
   {
     "id": "marin-dsx-1-700c-y-green-silver-0",
     "brand": "MARIN",
-    "model_name": "DSX 1 700C Y GREEN SILVER",
+    "model_name": "DSX 1",
     "category": "BIKE-HYBRID TREKKING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1005,7 +1005,7 @@
   {
     "id": "marin-fairfax-1-700c-y-roarange-0",
     "brand": "MARIN",
-    "model_name": "FAIRFAX 1 700C Y ROARANGE",
+    "model_name": "FAIRFAX 1 ROARANGE",
     "category": "BIKE-URBAN CITY 700C",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1029,7 +1029,7 @@
   {
     "id": "marin-fairfax-2-700c-y-blue-silver-0",
     "brand": "MARIN",
-    "model_name": "FAIRFAX 2 700C Y BLUE SILVER",
+    "model_name": "FAIRFAX 2",
     "category": "BIKE-URBAN CITY 700C",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1053,7 +1053,7 @@
   {
     "id": "marin-four-corners-1-700c-z-green-0",
     "brand": "MARIN",
-    "model_name": "FOUR CORNERS 1 700C Z GREEN",
+    "model_name": "FOUR CORNERS 1",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1077,7 +1077,7 @@
   {
     "id": "polygon-xtrada-7-fa-29-lb",
     "brand": "POLYGON",
-    "model_name": "XTRADA 7 FA 29",
+    "model_name": "XTRADA 7",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1115,7 +1115,7 @@
   {
     "id": "polygon-cascade-5-wht-fa-27-0",
     "brand": "POLYGON",
-    "model_name": "CASCADE 5 WHT FA 27",
+    "model_name": "CASCADE 5",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1139,7 +1139,7 @@
   {
     "id": "polygon-urbano-2-slv-ga-20-0",
     "brand": "POLYGON",
-    "model_name": "URBANO 2 SLV GA 20",
+    "model_name": "URBANO 2",
     "category": "BIKE-FOLDING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1163,7 +1163,7 @@
   {
     "id": "polygon-urbano-3-red-ga-20-0",
     "brand": "POLYGON",
-    "model_name": "URBANO 3 RED GA 20",
+    "model_name": "URBANO 3",
     "category": "BIKE-FOLDING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1187,7 +1187,7 @@
   {
     "id": "polygon-urbano-5-gry-ga-20-0",
     "brand": "POLYGON",
-    "model_name": "URBANO 5 GRY GA 20",
+    "model_name": "URBANO 5",
     "category": "BIKE-FOLDING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1211,7 +1211,7 @@
   {
     "id": "polygon-cascade20-wht-ga-20-0",
     "brand": "POLYGON",
-    "model_name": "CASCADE20 WHT GA 20",
+    "model_name": "CASCADE20",
     "category": "BIKE-MTB JUNIOR<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1235,7 +1235,7 @@
   {
     "id": "polygon-cascade20-blu-ga-20-0",
     "brand": "POLYGON",
-    "model_name": "CASCADE20 BLU GA 20",
+    "model_name": "CASCADE20",
     "category": "BIKE-MTB JUNIOR<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1259,7 +1259,7 @@
   {
     "id": "polygon-cascade24-wht-ga-24-0",
     "brand": "POLYGON",
-    "model_name": "CASCADE24 WHT GA 24",
+    "model_name": "CASCADE24",
     "category": "BIKE-MTB JUNIOR 24\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1283,7 +1283,7 @@
   {
     "id": "polygon-aluna-pnk-ga-26-0",
     "brand": "POLYGON",
-    "model_name": "ALUNA PNK GA 26",
+    "model_name": "ALUNA",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1307,7 +1307,7 @@
   {
     "id": "polygon-strattos-f2-slv-fa-700-0",
     "brand": "POLYGON",
-    "model_name": "STRATTOS F2 SLV FA 700",
+    "model_name": "STRATTOS F2",
     "category": "BIKE-ROAD FLAT BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1345,7 +1345,7 @@
   {
     "id": "polygon-strattos-f3-crc-fa-700-0",
     "brand": "POLYGON",
-    "model_name": "STRATTOS F3 CRC FA 700",
+    "model_name": "STRATTOS F3 CRC",
     "category": "BIKE-ROAD FLAT BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1383,7 +1383,7 @@
   {
     "id": "polygon-lovina-sa-26-i",
     "brand": "POLYGON",
-    "model_name": "LOVINA SA 26",
+    "model_name": "LOVINA",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1407,7 +1407,7 @@
   {
     "id": "polygon-lovina-sa-26-m",
     "brand": "POLYGON",
-    "model_name": "LOVINA SA 26",
+    "model_name": "LOVINA",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1431,7 +1431,7 @@
   {
     "id": "polygon-lovina-sa-26-b",
     "brand": "POLYGON",
-    "model_name": "LOVINA SA 26",
+    "model_name": "LOVINA",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1455,7 +1455,7 @@
   {
     "id": "polygon-lovina-sa-24-b",
     "brand": "POLYGON",
-    "model_name": "LOVINA SA 24",
+    "model_name": "LOVINA",
     "category": "BIKE-URBAN CITY 24\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1479,7 +1479,7 @@
   {
     "id": "polygon-lovina-sa-24-k",
     "brand": "POLYGON",
-    "model_name": "LOVINA SA 24",
+    "model_name": "LOVINA",
     "category": "BIKE-URBAN CITY 24\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1503,7 +1503,7 @@
   {
     "id": "polygon-lovina-sa-24-1k",
     "brand": "POLYGON",
-    "model_name": "LOVINA SA 24",
+    "model_name": "LOVINA",
     "category": "BIKE-URBAN CITY 24\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1527,7 +1527,7 @@
   {
     "id": "polygon-alice16h-ca-16-k",
     "brand": "POLYGON",
-    "model_name": "ALICE16H CA 16",
+    "model_name": "ALICE16H",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1551,7 +1551,7 @@
   {
     "id": "polygon-flinth-ca-12-y",
     "brand": "POLYGON",
-    "model_name": "FLINTH CA 12",
+    "model_name": "FLINTH",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1575,7 +1575,7 @@
   {
     "id": "polygon-flinth-ca-12-l",
     "brand": "POLYGON",
-    "model_name": "FLINTH CA 12",
+    "model_name": "FLINTH",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1599,7 +1599,7 @@
   {
     "id": "polygon-xtrada20-ca-20-h",
     "brand": "POLYGON",
-    "model_name": "XTRADA20 CA 20",
+    "model_name": "XTRADA20",
     "category": "BIKE-KIDS 20-22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1623,7 +1623,7 @@
   {
     "id": "polygon-xtrada24-ca-24-l",
     "brand": "POLYGON",
-    "model_name": "XTRADA24 CA 24",
+    "model_name": "XTRADA24",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1647,7 +1647,7 @@
   {
     "id": "polygon-travis-ca-20-r",
     "brand": "POLYGON",
-    "model_name": "TRAVIS CA 20",
+    "model_name": "TRAVIS",
     "category": "BIKE-BMX FREESTYLE",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1671,7 +1671,7 @@
   {
     "id": "polygon-travis-ca-20-e",
     "brand": "POLYGON",
-    "model_name": "TRAVIS CA 20",
+    "model_name": "TRAVIS",
     "category": "BIKE-BMX FREESTYLE",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1695,7 +1695,7 @@
   {
     "id": "polygon-hustle-ca-20-g",
     "brand": "POLYGON",
-    "model_name": "HUSTLE CA 20",
+    "model_name": "HUSTLE",
     "category": "BIKE-BMX FREESTYLE",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1719,7 +1719,7 @@
   {
     "id": "polygon-hustle-ca-20-b",
     "brand": "POLYGON",
-    "model_name": "HUSTLE CA 20",
+    "model_name": "HUSTLE",
     "category": "BIKE-BMX FREESTYLE",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1743,7 +1743,7 @@
   {
     "id": "polygon-tambora-g4-da-700-w",
     "brand": "POLYGON",
-    "model_name": "TAMBORA G4 DA 700",
+    "model_name": "TAMBORA G4",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1767,7 +1767,7 @@
   {
     "id": "polygon-aluna-blu-ga-26-0",
     "brand": "POLYGON",
-    "model_name": "ALUNA BLU GA 26",
+    "model_name": "ALUNA",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1791,7 +1791,7 @@
   {
     "id": "polygon-strattos-f4-blu-fa-700-0",
     "brand": "POLYGON",
-    "model_name": "STRATTOS F4 BLU FA 700",
+    "model_name": "STRATTOS F4",
     "category": "BIKE-ROAD FLAT BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1815,7 +1815,7 @@
   {
     "id": "polygon-rogue-ca-20-s",
     "brand": "POLYGON",
-    "model_name": "ROGUE CA 20",
+    "model_name": "ROGUE",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1839,7 +1839,7 @@
   {
     "id": "polygon-zenith-active-3-ra-26-m",
     "brand": "POLYGON",
-    "model_name": "ZENITH ACTIVE 3 RA 26",
+    "model_name": "ZENITH ACTIVE 3",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1863,7 +1863,7 @@
   {
     "id": "polygon-zenith-town-3-ra-26-b",
     "brand": "POLYGON",
-    "model_name": "ZENITH TOWN 3 RA 26",
+    "model_name": "ZENITH TOWN 3",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1887,7 +1887,7 @@
   {
     "id": "polygon-lovina-sa-20-k",
     "brand": "POLYGON",
-    "model_name": "LOVINA SA 20",
+    "model_name": "LOVINA",
     "category": "BIKE-URBAN CITY<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1911,7 +1911,7 @@
   {
     "id": "polygon-oosten-da-26-r",
     "brand": "POLYGON",
-    "model_name": "OOSTEN DA 26",
+    "model_name": "OOSTEN",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1935,7 +1935,7 @@
   {
     "id": "polygon-oosten-da-26-n",
     "brand": "POLYGON",
-    "model_name": "OOSTEN DA 26",
+    "model_name": "OOSTEN",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1959,7 +1959,7 @@
   {
     "id": "polygon-oosten-da-26-k",
     "brand": "POLYGON",
-    "model_name": "OOSTEN DA 26",
+    "model_name": "OOSTEN",
     "category": "BIKE-URBAN CITY 26\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -1983,7 +1983,7 @@
   {
     "id": "polygon-path-2-ea-700c-l",
     "brand": "POLYGON",
-    "model_name": "PATH 2 EA 700C",
+    "model_name": "PATH 2",
     "category": "BIKE-HYBRID TREKKING",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2007,7 +2007,7 @@
   {
     "id": "polygon-siskiu-d7-lg-ba-29-lw",
     "brand": "POLYGON",
-    "model_name": "SISKIU D7 LG BA 29",
+    "model_name": "SISKIU D7 LG",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2031,7 +2031,7 @@
   {
     "id": "polygon-collosus-tle-8-cb-id-ea-29-b",
     "brand": "POLYGON",
-    "model_name": "COLLOSUS TLE 8 CB ID EA 29",
+    "model_name": "COLLOSUS TLE 8",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2055,7 +2055,7 @@
   {
     "id": "polygon-kls-lanes-evob-id-hs-fa-27-l",
     "brand": "POLYGON",
-    "model_name": "KLS LANES EVOB ID HS FA 27",
+    "model_name": "KLS LANES EVOB",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2079,7 +2079,7 @@
   {
     "id": "polygon-syncline-dr6-cb-fa-29-l",
     "brand": "POLYGON",
-    "model_name": "SYNCLINE DR6 CB FA 29",
+    "model_name": "SYNCLINE DR6",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2103,7 +2103,7 @@
   {
     "id": "polygon-rapture-elite-red-fa-20-0",
     "brand": "POLYGON",
-    "model_name": "RAPTURE ELITE RED FA 20",
+    "model_name": "RAPTURE ELITE",
     "category": "BIKE-BMX FREESTYLE",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2127,7 +2127,7 @@
   {
     "id": "polygon-strattos-7-di2-gry-fa-700-0",
     "brand": "POLYGON",
-    "model_name": "STRATTOS 7 DI2 GRY FA 700",
+    "model_name": "STRATTOS 7 DI2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2151,7 +2151,7 @@
   {
     "id": "polygon-rudge-3-ca-20-l",
     "brand": "POLYGON",
-    "model_name": "RUDGE 3 CA 20",
+    "model_name": "RUDGE 3",
     "category": "BIKE-BMX FREESTYLE",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2175,7 +2175,7 @@
   {
     "id": "polygon-razor-pro-ca-20-r",
     "brand": "POLYGON",
-    "model_name": "RAZOR PRO CA 20",
+    "model_name": "RAZOR PRO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2199,7 +2199,7 @@
   {
     "id": "polygon-razor-pro-ca-20-l",
     "brand": "POLYGON",
-    "model_name": "RAZOR PRO CA 20",
+    "model_name": "RAZOR PRO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2223,7 +2223,7 @@
   {
     "id": "polygon-razor-pro-xl-ca-20-r",
     "brand": "POLYGON",
-    "model_name": "RAZOR PRO XL CA 20",
+    "model_name": "RAZOR PRO XL",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2247,7 +2247,7 @@
   {
     "id": "polygon-razor-pro-xl-ca-20-l",
     "brand": "POLYGON",
-    "model_name": "RAZOR PRO XL CA 20",
+    "model_name": "RAZOR PRO XL",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2271,7 +2271,7 @@
   {
     "id": "polygon-rogue-ca-20-l",
     "brand": "POLYGON",
-    "model_name": "ROGUE CA 20",
+    "model_name": "ROGUE",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2295,7 +2295,7 @@
   {
     "id": "polygon-rogue-ca-20-b",
     "brand": "POLYGON",
-    "model_name": "ROGUE CA 20",
+    "model_name": "ROGUE",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2319,7 +2319,7 @@
   {
     "id": "wim-cycle-bigfoot-16-ca-1r",
     "brand": "WIM CYCLE",
-    "model_name": "BIGFOOT 16 CA",
+    "model_name": "BIGFOOT",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2343,7 +2343,7 @@
   {
     "id": "wim-cycle-bugsy-balita-12-da-l",
     "brand": "WIM CYCLE",
-    "model_name": "BUGSY BALITA 12 DA",
+    "model_name": "BUGSY BALITA",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2367,7 +2367,7 @@
   {
     "id": "wim-cycle-bugsy-balita-12-da-e",
     "brand": "WIM CYCLE",
-    "model_name": "BUGSY BALITA 12 DA",
+    "model_name": "BUGSY BALITA",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2391,7 +2391,7 @@
   {
     "id": "wim-cycle-bugsy-balita-12-da-k",
     "brand": "WIM CYCLE",
-    "model_name": "BUGSY BALITA 12 DA",
+    "model_name": "BUGSY BALITA",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2415,7 +2415,7 @@
   {
     "id": "wim-cycle-beckman-koimaru-16-fa-2r",
     "brand": "WIM CYCLE",
-    "model_name": "BECKMAN KOIMARU 16 FA",
+    "model_name": "BECKMAN KOIMARU",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2439,7 +2439,7 @@
   {
     "id": "wim-cycle-beckman-koimaru-16-fa-1g",
     "brand": "WIM CYCLE",
-    "model_name": "BECKMAN KOIMARU 16 FA",
+    "model_name": "BECKMAN KOIMARU",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2463,7 +2463,7 @@
   {
     "id": "wim-cycle-bronco-derpanzer-16-fa-e",
     "brand": "WIM CYCLE",
-    "model_name": "BRONCO DERPANZER 16 FA",
+    "model_name": "BRONCO DERPANZER",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2487,7 +2487,7 @@
   {
     "id": "wim-cycle-bronco-derpanzer-16-fa-2l",
     "brand": "WIM CYCLE",
-    "model_name": "BRONCO DERPANZER 16 FA",
+    "model_name": "BRONCO DERPANZER",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2511,7 +2511,7 @@
   {
     "id": "wim-cycle-neo-rany-12-da-p",
     "brand": "WIM CYCLE",
-    "model_name": "NEO RANY 12 DA",
+    "model_name": "NEO RANY",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2535,7 +2535,7 @@
   {
     "id": "wim-cycle-neo-zebo-12-da-w",
     "brand": "WIM CYCLE",
-    "model_name": "NEO ZEBO 12 DA",
+    "model_name": "NEO ZEBO",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2559,7 +2559,7 @@
   {
     "id": "wim-cycle-fixie-muse-britsh-sl-20-ea-n",
     "brand": "WIM CYCLE",
-    "model_name": "FIXIE MUSE BRITSH SL 20 EA",
+    "model_name": "FIXIE MUSE BRITSH SL",
     "category": "BIKE-URBAN CITY<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2583,7 +2583,7 @@
   {
     "id": "wim-cycle-fixie-muse-britsh-sl-20-ea-e",
     "brand": "WIM CYCLE",
-    "model_name": "FIXIE MUSE BRITSH SL 20 EA",
+    "model_name": "FIXIE MUSE BRITSH SL",
     "category": "BIKE-URBAN CITY<=22\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2607,7 +2607,7 @@
   {
     "id": "wim-cycle-mobby-army-12-ea-b",
     "brand": "WIM CYCLE",
-    "model_name": "MOBBY ARMY 12 EA",
+    "model_name": "MOBBY ARMY",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2631,7 +2631,7 @@
   {
     "id": "wim-cycle-mobby-army-12-ea-l",
     "brand": "WIM CYCLE",
-    "model_name": "MOBBY ARMY 12 EA",
+    "model_name": "MOBBY ARMY",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2655,7 +2655,7 @@
   {
     "id": "wim-cycle-mobby-army-12-ea-r",
     "brand": "WIM CYCLE",
-    "model_name": "MOBBY ARMY 12 EA",
+    "model_name": "MOBBY ARMY",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2679,7 +2679,7 @@
   {
     "id": "wim-cycle-kinder-cipung-12-ea-l",
     "brand": "WIM CYCLE",
-    "model_name": "KINDER CIPUNG 12 EA",
+    "model_name": "KINDER CIPUNG",
     "category": "BIKE-KIDS 12-14\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2703,7 +2703,7 @@
   {
     "id": "marin-nicasio-650b-y-grey-0",
     "brand": "MARIN",
-    "model_name": "NICASIO + 650B Y GREY",
+    "model_name": "NICASIO + 650B",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2727,7 +2727,7 @@
   {
     "id": "wim-cycle-cobalt-dino-16-ea-s",
     "brand": "WIM CYCLE",
-    "model_name": "COBALT DINO 16 EA",
+    "model_name": "COBALT DINO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2751,7 +2751,7 @@
   {
     "id": "wim-cycle-cobalt-dino-16-ea-r",
     "brand": "WIM CYCLE",
-    "model_name": "COBALT DINO 16 EA",
+    "model_name": "COBALT DINO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2775,7 +2775,7 @@
   {
     "id": "wim-cycle-cobalt-dino-16-ea-l",
     "brand": "WIM CYCLE",
-    "model_name": "COBALT DINO 16 EA",
+    "model_name": "COBALT DINO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2799,7 +2799,7 @@
   {
     "id": "wim-cycle-cobalt-dino-16-ea-g",
     "brand": "WIM CYCLE",
-    "model_name": "COBALT DINO 16 EA",
+    "model_name": "COBALT DINO",
     "category": "BIKE-BMX W/O ROTOR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2823,7 +2823,7 @@
   {
     "id": "polygon-syncline-c3-ba-27-5-nh",
     "brand": "POLYGON",
-    "model_name": "SYNCLINE C3 BA 27.5",
+    "model_name": "SYNCLINE C3",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2847,7 +2847,7 @@
   {
     "id": "polygon-syncline-c5-ba-27-5-rb",
     "brand": "POLYGON",
-    "model_name": "SYNCLINE C5 BA 27.5",
+    "model_name": "SYNCLINE C5",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2871,7 +2871,7 @@
   {
     "id": "polygon-collosus-n8e-ca-29-cls-1-n",
     "brand": "POLYGON",
-    "model_name": "COLLOSUS N8E CA 29 CLS 1",
+    "model_name": "COLLOSUS N8E 1",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2895,7 +2895,7 @@
   {
     "id": "polygon-bend-v9x-da-700-h",
     "brand": "POLYGON",
-    "model_name": "BEND V9X DA 700",
+    "model_name": "BEND V9X",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2919,7 +2919,7 @@
   {
     "id": "polygon-bend-r9x-da-700-l",
     "brand": "POLYGON",
-    "model_name": "BEND R9X DA 700",
+    "model_name": "BEND R9X",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2943,7 +2943,7 @@
   {
     "id": "polygon-tambora-g8x-da-700-n",
     "brand": "POLYGON",
-    "model_name": "TAMBORA G8X DA 700",
+    "model_name": "TAMBORA G8X",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2967,7 +2967,7 @@
   {
     "id": "polygon-siskiu-he-m-cls3-da-29-e",
     "brand": "POLYGON",
-    "model_name": "SISKIU HE-M CLS3 DA 29",
+    "model_name": "SISKIU HE-M CLS3",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -2991,7 +2991,7 @@
   {
     "id": "polygon-collosus-n8xe-cls-1-da-29-g",
     "brand": "POLYGON",
-    "model_name": "COLLOSUS N8XE CLS 1 DA 29",
+    "model_name": "COLLOSUS N8XE 1",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3015,7 +3015,7 @@
   {
     "id": "polygon-siskiu-he-b-cls3-da-29-w",
     "brand": "POLYGON",
-    "model_name": "SISKIU HE-B CLS3 DA 29",
+    "model_name": "SISKIU HE-B CLS3",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3039,7 +3039,7 @@
   {
     "id": "polygon-kal-lanes-prime-da-27-w",
     "brand": "POLYGON",
-    "model_name": "KAL LANES PRIME DA 27",
+    "model_name": "KAL LANES PRIME",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3063,7 +3063,7 @@
   {
     "id": "polygon-kls-miles-c1-ls-ea-700c-h",
     "brand": "POLYGON",
-    "model_name": "KLS MILES C1 LS EA 700C",
+    "model_name": "KLS MILES C1",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3087,7 +3087,7 @@
   {
     "id": "polygon-kls-miles-c1-ls-ea-700c-n",
     "brand": "POLYGON",
-    "model_name": "KLS MILES C1 LS EA 700C",
+    "model_name": "KLS MILES C1",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3111,7 +3111,7 @@
   {
     "id": "polygon-kls-miles-c1-hs-ea-700c-h",
     "brand": "POLYGON",
-    "model_name": "KLS MILES C1 HS EA 700C",
+    "model_name": "KLS MILES C1",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3142,7 +3142,7 @@
   {
     "id": "polygon-kls-miles-c1-hs-ea-700c-n",
     "brand": "POLYGON",
-    "model_name": "KLS MILES C1 HS EA 700C",
+    "model_name": "KLS MILES C1",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3173,7 +3173,7 @@
   {
     "id": "polygon-kls-lanes-evo-hs-fa-27-b",
     "brand": "POLYGON",
-    "model_name": "KLS LANES EVO HS FA 27",
+    "model_name": "KLS LANES EVO",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3197,7 +3197,7 @@
   {
     "id": "polygon-kls-lanes-evo-hs-fa-27-g",
     "brand": "POLYGON",
-    "model_name": "KLS LANES EVO HS FA 27",
+    "model_name": "KLS LANES EVO",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3228,7 +3228,7 @@
   {
     "id": "polygon-kls-lanes-evo-ls-fa-27-b",
     "brand": "POLYGON",
-    "model_name": "KLS LANES EVO LS FA 27",
+    "model_name": "KLS LANES EVO",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3252,7 +3252,7 @@
   {
     "id": "polygon-kls-lanes-evo-ls-fa-27-g",
     "brand": "POLYGON",
-    "model_name": "KLS LANES EVO LS FA 27",
+    "model_name": "KLS LANES EVO",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3276,7 +3276,7 @@
   {
     "id": "polygon-tambora-ae-n-id-ea-700-n",
     "brand": "POLYGON",
-    "model_name": "TAMBORA AE-N ID EA 700",
+    "model_name": "TAMBORA AE-N",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3300,7 +3300,7 @@
   {
     "id": "polygon-collosus-n9-ea-29-p",
     "brand": "POLYGON",
-    "model_name": "COLLOSUS N9 EA 29",
+    "model_name": "COLLOSUS N9",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3324,7 +3324,7 @@
   {
     "id": "polygon-gili-velo-ea-20-l",
     "brand": "POLYGON",
-    "model_name": "GILI VELO EA 20",
+    "model_name": "GILI VELO",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3348,7 +3348,7 @@
   {
     "id": "polygon-gili-velo-ea-20-g",
     "brand": "POLYGON",
-    "model_name": "GILI VELO EA 20",
+    "model_name": "GILI VELO",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3372,7 +3372,7 @@
   {
     "id": "polygon-helios-a0-axs-fa-700-yo",
     "brand": "POLYGON",
-    "model_name": "HELIOS A0 AXS FA 700",
+    "model_name": "HELIOS A0 AXS",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3396,7 +3396,7 @@
   {
     "id": "polygon-helios-a8-di2-pm-fa-700-g",
     "brand": "POLYGON",
-    "model_name": "HELIOS A8 DI2 PM FA 700",
+    "model_name": "HELIOS A8 DI2 PM",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3420,7 +3420,7 @@
   {
     "id": "polygon-helios-a8-di2-fa-700-s",
     "brand": "POLYGON",
-    "model_name": "HELIOS A8 DI2 FA 700",
+    "model_name": "HELIOS A8 DI2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3444,7 +3444,7 @@
   {
     "id": "polygon-helios-a7-di2-fa-700-wp",
     "brand": "POLYGON",
-    "model_name": "HELIOS A7 DI2 FA 700",
+    "model_name": "HELIOS A7 DI2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3468,7 +3468,7 @@
   {
     "id": "polygon-collosus-t8-cb-ea-29-r",
     "brand": "POLYGON",
-    "model_name": "COLLOSUS T8 CB EA 29",
+    "model_name": "COLLOSUS T8",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3492,7 +3492,7 @@
   {
     "id": "polygon-helios-a9-di2-fa-700-rp",
     "brand": "POLYGON",
-    "model_name": "HELIOS A9 DI2 FA 700",
+    "model_name": "HELIOS A9 DI2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3516,7 +3516,7 @@
   {
     "id": "polygon-kls-lanes-evob-id-ls-fa-27-s",
     "brand": "POLYGON",
-    "model_name": "KLS LANES EVOB ID LS FA 27",
+    "model_name": "KLS LANES EVOB",
     "category": "BIKE-ELECTRIC",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3540,7 +3540,7 @@
   {
     "id": "polygon-siskiu-t6-fa-29-l",
     "brand": "POLYGON",
-    "model_name": "SISKIU T6 FA 29",
+    "model_name": "SISKIU T6",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3564,7 +3564,7 @@
   {
     "id": "polygon-siskiu-t6-fa-29-g",
     "brand": "POLYGON",
-    "model_name": "SISKIU T6 FA 29",
+    "model_name": "SISKIU T6",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3588,7 +3588,7 @@
   {
     "id": "polygon-syncline-dr8-cb-fa-29-g",
     "brand": "POLYGON",
-    "model_name": "SYNCLINE DR8 CB FA 29",
+    "model_name": "SYNCLINE DR8",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3612,7 +3612,7 @@
   {
     "id": "polygon-collosus-t6-cb-ea-29-e",
     "brand": "POLYGON",
-    "model_name": "COLLOSUS T6 CB EA 29",
+    "model_name": "COLLOSUS T6",
     "category": "BIKE-MTB FULL SUSP",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3636,7 +3636,7 @@
   {
     "id": "polygon-strattos-c8-di2-fa-700-w",
     "brand": "POLYGON",
-    "model_name": "STRATTOS C8 DI2 FA 700",
+    "model_name": "STRATTOS C8 DI2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3660,7 +3660,7 @@
   {
     "id": "polygon-strattos-8-di2-wht-grn-fa-700-0",
     "brand": "POLYGON",
-    "model_name": "STRATTOS 8 DI2 WHT/GRN FA 700",
+    "model_name": "STRATTOS 8 DI2",
     "category": "BIKE-ROAD DROP BAR",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3684,7 +3684,7 @@
   {
     "id": "polygon-cascade24-gry-ga-24-0",
     "brand": "POLYGON",
-    "model_name": "CASCADE24 GRY GA 24",
+    "model_name": "CASCADE24",
     "category": "BIKE-MTB JUNIOR 24\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3708,7 +3708,7 @@
   {
     "id": "polygon-active-sp-blk-ga-26-0",
     "brand": "POLYGON",
-    "model_name": "ACTIVE SP BLK GA 26",
+    "model_name": "ACTIVE SP",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3732,7 +3732,7 @@
   {
     "id": "polygon-active-sp-blu-ga-26-0",
     "brand": "POLYGON",
-    "model_name": "ACTIVE SP BLU GA 26",
+    "model_name": "ACTIVE SP",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3756,7 +3756,7 @@
   {
     "id": "polygon-active-sp-red-ga-26-0",
     "brand": "POLYGON",
-    "model_name": "ACTIVE SP RED GA 26",
+    "model_name": "ACTIVE SP",
     "category": "BIKE-MTB RIGID FRAME",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3780,7 +3780,7 @@
   {
     "id": "polygon-alice16h-ca-16-p",
     "brand": "POLYGON",
-    "model_name": "ALICE16H CA 16",
+    "model_name": "ALICE16H",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3804,7 +3804,7 @@
   {
     "id": "polygon-crosser16h-ca-16-b",
     "brand": "POLYGON",
-    "model_name": "CROSSER16H CA 16",
+    "model_name": "CROSSER16H",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3828,7 +3828,7 @@
   {
     "id": "polygon-crosser16h-ca-16-l",
     "brand": "POLYGON",
-    "model_name": "CROSSER16H CA 16",
+    "model_name": "CROSSER16H",
     "category": "BIKE-KIDS 16-18\"",
     "warehouse": "Outlet",
     "variant_extra": null,
@@ -3857,7 +3857,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 158000,
     "sizes": [
       {
@@ -3952,7 +3952,7 @@
     "category": "CHAIN & PART OF CHAIN",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "11 Speed",
     "color_label": null,
     "price": 328000,
     "sizes": [
@@ -3976,7 +3976,7 @@
     "category": "CHAIN & PART OF CHAIN",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 278000,
     "sizes": [
@@ -4000,7 +4000,7 @@
     "category": "CHAIN & PART OF CHAIN",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 698000,
     "sizes": [
@@ -4025,11 +4025,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 4998000,
     "sizes": [
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 737392031,
         "quantity": 2,
         "ordered_quantity": null,
@@ -4049,32 +4049,32 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2248000,
     "sizes": [
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740886011,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740886012,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "400",
+        "size_code": "40",
         "article_code": 740886008,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740886009,
         "quantity": 1,
         "ordered_quantity": null,
@@ -4094,25 +4094,25 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 2248000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740886017,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740886020,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 740886021,
         "quantity": 1,
         "ordered_quantity": null,
@@ -4132,32 +4132,32 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1648000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740888014,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1648000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 740888015,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1648000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740888017,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1648000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740888016,
         "quantity": 1,
         "ordered_quantity": null,
@@ -4181,14 +4181,14 @@
     "price": 3998000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 738105003,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3998000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 738105001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -4243,7 +4243,7 @@
     "price": 278000,
     "sizes": [
       {
-        "size_code": "11",
+        "size_code": "11 Speed",
         "article_code": 732850001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -4262,7 +4262,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": "TLE, F, B",
-    "wheel_size": null,
+    "wheel_size": "700X30C",
     "color_label": null,
     "price": 898000,
     "sizes": [
@@ -4286,7 +4286,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": "TLE, F, B",
-    "wheel_size": null,
+    "wheel_size": "700X34C",
     "color_label": null,
     "price": 898000,
     "sizes": [
@@ -4311,25 +4311,25 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1398000,
     "sizes": [
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740887016,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1398000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 740887014,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1398000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740887015,
         "quantity": 2,
         "ordered_quantity": null,
@@ -4397,7 +4397,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 398000,
     "sizes": [
       {
@@ -4660,7 +4660,7 @@
     "category": "FRONT DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 648000,
     "sizes": [
@@ -4685,7 +4685,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 428000,
     "sizes": [
       {
@@ -4713,7 +4713,7 @@
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740833007,
         "quantity": 1,
         "ordered_quantity": null,
@@ -4733,11 +4733,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 178000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740834007,
         "quantity": 1,
         "ordered_quantity": null,
@@ -4757,7 +4757,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 62000,
     "sizes": [
       {
@@ -4781,7 +4781,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Biru",
     "price": 62000,
     "sizes": [
       {
@@ -4853,7 +4853,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 42000,
     "sizes": [
       {
@@ -4877,7 +4877,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 29000,
     "sizes": [
       {
@@ -4973,7 +4973,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 69000,
     "sizes": [
       {
@@ -4997,7 +4997,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Biru",
     "price": 69000,
     "sizes": [
       {
@@ -5045,7 +5045,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 79000,
     "sizes": [
       {
@@ -5069,7 +5069,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Biru",
     "price": 79000,
     "sizes": [
       {
@@ -5093,7 +5093,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 328000,
     "sizes": [
       {
@@ -5117,7 +5117,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 378000,
     "sizes": [
       {
@@ -5141,7 +5141,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
@@ -5165,7 +5165,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -5213,7 +5213,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -5237,7 +5237,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -5261,7 +5261,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -5285,7 +5285,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -5309,7 +5309,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -5333,7 +5333,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4698000,
     "sizes": [
       {
@@ -5515,7 +5515,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -5539,7 +5539,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -5563,7 +5563,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -5587,7 +5587,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
@@ -5635,7 +5635,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4498000,
     "sizes": [
       {
@@ -5659,7 +5659,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": null,
     "sizes": [
       {
@@ -5755,7 +5755,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1148000,
     "sizes": [
       {
@@ -5899,7 +5899,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 22000,
     "sizes": [
       {
@@ -5923,7 +5923,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 4998000,
     "sizes": [
       {
@@ -6067,7 +6067,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 348000,
     "sizes": [
       {
@@ -6091,7 +6091,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Biru",
     "price": 228000,
     "sizes": [
       {
@@ -6115,11 +6115,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Beige",
     "price": 4248000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 741707002,
         "quantity": 1,
         "ordered_quantity": null,
@@ -6174,7 +6174,7 @@
     "price": 648000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 742288004,
         "quantity": 3,
         "ordered_quantity": null,
@@ -6201,7 +6201,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 148000,
     "sizes": [
       {
@@ -6465,7 +6465,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 998000,
     "sizes": [
       {
@@ -6489,7 +6489,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 898000,
     "sizes": [
       {
@@ -6513,7 +6513,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 898000,
     "sizes": [
       {
@@ -6537,7 +6537,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 3498000,
     "sizes": [
       {
@@ -6561,7 +6561,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 228000,
     "sizes": [
       {
@@ -6609,7 +6609,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1348000,
     "sizes": [
       {
@@ -6633,7 +6633,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1198000,
     "sizes": [
       {
@@ -6657,7 +6657,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 59000,
     "sizes": [
       {
@@ -6681,7 +6681,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 748000,
     "sizes": [
       {
@@ -6729,7 +6729,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 748000,
     "sizes": [
       {
@@ -6777,7 +6777,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 628000,
     "sizes": [
       {
@@ -6825,7 +6825,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 148000,
     "sizes": [
       {
@@ -6849,7 +6849,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 148000,
     "sizes": [
       {
@@ -6921,7 +6921,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 148000,
     "sizes": [
       {
@@ -7017,7 +7017,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Biru",
     "price": 228000,
     "sizes": [
       {
@@ -7185,7 +7185,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 278000,
     "sizes": [
       {
@@ -7209,7 +7209,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 248000,
     "sizes": [
       {
@@ -7257,7 +7257,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
@@ -7281,7 +7281,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 298000,
     "sizes": [
       {
@@ -7305,7 +7305,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -7377,7 +7377,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Kuning",
     "price": 74000,
     "sizes": [
       {
@@ -7401,7 +7401,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 158000,
     "sizes": [
       {
@@ -7425,7 +7425,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 128000,
     "sizes": [
       {
@@ -7449,7 +7449,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1498000,
     "sizes": [
       {
@@ -7504,7 +7504,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 168000,
     "sizes": [
       {
@@ -7552,7 +7552,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -7576,7 +7576,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Beige",
     "price": 198000,
     "sizes": [
       {
@@ -7600,7 +7600,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 278000,
     "sizes": [
       {
@@ -7624,7 +7624,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Beige",
     "price": 178000,
     "sizes": [
       {
@@ -7648,7 +7648,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 178000,
     "sizes": [
       {
@@ -7910,7 +7910,7 @@
     "price": 3998000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 740038002,
         "quantity": 1,
         "ordered_quantity": null,
@@ -7930,11 +7930,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2498000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 740039002,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8061,7 +8061,7 @@
         "price": 4998000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 736888003,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8109,7 +8109,7 @@
     "price": 1748000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 737791002,
         "quantity": 2,
         "ordered_quantity": null,
@@ -8129,18 +8129,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 3748000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 738939016,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3748000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 738939018,
         "quantity": 2,
         "ordered_quantity": null,
@@ -8164,7 +8164,7 @@
     "price": 1748000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 740149004,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8191,18 +8191,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 1748000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 740149007,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1748000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740149008,
         "quantity": 2,
         "ordered_quantity": null,
@@ -8226,7 +8226,7 @@
     "price": 1148000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740410002,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8246,11 +8246,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 4998000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740732003,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8281,7 +8281,7 @@
         "price": 2998000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 741752004,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8325,7 +8325,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 448000,
     "sizes": [
       {
@@ -8373,7 +8373,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 1448000,
     "sizes": [
       {
@@ -8384,7 +8384,7 @@
         "price": 1448000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735646010,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8432,7 +8432,7 @@
     "price": 1498000,
     "sizes": [
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 735647001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -8446,14 +8446,14 @@
         "price": 1498000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735647008,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1498000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 735647009,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8484,21 +8484,21 @@
         "price": 1498000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735647011,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1498000
       },
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 735647012,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1498000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 735647013,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8522,14 +8522,14 @@
     "price": 1498000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735647005,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1498000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 735647015,
         "quantity": 2,
         "ordered_quantity": null,
@@ -8560,14 +8560,14 @@
     "price": 2798000,
     "sizes": [
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 735657002,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2798000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735657009,
         "quantity": 2,
         "ordered_quantity": null,
@@ -8591,14 +8591,14 @@
     "price": 2798000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735657004,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 2798000
       },
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 735657005,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8629,14 +8629,14 @@
         "price": 1098000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 737167003,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1098000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 737167005,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8667,7 +8667,7 @@
         "price": 1098000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 737167011,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8687,7 +8687,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 1098000,
     "sizes": [
       {
@@ -8698,14 +8698,14 @@
         "price": 1098000
       },
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 737167016,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1098000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 737167017,
         "quantity": 1,
         "ordered_quantity": null,
@@ -8749,7 +8749,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 278000,
     "sizes": [
       {
@@ -8773,7 +8773,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1298000,
     "sizes": [
       {
@@ -8797,7 +8797,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 798000,
     "sizes": [
       {
@@ -8821,7 +8821,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 1098000,
     "sizes": [
       {
@@ -8845,7 +8845,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
@@ -8869,7 +8869,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 19000,
     "sizes": [
       {
@@ -8893,7 +8893,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4398000,
     "sizes": [
       {
@@ -8916,7 +8916,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": "F, TR, B",
-    "wheel_size": null,
+    "wheel_size": "27.5X2.25",
     "color_label": null,
     "price": 398000,
     "sizes": [
@@ -8940,8 +8940,8 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
+    "wheel_size": "27.5X2.10",
+    "color_label": "Hitam",
     "price": 398000,
     "sizes": [
       {
@@ -9013,18 +9013,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 138000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 742009001,
         "quantity": 3,
         "ordered_quantity": null,
         "price": 138000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 742009002,
         "quantity": 3,
         "ordered_quantity": null,
@@ -9075,7 +9075,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 798000,
     "sizes": [
       {
@@ -9099,7 +9099,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 898000,
     "sizes": [
       {
@@ -9147,7 +9147,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 348000,
     "sizes": [
       {
@@ -9267,7 +9267,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Krim/Abu-abu",
     "price": 898000,
     "sizes": [
       {
@@ -9363,7 +9363,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 1598000,
     "sizes": [
       {
@@ -9387,7 +9387,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 1898000,
     "sizes": [
       {
@@ -9411,11 +9411,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 1248000,
     "sizes": [
       {
-        "size_code": "360",
+        "size_code": "36",
         "article_code": 732473029,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9435,11 +9435,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 2298000,
     "sizes": [
       {
-        "size_code": "380",
+        "size_code": "38",
         "article_code": 735375028,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9459,32 +9459,32 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 1998000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 737320001,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1998000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 737320002,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1998000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 737320003,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1998000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 737320004,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9504,60 +9504,60 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4998000,
     "sizes": [
       {
-        "size_code": "370",
+        "size_code": "37",
         "article_code": 737392002,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "380",
+        "size_code": "38",
         "article_code": 737392003,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "390",
+        "size_code": "39",
         "article_code": 737392004,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "400",
+        "size_code": "40",
         "article_code": 737392005,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 737392007,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 737392008,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 737392009,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 737392010,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9577,32 +9577,32 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 4998000,
     "sizes": [
       {
-        "size_code": "370",
+        "size_code": "37",
         "article_code": 737392013,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "390",
+        "size_code": "39",
         "article_code": 737392015,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "400",
+        "size_code": "40",
         "article_code": 737392016,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4998000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 737392020,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9622,25 +9622,25 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1998000,
     "sizes": [
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 738207005,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1998000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 738207006,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1998000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 738207007,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9664,7 +9664,7 @@
     "price": 1998000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 738624001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9684,39 +9684,39 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 3198000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 738961002,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 3198000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 738961003,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3198000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 738961004,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3198000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 738961005,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 3198000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 738961025,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9736,18 +9736,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 3198000,
     "sizes": [
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 738961012,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3198000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 738961013,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9767,25 +9767,25 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1378000,
     "sizes": [
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 739870005,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1378000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 739870006,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1378000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 739870007,
         "quantity": 2,
         "ordered_quantity": null,
@@ -9809,14 +9809,14 @@
     "price": 4848000,
     "sizes": [
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 739872020,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4848000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 739872021,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9836,18 +9836,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4848000,
     "sizes": [
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 739872024,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 4848000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 739872023,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9867,18 +9867,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 1598000,
     "sizes": [
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740578004,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1598000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 740578005,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9902,28 +9902,28 @@
     "price": 2248000,
     "sizes": [
       {
-        "size_code": "400",
+        "size_code": "40",
         "article_code": 740886001,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740886002,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740886004,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740886005,
         "quantity": 1,
         "ordered_quantity": null,
@@ -9943,7 +9943,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 39000,
     "sizes": [
       {
@@ -9967,7 +9967,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 39000,
     "sizes": [
       {
@@ -10015,7 +10015,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 89000,
     "sizes": [
       {
@@ -10087,7 +10087,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -10159,7 +10159,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 348000,
     "sizes": [
       {
@@ -10183,7 +10183,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Beige",
     "price": 348000,
     "sizes": [
       {
@@ -10399,11 +10399,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4948000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 724886001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10423,11 +10423,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4948000,
     "sizes": [
       {
-        "size_code": "11",
+        "size_code": "11 Speed",
         "article_code": 724887001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10451,7 +10451,7 @@
     "price": 598000,
     "sizes": [
       {
-        "size_code": "10",
+        "size_code": "10 Speed",
         "article_code": 725207001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10499,7 +10499,7 @@
     "price": 178000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 732848001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10523,7 +10523,7 @@
     "price": 748000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 733343001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10547,7 +10547,7 @@
     "price": 998000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 733344001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10571,7 +10571,7 @@
     "price": 998000,
     "sizes": [
       {
-        "size_code": "9",
+        "size_code": "9 Speed",
         "article_code": 733345001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10595,7 +10595,7 @@
     "price": 1248000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 733348001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10619,7 +10619,7 @@
     "price": 1248000,
     "sizes": [
       {
-        "size_code": "10",
+        "size_code": "10 Speed",
         "article_code": 733349001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10639,11 +10639,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 128000,
     "sizes": [
       {
-        "size_code": "7",
+        "size_code": "7 Speed",
         "article_code": 733388001,
         "quantity": 4,
         "ordered_quantity": null,
@@ -10667,7 +10667,7 @@
     "price": 298000,
     "sizes": [
       {
-        "size_code": "12",
+        "size_code": "12 Speed",
         "article_code": 734613001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10687,11 +10687,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 128000,
     "sizes": [
       {
-        "size_code": "3",
+        "size_code": "3 Speed",
         "article_code": 735502001,
         "quantity": 4,
         "ordered_quantity": null,
@@ -10711,11 +10711,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
-        "size_code": "3",
+        "size_code": "3 Speed",
         "article_code": 735503001,
         "quantity": 4,
         "ordered_quantity": null,
@@ -10735,11 +10735,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 178000,
     "sizes": [
       {
-        "size_code": "8",
+        "size_code": "8 Speed",
         "article_code": 735504001,
         "quantity": 4,
         "ordered_quantity": null,
@@ -10763,7 +10763,7 @@
     "price": 3398000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 736968001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10787,7 +10787,7 @@
     "price": 3398000,
     "sizes": [
       {
-        "size_code": "12",
+        "size_code": "12 Speed",
         "article_code": 736969001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10811,7 +10811,7 @@
     "price": 3198000,
     "sizes": [
       {
-        "size_code": "12",
+        "size_code": "12 Speed",
         "article_code": 737478001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10835,7 +10835,7 @@
     "price": 3198000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 737479001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -10859,7 +10859,7 @@
     "price": 228000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 738123001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10883,7 +10883,7 @@
     "price": 328000,
     "sizes": [
       {
-        "size_code": "11",
+        "size_code": "11 Speed",
         "article_code": 738126001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10903,11 +10903,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 88000,
     "sizes": [
       {
-        "size_code": "7",
+        "size_code": "7 Speed",
         "article_code": 742150001,
         "quantity": 4,
         "ordered_quantity": null,
@@ -10927,11 +10927,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 158000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 742058001,
         "quantity": 3,
         "ordered_quantity": null,
@@ -10945,21 +10945,21 @@
         "price": 158000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 742058004,
         "quantity": 3,
         "ordered_quantity": null,
         "price": 158000
       },
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 742058005,
         "quantity": 3,
         "ordered_quantity": null,
         "price": 158000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 742058002,
         "quantity": 2,
         "ordered_quantity": null,
@@ -10983,14 +10983,14 @@
     "price": 158000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 742184001,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 158000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 742184005,
         "quantity": 2,
         "ordered_quantity": null,
@@ -11010,7 +11010,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Beige",
     "price": 158000,
     "sizes": [
       {
@@ -11021,14 +11021,14 @@
         "price": 158000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 742184008,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 158000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 742184010,
         "quantity": 2,
         "ordered_quantity": null,
@@ -11052,14 +11052,14 @@
     "price": 158000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 742184011,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 158000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 742184015,
         "quantity": 2,
         "ordered_quantity": null,
@@ -11083,21 +11083,21 @@
     "price": 178000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 742186001,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 178000
       },
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 742186004,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 178000
       },
       {
-        "size_code": "L3",
+        "size_code": "XXL",
         "article_code": 742186005,
         "quantity": 2,
         "ordered_quantity": null,
@@ -11261,25 +11261,25 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 448000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 738967001,
         "quantity": 3,
         "ordered_quantity": null,
         "price": 448000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 738967003,
         "quantity": 4,
         "ordered_quantity": null,
         "price": 448000
       },
       {
-        "size_code": "L2",
+        "size_code": "XL",
         "article_code": 738967004,
         "quantity": 4,
         "ordered_quantity": null,
@@ -11299,7 +11299,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2000,
     "sizes": [
       {
@@ -11371,7 +11371,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2000,
     "sizes": [
       {
@@ -11395,7 +11395,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2000,
     "sizes": [
       {
@@ -11418,7 +11418,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 698000,
     "sizes": [
@@ -11466,7 +11466,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "7 Speed",
     "color_label": null,
     "price": 148000,
     "sizes": [
@@ -11491,7 +11491,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 3498000,
     "sizes": [
       {
@@ -11563,7 +11563,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 528000,
     "sizes": [
       {
@@ -11611,11 +11611,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1248000,
     "sizes": [
       {
-        "size_code": "360",
+        "size_code": "36",
         "article_code": 732473025,
         "quantity": 2,
         "ordered_quantity": null,
@@ -11635,7 +11635,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 798000,
     "sizes": [
       {
@@ -11683,18 +11683,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1998000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 738624006,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1998000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 738624007,
         "quantity": 1,
         "ordered_quantity": null,
@@ -11786,7 +11786,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 748000,
     "sizes": [
       {
@@ -11881,7 +11881,7 @@
     "category": "CHAIN & PART OF CHAIN",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "8 Speed",
     "color_label": null,
     "price": 99000,
     "sizes": [
@@ -11905,7 +11905,7 @@
     "category": "DERAILLEUR GROUP SET",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "11 Speed",
     "color_label": null,
     "price": 9248000,
     "sizes": [
@@ -11978,7 +11978,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 898000,
     "sizes": [
       {
@@ -12026,7 +12026,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 62000,
     "sizes": [
       {
@@ -12050,7 +12050,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Biru",
     "price": 62000,
     "sizes": [
       {
@@ -12074,7 +12074,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Kuning",
     "price": 398000,
     "sizes": [
       {
@@ -12098,7 +12098,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 398000,
     "sizes": [
       {
@@ -12122,7 +12122,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1748000,
     "sizes": [
       {
@@ -12133,7 +12133,7 @@
         "price": 1748000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 741706006,
         "quantity": 1,
         "ordered_quantity": null,
@@ -12153,7 +12153,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -12345,7 +12345,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 898000,
     "sizes": [
       {
@@ -13401,7 +13401,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 278000,
     "sizes": [
       {
@@ -13425,7 +13425,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Biru",
     "price": 49000,
     "sizes": [
       {
@@ -13449,7 +13449,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 398000,
     "sizes": [
       {
@@ -13473,18 +13473,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1648000,
     "sizes": [
       {
-        "size_code": "360",
+        "size_code": "36",
         "article_code": 735374012,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1648000
       },
       {
-        "size_code": "370",
+        "size_code": "37",
         "article_code": 735374013,
         "quantity": 2,
         "ordered_quantity": null,
@@ -13504,18 +13504,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 1648000,
     "sizes": [
       {
-        "size_code": "360",
+        "size_code": "36",
         "article_code": 735374016,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1648000
       },
       {
-        "size_code": "370",
+        "size_code": "37",
         "article_code": 735374017,
         "quantity": 2,
         "ordered_quantity": null,
@@ -13535,11 +13535,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 3198000,
     "sizes": [
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 738961022,
         "quantity": 1,
         "ordered_quantity": null,
@@ -13559,25 +13559,25 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 1378000,
     "sizes": [
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 739870017,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1378000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 739870018,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1378000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 739870019,
         "quantity": 2,
         "ordered_quantity": null,
@@ -13597,39 +13597,39 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 1398000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740887004,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1398000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740887007,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1398000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 740887005,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1398000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740887006,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 1398000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 740887008,
         "quantity": 1,
         "ordered_quantity": null,
@@ -13745,7 +13745,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 428000,
     "sizes": [
       {
@@ -13769,7 +13769,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -13817,7 +13817,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 598000,
     "sizes": [
       {
@@ -13865,7 +13865,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2498000,
     "sizes": [
       {
@@ -13889,7 +13889,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2748000,
     "sizes": [
       {
@@ -13961,7 +13961,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 64000,
     "sizes": [
       {
@@ -14105,7 +14105,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -14128,7 +14128,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "10 Speed",
     "color_label": null,
     "price": 1548000,
     "sizes": [
@@ -14176,7 +14176,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "8 Speed",
     "color_label": null,
     "price": 178000,
     "sizes": [
@@ -14200,7 +14200,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "9 Speed",
     "color_label": null,
     "price": 348000,
     "sizes": [
@@ -14224,7 +14224,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "11 Speed",
     "color_label": null,
     "price": 2298000,
     "sizes": [
@@ -14248,8 +14248,8 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
+    "wheel_size": "6 Speed",
+    "color_label": "Hitam",
     "price": 89000,
     "sizes": [
       {
@@ -14272,7 +14272,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "7 Speed",
     "color_label": null,
     "price": 128000,
     "sizes": [
@@ -14296,7 +14296,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "10 Speed",
     "color_label": null,
     "price": 498000,
     "sizes": [
@@ -14320,7 +14320,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "7 Speed",
     "color_label": null,
     "price": 118000,
     "sizes": [
@@ -14344,7 +14344,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "7 Speed",
     "color_label": null,
     "price": 99000,
     "sizes": [
@@ -14368,7 +14368,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 1398000,
     "sizes": [
@@ -14392,7 +14392,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 10480000,
     "sizes": [
@@ -14416,7 +14416,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 5298000,
     "sizes": [
@@ -14440,7 +14440,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 3198000,
     "sizes": [
@@ -14464,7 +14464,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 4748000,
     "sizes": [
@@ -14488,7 +14488,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "8 Speed",
     "color_label": null,
     "price": 498000,
     "sizes": [
@@ -14512,7 +14512,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 6298000,
     "sizes": [
@@ -14536,7 +14536,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 4998000,
     "sizes": [
@@ -14560,7 +14560,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "11 Speed",
     "color_label": null,
     "price": 798000,
     "sizes": [
@@ -14585,7 +14585,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 19000,
     "sizes": [
       {
@@ -14729,7 +14729,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2698000,
     "sizes": [
       {
@@ -14753,7 +14753,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2698000,
     "sizes": [
       {
@@ -14777,7 +14777,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2298000,
     "sizes": [
       {
@@ -14849,7 +14849,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 3498000,
     "sizes": [
       {
@@ -14873,7 +14873,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1728000,
     "sizes": [
       {
@@ -14945,7 +14945,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 158000,
     "sizes": [
       {
@@ -14969,7 +14969,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1998000,
     "sizes": [
       {
@@ -14993,7 +14993,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": null,
     "sizes": [
       {
@@ -15017,7 +15017,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": null,
     "sizes": [
       {
@@ -15041,7 +15041,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": null,
     "sizes": [
       {
@@ -15065,7 +15065,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 348000,
     "sizes": [
       {
@@ -15089,7 +15089,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 498000,
     "sizes": [
       {
@@ -15113,7 +15113,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 848000,
     "sizes": [
       {
@@ -15137,7 +15137,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -15161,7 +15161,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 348000,
     "sizes": [
       {
@@ -15185,7 +15185,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -15209,7 +15209,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1198000,
     "sizes": [
       {
@@ -15233,7 +15233,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 528000,
     "sizes": [
       {
@@ -15257,7 +15257,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 34000,
     "sizes": [
       {
@@ -15281,7 +15281,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 34000,
     "sizes": [
       {
@@ -15309,21 +15309,21 @@
     "price": 2248000,
     "sizes": [
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 740889005,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740889006,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740889007,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15343,39 +15343,39 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2248000,
     "sizes": [
       {
-        "size_code": "400",
+        "size_code": "40",
         "article_code": 740889011,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740889012,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 740889013,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740889014,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 2248000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740889015,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15395,46 +15395,46 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 3248000,
     "sizes": [
       {
-        "size_code": "400",
+        "size_code": "40",
         "article_code": 740890003,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740890004,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 740890005,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740890006,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740890007,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "450",
+        "size_code": "45",
         "article_code": 740890008,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15458,28 +15458,28 @@
     "price": 3248000,
     "sizes": [
       {
-        "size_code": "410",
+        "size_code": "41",
         "article_code": 740890016,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "420",
+        "size_code": "42",
         "article_code": 740890017,
         "quantity": 1,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "430",
+        "size_code": "43",
         "article_code": 740890018,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 3248000
       },
       {
-        "size_code": "440",
+        "size_code": "44",
         "article_code": 740890019,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15499,18 +15499,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740832001,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 228000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740832002,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15541,14 +15541,14 @@
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740832006,
         "quantity": 2,
         "ordered_quantity": null,
         "price": 228000
       },
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740832007,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15572,7 +15572,7 @@
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740832011,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15596,7 +15596,7 @@
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740832016,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15616,11 +15616,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740833001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15640,11 +15640,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740833011,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15664,11 +15664,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 228000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740833016,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15688,7 +15688,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 278000,
     "sizes": [
       {
@@ -15712,7 +15712,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 478000,
     "sizes": [
       {
@@ -15736,11 +15736,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 498000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 733187005,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15764,7 +15764,7 @@
     "price": 498000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735666002,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15784,11 +15784,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 498000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735666006,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15808,11 +15808,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 478000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 735667002,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15832,11 +15832,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 128000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 740329003,
         "quantity": 1,
         "ordered_quantity": null,
@@ -15867,7 +15867,7 @@
     "price": 178000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740834001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15887,11 +15887,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 178000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740834011,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15915,7 +15915,7 @@
     "price": 178000,
     "sizes": [
       {
-        "size_code": "S2",
+        "size_code": "XS",
         "article_code": 740834016,
         "quantity": 2,
         "ordered_quantity": null,
@@ -15935,7 +15935,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 998000,
     "sizes": [
       {
@@ -15959,7 +15959,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 998000,
     "sizes": [
       {
@@ -15983,7 +15983,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 998000,
     "sizes": [
       {
@@ -16007,7 +16007,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -16031,7 +16031,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -16103,7 +16103,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1148000,
     "sizes": [
       {
@@ -16186,7 +16186,7 @@
         "price": 3998000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 738427018,
         "quantity": 1,
         "ordered_quantity": null,
@@ -16217,7 +16217,7 @@
         "price": 3998000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 738427028,
         "quantity": 1,
         "ordered_quantity": null,
@@ -16237,7 +16237,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 3998000,
     "sizes": [
       {
@@ -16457,7 +16457,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Beige",
     "price": 298000,
     "sizes": [
       {
@@ -16845,7 +16845,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hijau",
     "price": 128000,
     "sizes": [
       {
@@ -16965,7 +16965,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 148000,
     "sizes": [
       {
@@ -17013,7 +17013,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 148000,
     "sizes": [
       {
@@ -17061,7 +17061,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 148000,
     "sizes": [
       {
@@ -17085,7 +17085,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -17109,7 +17109,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -17133,7 +17133,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -17181,7 +17181,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 148000,
     "sizes": [
       {
@@ -17229,7 +17229,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Beige",
     "price": 148000,
     "sizes": [
       {
@@ -17253,7 +17253,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 998000,
     "sizes": [
       {
@@ -17339,7 +17339,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 928000,
     "sizes": [
       {
@@ -17363,7 +17363,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 42000,
     "sizes": [
       {
@@ -17387,7 +17387,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 348000,
     "sizes": [
       {
@@ -17415,7 +17415,7 @@
     "price": 298000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 723765001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17439,7 +17439,7 @@
     "price": 298000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 723766001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17463,7 +17463,7 @@
     "price": 898000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 732831001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17487,7 +17487,7 @@
     "price": 898000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 732832001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17511,7 +17511,7 @@
     "price": 348000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 733323001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17535,7 +17535,7 @@
     "price": 348000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 733324001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17559,7 +17559,7 @@
     "price": 1048000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 733885001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17583,7 +17583,7 @@
     "price": 1048000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 733887001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17607,7 +17607,7 @@
     "price": 498000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 732200001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -17631,7 +17631,7 @@
     "price": 498000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 732201001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -17651,11 +17651,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 328000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 733241001,
         "quantity": 3,
         "ordered_quantity": null,
@@ -17675,11 +17675,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 328000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 733242001,
         "quantity": 3,
         "ordered_quantity": null,
@@ -17703,7 +17703,7 @@
     "price": 4248000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 736917001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17727,7 +17727,7 @@
     "price": 4248000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 736918001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17747,11 +17747,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 6998000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 737415001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17771,11 +17771,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 6998000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 737416001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -17795,11 +17795,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 6298000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 737417001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -17819,11 +17819,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 6298000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 737418001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -17843,11 +17843,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4098000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 737419001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -17867,11 +17867,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 4098000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 737420001,
         "quantity": 2,
         "ordered_quantity": null,
@@ -17890,7 +17890,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "10 Speed",
     "color_label": null,
     "price": 578000,
     "sizes": [
@@ -17914,7 +17914,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 898000,
     "sizes": [
@@ -17938,7 +17938,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "8 Speed",
     "color_label": null,
     "price": 178000,
     "sizes": [
@@ -17962,7 +17962,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 4598000,
     "sizes": [
@@ -17986,7 +17986,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 4598000,
     "sizes": [
@@ -18010,7 +18010,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "7 Speed",
     "color_label": null,
     "price": 118000,
     "sizes": [
@@ -18034,7 +18034,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "7 Speed",
     "color_label": null,
     "price": 148000,
     "sizes": [
@@ -18058,7 +18058,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "7 Speed",
     "color_label": null,
     "price": 158000,
     "sizes": [
@@ -18082,7 +18082,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 998000,
     "sizes": [
@@ -18106,7 +18106,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "10 Speed",
     "color_label": null,
     "price": 628000,
     "sizes": [
@@ -18130,7 +18130,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 6498000,
     "sizes": [
@@ -18154,7 +18154,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 1998000,
     "sizes": [
@@ -18178,7 +18178,7 @@
     "category": "SPROCKET FREEWHEEL",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 1148000,
     "sizes": [
@@ -18203,7 +18203,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 59000,
     "sizes": [
       {
@@ -18227,7 +18227,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 118000,
     "sizes": [
       {
@@ -18251,7 +18251,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 29000,
     "sizes": [
       {
@@ -18275,7 +18275,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 29000,
     "sizes": [
       {
@@ -18299,7 +18299,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 29000,
     "sizes": [
       {
@@ -18323,7 +18323,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 79000,
     "sizes": [
       {
@@ -18347,7 +18347,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -18371,7 +18371,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 59000,
     "sizes": [
       {
@@ -18395,7 +18395,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 128000,
     "sizes": [
       {
@@ -18418,7 +18418,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": "TLE, F, B",
-    "wheel_size": null,
+    "wheel_size": "700X28C",
     "color_label": null,
     "price": 898000,
     "sizes": [
@@ -18442,7 +18442,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": "TLE, F, B",
-    "wheel_size": null,
+    "wheel_size": "700X28C",
     "color_label": null,
     "price": 1248000,
     "sizes": [
@@ -18466,7 +18466,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": "TLE, F, B",
-    "wheel_size": null,
+    "wheel_size": "700X30C",
     "color_label": null,
     "price": 1248000,
     "sizes": [
@@ -18490,7 +18490,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "27.5X2.6",
     "color_label": null,
     "price": 898000,
     "sizes": [
@@ -18514,7 +18514,7 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": "F, ADSR, TLE, B",
-    "wheel_size": null,
+    "wheel_size": "700X32C",
     "color_label": null,
     "price": 1248000,
     "sizes": [
@@ -18538,8 +18538,8 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
+    "wheel_size": "700X28C",
+    "color_label": "Beige",
     "price": 1398000,
     "sizes": [
       {
@@ -18562,8 +18562,8 @@
     "category": "TIRE",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
+    "wheel_size": "700X28C",
+    "color_label": "Beige",
     "price": 1398000,
     "sizes": [
       {
@@ -19259,7 +19259,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1998000,
     "sizes": [
       {
@@ -19378,7 +19378,7 @@
     "category": "TUBE",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "700X32",
     "color_label": null,
     "price": 49000,
     "sizes": [
@@ -19570,7 +19570,7 @@
     "category": "TUBE",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "20X1.50",
     "color_label": null,
     "price": 99000,
     "sizes": [
@@ -19594,7 +19594,7 @@
     "category": "TUBE",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "700X18",
     "color_label": null,
     "price": 158000,
     "sizes": [
@@ -19931,11 +19931,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Cokelat",
     "price": 1998000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 739450002,
         "quantity": 2,
         "ordered_quantity": null,
@@ -19962,11 +19962,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Putih",
     "price": 2498000,
     "sizes": [
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 740039004,
         "quantity": 1,
         "ordered_quantity": null,
@@ -19997,7 +19997,7 @@
         "price": 648000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 742288002,
         "quantity": 3,
         "ordered_quantity": null,
@@ -20028,7 +20028,7 @@
         "price": 648000
       },
       {
-        "size_code": "L1",
+        "size_code": "L",
         "article_code": 742288006,
         "quantity": 3,
         "ordered_quantity": null,
@@ -20076,7 +20076,7 @@
     "price": 158000,
     "sizes": [
       {
-        "size_code": "S1",
+        "size_code": "S",
         "article_code": 742286005,
         "quantity": 8,
         "ordered_quantity": null,
@@ -20103,7 +20103,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 498000,
     "sizes": [
       {
@@ -20127,7 +20127,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1048000,
     "sizes": [
       {
@@ -20151,7 +20151,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 948000,
     "sizes": [
       {
@@ -20175,7 +20175,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1048000,
     "sizes": [
       {
@@ -20199,7 +20199,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 948000,
     "sizes": [
       {
@@ -20223,7 +20223,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 948000,
     "sizes": [
       {
@@ -20247,7 +20247,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -20271,7 +20271,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 328000,
     "sizes": [
       {
@@ -20295,7 +20295,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -20319,7 +20319,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 398000,
     "sizes": [
       {
@@ -20343,7 +20343,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 1980000,
     "sizes": [
       {
@@ -20367,7 +20367,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 248000,
     "sizes": [
       {
@@ -20391,7 +20391,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 198000,
     "sizes": [
       {
@@ -20415,7 +20415,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 328000,
     "sizes": [
       {
@@ -20439,7 +20439,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 778000,
     "sizes": [
       {
@@ -20463,7 +20463,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
@@ -20487,7 +20487,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
@@ -20511,7 +20511,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 59000,
     "sizes": [
       {
@@ -20535,7 +20535,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 69000,
     "sizes": [
       {
@@ -20559,7 +20559,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 69000,
     "sizes": [
       {
@@ -20919,7 +20919,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 59000,
     "sizes": [
       {
@@ -21207,7 +21207,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
@@ -21231,7 +21231,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 348000,
     "sizes": [
       {
@@ -21303,11 +21303,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2848000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 740598001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -21327,11 +21327,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 2848000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 740599001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -21351,11 +21351,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 398000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 741644001,
         "quantity": 4,
         "ordered_quantity": null,
@@ -21375,11 +21375,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 398000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 741645001,
         "quantity": 4,
         "ordered_quantity": null,
@@ -21403,7 +21403,7 @@
     "price": 2998000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 742121001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -21427,7 +21427,7 @@
     "price": 2998000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 742122001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -21447,18 +21447,18 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 248000,
     "sizes": [
       {
-        "size_code": "F",
+        "size_code": "Depan",
         "article_code": 721632001,
         "quantity": 4,
         "ordered_quantity": null,
         "price": 248000
       },
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 721632002,
         "quantity": 4,
         "ordered_quantity": null,
@@ -21482,7 +21482,7 @@
     "price": 178000,
     "sizes": [
       {
-        "size_code": "L",
+        "size_code": "Kiri",
         "article_code": 733317001,
         "quantity": 3,
         "ordered_quantity": null,
@@ -21506,7 +21506,7 @@
     "price": 178000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 733318001,
         "quantity": 3,
         "ordered_quantity": null,
@@ -21526,11 +21526,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 98000,
     "sizes": [
       {
-        "size_code": "L",
+        "size_code": "Kiri",
         "article_code": 733321001,
         "quantity": 3,
         "ordered_quantity": null,
@@ -21550,11 +21550,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 98000,
     "sizes": [
       {
-        "size_code": "R",
+        "size_code": "Belakang",
         "article_code": 733322001,
         "quantity": 3,
         "ordered_quantity": null,
@@ -21934,7 +21934,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 248000,
     "sizes": [
       {
@@ -22077,7 +22077,7 @@
     "category": "CHAIN & PART OF CHAIN",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 398000,
     "sizes": [
@@ -22101,7 +22101,7 @@
     "category": "CHAIN & PART OF CHAIN",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 448000,
     "sizes": [
@@ -22822,7 +22822,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 138000,
     "sizes": [
       {
@@ -23470,7 +23470,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 12000,
     "sizes": [
       {
@@ -23518,7 +23518,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 14000,
     "sizes": [
       {
@@ -24214,7 +24214,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Kuning",
     "price": 278000,
     "sizes": [
       {
@@ -24262,7 +24262,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 398000,
     "sizes": [
       {
@@ -24286,7 +24286,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 84000,
     "sizes": [
       {
@@ -24310,7 +24310,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -24334,7 +24334,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Merah",
     "price": 598000,
     "sizes": [
       {
@@ -24358,7 +24358,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 118000,
     "sizes": [
       {
@@ -24406,7 +24406,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 998000,
     "sizes": [
       {
@@ -24454,7 +24454,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -24478,7 +24478,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 528000,
     "sizes": [
       {
@@ -24502,7 +24502,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 898000,
     "sizes": [
       {
@@ -24550,7 +24550,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 448000,
     "sizes": [
       {
@@ -24622,7 +24622,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 748000,
     "sizes": [
       {
@@ -24670,7 +24670,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 778000,
     "sizes": [
       {
@@ -24742,7 +24742,7 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 598000,
     "sizes": [
       {
@@ -24790,11 +24790,11 @@
     "warehouse": "Outlet",
     "variant_extra": null,
     "wheel_size": null,
-    "color_label": null,
+    "color_label": "Hitam",
     "price": 298000,
     "sizes": [
       {
-        "size_code": "2",
+        "size_code": "2 Speed",
         "article_code": 738713001,
         "quantity": 1,
         "ordered_quantity": null,
@@ -24861,7 +24861,7 @@
     "category": "REAR DERAILLEUR",
     "warehouse": "Outlet",
     "variant_extra": null,
-    "wheel_size": null,
+    "wheel_size": "12 Speed",
     "color_label": null,
     "price": 928000,
     "sizes": [

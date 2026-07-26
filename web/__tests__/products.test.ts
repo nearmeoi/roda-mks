@@ -12,7 +12,7 @@ describe("getAllProducts", () => {
 describe("getProductById", () => {
   it("finds an existing product", () => {
     const product = getProductById("polygon-strattos-7-blk-fa-700-b");
-    expect(product?.model_name).toBe("STRATTOS 7 BLK FA 700");
+    expect(product?.model_name).toBe("STRATTOS 7");
   });
 
   it("returns undefined for an unknown id", () => {

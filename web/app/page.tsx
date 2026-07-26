@@ -7,14 +7,24 @@ import { ResultRow } from "@/components/ResultRow";
 import { getAllProducts } from "@/lib/products";
 import { searchProducts } from "@/lib/search";
 
-const RESULT_LIMIT = 8;
+const RESULT_LIMIT = 12;
 const allProducts = getAllProducts();
+
+// Build a sorted list of unique categories from the real dataset
+const ALL_CATEGORIES = Array.from(new Set(allProducts.map((p) => p.category))).sort();
 
 export default function HomePage() {
   const [query, setQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const hasQuery = query.trim().length > 0;
-  const results = useMemo(() => searchProducts(allProducts, query).slice(0, RESULT_LIMIT), [query]);
-  const noResults = hasQuery && results.length === 0;
+
+  const results = useMemo(() => {
+    let base = hasQuery ? searchProducts(allProducts, query) : [];
+    if (activeCategory) base = base.filter((p) => p.category === activeCategory);
+    return base.slice(0, RESULT_LIMIT);
+  }, [query, activeCategory]);
+
+  const noResults = (hasQuery || activeCategory) && results.length === 0;
 
   return (
     <div className="flex min-h-screen flex-col items-center px-5 pb-10 pt-6">
@@ -53,9 +63,40 @@ export default function HomePage() {
 
           <SearchBar value={query} onChange={setQuery} hasQuery={hasQuery} onClear={() => setQuery("")} />
 
+          {/* Category filter chips — always visible */}
+          <div className="flex w-full gap-2 overflow-x-auto pb-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {ALL_CATEGORIES.map((cat) => {
+              const active = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCategory(active ? null : cat)}
+                  className="shrink-0 rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-all"
+                  style={
+                    active
+                      ? {
+                          background: "var(--color-accent)",
+                          borderColor: "var(--color-accent)",
+                          color: "#fff",
+                          boxShadow: "0 2px 8px rgba(10,124,255,0.3)",
+                        }
+                      : {
+                          background: "rgba(255,255,255,0.7)",
+                          borderColor: "rgba(0,0,0,0.1)",
+                          color: "#5b5b60",
+                        }
+                  }
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+
           {noResults && <div className="pt-2 text-center text-sm text-gray-500">Barang tidak ditemukan.</div>}
 
-          {hasQuery && !noResults && (
+          {!noResults && results.length > 0 && (
             <div className="flex w-full flex-col gap-2.5 [animation:fadeSlideUp_0.25s_ease]">
               {results.map((product) => (
                 <Link key={product.id} href={`/product/${product.id}`}>
@@ -63,6 +104,12 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
+          )}
+
+          {!hasQuery && !activeCategory && (
+            <p className="pt-1 text-center text-[13px] text-gray-400">
+              Ketik nama, kode, atau brand · atau pilih kategori di atas
+            </p>
           )}
         </div>
       </div>

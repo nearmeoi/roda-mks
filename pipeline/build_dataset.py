@@ -6,7 +6,7 @@ from pipeline.parse_stock import load_bike_rows, load_paa_rows
 from pipeline.group_products import group_rows
 from pipeline.match_catalog import match_products
 from pipeline.scrape_catalog import scrape_catalog
-from pipeline.decode_variant import decode_bike_variant
+from pipeline.decode_variant import decode_variant, decode_paa_size_code, clean_model_name
 
 
 def make_id(brand: str, model_name: str, color_code: str | None, variant_extra: str | None = None) -> str:
@@ -17,18 +17,23 @@ def make_id(brand: str, model_name: str, color_code: str | None, variant_extra: 
 
 def merge_product(matched: dict) -> dict:
     catalog = matched["catalog"]
-    wheel_size, color_label = decode_bike_variant(matched["model_name"], matched["category"])
+    wheel_size, color_label = decode_variant(matched["model_name"], matched["category"], matched.get("color_code"))
+    sizes = [
+        {**s, "size_code": decode_paa_size_code(s["size_code"], matched["category"])}
+        for s in matched["sizes"]
+    ]
+    cleaned_name = clean_model_name(matched["model_name"], matched["category"])
     return {
         "id": make_id(matched["brand"], matched["model_name"], matched["color_code"], matched.get("variant_extra")),
         "brand": matched["brand"],
-        "model_name": matched["model_name"],
+        "model_name": cleaned_name,
         "category": matched["category"],
         "warehouse": matched["warehouse"],
         "variant_extra": matched.get("variant_extra"),
         "wheel_size": wheel_size,
         "color_label": color_label,
         "price": matched["price"],
-        "sizes": matched["sizes"],
+        "sizes": sizes,
         "colors": catalog["colors"],
         "images": catalog["images"],
         "specs": catalog["specs"],
@@ -37,18 +42,23 @@ def merge_product(matched: dict) -> dict:
 
 
 def merge_unmatched(product: dict) -> dict:
-    wheel_size, color_label = decode_bike_variant(product["model_name"], product["category"])
+    wheel_size, color_label = decode_variant(product["model_name"], product["category"], product.get("color_code"))
+    sizes = [
+        {**s, "size_code": decode_paa_size_code(s["size_code"], product["category"])}
+        for s in product["sizes"]
+    ]
+    cleaned_name = clean_model_name(product["model_name"], product["category"])
     return {
         "id": make_id(product["brand"], product["model_name"], product["color_code"], product.get("variant_extra")),
         "brand": product["brand"],
-        "model_name": product["model_name"],
+        "model_name": cleaned_name,
         "category": product["category"],
         "warehouse": product["warehouse"],
         "variant_extra": product.get("variant_extra"),
         "wheel_size": wheel_size,
         "color_label": color_label,
         "price": product["price"],
-        "sizes": product["sizes"],
+        "sizes": sizes,
         "colors": [],
         "images": [],
         "specs": {},

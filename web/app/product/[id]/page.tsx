@@ -24,12 +24,22 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     { label: "Brand", value: product.brand },
     { label: "Kategori", value: product.category },
     ...(colorDisplay ? [{ label: "Warna", value: colorDisplay }] : []),
-    ...(product.wheel_size ? [{ label: "Ukuran Roda", value: product.wheel_size }] : []),
+    ...(product.wheel_size
+      ? [
+          {
+            label: product.category.startsWith("BIKE") ? "Ukuran Roda" : "Ukuran / Spek",
+            value: product.wheel_size,
+          },
+        ]
+      : []),
     { label: "Gudang", value: product.warehouse },
     ...(product.variant_extra ? [{ label: "Varian", value: product.variant_extra }] : []),
     { label: "Stok Tersedia", value: `${qty} unit` },
     { label: "Sedang Dipesan", value: `${ordered} unit` },
   ];
+
+  // Show the per-size table when there are multiple sizes, or when any size has a meaningful size_code
+  const hasSizes = product.sizes.length > 1 || (product.sizes[0]?.size_code != null);
 
   return (
     <div className="min-h-screen pb-12 [animation:slideInRight_0.28s_ease]">
@@ -85,8 +95,48 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               </div>
             ))}
           </div>
+
+          {hasSizes && (
+            <div className="mt-5 overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
+              <div className="border-b border-black/[0.08] px-4 py-3">
+                <span className="text-[13px] font-semibold uppercase tracking-wide text-gray-400">Stok per Ukuran</span>
+              </div>
+              <div className="grid grid-cols-[1fr_auto_auto_auto] text-[13px]">
+                <div className="border-b border-black/[0.06] px-4 py-2.5 font-medium text-gray-400">Ukuran</div>
+                <div className="border-b border-black/[0.06] px-4 py-2.5 font-medium text-gray-400">Kode</div>
+                <div className="border-b border-black/[0.06] px-3 py-2.5 text-right font-medium text-gray-400">Stok</div>
+                <div className="border-b border-black/[0.06] px-4 py-2.5 text-right font-medium text-gray-400">Dipesan</div>
+                {product.sizes.map((s, i) => {
+                  const isLast = i === product.sizes.length - 1;
+                  const rowBorder = isLast ? "" : "border-b border-black/[0.06]";
+                  const stockColor = s.quantity <= 0
+                    ? "text-red-400"
+                    : s.quantity < 5
+                    ? "text-amber-500"
+                    : "text-emerald-600";
+                  return (
+                    <>
+                      <div key={`sz-${i}`} className={`${rowBorder} px-4 py-3 font-semibold text-gray-900`}>
+                        {s.size_code ?? "—"}
+                      </div>
+                      <div key={`ac-${i}`} className={`${rowBorder} px-4 py-3 font-mono text-gray-500`}>
+                        {s.article_code}
+                      </div>
+                      <div key={`q-${i}`} className={`${rowBorder} px-3 py-3 text-right font-bold ${stockColor}`}>
+                        {s.quantity}
+                      </div>
+                      <div key={`oq-${i}`} className={`${rowBorder} px-4 py-3 text-right text-gray-500`}>
+                        {s.ordered_quantity ?? 0}
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
+
