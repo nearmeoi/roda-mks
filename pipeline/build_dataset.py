@@ -50,13 +50,18 @@ def merge_unmatched(product: dict) -> dict:
 
 
 def build(xlsx_path: str, catalog_partial_path: str, catalog_output_path: str,
-          overrides_path: str, output_path: str, headless: bool = True) -> None:
+          overrides_path: str, output_path: str, headless: bool = True,
+          skip_photos: bool = False) -> None:
     rows = load_bike_rows(xlsx_path) + load_paa_rows(xlsx_path)
     grouped = group_rows(rows)
     print(f"[build_dataset] {len(rows)} SKU rows grouped into {len(grouped)} products")
 
-    catalog = scrape_catalog(catalog_output_path, catalog_partial_path, headless=headless)
-    print(f"[build_dataset] scraped {len(catalog)} catalog products")
+    if skip_photos:
+        print("[build_dataset] --skip-photos set, not scraping rodalink.com (all products will be unmatched)")
+        catalog = []
+    else:
+        catalog = scrape_catalog(catalog_output_path, catalog_partial_path, headless=headless)
+        print(f"[build_dataset] scraped {len(catalog)} catalog products")
 
     with open(overrides_path, encoding="utf-8") as f:
         overrides = json.load(f)
@@ -78,6 +83,8 @@ if __name__ == "__main__":
     parser.add_argument("--overrides", default="data/catalog_overrides.json")
     parser.add_argument("--output", default="data/products.json")
     parser.add_argument("--headed", action="store_true", help="run the browser with a visible window")
+    parser.add_argument("--skip-photos", action="store_true",
+                         help="skip scraping rodalink.com; write stock data only, all products unmatched")
     args = parser.parse_args()
     build(args.xlsx, args.catalog_partial, args.catalog_output, args.overrides,
-          args.output, headless=not args.headed)
+          args.output, headless=not args.headed, skip_photos=args.skip_photos)
