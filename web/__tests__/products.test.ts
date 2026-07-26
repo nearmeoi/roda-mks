@@ -3,7 +3,7 @@ import { getAllProducts, getProductById } from "@/lib/products";
 
 describe("getAllProducts", () => {
   it("returns every product in the dataset", () => {
-    expect(getAllProducts()).toHaveLength(6);
+    expect(getAllProducts()).toHaveLength(8);
   });
 });
 

@@ -22,6 +22,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     { label: "Brand", value: product.brand },
     { label: "Kategori", value: product.category },
     { label: "Gudang", value: product.warehouse },
+    ...(product.variant_extra ? [{ label: "Varian", value: product.variant_extra }] : []),
     { label: "Stok Tersedia", value: `${qty} unit` },
     { label: "Sedang Dipesan", value: `${ordered} unit` },
   ];
