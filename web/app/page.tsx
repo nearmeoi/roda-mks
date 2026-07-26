@@ -15,7 +15,6 @@ const allProducts = getAllProducts();
 const ALL_CATEGORIES = Array.from(new Set(allProducts.map((p) => p.category))).sort();
 
 function HomeContent() {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -27,16 +26,20 @@ function HomeContent() {
 
   // Sync internal state if URL changes (e.g. back navigation)
   useEffect(() => {
-    setQuery(searchParams.get("q") || "");
-    setActiveCategory(searchParams.get("cat") || null);
+    const currentQ = searchParams.get("q") || "";
+    const currentCat = searchParams.get("cat") || null;
+    setQuery(currentQ);
+    setActiveCategory(currentCat);
   }, [searchParams]);
 
-  // Update URL without refreshing when state changes
+  // Update URL state synchronously without re-triggering Next.js router cycles or race conditions
   const updateUrlParams = (newQuery: string, newCat: string | null) => {
     const params = new URLSearchParams();
     if (newQuery) params.set("q", newQuery);
     if (newCat) params.set("cat", newCat);
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    const queryString = params.toString();
+    const newUrl = pathname + (queryString ? `?${queryString}` : "");
+    window.history.replaceState(null, "", newUrl);
   };
 
   const handleQueryChange = (val: string) => {

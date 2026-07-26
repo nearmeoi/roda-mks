@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllProducts, getProductById } from "@/lib/products";
 import { formatPrice, getStockStatus, primaryArticleCode, totalOrderedQuantity, totalQuantity } from "@/lib/format";
 import { ProductCarousel } from "@/components/ProductCarousel";
+import { BackButton } from "@/components/BackButton";
 
 export function generateStaticParams() {
   return getAllProducts().map((p) => ({ id: p.id }));
@@ -44,18 +44,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="min-h-screen pb-12 [animation:slideInRight_0.28s_ease]">
       <div className="sticky top-0 z-10 flex items-center border-b border-black/[0.08] bg-[#f6f6f8]/75 px-5 py-3.5 backdrop-blur-xl">
-        <Link href="/" className="flex items-center gap-1 text-base font-medium">
-          <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
-            <path
-              d="M9 1L2 8L9 15"
-              stroke="var(--color-accent)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span style={{ color: "var(--color-accent)" }}>Kembali</span>
-        </Link>
+        <BackButton />
       </div>
 
       <div className="mx-auto max-w-[560px] px-5 pt-5">
