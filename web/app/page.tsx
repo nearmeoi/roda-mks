@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { SearchBar } from "@/components/SearchBar";
 import { ResultRow } from "@/components/ResultRow";
 import { getAllProducts } from "@/lib/products";
@@ -13,9 +14,41 @@ const allProducts = getAllProducts();
 // Build a sorted list of unique categories from the real dataset
 const ALL_CATEGORIES = Array.from(new Set(allProducts.map((p) => p.category))).sort();
 
-export default function HomePage() {
-  const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+function HomeContent() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const urlQuery = searchParams.get("q") || "";
+  const urlCategory = searchParams.get("cat") || null;
+
+  const [query, setQuery] = useState(urlQuery);
+  const [activeCategory, setActiveCategory] = useState<string | null>(urlCategory);
+
+  // Sync internal state if URL changes (e.g. back navigation)
+  useEffect(() => {
+    setQuery(searchParams.get("q") || "");
+    setActiveCategory(searchParams.get("cat") || null);
+  }, [searchParams]);
+
+  // Update URL without refreshing when state changes
+  const updateUrlParams = (newQuery: string, newCat: string | null) => {
+    const params = new URLSearchParams();
+    if (newQuery) params.set("q", newQuery);
+    if (newCat) params.set("cat", newCat);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleQueryChange = (val: string) => {
+    setQuery(val);
+    updateUrlParams(val, activeCategory);
+  };
+
+  const handleCategoryChange = (cat: string | null) => {
+    setActiveCategory(cat);
+    updateUrlParams(query, cat);
+  };
+
   const hasQuery = query.trim().length > 0;
 
   const results = useMemo(() => {
@@ -61,7 +94,7 @@ export default function HomePage() {
             <span className="text-[15px] font-semibold tracking-tight text-gray-900">Roda Stock</span>
           </div>
 
-          <SearchBar value={query} onChange={setQuery} hasQuery={hasQuery} onClear={() => setQuery("")} />
+          <SearchBar value={query} onChange={handleQueryChange} hasQuery={hasQuery} onClear={() => handleQueryChange("")} />
 
           {/* Category filter chips — always visible */}
           <div className="flex w-full gap-2 overflow-x-auto pb-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
@@ -71,7 +104,7 @@ export default function HomePage() {
                 <button
                   key={cat}
                   type="button"
-                  onClick={() => setActiveCategory(active ? null : cat)}
+                  onClick={() => handleCategoryChange(active ? null : cat)}
                   className="shrink-0 rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-all"
                   style={
                     active
@@ -116,5 +149,17 @@ export default function HomePage() {
 
       <div className="min-h-4 flex-auto" />
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent" />
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
