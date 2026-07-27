@@ -2,42 +2,73 @@
 
 import { useEffect, useRef, useState } from "react";
 import { BrowserMultiFormatReader } from "@zxing/browser";
-import type { IScannerControls } from "@zxing/browser";
+import { BarcodeFormat, DecodeHintType } from "@zxing/library";
 
 interface BarcodeScannerProps {
   onScan: (code: string) => void;
   onClose: () => void;
 }
 
+const HINTS = new Map<DecodeHintType, unknown>([
+  [DecodeHintType.TRY_HARDER, true],
+  [
+    DecodeHintType.POSSIBLE_FORMATS,
+    [
+      BarcodeFormat.CODE_128,
+      BarcodeFormat.EAN_13,
+      BarcodeFormat.EAN_8,
+      BarcodeFormat.UPC_A,
+      BarcodeFormat.UPC_E,
+      BarcodeFormat.CODE_39,
+      BarcodeFormat.CODE_93,
+      BarcodeFormat.ITF,
+      BarcodeFormat.CODABAR,
+      BarcodeFormat.QR_CODE,
+    ],
+  ],
+]);
+
 export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const reader = new BrowserMultiFormatReader();
-    let controls: IScannerControls | undefined;
+    const reader = new BrowserMultiFormatReader(HINTS);
     let cancelled = false;
 
-    reader
-      .decodeFromConstraints(
-        { video: { facingMode: "environment" } },
-        videoRef.current ?? undefined,
-        (result, _err, scannerControls) => {
-          controls = scannerControls;
-          if (cancelled || !result) return;
-          scannerControls.stop();
-          onScan(result.getText());
-        }
-      )
-      .catch(() => {
-        if (!cancelled) {
-          setError("Tidak bisa mengakses kamera. Pastikan izin kamera sudah diaktifkan di browser.");
-        }
-      });
+    // Chain cleanup onto the promise decodeFromConstraints ITSELF returns (which
+    // resolves as soon as the stream/decode loop starts), not onto a `controls`
+    // variable captured from inside the per-frame callback -- that callback may
+    // not have fired yet by the time React's Strict Mode double-invokes this
+    // effect in dev (mount -> cleanup -> mount), which left the first, visible
+    // camera session's results silently dropped forever (`cancelled` was already
+    // true for that closure) while a second, uncleaned-up session raced it.
+    const controlsPromise = reader.decodeFromConstraints(
+      {
+        video: {
+          facingMode: "environment",
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+        },
+      },
+      videoRef.current ?? undefined,
+      (result, _err, scannerControls) => {
+        if (cancelled || !result) return;
+        cancelled = true;
+        scannerControls.stop();
+        onScan(result.getText());
+      }
+    );
+
+    controlsPromise.catch(() => {
+      if (!cancelled) {
+        setError("Tidak bisa mengakses kamera. Pastikan izin kamera sudah diaktifkan di browser.");
+      }
+    });
 
     return () => {
       cancelled = true;
-      controls?.stop();
+      controlsPromise.then((controls) => controls.stop()).catch(() => {});
     };
   }, [onScan]);
 
