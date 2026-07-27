@@ -229,7 +229,7 @@ export function ProductDetailContent({
             </div>
           )}
 
-          {/* Full Scraped Product Specifications Section with Clickable Blue Links */}
+          {/* Full Scraped Product Specifications Section (Brand & Compatible Part Links) */}
           {product.specs && Object.keys(product.specs).length > 0 && (
             <div className="mt-5 overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
               <div className="border-b border-black/[0.08] px-4 py-3">
@@ -237,16 +237,43 @@ export function ProductDetailContent({
               </div>
               <div className="divide-y divide-black/[0.06]">
                 {Object.entries(product.specs).map(([key, val]) => {
-                  const isClickable = val.length > 2 && val.length < 80;
+                  const k = key.toLowerCase();
+                  const v = val.toLowerCase();
+
+                  // Only make Brand and Compatible Parts/Components clickable links
+                  const isPartOrCompatibility =
+                    k === "brand" ||
+                    k.includes("kompatib") ||
+                    k.includes("compatib") ||
+                    v.includes("kompatib") ||
+                    v.includes("compatib") ||
+                    [
+                      "bottom bracket",
+                      "bb",
+                      "shifter",
+                      "cassette",
+                      "crank",
+                      "chain",
+                      "derailleur",
+                      "brake rotor",
+                      "brake lever",
+                      "head set",
+                      "front hub",
+                      "rear hub",
+                    ].some((partKey) => k.includes(partKey));
+
+                  const isClickable = isPartOrCompatibility && val.length > 1 && val.length < 90;
+                  const searchTarget = k === "brand" ? val.trim() : val.split(",")[0].split(" FOR ")[0].trim();
+
                   return (
                     <div key={key} className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:items-center justify-between">
                       <span className="text-xs font-semibold text-gray-500 sm:w-1/3">{key}</span>
                       <div className="sm:w-2/3 sm:text-right">
                         {isClickable ? (
                           <Link
-                            href={`/?q=${encodeURIComponent(val.split(",")[0].split("/")[0].trim())}`}
+                            href={`/?q=${encodeURIComponent(searchTarget)}`}
                             className="inline-flex items-center gap-1 text-xs font-medium text-accent hover:underline"
-                            title={`Cari produk berkaitan dengan "${val}"`}
+                            title={`Cari stok part/brand "${searchTarget}"`}
                           >
                             <span>{val}</span>
                             <ExternalLink className="h-3 w-3 shrink-0" />
