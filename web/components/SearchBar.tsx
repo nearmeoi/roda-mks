@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { BarcodeScanner } from "./BarcodeScanner";
+
 interface SearchBarProps {
   value: string;
   onChange: (value: string) => void;
@@ -8,6 +11,8 @@ interface SearchBarProps {
 }
 
 export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps) {
+  const [showScanner, setShowScanner] = useState(false);
+
   return (
     <div className="relative w-full">
       <div className="pointer-events-none absolute left-4 right-4 top-0.5 h-px bg-gradient-to-r from-transparent via-white/95 to-transparent" />
@@ -37,14 +42,35 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
             type="button"
             onClick={onClear}
             aria-label="Hapus pencarian"
-            className="mr-1 flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-black/10"
+            className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-black/10"
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
               <path d="M5 5L19 19M19 5L5 19" stroke="#5b5b60" strokeWidth="2.4" strokeLinecap="round" />
             </svg>
           </button>
         )}
+        <button
+          type="button"
+          onClick={() => setShowScanner(true)}
+          aria-label="Scan barcode"
+          className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/10"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M3 6V4a1 1 0 0 1 1-1h2M3 18v2a1 1 0 0 0 1 1h2M21 6V4a1 1 0 0 0-1-1h-2M21 18v2a1 1 0 0 1-1 1h-2" stroke="#5b5b60" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M7 7v10M10 7v10M13 7v10M15.5 7v10M18 7v10" stroke="#5b5b60" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        </button>
       </div>
+
+      {showScanner && (
+        <BarcodeScanner
+          onScan={(code) => {
+            setShowScanner(false);
+            onChange(code);
+          }}
+          onClose={() => setShowScanner(false)}
+        />
+      )}
     </div>
   );
 }
