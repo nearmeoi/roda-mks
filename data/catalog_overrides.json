@@ -19,5 +19,18 @@
   "CYCLISTE|BRAKE PADS BP01 SRAM 2 PISTON|None|None": null,
   "SHIMANO|RD TNEY TX ERDFT35AD 6/7SP|None|None": null,
   "CYCLISTE|WALL STAND BRACKET WM-01|B|None": null,
-  "HOZAN|TOOL C-435 BALL RACE SETTING|None|None": null
+  "HOZAN|TOOL C-435 BALL RACE SETTING|None|None": null,
+
+  "SHIMANO|BB PART BB-R9100 IBBR9100B BSA|None|None": "https://www.rodalink.com/id/shimano-bottom-bracket-sepeda-dura-ace-ibb-r9100-bsa-724805.html",
+  "SHIMANO|GS DA DI2 R9270 52/36X170 11-34T|None|None": "https://www.rodalink.com/id/shimano-groupset-sepeda-dura-ace-di2-r9270-2x12-speed-disc-brake-pa01650.html",
+  "SHIMANO|OT-RS900 240MM X 10PC Y0BM98011|None|None": "https://www.rodalink.com/id/shimano-rear-derailleur-housing-dura-ace-ot-rs900-726031.html",
+
+  "CYCLISTE|FENDER MTB FSM02 REAR|None|None": "https://www.rodalink.com/id/cycliste-fender-belakang-sepeda-mtb-fsm02-741333.html",
+  "CYCLISTE|FENDER ROAD FSR02 REAR|None|None": "https://www.rodalink.com/id/cycliste-fender-belakang-sepeda-road-fsr02-741334.html",
+  "POLYGON|BB CUP FP-B902W 68/122 BORON AXLE|None|None": "https://www.rodalink.com/id/polygon-bottom-bracket-sepeda-fp-b902w-square-pa01839.html",
+  "POLYGON|BB CUP FP-B902W 68/113 AXLE|None|None": "https://www.rodalink.com/id/polygon-bottom-bracket-sepeda-fp-b902w-square-pa01839.html",
+  "POLYGON|FENDER UG20 F/ FOLDING E-BIKE|B|None": "https://www.rodalink.com/id/polygon-fender-set-sepeda-ug20-untuk-folding-atau-mini-velo-736725.html",
+
+  "ENTITY|HUB REAR 8-11SP 142 6BLT TA+QR|B|None": "https://www.rodalink.com/id/entity-hub-belakang-sepeda-6-bolt-thru-axle-qr-32h-8-11-speed-734726001.html",
+  "ENTITY|HUB REAR 8-11SP 142 CL|B|None": "https://www.rodalink.com/id/entity-hub-belakang-sepeda-center-lock-24h-8-11-speed-736390001.html"
 }
