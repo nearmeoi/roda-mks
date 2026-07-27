@@ -9,11 +9,35 @@ interface BarcodeScannerProps {
   onClose: () => void;
 }
 
-// TRY_HARDER is safe here: this reader now only decodes ONE frame per button
-// tap, not a continuous loop, so its extra per-attempt cost (which made
-// continuous scanning take 5-10s on Android) no longer accumulates -- it's
-// paid once, on demand, and buys better accuracy for that single shot.
-const HINTS = new Map<DecodeHintType, unknown>([
+// The Shape Detection API isn't in TS's default DOM lib yet.
+interface DetectedBarcode {
+  rawValue: string;
+}
+interface NativeBarcodeDetector {
+  detect(source: HTMLVideoElement): Promise<DetectedBarcode[]>;
+}
+interface NativeBarcodeDetectorConstructor {
+  new (options?: { formats?: string[] }): NativeBarcodeDetector;
+  getSupportedFormats?(): Promise<string[]>;
+}
+
+const NATIVE_FORMATS = [
+  "code_128",
+  "ean_13",
+  "ean_8",
+  "upc_a",
+  "upc_e",
+  "code_39",
+  "code_93",
+  "itf",
+  "codabar",
+  "qr_code",
+];
+
+// TRY_HARDER is fine here: this only ever runs a bounded burst of attempts
+// after a tap (not an always-on loop), so its extra per-attempt cost is paid
+// a handful of times on demand, not accumulated indefinitely.
+const ZXING_HINTS = new Map<DecodeHintType, unknown>([
   [DecodeHintType.TRY_HARDER, true],
   [
     DecodeHintType.POSSIBLE_FORMATS,
@@ -32,23 +56,37 @@ const HINTS = new Map<DecodeHintType, unknown>([
   ],
 ]);
 
+const ZXING_BURST_ATTEMPTS = 15;
+const ZXING_BURST_INTERVAL_MS = 200; // ~3s total burst
+
+type Status = "idle" | "scanning" | "not-found";
+
 export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
-  const readerRef = useRef<BrowserMultiFormatReader | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [notFound, setNotFound] = useState(false);
+  const zxingReaderRef = useRef<BrowserMultiFormatReader | null>(null);
+  const nativeDetectorRef = useRef<NativeBarcodeDetector | null>(null);
+  const timerRef = useRef<number | null>(null);
+  const stoppedRef = useRef(false);
 
-  if (!readerRef.current) {
-    readerRef.current = new BrowserMultiFormatReader(HINTS);
-  }
+  const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<Status>("idle");
+  const [hasNativeDetector, setHasNativeDetector] = useState(false);
+
+  useEffect(() => {
+    const Ctor = (window as unknown as { BarcodeDetector?: NativeBarcodeDetectorConstructor })
+      .BarcodeDetector;
+    if (Ctor) {
+      nativeDetectorRef.current = new Ctor({ formats: NATIVE_FORMATS });
+      setHasNativeDetector(true);
+    } else {
+      zxingReaderRef.current = new BrowserMultiFormatReader(ZXING_HINTS);
+    }
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
 
-    // Plain getUserMedia for a live preview only -- no decode loop attached.
-    // Nothing runs on the CPU here besides rendering the camera feed until
-    // the capture button is tapped.
     navigator.mediaDevices
       .getUserMedia({
         video: {
@@ -67,6 +105,12 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
           videoRef.current.srcObject = stream;
           videoRef.current.play().catch(() => {});
         }
+        // Native detection is hardware-accelerated and cheap enough to run
+        // continuously -- restores instant, no-tap-needed scanning safely.
+        if (nativeDetectorRef.current) {
+          setStatus("scanning");
+          runNativeLoop();
+        }
       })
       .catch(() => {
         if (!cancelled) {
@@ -76,22 +120,67 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
 
     return () => {
       cancelled = true;
+      stoppedRef.current = true;
+      if (timerRef.current !== null) window.clearTimeout(timerRef.current);
       streamRef.current?.getTracks().forEach((track) => track.stop());
     };
   }, []);
 
-  function handleCapture() {
-    if (!videoRef.current || !readerRef.current) return;
-    setNotFound(false);
-    try {
-      const result = readerRef.current.decode(videoRef.current);
-      onScan(result.getText());
-    } catch (e) {
-      if (e instanceof NotFoundException) {
-        setNotFound(true);
+  function runNativeLoop() {
+    const tick = async () => {
+      if (stoppedRef.current || !videoRef.current || !nativeDetectorRef.current) return;
+      try {
+        const results = await nativeDetectorRef.current.detect(videoRef.current);
+        if (results.length > 0) {
+          stoppedRef.current = true;
+          onScan(results[0].rawValue);
+          return;
+        }
+      } catch {
+        // ignore a single bad frame, keep trying
       }
-    }
+      if (!stoppedRef.current) {
+        timerRef.current = window.setTimeout(tick, 120);
+      }
+    };
+    tick();
   }
+
+  function handleCapture() {
+    if (!videoRef.current || !zxingReaderRef.current) return;
+    setStatus("scanning");
+    let attempts = 0;
+
+    const attempt = () => {
+      if (stoppedRef.current || !videoRef.current || !zxingReaderRef.current) return;
+      try {
+        const result = zxingReaderRef.current.decode(videoRef.current);
+        setStatus("idle");
+        onScan(result.getText());
+      } catch (e) {
+        if (!(e instanceof NotFoundException)) {
+          setStatus("idle");
+          return;
+        }
+        attempts += 1;
+        if (attempts >= ZXING_BURST_ATTEMPTS) {
+          setStatus("not-found");
+          return;
+        }
+        timerRef.current = window.setTimeout(attempt, ZXING_BURST_INTERVAL_MS);
+      }
+    };
+    attempt();
+  }
+
+  const statusText =
+    status === "scanning"
+      ? hasNativeDetector
+        ? "Mendeteksi otomatis..."
+        : "Memindai... jangan gerakkan HP"
+      : status === "not-found"
+        ? "Barcode tidak terbaca, coba lagi"
+        : "Posisikan barcode di dalam kotak";
 
   return (
     <div
@@ -121,16 +210,23 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
         ) : (
           <>
             <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
-            <div className="pointer-events-none absolute left-1/2 top-[42%] h-28 w-60 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-2 border-white/80" />
-            <p className="pointer-events-none absolute left-0 top-[42%] w-full -translate-y-[calc(50%+64px)] px-6 text-center text-xs text-white/85">
-              {notFound ? "Barcode tidak terbaca, coba lagi" : "Posisikan barcode di dalam kotak"}
-            </p>
-            <button
-              type="button"
-              onClick={handleCapture}
-              aria-label="Ambil foto barcode"
-              className="absolute bottom-4 left-1/2 h-16 w-16 -translate-x-1/2 rounded-full border-4 border-white/40 bg-white shadow-lg active:scale-95"
+            <div
+              className={`pointer-events-none absolute left-1/2 top-[42%] h-28 w-60 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-2 ${
+                status === "scanning" ? "animate-pulse border-accent" : "border-white/80"
+              }`}
             />
+            <p className="pointer-events-none absolute left-0 top-[42%] w-full -translate-y-[calc(50%+64px)] px-6 text-center text-xs text-white/85">
+              {statusText}
+            </p>
+            {!hasNativeDetector && (
+              <button
+                type="button"
+                onClick={handleCapture}
+                disabled={status === "scanning"}
+                aria-label="Ambil foto barcode"
+                className="absolute bottom-4 left-1/2 h-16 w-16 -translate-x-1/2 rounded-full border-4 border-white/40 bg-white shadow-lg active:scale-95 disabled:opacity-60"
+              />
+            )}
           </>
         )}
       </div>
