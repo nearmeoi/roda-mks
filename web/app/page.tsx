@@ -47,18 +47,17 @@ function HomeContent() {
   const noResults = hasQuery && results.length === 0;
 
   return (
-    <div className="flex min-h-screen flex-col items-center px-5 pb-10 pt-6">
-      <div className="min-h-4 flex-auto" />
-
-      <div className="relative w-full max-w-[560px]">
-        <div className="pointer-events-none absolute inset-x-0 -top-[70px] h-80 overflow-visible">
+    <div className="relative flex min-h-screen flex-col items-center overflow-x-hidden pb-10 pt-6">
+      {/* Background Blobs (Full width, not constrained by padding) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 flex h-[450px] justify-center overflow-hidden">
+        <div className="relative w-full max-w-[600px] shrink-0">
           <div className="absolute left-1/2 top-[-20px] h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-accent opacity-40 blur-[55px]" />
           <div
-            className="absolute right-[6%] top-[60px] h-[260px] w-[260px] rounded-full opacity-30 blur-[55px]"
+            className="absolute right-[-5%] top-[60px] h-[260px] w-[260px] rounded-full opacity-30 blur-[55px]"
             style={{ background: "oklch(75% 0.19 335)" }}
           />
           <div
-            className="absolute left-[4%] top-[90px] h-[240px] w-[240px] rounded-full opacity-30 blur-[55px]"
+            className="absolute left-[-2%] top-[90px] h-[240px] w-[240px] rounded-full opacity-30 blur-[55px]"
             style={{ background: "oklch(78% 0.16 195)" }}
           />
           <div
@@ -66,12 +65,17 @@ function HomeContent() {
             style={{ background: "oklch(82% 0.15 95)" }}
           />
         </div>
+      </div>
 
-        <div className="relative z-[1] flex flex-col items-center gap-6.5">
-          <div className="flex items-center gap-2.5">
-            <img src="/logo.png" alt="Rodalink Logo" className="h-9 w-auto object-contain" />
-            <span className="text-[17px] font-bold tracking-tight text-gray-900">Roda Stock</span>
-          </div>
+      <div className="min-h-4 flex-auto" />
+
+      {/* Main Content Area */}
+      <div className="relative z-[1] flex w-full max-w-[560px] flex-col items-center gap-6.5 px-5">
+        <div className="flex items-center gap-2.5">
+          <img src="/logo.png" alt="Rodalink Logo" className="h-9 w-auto object-contain" />
+          <span className="text-[17px] font-bold tracking-tight text-gray-900">Roda Stock</span>
+        </div>
+
 
           <SearchBar value={query} onChange={handleQueryChange} hasQuery={hasQuery} onClear={() => handleQueryChange("")} />
 
@@ -93,7 +97,6 @@ function HomeContent() {
             </p>
           )}
         </div>
-      </div>
 
       <div className="min-h-4 flex-auto" />
     </div>
