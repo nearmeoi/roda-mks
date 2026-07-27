@@ -1,6 +1,8 @@
 import argparse
 import json
+import os
 import re
+
 
 from pipeline.parse_stock import load_bike_rows, load_paa_rows
 from pipeline.group_products import group_rows
@@ -97,6 +99,14 @@ def build(xlsx_path: str, catalog_partial_path: str, catalog_output_path: str,
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(products, f, ensure_ascii=False, indent=2)
     print(f"[build_dataset] wrote {len(products)} products to {output_path}")
+
+    # Auto-sync to web app if web/lib/products.json exists
+    web_json_path = os.path.join("web", "lib", "products.json")
+    if os.path.exists(os.path.dirname(web_json_path)):
+        with open(web_json_path, "w", encoding="utf-8") as f:
+            json.dump(products, f, ensure_ascii=False, indent=2)
+        print(f"[build_dataset] synced {len(products)} products to {web_json_path}")
+
 
 
 if __name__ == "__main__":

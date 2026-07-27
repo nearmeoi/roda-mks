@@ -73,6 +73,21 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <span className="text-[13px] text-gray-500">· {qty} unit</span>
           </div>
 
+          {/* Colors Available Badge List */}
+          {product.colors && product.colors.length > 0 && (
+            <div className="mb-5 flex flex-wrap items-center gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">Warna Ready:</span>
+              {product.colors.map((c, i) => (
+                <span
+                  key={i}
+                  className="rounded-lg border border-black/[0.08] bg-white px-2.5 py-1 text-xs font-semibold text-gray-800 shadow-sm"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          )}
+
           <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
             {infoRows.map((row, i) => (
               <div
@@ -104,22 +119,39 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     ? "text-amber-500"
                     : "text-emerald-600";
                   return (
-                    <>
-                      <div key={`sz-${i}`} className={`${rowBorder} px-4 py-3 font-semibold text-gray-900`}>
+                    <div key={i} className="contents">
+                      <div className={`${rowBorder} px-4 py-3 font-semibold text-gray-900`}>
                         {s.size_code ?? "—"}
                       </div>
-                      <div key={`ac-${i}`} className={`${rowBorder} px-4 py-3 font-mono text-gray-500`}>
+                      <div className={`${rowBorder} px-4 py-3 font-mono text-gray-500`}>
                         {s.article_code}
                       </div>
-                      <div key={`q-${i}`} className={`${rowBorder} px-3 py-3 text-right font-bold ${stockColor}`}>
+                      <div className={`${rowBorder} px-3 py-3 text-right font-bold ${stockColor}`}>
                         {s.quantity}
                       </div>
-                      <div key={`oq-${i}`} className={`${rowBorder} px-4 py-3 text-right text-gray-500`}>
+                      <div className={`${rowBorder} px-4 py-3 text-right text-gray-500`}>
                         {s.ordered_quantity ?? 0}
                       </div>
-                    </>
+                    </div>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* Full Scraped Product Specifications Section */}
+          {product.specs && Object.keys(product.specs).length > 0 && (
+            <div className="mt-5 overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
+              <div className="border-b border-black/[0.08] px-4 py-3">
+                <span className="text-[13px] font-semibold uppercase tracking-wide text-gray-400">Spesifikasi Detail</span>
+              </div>
+              <div className="divide-y divide-black/[0.06]">
+                {Object.entries(product.specs).map(([key, val]) => (
+                  <div key={key} className="flex flex-col sm:flex-row sm:items-center justify-between px-4 py-3 gap-1">
+                    <span className="text-xs font-semibold text-gray-500 sm:w-1/3">{key}</span>
+                    <span className="text-xs text-gray-800 sm:w-2/3 sm:text-right font-medium">{val}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -128,4 +160,5 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     </div>
   );
 }
+
 

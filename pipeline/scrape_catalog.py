@@ -124,10 +124,13 @@ def get_next_page_url(html: str) -> str | None:
 
 
 def _image_url_from_src(src: str) -> str:
-    filename = src.rsplit("/", 1)[-1]
-    bucket1, bucket2 = filename[0], filename[1]
-    base = re.match(r"^(https?://[^/]+)", src).group(1)
-    return f"{base}/catalog/product/{bucket1}/{bucket2}/{filename}"
+    try:
+        filename = src.rsplit("/", 1)[-1]
+        bucket1, bucket2 = filename[0], filename[1]
+        base = re.match(r"^(https?://[^/]+)", src).group(1)
+        return f"{base}/catalog/product/{bucket1}/{bucket2}/{filename}"
+    except Exception:
+        return src
 
 
 def extract_product_detail(html: str, url: str) -> dict:
@@ -137,7 +140,7 @@ def extract_product_detail(html: str, url: str) -> dict:
     name = name_el.get_text(strip=True) if name_el else ""
 
     price = None
-    price_el = soup.select_one("#price-block .price, .price-wrapper .price, .price-box .price")
+    price_el = soup.select_one("#price-block .price, .price-wrapper .price, .price-box .price, .special-price .price")
     if price_el:
         digits = re.sub(r"[^\d]", "", price_el.get_text())
         price = int(digits) if digits else None
@@ -152,12 +155,69 @@ def extract_product_detail(html: str, url: str) -> dict:
         elif labels:
             sizes = labels
 
+    # Rich Spec Extraction
     specs = {}
-    for row in soup.select(".spec-row"):
-        label_el = row.select_one(".spec-label")
-        value_el = row.select_one(".spec-value")
+    spec_table = soup.select_one("#product-attribute-specs-table")
+    if spec_table:
+        for row in spec_table.select("tr"):
+            th = row.select_one("th")
+            td = row.select_one("td")
+            if th and td:
+                k = th.get_text(strip=True)
+                v = td.get_text(strip=True)
+                if k and v and k != v:
+                    specs[k] = v
+
+    for row in soup.select(".spec-row, .product-spec-item"):
+        label_el = row.select_one(".spec-label, .label")
+        value_el = row.select_one(".spec-value, .value")
         if label_el and value_el:
-            specs[label_el.get_text(strip=True)] = value_el.get_text(strip=True)
+            k = label_el.get_text(strip=True)
+            v = value_el.get_text(strip=True)
+            if k and v:
+                specs[k] = v
+
+    desc = soup.select_one(".product.attribute.description .value")
+    if desc:
+        bullets = desc.select("li")
+        for bullet in bullets:
+            text = bullet.get_text(strip=True)
+            if ":" in text and len(text) > 5:
+                parts = text.split(":", 1)
+                k = parts[0].strip()
+                if k not in specs:
+                    specs[k] = parts[1].strip()[:200]
+
+    # SpConfig Color fallback
+    if not colors:
+        for key in ['"spConfig":', '"jsonConfig":']:
+            idx = html.find(key)
+            if idx != -1:
+                brace_idx = html.find("{", idx)
+                if brace_idx != -1:
+                    brace_count = 0
+                    end_idx = -1
+                    for i in range(brace_idx, len(html)):
+                        if html[i] == "{":
+                            brace_count += 1
+                        elif html[i] == "}":
+                            brace_count -= 1
+                            if brace_count == 0:
+                                end_idx = i
+                                break
+                    if end_idx != -1:
+                        try:
+                            config = json.loads(html[brace_idx:end_idx+1])
+                            attributes = config.get("attributes", {})
+                            for attr_id, attr_data in attributes.items():
+                                code = attr_data.get("code", "").lower()
+                                if code in ["color", "warna", "warna_sepeda"]:
+                                    opts = [opt.get("label") for opt in attr_data.get("options", []) if opt.get("label")]
+                                    if opts:
+                                        colors = opts
+                                        break
+                        except Exception:
+                            pass
 
     brand = specs.get("Brand", name.split(" ")[0] if name else "")
 
@@ -188,50 +248,92 @@ def crawl_category(page, start_url: str) -> list[dict]:
     links_by_url = {}
     url = start_url
     while url:
-        page.goto(url, wait_until="networkidle")
-        html = page.content()
-        for link in extract_product_links(html):
-            links_by_url[link["url"]] = link["name"]
-        url = get_next_page_url(html)
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            html = page.content()
+            for link in extract_product_links(html):
+                links_by_url[link["url"]] = link["name"]
+            url = get_next_page_url(html)
+        except Exception as e:
+            print(f"  [crawl_category error] {url}: {e}")
+            break
     return [{"url": u, "name": n} for u, n in links_by_url.items()]
 
 
-def scrape_catalog(output_path: str, partial_path: str, headless: bool = True,
+def scrape_catalog(output_path: str, partial_path: str, headless: bool = False,
                     categories: dict = ALL_CATEGORIES) -> list[dict]:
     catalog = []
     seen_urls = set()
     if os.path.exists(partial_path):
-        with open(partial_path, encoding="utf-8") as f:
-            catalog = json.load(f)
-        seen_urls = {c["url"] for c in catalog}
-        print(f"[scrape_catalog] resuming, {len(catalog)} products already scraped")
+        try:
+            with open(partial_path, encoding="utf-8") as f:
+                catalog = json.load(f)
+            seen_urls = {c["url"] for c in catalog}
+            print(f"[scrape_catalog] Resuming: {len(catalog)} products already scraped in partial file")
+        except Exception as e:
+            print(f"[scrape_catalog] Warning loading partial path: {e}")
+
+    urls_to_scrape = []
+    product_urls_file = os.path.join(os.path.dirname(output_path), "catalog_product_urls.json")
+    if os.path.exists(product_urls_file):
+        with open(product_urls_file, encoding="utf-8") as f:
+            urls_to_scrape = json.load(f)
+        print(f"[scrape_catalog] Pre-loaded {len(urls_to_scrape)} product URLs from {product_urls_file}")
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
-        page = browser.new_page(user_agent=USER_AGENT)
+        context = browser.new_context(
+            user_agent=USER_AGENT,
+            viewport={"width": 1280, "height": 800},
+            locale="id-ID"
+        )
+        page = context.new_page()
 
-        all_links = {}
-        for label, path in categories.items():
-            print(f"[scrape_catalog] crawling category: {label}")
-            for link in crawl_category(page, BASE_URL + path):
-                all_links[link["url"]] = link["name"]
-        print(f"[scrape_catalog] found {len(all_links)} unique product URLs")
+        if not urls_to_scrape:
+            print("[scrape_catalog] No pre-loaded URLs found. Crawling category listing pages...")
+            all_links = {}
+            for label, path in categories.items():
+                print(f"[scrape_catalog] Crawling category: {label}")
+                for link in crawl_category(page, BASE_URL + path):
+                    all_links[link["url"]] = link["name"]
+            urls_to_scrape = list(all_links.keys())
+            with open(product_urls_file, "w", encoding="utf-8") as f:
+                json.dump(urls_to_scrape, f, ensure_ascii=False, indent=2)
+            print(f"[scrape_catalog] Found and saved {len(urls_to_scrape)} unique product URLs to {product_urls_file}")
 
-        for i, url in enumerate(all_links):
+        total_urls = len(urls_to_scrape)
+        for i, url in enumerate(urls_to_scrape):
             if url in seen_urls:
                 continue
-            print(f"[scrape_catalog] ({i + 1}/{len(all_links)}) {url}")
-            page.goto(url, wait_until="networkidle")
-            tab = page.query_selector("#tab-label-additional-title")
-            if tab:
-                tab.click()
-                page.wait_for_timeout(400)
-            html = page.content()
-            detail = extract_product_detail(html, url)
-            catalog.append(detail)
-            seen_urls.add(url)
-            with open(partial_path, "w", encoding="utf-8") as f:
-                json.dump(catalog, f, ensure_ascii=False, indent=2)
+            print(f"[scrape_catalog] ({i + 1}/{total_urls}) {url}")
+            try:
+                res = page.goto(url, wait_until="domcontentloaded", timeout=20000)
+                if res and res.status == 200:
+                    tab = page.query_selector("#tab-label-additional-title")
+                    if tab:
+                        try:
+                            tab.click()
+                            page.wait_for_timeout(300)
+                        except Exception:
+                            pass
+                    html = page.content()
+                    detail = extract_product_detail(html, url)
+                    catalog.append(detail)
+                    seen_urls.add(url)
+                    
+                    # Incremental save
+                    with open(partial_path, "w", encoding="utf-8") as f:
+                        json.dump(catalog, f, ensure_ascii=False, indent=2)
+                    
+                    scraped_file = os.path.join(os.path.dirname(output_path), "catalog_scraped.json")
+                    with open(scraped_file, "w", encoding="utf-8") as f:
+                        json.dump(catalog, f, ensure_ascii=False, indent=2)
+                else:
+                    status_code = res.status if res else 'No Response'
+                    print(f"  [!] Non-200 status ({status_code}) for {url}")
+            except Exception as exc:
+                print(f"  [!] Failed to scrape {url}: {exc}")
+
             page.wait_for_timeout(REQUEST_DELAY_MS)
 
         browser.close()
@@ -239,3 +341,10 @@ def scrape_catalog(output_path: str, partial_path: str, headless: bool = True,
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(catalog, f, ensure_ascii=False, indent=2)
     return catalog
+
+
+if __name__ == "__main__":
+    output_p = os.path.join("data", "catalog.json")
+    partial_p = os.path.join("data", "catalog_partial.json")
+    scrape_catalog(output_p, partial_p, headless=False)
+
