@@ -68,12 +68,19 @@ def merge_unmatched(product: dict) -> dict:
 
 def build(xlsx_path: str, catalog_partial_path: str, catalog_output_path: str,
           overrides_path: str, output_path: str, headless: bool = True,
-          skip_photos: bool = False) -> None:
+          skip_photos: bool = False, catalog_input_path: str | None = None) -> None:
     rows = load_bike_rows(xlsx_path) + load_paa_rows(xlsx_path)
     grouped = group_rows(rows)
     print(f"[build_dataset] {len(rows)} SKU rows grouped into {len(grouped)} products")
 
-    if skip_photos:
+    if catalog_input_path:
+        # Catalog scraped by some other means (e.g. a browser tool run from an
+        # environment that isn't network-blocked from rodalink.com) and saved
+        # to disk in the same shape scrape_catalog() would have produced.
+        with open(catalog_input_path, encoding="utf-8") as f:
+            catalog = json.load(f)
+        print(f"[build_dataset] loaded {len(catalog)} pre-scraped catalog products from {catalog_input_path}")
+    elif skip_photos:
         print("[build_dataset] --skip-photos set, not scraping rodalink.com (all products will be unmatched)")
         catalog = []
     else:
@@ -102,6 +109,10 @@ if __name__ == "__main__":
     parser.add_argument("--headed", action="store_true", help="run the browser with a visible window")
     parser.add_argument("--skip-photos", action="store_true",
                          help="skip scraping rodalink.com; write stock data only, all products unmatched")
+    parser.add_argument("--catalog-input",
+                         help="path to a pre-scraped catalog JSON file (same shape scrape_catalog() produces); "
+                              "skips live scraping entirely when set")
     args = parser.parse_args()
     build(args.xlsx, args.catalog_partial, args.catalog_output, args.overrides,
-          args.output, headless=not args.headed, skip_photos=args.skip_photos)
+          args.output, headless=not args.headed, skip_photos=args.skip_photos,
+          catalog_input_path=args.catalog_input)
