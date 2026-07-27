@@ -2,13 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import { BrowserMultiFormatReader } from "@zxing/browser";
-import { BarcodeFormat, DecodeHintType } from "@zxing/library";
+import { BarcodeFormat, DecodeHintType, NotFoundException } from "@zxing/library";
 
 interface BarcodeScannerProps {
   onScan: (code: string) => void;
   onClose: () => void;
 }
 
+// TRY_HARDER is safe here: this reader now only decodes ONE frame per button
+// tap, not a continuous loop, so its extra per-attempt cost (which made
+// continuous scanning take 5-10s on Android) no longer accumulates -- it's
+// paid once, on demand, and buys better accuracy for that single shot.
 const HINTS = new Map<DecodeHintType, unknown>([
   [DecodeHintType.TRY_HARDER, true],
   [
@@ -28,53 +32,66 @@ const HINTS = new Map<DecodeHintType, unknown>([
   ],
 ]);
 
-// Library defaults to a decode attempt every 500ms -- far too slow for a quick
-// pass over a barcode. Scan near-continuously instead.
-const READER_OPTIONS = { delayBetweenScanAttempts: 50 };
-
 export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const readerRef = useRef<BrowserMultiFormatReader | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [notFound, setNotFound] = useState(false);
+
+  if (!readerRef.current) {
+    readerRef.current = new BrowserMultiFormatReader(HINTS);
+  }
 
   useEffect(() => {
-    const reader = new BrowserMultiFormatReader(HINTS, READER_OPTIONS);
     let cancelled = false;
 
-    // Chain cleanup onto the promise decodeFromConstraints ITSELF returns (which
-    // resolves as soon as the stream/decode loop starts), not onto a `controls`
-    // variable captured from inside the per-frame callback -- that callback may
-    // not have fired yet by the time React's Strict Mode double-invokes this
-    // effect in dev (mount -> cleanup -> mount), which left the first, visible
-    // camera session's results silently dropped forever (`cancelled` was already
-    // true for that closure) while a second, uncleaned-up session raced it.
-    const controlsPromise = reader.decodeFromConstraints(
-      {
+    // Plain getUserMedia for a live preview only -- no decode loop attached.
+    // Nothing runs on the CPU here besides rendering the camera feed until
+    // the capture button is tapped.
+    navigator.mediaDevices
+      .getUserMedia({
         video: {
           facingMode: "environment",
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
+          width: { ideal: 640 },
+          height: { ideal: 480 },
         },
-      },
-      videoRef.current ?? undefined,
-      (result, _err, scannerControls) => {
-        if (cancelled || !result) return;
-        cancelled = true;
-        scannerControls.stop();
-        onScan(result.getText());
-      }
-    );
-
-    controlsPromise.catch(() => {
-      if (!cancelled) {
-        setError("Tidak bisa mengakses kamera. Pastikan izin kamera sudah diaktifkan di browser.");
-      }
-    });
+      })
+      .then((stream) => {
+        if (cancelled) {
+          stream.getTracks().forEach((track) => track.stop());
+          return;
+        }
+        streamRef.current = stream;
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+          videoRef.current.play().catch(() => {});
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setError("Tidak bisa mengakses kamera. Pastikan izin kamera sudah diaktifkan di browser.");
+        }
+      });
 
     return () => {
       cancelled = true;
-      controlsPromise.then((controls) => controls.stop()).catch(() => {});
+      streamRef.current?.getTracks().forEach((track) => track.stop());
     };
-  }, [onScan]);
+  }, []);
+
+  function handleCapture() {
+    if (!videoRef.current || !readerRef.current) return;
+    setNotFound(false);
+    try {
+      const result = readerRef.current.decode(videoRef.current);
+      onScan(result.getText());
+    } catch (e) {
+      if (e instanceof NotFoundException) {
+        setNotFound(true);
+      }
+    }
+  }
 
   return (
     <div
@@ -104,10 +121,16 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
         ) : (
           <>
             <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-28 w-60 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-2 border-white/80" />
-            <p className="pointer-events-none absolute bottom-5 left-0 w-full px-6 text-center text-xs text-white/85">
-              Arahkan kamera ke barcode produk
+            <div className="pointer-events-none absolute left-1/2 top-[42%] h-28 w-60 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-2 border-white/80" />
+            <p className="pointer-events-none absolute left-0 top-[42%] w-full -translate-y-[calc(50%+64px)] px-6 text-center text-xs text-white/85">
+              {notFound ? "Barcode tidak terbaca, coba lagi" : "Posisikan barcode di dalam kotak"}
             </p>
+            <button
+              type="button"
+              onClick={handleCapture}
+              aria-label="Ambil foto barcode"
+              className="absolute bottom-4 left-1/2 h-16 w-16 -translate-x-1/2 rounded-full border-4 border-white/40 bg-white shadow-lg active:scale-95"
+            />
           </>
         )}
       </div>
