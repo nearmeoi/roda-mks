@@ -8,6 +8,7 @@ import { ProductCarousel } from "@/components/ProductCarousel";
 import { BackButton } from "@/components/BackButton";
 import { copyToClipboard, formatWhatsAppMessage } from "@/lib/copy";
 import { getRecommendations } from "@/lib/recommendations";
+import { Copy, Check, Share2, ExternalLink, Sparkles, Package } from "lucide-react";
 
 export function ProductDetailContent({
   product,
@@ -26,7 +27,7 @@ export function ProductDetailContent({
   const handleCopyText = async (text: string, label: string) => {
     const success = await copyToClipboard(text);
     if (success) {
-      showToast(`✓ ${label} berhasil disalin!`);
+      showToast(`${label} berhasil disalin!`);
     }
   };
 
@@ -34,7 +35,7 @@ export function ProductDetailContent({
     const waText = formatWhatsAppMessage(product);
     const success = await copyToClipboard(waText);
     if (success) {
-      showToast("📋 Teks Format WhatsApp disalin ke Clipboard!");
+      showToast("Teks Format WhatsApp disalin ke Clipboard!");
     }
   };
 
@@ -72,8 +73,9 @@ export function ProductDetailContent({
     <div className="min-h-screen pb-16 [animation:slideInRight_0.28s_ease]">
       {/* Toast Feedback Banner */}
       {toastMsg && (
-        <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2 rounded-full border border-black/10 bg-gray-900 px-4 py-2 text-xs font-semibold text-white shadow-2xl backdrop-blur-lg animate-bounce">
-          {toastMsg}
+        <div className="fixed top-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-black/10 bg-gray-900 px-4 py-2 text-xs font-semibold text-white shadow-2xl backdrop-blur-lg animate-bounce">
+          <Check className="h-4 w-4 text-emerald-400" />
+          <span>{toastMsg}</span>
         </div>
       )}
 
@@ -85,7 +87,8 @@ export function ProductDetailContent({
           onClick={handleCopyWhatsApp}
           className="flex items-center gap-1.5 rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-95"
         >
-          <span>📋</span> Salin Info WA
+          <Share2 className="h-3.5 w-3.5" />
+          <span>Salin seluruh info</span>
         </button>
       </div>
 
@@ -112,10 +115,11 @@ export function ProductDetailContent({
             <button
               type="button"
               onClick={() => handleCopyText(product.model_name, "Nama Model")}
-              className="mt-1 flex shrink-0 items-center gap-1 rounded-lg border border-black/[0.08] bg-white px-2 py-1 text-[11px] font-medium text-gray-600 hover:bg-gray-50"
+              className="mt-1 flex shrink-0 items-center gap-1.5 rounded-lg border border-black/[0.08] bg-white px-2 py-1 text-[11px] font-medium text-gray-600 hover:bg-gray-50 active:scale-95"
               title="Salin Nama Model"
             >
-              📋 Salin
+              <Copy className="h-3 w-3 text-gray-500" />
+              <span>Salin</span>
             </button>
           </div>
 
@@ -125,10 +129,11 @@ export function ProductDetailContent({
             <button
               type="button"
               onClick={() => handleCopyText(mainArticle, "Kode Artikel")}
-              className="rounded bg-black/[0.05] px-1.5 py-0.5 text-[10.5px] font-medium hover:bg-black/10"
+              className="flex items-center gap-1 rounded bg-black/[0.05] px-1.5 py-0.5 text-[10.5px] font-medium hover:bg-black/10"
               title="Salin Kode Artikel"
             >
-              Salin
+              <Copy className="h-2.5 w-2.5" />
+              <span>Salin</span>
             </button>
           </div>
 
@@ -172,10 +177,10 @@ export function ProductDetailContent({
                     <button
                       type="button"
                       onClick={() => handleCopyText(row.value, row.label)}
-                      className="text-[10px] text-gray-400 hover:text-accent"
+                      className="text-gray-400 hover:text-accent p-0.5"
                       title={`Salin ${row.label}`}
                     >
-                      📋
+                      <Copy className="h-3.5 w-3.5" />
                     </button>
                   )}
                 </div>
@@ -240,10 +245,11 @@ export function ProductDetailContent({
                         {isClickable ? (
                           <Link
                             href={`/?q=${encodeURIComponent(val.split(",")[0].split("/")[0].trim())}`}
-                            className="text-xs font-medium text-accent hover:underline"
+                            className="inline-flex items-center gap-1 text-xs font-medium text-accent hover:underline"
                             title={`Cari produk berkaitan dengan "${val}"`}
                           >
-                            {val} ↗
+                            <span>{val}</span>
+                            <ExternalLink className="h-3 w-3 shrink-0" />
                           </Link>
                         ) : (
                           <span className="text-xs font-medium text-gray-800">{val}</span>
@@ -260,9 +266,10 @@ export function ProductDetailContent({
           {recommendations.length > 0 && (
             <div className="mt-6">
               <div className="mb-3 flex items-center justify-between px-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-accent">
-                  💡 Rekomendasi Pelengkap (Stok Ready)
-                </span>
+                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent">
+                  <Sparkles className="h-4 w-4 text-accent" />
+                  <span>Rekomendasi Pelengkap (Stok Ready)</span>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {recommendations.map((rec) => (
@@ -280,7 +287,7 @@ export function ProductDetailContent({
                         />
                       ) : (
                         <div className="flex h-24 w-full items-center justify-center rounded-lg bg-black/[0.03] text-gray-300">
-                          📦
+                          <Package className="h-6 w-6 text-gray-400" />
                         </div>
                       )}
                       <div>

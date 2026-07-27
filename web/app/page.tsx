@@ -9,14 +9,16 @@ import { getAllProducts } from "@/lib/products";
 import { searchProducts } from "@/lib/search";
 import { useFavorites } from "@/lib/favorites";
 
+import { Bike, Cog, ShieldAlert, Wrench, Star } from "lucide-react";
+
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
 
 const CATEGORY_CHIPS = [
-  { label: "🚲 Sepeda", query: "sepeda" },
-  { label: "⚙️ Spare Part", query: "spare part" },
-  { label: "🪖 Apparel / Helm", query: "helm" },
-  { label: "🔧 Aksesoris", query: "aksesoris" },
+  { label: "Sepeda", query: "sepeda", Icon: Bike },
+  { label: "Spare Part", query: "spare part", Icon: Cog },
+  { label: "Apparel / Helm", query: "helm", Icon: ShieldAlert },
+  { label: "Aksesoris", query: "aksesoris", Icon: Wrench },
 ];
 
 function HomeContent() {
@@ -95,20 +97,21 @@ function HomeContent() {
 
         {/* Quick Category Chips */}
         <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
-          {CATEGORY_CHIPS.map((chip) => {
-            const isActive = query.toLowerCase() === chip.query.toLowerCase();
+          {CATEGORY_CHIPS.map(({ label, query: chipQuery, Icon }) => {
+            const isActive = query.toLowerCase() === chipQuery.toLowerCase();
             return (
               <button
-                key={chip.label}
+                key={label}
                 type="button"
-                onClick={() => handleQueryChange(isActive ? "" : chip.query)}
-                className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
+                onClick={() => handleQueryChange(isActive ? "" : chipQuery)}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
                   isActive
                     ? "border-accent bg-accent text-white shadow-sm"
                     : "border-black/[0.08] bg-white/70 text-gray-700 hover:bg-white backdrop-blur-md"
                 }`}
               >
-                {chip.label}
+                <Icon className="h-3.5 w-3.5" />
+                <span>{label}</span>
               </button>
             );
           })}
@@ -136,9 +139,10 @@ function HomeContent() {
             {favoriteProducts.length > 0 && (
               <div className="flex w-full flex-col gap-2.5">
                 <div className="flex items-center justify-between px-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
-                    ⭐ Stok Favorit Dipin ({favoriteProducts.length})
-                  </span>
+                  <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-600">
+                    <Star className="h-3.5 w-3.5 fill-amber-400 stroke-amber-500" />
+                    <span>Stok Favorit Dipin ({favoriteProducts.length})</span>
+                  </div>
                 </div>
                 {favoriteProducts.map((product) => (
                   <Link key={product.id} href={`/product/${product.id}`}>

@@ -12251,6 +12251,111 @@
     "matched": true
   },
   {
+    "id": "polygon-bb-cup-fp-b902w-68-122-boron-axle",
+    "brand": "POLYGON",
+    "model_name": "BB CUP FP-B902W 68/122 BORON AXLE",
+    "category": "BB SET AND PART OF BB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 89000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 733698,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 89000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01839.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "What's in the box": "1 x Polygon FP-B902W Square Bottom Bracket",
+      "Material": "Aluminum",
+      "Technology": "Boron Axle",
+      "BB Shell Width": "68 mm",
+      "Genre": "MTB, City & Touring",
+      "Weight": "310 gr (bottom bracket length 113 mm)"
+    },
+    "matched": true
+  },
+  {
+    "id": "polygon-bb-cup-fp-b902w-68-113-axle",
+    "brand": "POLYGON",
+    "model_name": "BB CUP FP-B902W 68/113 AXLE",
+    "category": "BB SET AND PART OF BB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 89000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 734362,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 89000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01839.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "What's in the box": "1 x Polygon FP-B902W Square Bottom Bracket",
+      "Material": "Aluminum",
+      "Technology": "Boron Axle",
+      "BB Shell Width": "68 mm",
+      "Genre": "MTB, City & Touring",
+      "Weight": "310 gr (bottom bracket length 113 mm)"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-bb-part-bb-r9100-ibbr9100b-bsa",
+    "brand": "SHIMANO",
+    "model_name": "BB PART BB-R9100 IBBR9100B BSA",
+    "category": "BB SET AND PART OF BB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 428000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 724805,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 428000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/2/724805.jpg",
+      "https://media.rodalink.com/catalog/product/7/2/724805_3.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Dura-Ace IBB-R9100 BSA Bottom Bracket",
+      "Material": "Alloy",
+      "Technology": "Hollowtech II",
+      "Shimano Series": "Dura-Ace",
+      "Product Series": "R9100",
+      "BB Shell Width": "68 mm",
+      "Genre": "Road",
+      "Weight": "65 gr"
+    },
+    "matched": true
+  },
+  {
     "id": "shimano-bb-parts-ebbrs501b-bsa",
     "brand": "SHIMANO",
     "model_name": "BB PARTS EBBRS501B BSA",
@@ -22012,6 +22117,80 @@
     "matched": true
   },
   {
+    "id": "cycliste-fender-mtb-fsm02-rear",
+    "brand": "CYCLISTE",
+    "model_name": "FENDER MTB FSM02 REAR",
+    "category": "FENDER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 128000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 741333,
+        "quantity": 5,
+        "ordered_quantity": null,
+        "price": 128000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/4/741333.jpg",
+      "https://media.rodalink.com/catalog/product/7/4/741333_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Cycliste",
+      "What's in the box": "1 x Cycliste MTB FSM02 Rear Fender",
+      "Material": "ABS",
+      "Front or Rear": "Rear",
+      "Genre": "MTB",
+      "Length": "450 mm",
+      "Width": "75 mm",
+      "Weight": "187 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "cycliste-fender-road-fsr02-rear",
+    "brand": "CYCLISTE",
+    "model_name": "FENDER ROAD FSR02 REAR",
+    "category": "FENDER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 89000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 741334,
+        "quantity": 6,
+        "ordered_quantity": null,
+        "price": 89000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/4/741334.jpg",
+      "https://media.rodalink.com/catalog/product/7/4/741334_4.jpg",
+      "https://media.rodalink.com/catalog/product/7/4/741334_1.jpg",
+      "https://media.rodalink.com/catalog/product/7/4/741334_2.jpg",
+      "https://media.rodalink.com/catalog/product/7/4/741334_3.jpg"
+    ],
+    "specs": {
+      "Brand": "Cycliste",
+      "What's in the box": "1 x Cycliste Road FSR02 Rear Fender",
+      "Material": "PVC",
+      "Front or Rear": "Rear",
+      "Genre": "Road, City & Touring",
+      "Length": "450 mm",
+      "Width": "75 mm"
+    },
+    "matched": true
+  },
+  {
     "id": "polygon-fender-sierra",
     "brand": "POLYGON",
     "model_name": "FENDER SIERRA",
@@ -22145,6 +22324,39 @@
       "Height": "0.8 mm",
       "Weight": "28 gr",
       "Tebal": "0.8 mm"
+    },
+    "matched": true
+  },
+  {
+    "id": "polygon-fender-ug20-f-folding-e-bike-b",
+    "brand": "POLYGON",
+    "model_name": "FENDER UG20 F/ FOLDING E-BIKE",
+    "category": "FENDER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 398000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 736725,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 398000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/736725.jpg"
+    ],
+    "specs": {
+      "Brand": "Polygon",
+      "What's in the box": "1 x Polygon UG20 Fender Set for Folding or Mini Velo Bike",
+      "Material": "Alloy",
+      "Front or Rear": "Front & Rear",
+      "Color": "Black",
+      "Genre": "City & Touring"
     },
     "matched": true
   },
@@ -31439,6 +31651,40 @@
     "matched": true
   },
   {
+    "id": "entity-hub-rear-8-11sp-142-6blt-ta-qr-b",
+    "brand": "ENTITY",
+    "model_name": "HUB REAR 8-11SP 142 6BLT TA+QR",
+    "category": "HUB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 1048000,
+    "sizes": [
+      {
+        "size_code": "R32",
+        "article_code": 734726001,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 1048000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/734726001.jpg"
+    ],
+    "specs": {
+      "Brand": "Entity",
+      "What's in the box": "1 x Entity 6 Bolt Thru Axle & QR 32H 8-11 Speed Rear Hub",
+      "Type": "Thru Axle & QR",
+      "Hole": "32H",
+      "Brake Type": "Disc Brake - 6 Bolt",
+      "OLD": "142 mm",
+      "Color": "Black"
+    },
+    "matched": true
+  },
+  {
     "id": "entity-hub-rear-8-11sp-148-6blt-boost-b",
     "brand": "ENTITY",
     "model_name": "HUB REAR 8-11SP 148 6BLT BOOST",
@@ -31467,6 +31713,39 @@
       "Hole": "32H",
       "Brake Type": "Disc Brake - 6 Bolt",
       "OLD": "148 mm",
+      "Color": "Black"
+    },
+    "matched": true
+  },
+  {
+    "id": "entity-hub-rear-8-11sp-142-cl-b",
+    "brand": "ENTITY",
+    "model_name": "HUB REAR 8-11SP 142 CL",
+    "category": "HUB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 948000,
+    "sizes": [
+      {
+        "size_code": "24",
+        "article_code": 736390001,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 948000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/736390001.jpg"
+    ],
+    "specs": {
+      "Brand": "Entity",
+      "What's in the box": "1 x Entity Center Lock 24H 8-11 Speed Rear Hub",
+      "Hole": "24H",
+      "Brake Type": "Disc Brake - Center Lock",
+      "OLD": "142 mm",
       "Color": "Black"
     },
     "matched": true
@@ -33725,6 +34004,52 @@
     "matched": true
   },
   {
+    "id": "shimano-gs-da-di2-r9270-52-36x170-11-34t",
+    "brand": "SHIMANO",
+    "model_name": "GS DA DI2 R9270 52/36X170 11-34T",
+    "category": "DERAILLEUR GROUP SET",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 45780000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 736306,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 45780000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01650.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Dura-Ace Di2 R9270 2x12 Speed Disc Brake Groupset",
+      "Material": "Aluminium",
+      "Technology": "Hyperglide+, E-Tube, Hollowglide, Hollowtech II, Sil-tec, Shimano Shadow RD, Ice technologies",
+      "Shimano Series": "Dura-Ace Di2",
+      "Product Series": "R9270",
+      "Crank Set": "Shimano Dura-Ace IFC-R9200 2x12-speed",
+      "Chainline": "44.5 mm",
+      "Chain": "Shimano XTR ICN-M9100 12-Speed, 116 Link",
+      "Front Derailleur": "Shimano Dura-Ace Di2 IFD-R9250 2x12-speed",
+      "Clamp Type": "Braze On",
+      "Rear Derailleur": "Shimano Dura-Ace Di2 IRD-R9250 12-speed",
+      "RD Type": "SGS - Long Cage",
+      "Shifter": "Shimano Dura-Ace Di2 ST-R9270 2x12-speed Shift Lever Set",
+      "Brake": "Shimano Dura-Ace IBR-R9270 Flat Mount Brake Caliper Set",
+      "Brake Rotor": "Shimano XT IRT-MT900 140 mm, Center Lock, 160 mm",
+      "Cable": "Shimano Cable IEW-SD300-I, 1700 mm, 1600 mm",
+      "Battery": "Shimano Dura-Ace Di2 IBT-DN300",
+      "Battery Charger": "Shimano Dura-Ace Cable Charging IEW-EC300"
+    },
+    "matched": true
+  },
+  {
     "id": "altalist-sunglasses-kaku-sp-2-kr",
     "brand": "ALTALIST",
     "model_name": "SUNGLASSES KAKU SP 2",
@@ -34706,6 +35031,42 @@
       "Material": "Aluminium",
       "Weight": "12 gr",
       "SM-MA-R160D/D": "140 mmframe mount- untuk digunakandisc brake160 mm ."
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-ot-rs900-240mm-x-10pc-y0bm98011",
+    "brand": "SHIMANO",
+    "model_name": "OT-RS900 240MM X 10PC Y0BM98011",
+    "category": "OTHER DER PARTS",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 39000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 726031,
+        "quantity": 10,
+        "ordered_quantity": null,
+        "price": 39000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/r/z/rzug_shrs900_sw_ot-rs900-il.png",
+      "https://media.rodalink.com/catalog/product/7/2/726031.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano OT-RS900 Rear Derailleur Housing ( 1 Piece )",
+      "Material": "Polymer Sheath",
+      "Technology": "Low-friction, Smooth operation of the inner wire",
+      "Color": "Black",
+      "Length": "240 mm",
+      "Width": "4 mm",
+      "Height": "4 mm"
     },
     "matched": true
   },
@@ -36948,54 +37309,6 @@
     "matched": false
   },
   {
-    "id": "polygon-bb-cup-fp-b902w-68-122-boron-axle",
-    "brand": "POLYGON",
-    "model_name": "BB CUP FP-B902W 68/122 BORON AXLE",
-    "category": "BB SET AND PART OF BB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 89000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 733698,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 89000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "polygon-bb-cup-fp-b902w-68-113-axle",
-    "brand": "POLYGON",
-    "model_name": "BB CUP FP-B902W 68/113 AXLE",
-    "category": "BB SET AND PART OF BB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 89000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 734362,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 89000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-bb-ult-ismbbr60b-bsa",
     "brand": "SHIMANO",
     "model_name": "BB ULT ISMBBR60B BSA",
@@ -37036,30 +37349,6 @@
         "quantity": 2,
         "ordered_quantity": null,
         "price": 328000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-bb-part-bb-r9100-ibbr9100b-bsa",
-    "brand": "SHIMANO",
-    "model_name": "BB PART BB-R9100 IBBR9100B BSA",
-    "category": "BB SET AND PART OF BB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 428000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 724805,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 428000
       }
     ],
     "colors": [],
@@ -38595,78 +38884,6 @@
     "matched": false
   },
   {
-    "id": "cycliste-fender-mtb-fsm02-rear",
-    "brand": "CYCLISTE",
-    "model_name": "FENDER MTB FSM02 REAR",
-    "category": "FENDER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 128000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 741333,
-        "quantity": 5,
-        "ordered_quantity": null,
-        "price": 128000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "cycliste-fender-road-fsr02-rear",
-    "brand": "CYCLISTE",
-    "model_name": "FENDER ROAD FSR02 REAR",
-    "category": "FENDER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 89000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 741334,
-        "quantity": 6,
-        "ordered_quantity": null,
-        "price": 89000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "polygon-fender-ug20-f-folding-e-bike-b",
-    "brand": "POLYGON",
-    "model_name": "FENDER UG20 F/ FOLDING E-BIKE",
-    "category": "FENDER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 398000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 736725,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 398000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "others-small-paper-bag",
     "brand": "OTHERS",
     "model_name": "SMALL PAPER BAG",
@@ -39843,54 +40060,6 @@
     "matched": false
   },
   {
-    "id": "entity-hub-rear-8-11sp-142-6blt-ta-qr-b",
-    "brand": "ENTITY",
-    "model_name": "HUB REAR 8-11SP 142 6BLT TA+QR",
-    "category": "HUB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 1048000,
-    "sizes": [
-      {
-        "size_code": "R32",
-        "article_code": 734726001,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 1048000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "entity-hub-rear-8-11sp-142-cl-b",
-    "brand": "ENTITY",
-    "model_name": "HUB REAR 8-11SP 142 CL",
-    "category": "HUB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 948000,
-    "sizes": [
-      {
-        "size_code": "24",
-        "article_code": 736390001,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 948000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-f-hub-slx-afhm7110b-cl-ta12-142-b",
     "brand": "SHIMANO",
     "model_name": "F.HUB SLX AFHM7110B CL TA12/142",
@@ -40947,30 +41116,6 @@
     "matched": false
   },
   {
-    "id": "shimano-gs-da-di2-r9270-52-36x170-11-34t",
-    "brand": "SHIMANO",
-    "model_name": "GS DA DI2 R9270 52/36X170 11-34T",
-    "category": "DERAILLEUR GROUP SET",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 45780000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 736306,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 45780000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-gs-xt-di2-m8220-32x170-10-51t",
     "brand": "SHIMANO",
     "model_name": "GS XT DI2 M8220 32X170 10-51T",
@@ -41251,30 +41396,6 @@
         "quantity": 2,
         "ordered_quantity": null,
         "price": 398000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-ot-rs900-240mm-x-10pc-y0bm98011",
-    "brand": "SHIMANO",
-    "model_name": "OT-RS900 240MM X 10PC Y0BM98011",
-    "category": "OTHER DER PARTS",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 39000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 726031,
-        "quantity": 10,
-        "ordered_quantity": null,
-        "price": 39000
       }
     ],
     "colors": [],
