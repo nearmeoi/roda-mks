@@ -91,7 +91,10 @@ needed.
 - **Home screen**: floating pill button, fixed bottom-center, same visual
   treatment as the existing compare bar (dark rounded pill, white text,
   accent-colored icon). Reads "SO Week · N dihitung"; if nothing's been
-  counted yet this week, reads just "SO Week".
+  counted yet this week, reads just "SO Week". Only shown when there's no
+  active search query — same condition the favorites section and the
+  helper text already use (`!hasQuery`) — so it doesn't compete with search
+  results on screen.
 - **`/so-week` screen**: top bar with back button, title, and a small pill
   showing the count this week. Below it, the search fallback, then the
   list. Floating scan button bottom-right, matching the app's existing
