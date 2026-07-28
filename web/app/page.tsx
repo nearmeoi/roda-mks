@@ -9,17 +9,10 @@ import { getAllProducts } from "@/lib/products";
 import { searchProducts } from "@/lib/search";
 import { useFavorites } from "@/lib/favorites";
 
-import { Bike, Cog, ShieldAlert, Wrench, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
-
-const CATEGORY_CHIPS = [
-  { label: "Sepeda", query: "sepeda", Icon: Bike },
-  { label: "Spare Part", query: "spare part", Icon: Cog },
-  { label: "Apparel / Helm", query: "helm", Icon: ShieldAlert },
-  { label: "Aksesoris", query: "aksesoris", Icon: Wrench },
-];
 
 function HomeContent() {
   const pathname = usePathname();
@@ -94,28 +87,6 @@ function HomeContent() {
         </div>
 
         <SearchBar value={query} onChange={handleQueryChange} hasQuery={hasQuery} onClear={() => handleQueryChange("")} />
-
-        {/* Quick Category Chips */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
-          {CATEGORY_CHIPS.map(({ label, query: chipQuery, Icon }) => {
-            const isActive = query.toLowerCase() === chipQuery.toLowerCase();
-            return (
-              <button
-                key={label}
-                type="button"
-                onClick={() => handleQueryChange(isActive ? "" : chipQuery)}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
-                  isActive
-                    ? "border-accent bg-accent text-white shadow-sm"
-                    : "border-black/[0.08] bg-white/70 text-gray-700 hover:bg-white backdrop-blur-md"
-                }`}
-              >
-                <Icon className="h-3.5 w-3.5" />
-                <span>{label}</span>
-              </button>
-            );
-          })}
-        </div>
 
         {noResults && <div className="pt-2 text-center text-sm text-gray-500">Barang tidak ditemukan.</div>}
 
