@@ -91,10 +91,20 @@ function getCropRect(
   const boxX = reticleRect.left - videoRect.left;
   const boxY = reticleRect.top - videoRect.top;
 
-  const sx = (boxX + cropLeft) * nativePerCss;
-  const sy = (boxY + cropTop) * nativePerCss;
-  const sw = reticleRect.width * nativePerCss;
-  const sh = reticleRect.height * nativePerCss;
+  // 1D barcodes need a blank "quiet zone" margin around them to decode
+  // reliably. Cropping exactly to the reticle's bounds risks clipping that
+  // margin off if the user fills the box edge-to-edge (which the on-screen
+  // instruction encourages), making scanning worse rather than better -- so
+  // pad the crop 15% of the reticle's size on each side, clamped to the
+  // native video's bounds.
+  const padX = reticleRect.width * 0.15 * nativePerCss;
+  const padY = reticleRect.height * 0.15 * nativePerCss;
+  const rawSx = (boxX + cropLeft) * nativePerCss;
+  const rawSy = (boxY + cropTop) * nativePerCss;
+  const sx = Math.max(0, rawSx - padX);
+  const sy = Math.max(0, rawSy - padY);
+  const sw = Math.min(video.videoWidth - sx, reticleRect.width * nativePerCss + padX * 2);
+  const sh = Math.min(video.videoHeight - sy, reticleRect.height * nativePerCss + padY * 2);
 
   if (sw <= 0 || sh <= 0) return null;
   return { sx, sy, sw, sh };
@@ -129,6 +139,25 @@ async function tryUseUltraWideLens(stream: MediaStream): Promise<MediaStream> {
         height: { ideal: 720 },
       },
     });
+
+    // Labeled "ultra wide" is a safe signal on iOS (confirmed close-focus
+    // lens), but some Android devices expose a labeled, fixed-focus
+    // (hyperfocal) ultra-wide lens where switching would make close-range
+    // scanning worse -- the opposite of this feature's intent. Verify the
+    // new track actually reports environment-facing capabilities before
+    // committing to the swap; if getCapabilities is unsupported/throws or
+    // doesn't confirm it, fall back to the original stream.
+    try {
+      const upgradedTrack = upgradedStream.getVideoTracks()[0];
+      const facingModes = upgradedTrack?.getCapabilities?.().facingMode ?? [];
+      if (!facingModes.includes("environment")) {
+        upgradedStream.getTracks().forEach((track) => track.stop());
+        return stream;
+      }
+    } catch {
+      upgradedStream.getTracks().forEach((track) => track.stop());
+      return stream;
+    }
 
     stream.getTracks().forEach((track) => track.stop());
     return upgradedStream;

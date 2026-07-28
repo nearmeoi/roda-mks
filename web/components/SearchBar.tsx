@@ -150,7 +150,11 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
         )}
         <button
           type="button"
-          onClick={() => setShowScanner(true)}
+          onClick={() => {
+            recognitionRef.current?.abort();
+            setIsListening(false);
+            setShowScanner(true);
+          }}
           aria-label="Pindai barcode"
           className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/10"
         >
