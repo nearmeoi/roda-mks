@@ -1,5 +1,6 @@
 import type { Product } from "@/lib/types";
-import { formatPrice, primaryArticleCode, titleCase, totalQuantity } from "@/lib/format";
+import { formatPrice, getStockStatus, primaryArticleCode, titleCase, totalQuantity } from "@/lib/format";
+import { getKeySpecLines, getKelebihanBullets } from "@/lib/copyInfo";
 
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {
@@ -26,39 +27,30 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 export function formatWhatsAppMessage(product: Product): string {
   const qty = totalQuantity(product.sizes);
   const mainArticleCode = primaryArticleCode(product.sizes);
+  const status = getStockStatus(qty);
+  const { label: specLabel, lines: specLines } = getKeySpecLines(product);
+  const kelebihan = getKelebihanBullets(product.specs);
 
   let msg = `*RODA STOCK INFO - RODALINK MAKASSAR* 🚲\n\n`;
-  msg += `*Model:* ${titleCase(product.model_name)}\n`;
-  msg += `*Brand:* ${titleCase(product.brand)}\n`;
-  msg += `*Kategori:* ${titleCase(product.category)}\n`;
-  if (product.price) {
-    msg += `*Harga:* ${formatPrice(product.price)}\n`;
-  }
-  msg += `*Kode Artikel:* ${mainArticleCode}\n`;
+  msg += `*${titleCase(product.model_name)}*\n`;
+  msg += `${formatPrice(product.price)}\n`;
 
-  const colors = product.colors && product.colors.length > 0
-    ? product.colors.map(titleCase).join(", ")
-    : product.color_label
-      ? titleCase(product.color_label)
-      : null;
-  if (colors) {
-    msg += `${colors}\n`;
-  }
-  if (product.wheel_size) {
-    msg += `*Ukuran Roda:* ${product.wheel_size}\n`;
-  }
-
-  msg += `\n*Status Stok Gudang:* ${qty > 0 ? `Ready (${qty} unit)` : "Kosong (0 unit)"}\n`;
-
-  if (product.sizes && product.sizes.length > 0) {
-    msg += `*Detail Stok per Ukuran:*\n`;
-    product.sizes.forEach((s) => {
-      const szName = s.size_code ? `Size ${s.size_code}` : "All Size";
-      const stockTxt = s.quantity > 0 ? `${s.quantity} unit` : "Kosong";
-      msg += `• ${szName} (Kode: ${s.article_code}) : *${stockTxt}*\n`;
+  if (specLines.length > 0) {
+    msg += `\n*${specLabel}:*\n`;
+    specLines.forEach((line) => {
+      msg += `• ${line}\n`;
     });
   }
 
-  msg += `\n📍 *Lokasi:* ${product.warehouse}`;
+  if (kelebihan.length > 0) {
+    msg += `\n*Kelebihan:*\n`;
+    kelebihan.forEach((line) => {
+      msg += `• ${line}\n`;
+    });
+  }
+
+  msg += `\nKode: ${mainArticleCode}\n`;
+  msg += `Stok: ${status.label} (${qty} unit)`;
+
   return msg;
 }
