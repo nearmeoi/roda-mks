@@ -143,14 +143,23 @@ async function tryUseUltraWideLens(stream: MediaStream): Promise<MediaStream> {
     // Labeled "ultra wide" is a safe signal on iOS (confirmed close-focus
     // lens), but some Android devices expose a labeled, fixed-focus
     // (hyperfocal) ultra-wide lens where switching would make close-range
-    // scanning worse -- the opposite of this feature's intent. Verify the
-    // new track actually reports environment-facing capabilities before
-    // committing to the swap; if getCapabilities is unsupported/throws or
-    // doesn't confirm it, fall back to the original stream.
+    // scanning worse -- the opposite of this feature's intent. If the new
+    // track's capabilities affirmatively report a non-environment facing
+    // mode, fall back to the original stream. If getCapabilities throws,
+    // also fall back. But if capabilities are simply missing/empty (as can
+    // happen on iOS Safari for a track pinned by deviceId), proceed with the
+    // swap -- trust the earlier label match rather than treating "unknown"
+    // as "wrong."
     try {
       const upgradedTrack = upgradedStream.getVideoTracks()[0];
-      const facingModes = upgradedTrack?.getCapabilities?.().facingMode ?? [];
-      if (!facingModes.includes("environment")) {
+      const caps = upgradedTrack?.getCapabilities?.();
+      const facingModes = caps?.facingMode;
+      // Only reject the swap when capabilities are present AND affirmatively
+      // exclude "environment" -- iOS Safari may not reliably report
+      // facingMode for a track pinned by deviceId right after getUserMedia,
+      // so missing/empty capabilities should not be treated as "not a back
+      // camera." In that case, trust the earlier "ultra wide" label match.
+      if (facingModes && facingModes.length > 0 && !facingModes.includes("environment")) {
         upgradedStream.getTracks().forEach((track) => track.stop());
         return stream;
       }
