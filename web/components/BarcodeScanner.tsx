@@ -71,13 +71,30 @@ function getCropRect(
     return null;
   }
 
-  const scaleX = video.videoWidth / videoRect.width;
-  const scaleY = video.videoHeight / videoRect.height;
+  // object-cover applies ONE uniform scale (not independent X/Y stretching)
+  // -- the native video is magnified by cssPerNative = max(boxW/nativeW,
+  // boxH/nativeH) to just cover the box, then whichever dimension overflows
+  // gets center-cropped. Map a box-relative CSS point into native pixels by
+  // going the other way: shift by the cropped-off margin, then scale by
+  // the inverse.
+  const cssPerNative = Math.max(
+    videoRect.width / video.videoWidth,
+    videoRect.height / video.videoHeight
+  );
+  const nativePerCss = 1 / cssPerNative;
 
-  const sx = (reticleRect.left - videoRect.left) * scaleX;
-  const sy = (reticleRect.top - videoRect.top) * scaleY;
-  const sw = reticleRect.width * scaleX;
-  const sh = reticleRect.height * scaleY;
+  const displayedWidth = video.videoWidth * cssPerNative;
+  const displayedHeight = video.videoHeight * cssPerNative;
+  const cropLeft = (displayedWidth - videoRect.width) / 2;
+  const cropTop = (displayedHeight - videoRect.height) / 2;
+
+  const boxX = reticleRect.left - videoRect.left;
+  const boxY = reticleRect.top - videoRect.top;
+
+  const sx = (boxX + cropLeft) * nativePerCss;
+  const sy = (boxY + cropTop) * nativePerCss;
+  const sw = reticleRect.width * nativePerCss;
+  const sh = reticleRect.height * nativePerCss;
 
   if (sw <= 0 || sh <= 0) return null;
   return { sx, sy, sw, sh };
