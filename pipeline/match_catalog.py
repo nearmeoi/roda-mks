@@ -51,12 +51,28 @@ def _normalize_brand(brand: str) -> str:
     return re.sub(r"[^a-z0-9]", "", brand.lower())
 
 
+def _extract_model_numbers(text: str) -> set[str]:
+    # Find series digits like '7' in 'STRATTOS 7' or '4' in 'STRATTOS S4'
+    return set(re.findall(r"\b(?:s)?(\d+)\b", text.lower()))
+
+
+def _has_model_number_conflict(target_text: str, candidate_text: str) -> bool:
+    t_nums = _extract_model_numbers(target_text)
+    c_nums = _extract_model_numbers(candidate_text)
+    if t_nums and c_nums:
+        # If target specifies model numbers (e.g. {'7'}) and candidate specifies different ones (e.g. {'4'}), conflict!
+        if not t_nums.intersection(c_nums):
+            return True
+    return False
+
+
 def match_products(grouped, catalog, overrides=None, threshold=55, set_ratio_threshold=90):
     overrides = overrides or {}
-    catalog_by_url = {c["url"]: c for c in catalog}
+    catalog_by_url = {c["url"]: c for c in catalog if "url" in c}
     catalog_by_brand: dict[str, list[dict]] = {}
     for c in catalog:
-        catalog_by_brand.setdefault(_normalize_brand(c["brand"]), []).append(c)
+        brand_val = c.get("brand") or (c.get("specs", {}).get("Brand") if isinstance(c.get("specs"), dict) else "") or ""
+        catalog_by_brand.setdefault(_normalize_brand(brand_val), []).append(c)
 
     matches, unmatched = [], []
     for product in grouped:
@@ -74,22 +90,12 @@ def match_products(grouped, catalog, overrides=None, threshold=55, set_ratio_thr
         candidates = catalog_by_brand.get(_normalize_brand(product["brand"]), [])
         target = _normalize(product["model_name"], product["brand"])
 
-        # token_sort_ratio (the original, proven-safe metric) and token_set_ratio
-        # are tracked as two SEPARATE candidate searches, not combined into one
-        # max() score. token_set_ratio rewards one string's tokens being a subset
-        # of the other's -- perfect for a terse internal SKU code ("SHOES
-        # SH-XC302E") embedded verbatim in a long catalog name ("Shimano Sepatu
-        # Sepeda XC Racing SH-XC302E Wide Fit"), but for Shimano's dense spare-
-        # parts catalog it also happily "matches" two genuinely DIFFERENT parts
-        # that only share a tier name after normalization (e.g. a shifter
-        # bracket cover vs. an unrelated shoe cleat, both just "105" once brand/
-        # generic words are stripped) -- confirmed by manually reviewing real
-        # matches, where those false positives clustered right at the low end
-        # (~55-56) while genuine subset matches scored ~100. So token_set_ratio
-        # only gets to contribute a match through a much higher, separate bar.
         best_sort_entry, best_sort_score = None, 0
         best_set_entry, best_set_score = None, 0
         for c in candidates:
+            if _has_model_number_conflict(product["model_name"], c["name"]):
+                continue
+
             candidate_name = _normalize(c["name"], product["brand"])
             sort_score = fuzz.token_sort_ratio(target, candidate_name)
             if sort_score > best_sort_score:

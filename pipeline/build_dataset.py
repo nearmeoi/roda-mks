@@ -36,9 +36,9 @@ def merge_product(matched: dict) -> dict:
         "color_label": color_label,
         "price": matched["price"] if matched["price"] is not None else catalog.get("price"),
         "sizes": sizes,
-        "colors": catalog["colors"],
-        "images": catalog["images"],
-        "specs": catalog["specs"],
+        "colors": catalog.get("colors", []),
+        "images": catalog.get("images", []),
+        "specs": catalog.get("specs", {}),
         "matched": True,
     }
 

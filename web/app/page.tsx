@@ -108,7 +108,7 @@ function HomeContent() {
           <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
             <div className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">
               <History className="h-3 w-3" />
-              <span>Riwayat:</span>
+              <span>Riwayat</span>
             </div>
             {recent.map((term) => (
               <div
@@ -162,7 +162,7 @@ function HomeContent() {
             {favoriteProducts.length > 0 && (
               <div className="flex w-full flex-col gap-2.5">
                 <div className="flex items-center justify-between px-1">
-                  <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-600">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-amber-600">
                     <Star className="h-3.5 w-3.5 fill-amber-400 stroke-amber-500" />
                     <span>Stok Favorit Dipin ({favoriteProducts.length})</span>
                   </div>
@@ -192,17 +192,17 @@ function HomeContent() {
 
       {/* Sticky Bottom Bar for Active Comparisons */}
       {compareIds.length > 0 && (
-        <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-black/10 bg-gray-900/90 px-5 py-2.5 text-white shadow-2xl backdrop-blur-xl animate-bounce">
-          <div className="flex items-center gap-2 text-xs font-bold">
+        <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/20 bg-gray-900/90 px-5 py-2.5 text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl [animation:fadeSlideUp_0.25s_ease]">
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-tight">
             <ArrowLeftRight className="h-4 w-4 text-accent" />
             <span>{compareIds.length} Produk Dipilih</span>
           </div>
           <button
             type="button"
             onClick={() => setShowCompareModal(true)}
-            className="rounded-full bg-accent px-3.5 py-1 text-xs font-bold text-white shadow-sm hover:opacity-90 active:scale-95"
+            className="rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-95 active:scale-95 transition-all"
           >
-            Lihat Perbandingan
+            Bandingkan
           </button>
         </div>
       )}

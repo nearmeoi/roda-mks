@@ -1,5 +1,5 @@
 import type { Product } from "@/lib/types";
-import { formatPrice, primaryArticleCode, totalQuantity } from "@/lib/format";
+import { formatPrice, primaryArticleCode, titleCase, totalQuantity } from "@/lib/format";
 
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {
@@ -28,17 +28,21 @@ export function formatWhatsAppMessage(product: Product): string {
   const mainArticleCode = primaryArticleCode(product.sizes);
 
   let msg = `*RODA STOCK INFO - RODALINK MAKASSAR* 🚲\n\n`;
-  msg += `*Model:* ${product.model_name}\n`;
-  msg += `*Brand:* ${product.brand}\n`;
-  msg += `*Kategori:* ${product.category}\n`;
+  msg += `*Model:* ${titleCase(product.model_name)}\n`;
+  msg += `*Brand:* ${titleCase(product.brand)}\n`;
+  msg += `*Kategori:* ${titleCase(product.category)}\n`;
   if (product.price) {
     msg += `*Harga:* ${formatPrice(product.price)}\n`;
   }
   msg += `*Kode Artikel:* ${mainArticleCode}\n`;
 
-  const colors = product.colors && product.colors.length > 0 ? product.colors.join(", ") : product.color_label;
+  const colors = product.colors && product.colors.length > 0
+    ? product.colors.map(titleCase).join(", ")
+    : product.color_label
+      ? titleCase(product.color_label)
+      : null;
   if (colors) {
-    msg += `*Warna:* ${colors}\n`;
+    msg += `${colors}\n`;
   }
   if (product.wheel_size) {
     msg += `*Ukuran Roda:* ${product.wheel_size}\n`;

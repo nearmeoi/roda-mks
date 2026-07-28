@@ -52,7 +52,7 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
         <button
           type="button"
           onClick={() => setShowScanner(true)}
-          aria-label="Scan barcode"
+          aria-label="Pindai barcode"
           className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/10"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">

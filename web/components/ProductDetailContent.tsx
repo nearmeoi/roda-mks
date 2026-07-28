@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Product } from "@/lib/types";
-import { formatPrice, getStockStatus, primaryArticleCode, totalOrderedQuantity, totalQuantity } from "@/lib/format";
+import { formatPrice, getStockStatus, primaryArticleCode, titleCase, totalOrderedQuantity, totalQuantity } from "@/lib/format";
 import { ProductCarousel } from "@/components/ProductCarousel";
 import { BackButton } from "@/components/BackButton";
 import { copyToClipboard, formatWhatsAppMessage } from "@/lib/copy";
@@ -38,7 +38,7 @@ export function ProductDetailContent({
     const waText = formatWhatsAppMessage(product);
     const success = await copyToClipboard(waText);
     if (success) {
-      showToast("Teks Format WhatsApp disalin ke Clipboard!");
+      showToast("Info WhatsApp berhasil disalin!");
     }
   };
 
@@ -47,21 +47,28 @@ export function ProductDetailContent({
   const status = getStockStatus(qty);
 
   const mainArticle = String(primaryArticleCode(product.sizes));
-  const colorDisplay = product.colors && product.colors.length > 0 ? product.colors.join(", ") : product.color_label;
+  const displayName = titleCase(product.model_name);
+  const displayBrand = titleCase(product.brand);
+  const displayCategory = titleCase(product.category);
+  const colorDisplay = product.colors && product.colors.length > 0
+    ? product.colors.map(titleCase).join(", ")
+    : product.color_label
+      ? titleCase(product.color_label)
+      : null;
 
   const infoRows = [
     { label: "Kode Artikel", value: mainArticle, copyable: true },
-    { label: "Brand", value: product.brand, copyable: true },
-    { label: "Kategori", value: product.category, copyable: false },
+    { label: "Brand", value: displayBrand, copyable: true },
+    { label: "Kategori", value: displayCategory, copyable: false },
     ...(colorDisplay ? [{ label: "Warna", value: colorDisplay, copyable: true }] : []),
     ...(product.wheel_size
       ? [
-          {
-            label: product.category.startsWith("BIKE") ? "Ukuran Roda" : "Ukuran / Spek",
-            value: product.wheel_size,
-            copyable: true,
-          },
-        ]
+        {
+          label: product.category.startsWith("BIKE") ? "Ukuran Roda" : "Ukuran / Spek",
+          value: product.wheel_size,
+          copyable: true,
+        },
+      ]
       : []),
     { label: "Gudang", value: product.warehouse, copyable: false },
     ...(product.variant_extra ? [{ label: "Varian", value: product.variant_extra, copyable: true }] : []),
@@ -76,7 +83,7 @@ export function ProductDetailContent({
     <div className="min-h-screen pb-16 [animation:slideInRight_0.28s_ease]">
       {/* Toast Feedback Banner */}
       {toastMsg && (
-        <div className="fixed top-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-black/10 bg-gray-900 px-4 py-2 text-xs font-semibold text-white shadow-2xl backdrop-blur-lg animate-bounce">
+        <div className="fixed top-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-black/10 bg-gray-900/90 px-4 py-2 text-xs font-semibold text-white shadow-2xl backdrop-blur-lg [animation:fadeSlideUp_0.25s_ease]">
           <Check className="h-4 w-4 text-emerald-400" />
           <span>{toastMsg}</span>
         </div>
@@ -92,29 +99,28 @@ export function ProductDetailContent({
               toggleCompare(product.id);
               showToast(compared ? "Dikeluarkan dari perbandingan" : "Ditambahkan ke perbandingan!");
             }}
-            className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-all active:scale-95 ${
-              compared
-                ? "border-accent bg-accent text-white"
-                : "border-black/10 bg-white text-gray-700 hover:bg-gray-50"
-            }`}
+            title={compared ? "Dibandingkan" : "Bandingkan"}
+            className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all active:scale-95 ${compared
+              ? "border-accent bg-accent text-white"
+              : "border-black/10 bg-white text-gray-700 hover:bg-gray-50"
+              }`}
           >
             <ArrowLeftRight className="h-3.5 w-3.5" />
-            <span>{compared ? "Bandingkan (Aktif)" : "Bandingkan"}</span>
           </button>
 
           <button
             type="button"
             onClick={handleCopyWhatsApp}
-            className="flex items-center gap-1.5 rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-95"
+            className="flex items-center gap-1.5 rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-95"
           >
             <Share2 className="h-3.5 w-3.5" />
-            <span>Salin Info WA</span>
+            <span>Salin seluruh info</span>
           </button>
         </div>
       </div>
 
       <div className="mx-auto max-w-[560px] px-5 pt-5">
-        <ProductCarousel images={product.images} alt={product.model_name} />
+        <ProductCarousel images={product.images} alt={displayName} />
 
         <div className="mt-[22px]">
           {/* Brand & Category Badges */}
@@ -123,19 +129,19 @@ export function ProductDetailContent({
               className="rounded-full px-2.5 py-1 text-xs font-semibold"
               style={{ color: "var(--color-accent)", background: "color-mix(in oklab, var(--color-accent) 10%, white)" }}
             >
-              {product.brand}
+              {displayBrand}
             </span>
             <span className="rounded-full bg-black/[0.06] px-2.5 py-1 text-xs font-semibold text-gray-500">
-              {product.category}
+              {displayCategory}
             </span>
           </div>
 
           {/* Model Name & Copy Action */}
           <div className="group mb-1.5 flex items-start justify-between gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900">{product.model_name}</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900">{displayName}</h1>
             <button
               type="button"
-              onClick={() => handleCopyText(product.model_name, "Nama Model")}
+              onClick={() => handleCopyText(displayName, "Nama Model")}
               className="mt-1 flex shrink-0 items-center gap-1.5 rounded-lg border border-black/[0.08] bg-white px-2 py-1 text-[11px] font-medium text-gray-600 hover:bg-gray-50 active:scale-95"
               title="Salin Nama Model"
             >
@@ -170,15 +176,15 @@ export function ProductDetailContent({
           {/* Ready Colors Badges */}
           {product.colors && product.colors.length > 0 && (
             <div className="mb-5 flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">Warna Ready:</span>
+              <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">Warna Ready</span>
               {product.colors.map((c, i) => (
                 <button
                   key={i}
                   type="button"
-                  onClick={() => handleCopyText(c, `Warna ${c}`)}
+                  onClick={() => handleCopyText(titleCase(c), `Warna ${titleCase(c)}`)}
                   className="rounded-lg border border-black/[0.08] bg-white px-2.5 py-1 text-xs font-semibold text-gray-800 shadow-sm hover:border-black/20"
                 >
-                  {c}
+                  {titleCase(c)}
                 </button>
               ))}
             </div>
@@ -193,7 +199,7 @@ export function ProductDetailContent({
               >
                 <span className="text-sm text-gray-500">{row.label}</span>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-gray-900">{row.value}</span>
+                  <span className="text-sm font-medium text-gray-900">{row.value}</span>
                   {row.copyable && (
                     <button
                       type="button"
@@ -314,7 +320,7 @@ export function ProductDetailContent({
           {recommendations.length > 0 && (
             <div className="mt-6">
               <div className="mb-3 flex items-center justify-between px-1">
-                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent">
+                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
                   <Sparkles className="h-4 w-4 text-accent" />
                   <span>Rekomendasi Pelengkap (Stok Ready)</span>
                 </div>
@@ -330,7 +336,7 @@ export function ProductDetailContent({
                       {rec.images && rec.images.length > 0 ? (
                         <img
                           src={rec.images[0]}
-                          alt={rec.model_name}
+                          alt={titleCase(rec.model_name)}
                           className="h-24 w-full object-contain rounded-lg border border-black/[0.04] p-1"
                         />
                       ) : (
@@ -339,9 +345,9 @@ export function ProductDetailContent({
                         </div>
                       )}
                       <div>
-                        <div className="text-[11px] font-semibold text-accent">{rec.brand}</div>
-                        <div className="line-clamp-2 text-xs font-bold text-gray-900 group-hover:text-accent">
-                          {rec.model_name}
+                        <div className="text-[11px] font-semibold text-accent">{titleCase(rec.brand)}</div>
+                        <div className="line-clamp-2 text-xs font-semibold text-gray-900 group-hover:text-accent">
+                          {titleCase(rec.model_name)}
                         </div>
                       </div>
                     </div>
