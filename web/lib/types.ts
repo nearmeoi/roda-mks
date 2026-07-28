@@ -22,3 +22,10 @@ export interface Product {
   specs: Record<string, string>;
   matched: boolean;
 }
+
+export interface StockCount {
+  productId: string;
+  productName: string;
+  countedQty: number;
+  countedAt: string; // ISO timestamp
+}
