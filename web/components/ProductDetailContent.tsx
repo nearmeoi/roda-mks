@@ -8,7 +8,8 @@ import { ProductCarousel } from "@/components/ProductCarousel";
 import { BackButton } from "@/components/BackButton";
 import { copyToClipboard, formatWhatsAppMessage } from "@/lib/copy";
 import { getRecommendations } from "@/lib/recommendations";
-import { Copy, Check, Share2, ExternalLink, Sparkles, Package } from "lucide-react";
+import { useCompareList } from "@/lib/comparison";
+import { Copy, Check, Share2, ExternalLink, Sparkles, Package, ArrowLeftRight } from "lucide-react";
 
 export function ProductDetailContent({
   product,
@@ -18,6 +19,8 @@ export function ProductDetailContent({
   allProducts: Product[];
 }) {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const { isCompared, toggleCompare } = useCompareList();
+  const compared = isCompared(product.id);
 
   const showToast = (msg: string) => {
     setToastMsg(msg);
@@ -82,14 +85,32 @@ export function ProductDetailContent({
       {/* Header Bar */}
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/[0.08] bg-[#f6f6f8]/80 px-5 py-3 backdrop-blur-xl">
         <BackButton />
-        <button
-          type="button"
-          onClick={handleCopyWhatsApp}
-          className="flex items-center gap-1.5 rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-95"
-        >
-          <Share2 className="h-3.5 w-3.5" />
-          <span>Salin seluruh info</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              toggleCompare(product.id);
+              showToast(compared ? "Dikeluarkan dari perbandingan" : "Ditambahkan ke perbandingan!");
+            }}
+            className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-all active:scale-95 ${
+              compared
+                ? "border-accent bg-accent text-white"
+                : "border-black/10 bg-white text-gray-700 hover:bg-gray-50"
+            }`}
+          >
+            <ArrowLeftRight className="h-3.5 w-3.5" />
+            <span>{compared ? "Bandingkan (Aktif)" : "Bandingkan"}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleCopyWhatsApp}
+            className="flex items-center gap-1.5 rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-95"
+          >
+            <Share2 className="h-3.5 w-3.5" />
+            <span>Salin Info WA</span>
+          </button>
+        </div>
       </div>
 
       <div className="mx-auto max-w-[560px] px-5 pt-5">

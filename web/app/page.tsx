@@ -5,11 +5,13 @@ import Link from "next/link";
 import { useSearchParams, usePathname } from "next/navigation";
 import { SearchBar } from "@/components/SearchBar";
 import { ResultRow } from "@/components/ResultRow";
+import { CompareModal } from "@/components/CompareModal";
 import { getAllProducts } from "@/lib/products";
 import { searchProducts } from "@/lib/search";
 import { useFavorites } from "@/lib/favorites";
-
-import { Star } from "lucide-react";
+import { useRecentSearches } from "@/lib/recentSearches";
+import { useCompareList } from "@/lib/comparison";
+import { Star, History, X, ArrowLeftRight } from "lucide-react";
 
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
@@ -20,15 +22,20 @@ function HomeContent() {
 
   const urlQuery = searchParams.get("q") || "";
   const [query, setQuery] = useState(urlQuery);
+  const [showCompareModal, setShowCompareModal] = useState(false);
 
   const { favorites, toggle, isFav } = useFavorites();
+  const { recent, addSearch, removeSearch } = useRecentSearches();
+  const { compareIds, toggleCompare, isCompared, clearAll: clearCompare } = useCompareList();
 
   // Sync internal state if URL changes (e.g. back navigation)
   useEffect(() => {
-    setQuery(searchParams.get("q") || "");
+    const q = searchParams.get("q") || "";
+    setQuery(q);
+    if (q) addSearch(q);
   }, [searchParams]);
 
-  // Update URL state synchronously without re-triggering Next.js router cycles or race conditions
+  // Update URL state synchronously
   const updateUrlParams = (newQuery: string) => {
     const params = new URLSearchParams();
     if (newQuery) params.set("q", newQuery);
@@ -40,6 +47,9 @@ function HomeContent() {
   const handleQueryChange = (val: string) => {
     setQuery(val);
     updateUrlParams(val);
+    if (val.trim().length >= 3) {
+      addSearch(val.trim());
+    }
   };
 
   const hasQuery = query.trim().length > 0;
@@ -54,11 +64,16 @@ function HomeContent() {
     return allProducts.filter((p) => favorites.includes(p.id));
   }, [favorites]);
 
+  const compareProducts = useMemo(() => {
+    if (compareIds.length === 0) return [];
+    return allProducts.filter((p) => compareIds.includes(p.id));
+  }, [compareIds]);
+
   const noResults = hasQuery && results.length === 0;
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center overflow-x-hidden pb-10 pt-6">
-      {/* Background Blobs (Full width, not constrained by padding) */}
+    <div className="relative flex min-h-screen flex-col items-center overflow-x-hidden pb-20 pt-6">
+      {/* Background Blobs */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex h-[450px] justify-center overflow-hidden">
         <div className="relative w-full max-w-[600px] shrink-0">
           <div className="absolute left-1/2 top-[-20px] h-[340px] w-[340px] -translate-x-1/2 rounded-full bg-accent opacity-40 blur-[55px]" />
@@ -80,13 +95,48 @@ function HomeContent() {
       <div className="min-h-4 flex-auto" />
 
       {/* Main Content Area */}
-      <div className="relative z-[1] flex w-full max-w-[560px] flex-col items-center gap-5 px-5">
+      <div className="relative z-[1] flex w-full max-w-[560px] flex-col items-center gap-4 px-5">
         <div className="flex items-center gap-2.5">
           <img src="/logo.png" alt="Rodalink Logo" className="h-9 w-auto object-contain" />
           <span className="text-[17px] font-bold tracking-tight text-gray-900">Roda Stock</span>
         </div>
 
         <SearchBar value={query} onChange={handleQueryChange} hasQuery={hasQuery} onClear={() => handleQueryChange("")} />
+
+        {/* Recent Searches Chips */}
+        {recent.length > 0 && !hasQuery && (
+          <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
+            <div className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">
+              <History className="h-3 w-3" />
+              <span>Riwayat:</span>
+            </div>
+            {recent.map((term) => (
+              <div
+                key={term}
+                className="group inline-flex items-center gap-1 rounded-full border border-black/[0.08] bg-white/80 px-2.5 py-0.5 text-xs font-semibold text-gray-700 backdrop-blur-md transition-all hover:border-black/20"
+              >
+                <button
+                  type="button"
+                  onClick={() => handleQueryChange(term)}
+                  className="hover:text-accent"
+                >
+                  {term}
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    removeSearch(term);
+                  }}
+                  className="text-gray-400 hover:text-red-500"
+                  aria-label={`Hapus ${term} dari riwayat`}
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
 
         {noResults && <div className="pt-2 text-center text-sm text-gray-500">Barang tidak ditemukan.</div>}
 
@@ -98,6 +148,8 @@ function HomeContent() {
                   product={product}
                   isFav={isFav(product.id)}
                   onToggleFav={() => toggle(product.id)}
+                  isCompared={isCompared(product.id)}
+                  onToggleCompare={() => toggleCompare(product.id)}
                 />
               </Link>
             ))}
@@ -121,6 +173,8 @@ function HomeContent() {
                       product={product}
                       isFav={true}
                       onToggleFav={() => toggle(product.id)}
+                      isCompared={isCompared(product.id)}
+                      onToggleCompare={() => toggleCompare(product.id)}
                     />
                   </Link>
                 ))}
@@ -135,6 +189,36 @@ function HomeContent() {
       </div>
 
       <div className="min-h-4 flex-auto" />
+
+      {/* Sticky Bottom Bar for Active Comparisons */}
+      {compareIds.length > 0 && (
+        <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-black/10 bg-gray-900/90 px-5 py-2.5 text-white shadow-2xl backdrop-blur-xl animate-bounce">
+          <div className="flex items-center gap-2 text-xs font-bold">
+            <ArrowLeftRight className="h-4 w-4 text-accent" />
+            <span>{compareIds.length} Produk Dipilih</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowCompareModal(true)}
+            className="rounded-full bg-accent px-3.5 py-1 text-xs font-bold text-white shadow-sm hover:opacity-90 active:scale-95"
+          >
+            Lihat Perbandingan
+          </button>
+        </div>
+      )}
+
+      {/* Compare Modal */}
+      {showCompareModal && (
+        <CompareModal
+          products={compareProducts}
+          onClose={() => setShowCompareModal(false)}
+          onRemove={(id) => toggleCompare(id)}
+          onClearAll={() => {
+            clearCompare();
+            setShowCompareModal(false);
+          }}
+        />
+      )}
     </div>
   );
 }

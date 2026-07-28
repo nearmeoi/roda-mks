@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { BrowserMultiFormatReader } from "@zxing/browser";
-import { BarcodeFormat, DecodeHintType, NotFoundException } from "@zxing/library";
+import { BarcodeFormat, DecodeHintType } from "@zxing/library";
+import { Camera, X, AlertCircle, RefreshCw } from "lucide-react";
 
 interface BarcodeScannerProps {
   onScan: (code: string) => void;
   onClose: () => void;
 }
 
-// The Shape Detection API isn't in TS's default DOM lib yet.
 interface DetectedBarcode {
   rawValue: string;
 }
@@ -18,7 +18,6 @@ interface NativeBarcodeDetector {
 }
 interface NativeBarcodeDetectorConstructor {
   new (options?: { formats?: string[] }): NativeBarcodeDetector;
-  getSupportedFormats?(): Promise<string[]>;
 }
 
 const NATIVE_FORMATS = [
@@ -34,9 +33,6 @@ const NATIVE_FORMATS = [
   "qr_code",
 ];
 
-// TRY_HARDER is fine here: this only ever runs a bounded burst of attempts
-// after a tap (not an always-on loop), so its extra per-attempt cost is paid
-// a handful of times on demand, not accumulated indefinitely.
 const ZXING_HINTS = new Map<DecodeHintType, unknown>([
   [DecodeHintType.TRY_HARDER, true],
   [
@@ -56,11 +52,6 @@ const ZXING_HINTS = new Map<DecodeHintType, unknown>([
   ],
 ]);
 
-const ZXING_BURST_ATTEMPTS = 15;
-const ZXING_BURST_INTERVAL_MS = 200; // ~3s total burst
-
-type Status = "idle" | "scanning" | "not-found";
-
 export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -70,15 +61,14 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const stoppedRef = useRef(false);
 
   const [error, setError] = useState<string | null>(null);
-  const [status, setStatus] = useState<Status>("idle");
-  const [hasNativeDetector, setHasNativeDetector] = useState(false);
+  const [isScanning, setIsScanning] = useState(true);
+  const [manualCode, setManualCode] = useState("");
 
   useEffect(() => {
     const Ctor = (window as unknown as { BarcodeDetector?: NativeBarcodeDetectorConstructor })
       .BarcodeDetector;
     if (Ctor) {
       nativeDetectorRef.current = new Ctor({ formats: NATIVE_FORMATS });
-      setHasNativeDetector(true);
     } else {
       zxingReaderRef.current = new BrowserMultiFormatReader(ZXING_HINTS);
     }
@@ -86,13 +76,19 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
 
   useEffect(() => {
     let cancelled = false;
+    stoppedRef.current = false;
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      setError("Browser tidak mendukung kamera. Masukkan kode secara manual.");
+      return;
+    }
 
     navigator.mediaDevices
       .getUserMedia({
         video: {
-          facingMode: "environment",
-          width: { ideal: 640 },
-          height: { ideal: 480 },
+          facingMode: { ideal: "environment" },
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
         },
       })
       .then((stream) => {
@@ -105,16 +101,12 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
           videoRef.current.srcObject = stream;
           videoRef.current.play().catch(() => {});
         }
-        // Native detection is hardware-accelerated and cheap enough to run
-        // continuously -- restores instant, no-tap-needed scanning safely.
-        if (nativeDetectorRef.current) {
-          setStatus("scanning");
-          runNativeLoop();
-        }
+        startAutoScanLoop();
       })
-      .catch(() => {
+      .catch((err) => {
         if (!cancelled) {
-          setError("Tidak bisa mengakses kamera. Pastikan izin kamera sudah diaktifkan di browser.");
+          console.error("Camera access error:", err);
+          setError("Izin kamera ditolak atau tidak tersedia. Masukkan kode secara manual.");
         }
       });
 
@@ -126,109 +118,116 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
     };
   }, []);
 
-  function runNativeLoop() {
+  function startAutoScanLoop() {
     const tick = async () => {
-      if (stoppedRef.current || !videoRef.current || !nativeDetectorRef.current) return;
-      try {
-        const results = await nativeDetectorRef.current.detect(videoRef.current);
-        if (results.length > 0) {
-          stoppedRef.current = true;
-          onScan(results[0].rawValue);
-          return;
-        }
-      } catch {
-        // ignore a single bad frame, keep trying
+      if (stoppedRef.current || !videoRef.current) return;
+
+      // 1. Try Native BarcodeDetector if available
+      if (nativeDetectorRef.current) {
+        try {
+          const results = await nativeDetectorRef.current.detect(videoRef.current);
+          if (results.length > 0 && results[0].rawValue) {
+            stoppedRef.current = true;
+            onScan(results[0].rawValue);
+            return;
+          }
+        } catch {}
       }
+      // 2. Fallback to ZXing continuous decode
+      else if (zxingReaderRef.current) {
+        try {
+          const result = zxingReaderRef.current.decode(videoRef.current);
+          if (result && result.getText()) {
+            stoppedRef.current = true;
+            onScan(result.getText());
+            return;
+          }
+        } catch {}
+      }
+
       if (!stoppedRef.current) {
-        timerRef.current = window.setTimeout(tick, 120);
+        timerRef.current = window.setTimeout(tick, 200);
       }
     };
+
     tick();
   }
 
-  function handleCapture() {
-    if (!videoRef.current || !zxingReaderRef.current) return;
-    setStatus("scanning");
-    let attempts = 0;
-
-    const attempt = () => {
-      if (stoppedRef.current || !videoRef.current || !zxingReaderRef.current) return;
-      try {
-        const result = zxingReaderRef.current.decode(videoRef.current);
-        setStatus("idle");
-        onScan(result.getText());
-      } catch (e) {
-        if (!(e instanceof NotFoundException)) {
-          setStatus("idle");
-          return;
-        }
-        attempts += 1;
-        if (attempts >= ZXING_BURST_ATTEMPTS) {
-          setStatus("not-found");
-          return;
-        }
-        timerRef.current = window.setTimeout(attempt, ZXING_BURST_INTERVAL_MS);
-      }
-    };
-    attempt();
-  }
-
-  const statusText =
-    status === "scanning"
-      ? hasNativeDetector
-        ? "Mendeteksi otomatis..."
-        : "Memindai... jangan gerakkan HP"
-      : status === "not-found"
-        ? "Barcode tidak terbaca, coba lagi"
-        : "Posisikan barcode di dalam kotak";
+  const handleManualSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (manualCode.trim()) {
+      onScan(manualCode.trim());
+    }
+  };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-center bg-black/60 px-4 pt-16 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 backdrop-blur-md [animation:fadeIn_0.2s_ease]"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md overflow-hidden rounded-3xl bg-black shadow-2xl"
-        style={{ height: "55vh" }}
+        className="relative w-full max-w-md overflow-hidden rounded-3xl bg-gray-900 border border-white/10 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Tutup scanner"
-          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-          </svg>
-        </button>
-
-        {error ? (
-          <div className="flex h-full items-center justify-center px-6">
-            <p className="text-center text-sm text-white">{error}</p>
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5 bg-gray-900/80">
+          <div className="flex items-center gap-2 text-white">
+            <Camera className="h-4 w-4 text-accent" />
+            <span className="text-sm font-bold">Pemindai Barcode Autodetektif</span>
           </div>
-        ) : (
-          <>
-            <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
-            <div
-              className={`pointer-events-none absolute left-1/2 top-[42%] h-28 w-60 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-2 ${
-                status === "scanning" ? "animate-pulse border-accent" : "border-white/80"
-              }`}
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Tutup scanner"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        {/* Video Viewport / Error Fallback */}
+        <div className="relative h-[320px] w-full bg-black">
+          {error ? (
+            <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center text-white">
+              <AlertCircle className="h-10 w-10 text-amber-400" />
+              <p className="text-xs text-gray-300">{error}</p>
+            </div>
+          ) : (
+            <>
+              <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
+              {/* Scanning Reticle Box */}
+              <div className="pointer-events-none absolute left-1/2 top-1/2 h-32 w-64 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-2 border-accent shadow-[0_0_20px_rgba(230,0,18,0.5)]">
+                <div className="absolute inset-x-0 top-1/2 h-0.5 bg-accent/80 animate-pulse" />
+              </div>
+              <div className="pointer-events-none absolute bottom-4 inset-x-0 text-center">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3.5 py-1 text-[11px] font-semibold text-white backdrop-blur-md border border-white/10">
+                  <RefreshCw className="h-3 w-3 animate-spin text-accent" />
+                  Mendeteksi otomatis... paskan barcode di kotak
+                </span>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Fallback Manual Entry Input */}
+        <div className="border-t border-white/10 bg-gray-900 p-4">
+          <form onSubmit={handleManualSubmit} className="flex items-center gap-2">
+            <input
+              type="text"
+              value={manualCode}
+              onChange={(e) => setManualCode(e.target.value)}
+              placeholder="Atau ketik artikel / barcode..."
+              className="flex-1 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2 text-xs text-white placeholder-gray-400 focus:border-accent focus:outline-none"
             />
-            <p className="pointer-events-none absolute left-0 top-[42%] w-full -translate-y-[calc(50%+64px)] px-6 text-center text-xs text-white/85">
-              {statusText}
-            </p>
-            {!hasNativeDetector && (
-              <button
-                type="button"
-                onClick={handleCapture}
-                disabled={status === "scanning"}
-                aria-label="Ambil foto barcode"
-                className="absolute bottom-4 left-1/2 h-16 w-16 -translate-x-1/2 rounded-full border-4 border-white/40 bg-white shadow-lg active:scale-95 disabled:opacity-60"
-              />
-            )}
-          </>
-        )}
+            <button
+              type="submit"
+              disabled={!manualCode.trim()}
+              className="rounded-xl bg-accent px-4 py-2 text-xs font-bold text-white shadow-sm hover:opacity-90 disabled:opacity-50"
+            >
+              Cari
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
