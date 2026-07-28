@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Mic } from "lucide-react";
 import { BarcodeScanner } from "./BarcodeScanner";
 
 interface SearchBarProps {
@@ -10,8 +11,87 @@ interface SearchBarProps {
   onClear: () => void;
 }
 
+interface SpeechRecognitionResultItem {
+  0: { transcript: string };
+}
+interface SpeechRecognitionResultList {
+  [index: number]: SpeechRecognitionResultItem;
+  length: number;
+}
+interface SpeechRecognitionEvent {
+  results: SpeechRecognitionResultList;
+}
+interface SpeechRecognitionErrorEvent {
+  error: string;
+}
+interface SpeechRecognitionInstance {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  start(): void;
+  stop(): void;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+  onend: (() => void) | null;
+}
+interface SpeechRecognitionConstructor {
+  new (): SpeechRecognitionInstance;
+}
+
+function getSpeechRecognitionCtor(): SpeechRecognitionConstructor | undefined {
+  const w = window as unknown as {
+    SpeechRecognition?: SpeechRecognitionConstructor;
+    webkitSpeechRecognition?: SpeechRecognitionConstructor;
+  };
+  return w.SpeechRecognition || w.webkitSpeechRecognition;
+}
+
 export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps) {
   const [showScanner, setShowScanner] = useState(false);
+  const [micSupported, setMicSupported] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [micError, setMicError] = useState<string | null>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
+
+  useEffect(() => {
+    setMicSupported(!!getSpeechRecognitionCtor());
+  }, []);
+
+  const handleMicClick = () => {
+    if (isListening) {
+      recognitionRef.current?.stop();
+      setIsListening(false);
+      return;
+    }
+
+    const Ctor = getSpeechRecognitionCtor();
+    if (!Ctor) return;
+
+    setMicError(null);
+    const recognition = new Ctor();
+    recognition.lang = "id-ID";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0]?.[0]?.transcript;
+      if (transcript) onChange(transcript);
+    };
+
+    recognition.onerror = (event) => {
+      if (event.error === "not-allowed") {
+        setMicError("Izin mikrofon ditolak atau tidak tersedia.");
+      }
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognitionRef.current = recognition;
+    setIsListening(true);
+    recognition.start();
+  };
 
   return (
     <div className="relative w-full">
@@ -49,6 +129,18 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
             </svg>
           </button>
         )}
+        {micSupported && (
+          <button
+            type="button"
+            onClick={handleMicClick}
+            aria-label={isListening ? "Berhenti merekam suara" : "Cari dengan suara"}
+            className={`mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all ${
+              isListening ? "bg-accent text-white animate-pulse" : "bg-black/10 text-[#5b5b60]"
+            }`}
+          >
+            <Mic className="h-[18px] w-[18px]" />
+          </button>
+        )}
         <button
           type="button"
           onClick={() => setShowScanner(true)}
@@ -61,6 +153,10 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
           </svg>
         </button>
       </div>
+
+      {micError && (
+        <p className="mt-1.5 text-center text-xs text-red-500">{micError}</p>
+      )}
 
       {showScanner && (
         <BarcodeScanner
