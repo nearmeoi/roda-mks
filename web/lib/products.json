@@ -8,7 +8,7 @@
     "variant_extra": null,
     "wheel_size": "16\"",
     "color_label": null,
-    "price": null,
+    "price": 1620000,
     "sizes": [
       {
         "size_code": "09B",
@@ -70,7 +70,7 @@
     "variant_extra": null,
     "wheel_size": "16\"",
     "color_label": null,
-    "price": null,
+    "price": 1620000,
     "sizes": [
       {
         "size_code": "09B",
@@ -3764,7 +3764,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 2000000,
     "sizes": [
       {
         "size_code": "08A",
@@ -3817,7 +3817,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 2000000,
     "sizes": [
       {
         "size_code": "08A",
@@ -5716,7 +5716,7 @@
     "variant_extra": null,
     "wheel_size": "16\"",
     "color_label": null,
-    "price": null,
+    "price": 1520000,
     "sizes": [
       {
         "size_code": "10A",
@@ -5771,7 +5771,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1485000,
     "sizes": [
       {
         "size_code": "08B",
@@ -5823,7 +5823,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1485000,
     "sizes": [
       {
         "size_code": "08B",
@@ -5875,7 +5875,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1485000,
     "sizes": [
       {
         "size_code": "08B",
@@ -5927,7 +5927,7 @@
     "variant_extra": null,
     "wheel_size": "16\"",
     "color_label": null,
-    "price": null,
+    "price": 1525000,
     "sizes": [
       {
         "size_code": "09A",
@@ -5980,7 +5980,7 @@
     "variant_extra": null,
     "wheel_size": "16\"",
     "color_label": null,
-    "price": null,
+    "price": 1525000,
     "sizes": [
       {
         "size_code": "09A",
@@ -6033,7 +6033,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1245000,
     "sizes": [
       {
         "size_code": "08B",
@@ -6087,7 +6087,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1245000,
     "sizes": [
       {
         "size_code": "08B",
@@ -6142,7 +6142,7 @@
     "variant_extra": null,
     "wheel_size": "20\"",
     "color_label": null,
-    "price": null,
+    "price": 1800000,
     "sizes": [
       {
         "size_code": "11B",
@@ -6196,7 +6196,7 @@
     "variant_extra": null,
     "wheel_size": "20\"",
     "color_label": null,
-    "price": null,
+    "price": 1800000,
     "sizes": [
       {
         "size_code": "11B",
@@ -6250,7 +6250,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1105000,
     "sizes": [
       {
         "size_code": "08B",
@@ -6304,7 +6304,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1105000,
     "sizes": [
       {
         "size_code": "08B",
@@ -6358,7 +6358,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 1105000,
     "sizes": [
       {
         "size_code": "08B",
@@ -6412,7 +6412,7 @@
     "variant_extra": null,
     "wheel_size": "12\"",
     "color_label": null,
-    "price": null,
+    "price": 950000,
     "sizes": [
       {
         "size_code": "07A",
@@ -9448,6 +9448,46 @@
     "matched": true
   },
   {
+    "id": "shimano-bb-parts-ibbmt801b-bsa",
+    "brand": "SHIMANO",
+    "model_name": "BB PARTS IBBMT801B BSA",
+    "category": "BB SET AND PART OF BB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 298000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 736907,
+        "quantity": 4,
+        "ordered_quantity": null,
+        "price": 298000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/736907.jpg",
+      "https://media.rodalink.com/catalog/product/7/3/736907_3.jpg",
+      "https://media.rodalink.com/catalog/product/7/3/736907_1.jpg",
+      "https://media.rodalink.com/catalog/product/7/3/736907_2.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Deore XT IBB-MT801-B BSA Bottom Bracket",
+      "Material": "Aluminium, Steel",
+      "Technology": "Hollowtech II, Anodised bearing cups",
+      "Shimano Series": "Deore XT",
+      "Product Series": "T8000",
+      "BB Shell Width": "68-73 mm",
+      "Genre": "MTB",
+      "Weight": "84 gr",
+      "Direkomendasikan Untuk": "XT FC-M8100, FC-M8120, FC-M8130SLX FC-M7100, FC-M7120, FC-M7130XT FC-M8000CUES FC-U8000FC-MT700, FC-MT600XT FC-T8000"
+    },
+    "matched": true
+  },
+  {
     "id": "shimano-chain-xtr-icnm9100126q-qlink-12sp-126",
     "brand": "SHIMANO",
     "model_name": "CHAIN XTR ICNM9100126Q QLINK 12SP",
@@ -11485,7 +11525,7 @@
     "variant_extra": null,
     "wheel_size": null,
     "color_label": "Hitam",
-    "price": null,
+    "price": 2098000,
     "sizes": [
       {
         "size_code": null,
@@ -17757,6 +17797,76 @@
       "Type": "Rigid",
       "Color": "Black",
       "Genre": "MTB, City & Touring"
+    },
+    "matched": true
+  },
+  {
+    "id": "entity-s-post-exp-30-9x400-y21-br",
+    "brand": "ENTITY",
+    "model_name": "S.POST EXP 30.9X400 Y21",
+    "category": "SEAT POST",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Cokelat",
+    "price": 348000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 734657,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 348000
+      }
+    ],
+    "colors": [
+      "Red"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/P/A/PA01200.jpg"
+    ],
+    "specs": {
+      "Brand": "Entity",
+      "What's in the box": "1 x Entity Expert Seat Post",
+      "Material": "3D forged one-piece AL6061 T6 alloy post",
+      "Type": "Rigid",
+      "Genre": "MTB, Road, City & Touring",
+      "Weight": "314 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "entity-s-post-exp-30-9x400-y21-be",
+    "brand": "ENTITY",
+    "model_name": "S.POST EXP 30.9X400 Y21",
+    "category": "SEAT POST",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Beige",
+    "price": 348000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 734658,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 348000
+      }
+    ],
+    "colors": [
+      "Red"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/P/A/PA01200.jpg"
+    ],
+    "specs": {
+      "Brand": "Entity",
+      "What's in the box": "1 x Entity Expert Seat Post",
+      "Material": "3D forged one-piece AL6061 T6 alloy post",
+      "Type": "Rigid",
+      "Genre": "MTB, Road, City & Touring",
+      "Weight": "314 gr"
     },
     "matched": true
   },
@@ -24528,7 +24638,7 @@
     "variant_extra": null,
     "wheel_size": null,
     "color_label": "Hitam",
-    "price": null,
+    "price": 1498000,
     "sizes": [
       {
         "size_code": null,
@@ -24565,7 +24675,7 @@
     "variant_extra": null,
     "wheel_size": null,
     "color_label": "Hitam",
-    "price": null,
+    "price": 1498000,
     "sizes": [
       {
         "size_code": null,
@@ -24602,7 +24712,7 @@
     "variant_extra": null,
     "wheel_size": null,
     "color_label": "Hitam",
-    "price": null,
+    "price": 2348000,
     "sizes": [
       {
         "size_code": null,
@@ -31751,6 +31861,82 @@
     "matched": true
   },
   {
+    "id": "shimano-f-hub-slx-afhm7110b-cl-ta12-142-b",
+    "brand": "SHIMANO",
+    "model_name": "F.HUB SLX AFHM7110B CL TA12/142",
+    "category": "HUB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 598000,
+    "sizes": [
+      {
+        "size_code": "R32",
+        "article_code": 730032001,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 598000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/730032001.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano SLX M7110 12x142 Thru Axle 32H Rear Hub",
+      "Type": "Thru Axle",
+      "Shimano Series": "SLX",
+      "Product Series": "M7110",
+      "Hole": "32H",
+      "Brake Type": "Disc Brake - Center Lock",
+      "Axle": "without Axle (diameter 12 mm)",
+      "OLD": "142 mm",
+      "Color": "Black",
+      "Weight": "350 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-hub-slx-ahbm7110bx-cl-ta15-100-b",
+    "brand": "SHIMANO",
+    "model_name": "HUB SLX AHBM7110BX CL TA15/100",
+    "category": "HUB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 328000,
+    "sizes": [
+      {
+        "size_code": "F32",
+        "article_code": 730037001,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 328000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/730037001.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano SLX M7110 15x100 Thru Axle 32H Front Hub",
+      "Type": "Thru Axle",
+      "Shimano Series": "SLX",
+      "Product Series": "M7110",
+      "Hole": "32H",
+      "Brake Type": "Disc Brake - Center Lock",
+      "Axle": "without Axle for 15 mm E-Thru Axle",
+      "OLD": "100 mm",
+      "Color": "Black",
+      "Weight": "142 gr"
+    },
+    "matched": true
+  },
+  {
     "id": "bryton-bryton-gardia-r300-radar-b",
     "brand": "BRYTON",
     "model_name": "BRYTON GARDIA R300 RADAR",
@@ -32082,6 +32268,36 @@
     "matched": true
   },
   {
+    "id": "finish-line-bike-wash-1-liter",
+    "brand": "FINISH LINE",
+    "model_name": "BIKE WASH 1 LITER",
+    "category": "LUBRICANT/MAINTENANCE",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 228000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 500011,
+        "quantity": 5,
+        "ordered_quantity": null,
+        "price": 228000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01624.jpg"
+    ],
+    "specs": {
+      "Brand": "Finish Line",
+      "What's in the box": "1 x Finish Line Super Bike Wash Cleaner",
+      "Technology": "Biodegradable Formulation"
+    },
+    "matched": true
+  },
+  {
     "id": "finish-line-ecotech-clner-degreaser-12-oz",
     "brand": "FINISH LINE",
     "model_name": "ECOTECH CLNER & DEGREASER 12 OZ",
@@ -32140,6 +32356,35 @@
       "Technology": "Formulated with micron-sized ceramic particles, Teflon fluoropolymer and premium non-toxic synthetic oils, Guaranteed to optimize the performance and efficiency of bottom brackets, hubs and headset bearings, Bearings last longer and run quieter & smoother",
       "Volume": "2 oz",
       "Weight": "60 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "finish-line-fiber-grip-1-75-oz-tube",
+    "brand": "FINISH LINE",
+    "model_name": "FIBER GRIP 1.75 OZ TUBE",
+    "category": "LUBRICANT/MAINTENANCE",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 168000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 701018,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 168000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa00291_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Finish Line",
+      "What's in the box": "1 x Finish Line Pelumas Sepeda Fiber Grip"
     },
     "matched": true
   },
@@ -36709,30 +36954,6 @@
     "matched": false
   },
   {
-    "id": "shimano-bb-parts-ibbmt801b-bsa",
-    "brand": "SHIMANO",
-    "model_name": "BB PARTS IBBMT801B BSA",
-    "category": "BB SET AND PART OF BB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 298000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 736907,
-        "quantity": 4,
-        "ordered_quantity": null,
-        "price": 298000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-chain-icnhg60111126q-11sp-126",
     "brand": "SHIMANO",
     "model_name": "CHAIN ICNHG60111126Q 11SP",
@@ -38022,54 +38243,6 @@
         "quantity": 3,
         "ordered_quantity": null,
         "price": 44000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "entity-s-post-exp-30-9x400-y21-br",
-    "brand": "ENTITY",
-    "model_name": "S.POST EXP 30.9X400 Y21",
-    "category": "SEAT POST",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Cokelat",
-    "price": 348000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 734657,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 348000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "entity-s-post-exp-30-9x400-y21-be",
-    "brand": "ENTITY",
-    "model_name": "S.POST EXP 30.9X400 Y21",
-    "category": "SEAT POST",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Beige",
-    "price": 348000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 734658,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 348000
       }
     ],
     "colors": [],
@@ -40060,54 +40233,6 @@
     "matched": false
   },
   {
-    "id": "shimano-f-hub-slx-afhm7110b-cl-ta12-142-b",
-    "brand": "SHIMANO",
-    "model_name": "F.HUB SLX AFHM7110B CL TA12/142",
-    "category": "HUB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 598000,
-    "sizes": [
-      {
-        "size_code": "R32",
-        "article_code": 730032001,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 598000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-hub-slx-ahbm7110bx-cl-ta15-100-b",
-    "brand": "SHIMANO",
-    "model_name": "HUB SLX AHBM7110BX CL TA15/100",
-    "category": "HUB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 328000,
-    "sizes": [
-      {
-        "size_code": "F32",
-        "article_code": 730037001,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 328000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-hub-ahbmt410b-ta15-100-cl-b",
     "brand": "SHIMANO",
     "model_name": "HUB AHBMT410B TA15/100 CL",
@@ -40172,54 +40297,6 @@
         "quantity": 15,
         "ordered_quantity": null,
         "price": 198000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "finish-line-bike-wash-1-liter",
-    "brand": "FINISH LINE",
-    "model_name": "BIKE WASH 1 LITER",
-    "category": "LUBRICANT/MAINTENANCE",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 228000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 500011,
-        "quantity": 5,
-        "ordered_quantity": null,
-        "price": 228000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "finish-line-fiber-grip-1-75-oz-tube",
-    "brand": "FINISH LINE",
-    "model_name": "FIBER GRIP 1.75 OZ TUBE",
-    "category": "LUBRICANT/MAINTENANCE",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 168000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 701018,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 168000
       }
     ],
     "colors": [],
