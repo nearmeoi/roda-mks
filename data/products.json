@@ -30658,6 +30658,40 @@
     "matched": true
   },
   {
+    "id": "others-repair-plugs-sheet-1x10pcs",
+    "brand": "OTHERS",
+    "model_name": "REPAIR PLUGS SHEET",
+    "category": "TOOLS",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 19000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 737253,
+        "quantity": 20,
+        "ordered_quantity": null,
+        "price": 19000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/737253.jpg",
+      "https://media.rodalink.com/catalog/product/7/3/737253_4.jpg",
+      "https://media.rodalink.com/catalog/product/7/3/737253_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Rodalink",
+      "What's in the box": "10 x Tubi Tire Repair Plugs",
+      "Type": "Others",
+      "Length": "10 cm",
+      "Width": "3.5 mm"
+    },
+    "matched": true
+  },
+  {
     "id": "polygon-tool-for-cassette-sprocket",
     "brand": "POLYGON",
     "model_name": "TOOL FOR CASSETTE SPROCKET",
@@ -36201,6 +36235,78 @@
     "matched": true
   },
   {
+    "id": "others-crank-arm-cover-b",
+    "brand": "OTHERS",
+    "model_name": "CRANK ARM COVER",
+    "category": "OTHER BIKE ACCESSORIES",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 14000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 737708,
+        "quantity": 10,
+        "ordered_quantity": null,
+        "price": 14000
+      }
+    ],
+    "colors": [
+      "Blue",
+      "Black",
+      "Red"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01631.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01631_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Rodalink",
+      "What's in the box": "1 x Rodalink Crank Arm Cover",
+      "Material": "Plastic",
+      "Genre": "MTB, Road, City & Touring, BMX"
+    },
+    "matched": true
+  },
+  {
+    "id": "others-crank-arm-cover-l",
+    "brand": "OTHERS",
+    "model_name": "CRANK ARM COVER",
+    "category": "OTHER BIKE ACCESSORIES",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 14000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 737710,
+        "quantity": 10,
+        "ordered_quantity": null,
+        "price": 14000
+      }
+    ],
+    "colors": [
+      "Blue",
+      "Black",
+      "Red"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01631.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01631_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Rodalink",
+      "What's in the box": "1 x Rodalink Crank Arm Cover",
+      "Material": "Plastic",
+      "Genre": "MTB, Road, City & Touring, BMX"
+    },
+    "matched": true
+  },
+  {
     "id": "pro-pro-handlebar-gel-pads",
     "brand": "PRO",
     "model_name": "PRO HANDLEBAR GEL PADS",
@@ -40491,30 +40597,6 @@
     "matched": false
   },
   {
-    "id": "others-repair-plugs-sheet-1x10pcs",
-    "brand": "OTHERS",
-    "model_name": "REPAIR PLUGS SHEET",
-    "category": "TOOLS",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 19000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 737253,
-        "quantity": 20,
-        "ordered_quantity": null,
-        "price": 19000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "elite-trainer-rivo-zwift-cog",
     "brand": "ELITE",
     "model_name": "TRAINER RIVO ZWIFT COG",
@@ -41779,54 +41861,6 @@
         "quantity": 6,
         "ordered_quantity": null,
         "price": null
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "others-crank-arm-cover-b",
-    "brand": "OTHERS",
-    "model_name": "CRANK ARM COVER",
-    "category": "OTHER BIKE ACCESSORIES",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 14000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 737708,
-        "quantity": 10,
-        "ordered_quantity": null,
-        "price": 14000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "others-crank-arm-cover-l",
-    "brand": "OTHERS",
-    "model_name": "CRANK ARM COVER",
-    "category": "OTHER BIKE ACCESSORIES",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 14000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 737710,
-        "quantity": 10,
-        "ordered_quantity": null,
-        "price": 14000
       }
     ],
     "colors": [],
