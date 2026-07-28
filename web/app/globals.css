@@ -53,6 +53,15 @@ input::placeholder {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /*
  * backdrop-filter is applied via Tailwind's own backdrop-blur-* / backdrop-saturate-*
  * utility classes in JSX, not here: Tailwind v4's Lightning CSS build strips a

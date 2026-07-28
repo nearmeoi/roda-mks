@@ -1,4 +1,4 @@
-import type { ProductSize } from "./types";
+import type { Product, ProductSize } from "./types";
 
 export function formatPrice(price: number | null): string {
   if (price === null) return "Hubungi toko";
@@ -76,4 +76,10 @@ export function getStockStatus(qty: number): StockStatus {
   if (qty <= 0) return { label: "Habis", dotColor: "oklch(58% 0.22 25)" };
   if (qty < 5) return { label: "Terbatas", dotColor: "oklch(75% 0.16 80)" };
   return { label: "Tersedia", dotColor: "oklch(64% 0.17 145)" };
+}
+
+export function getColorDisplay(product: Pick<Product, "colors" | "color_label">): string | null {
+  if (product.colors && product.colors.length > 0) return product.colors.map(titleCase).join(", ");
+  if (product.color_label) return titleCase(product.color_label);
+  return null;
 }
