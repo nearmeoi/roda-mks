@@ -9448,6 +9448,42 @@
     "matched": true
   },
   {
+    "id": "shimano-bb-ebbun300b22x-68x122-5-square",
+    "brand": "SHIMANO",
+    "model_name": "BB EBBUN300B22X 68X122.5 SQUARE",
+    "category": "BB SET AND PART OF BB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 168000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 733387,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 168000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01840.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Tourney EBB-UN300 Square Bottom Bracket",
+      "Material": "Aluminum",
+      "Technology": "Cartridge Bottom Bracket",
+      "Shimano Series": "Tourney",
+      "Product Series": "EBB-UN300",
+      "BB Shell Width": "68 mm",
+      "Genre": "MTB, City & Touring",
+      "Opsi": "Standard, E-type, chain case"
+    },
+    "matched": true
+  },
+  {
     "id": "shimano-bb-parts-ibbmt801b-bsa",
     "brand": "SHIMANO",
     "model_name": "BB PARTS IBBMT801B BSA",
@@ -9484,6 +9520,44 @@
       "Genre": "MTB",
       "Weight": "84 gr",
       "Direkomendasikan Untuk": "XT FC-M8100, FC-M8120, FC-M8130SLX FC-M7100, FC-M7120, FC-M7130XT FC-M8000CUES FC-U8000FC-MT700, FC-MT600XT FC-T8000"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-chain-icnhg60111126q-11sp-126",
+    "brand": "SHIMANO",
+    "model_name": "CHAIN ICNHG60111126Q 11SP",
+    "category": "CHAIN & PART OF CHAIN",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": "11 Speed",
+    "color_label": null,
+    "price": 328000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 732076001,
+        "quantity": 5,
+        "ordered_quantity": null,
+        "price": 328000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/732076001.jpg",
+      "https://media.rodalink.com/catalog/product/7/3/732076001_2.jpg",
+      "https://media.rodalink.com/catalog/product/7/3/732076001_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano 105 CN-HG6011 11 Speed Chain",
+      "Material": "Steel",
+      "Technology": "SIL-TEC, HG-X11",
+      "Shimano Series": "105",
+      "Link": "126 Links",
+      "Speed": "11 Speed",
+      "Genre": "Road",
+      "Weight": "311 gr"
     },
     "matched": true
   },
@@ -11477,6 +11551,120 @@
     "matched": true
   },
   {
+    "id": "cycliste-h-bar-hbc01-31-8x360mm-75-125-compact-b",
+    "brand": "CYCLISTE",
+    "model_name": "H.BAR HBC01 31.8X360MM 75/125 COMPACT",
+    "category": "HANDLEBAR",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 198000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 742431,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 198000
+      }
+    ],
+    "colors": [
+      "Black Red",
+      "Black White"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01849.jpg"
+    ],
+    "specs": {
+      "Brand": "Cycliste",
+      "What's in the box": "1 x Cycliste 31.8 mm Handlebar",
+      "Material": "AL 6061-T6 butted",
+      "Technology": "Back sweep: 9",
+      "Type": "Rise Bar",
+      "Handlebar Length": "800 mm",
+      "Color": "Black White",
+      "Genre": "MTB"
+    },
+    "matched": true
+  },
+  {
+    "id": "cycliste-h-bar-hbc01-31-8x380mm-75-125-compact-b",
+    "brand": "CYCLISTE",
+    "model_name": "H.BAR HBC01 31.8X380MM 75/125 COMPACT",
+    "category": "HANDLEBAR",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 198000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 742432,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 198000
+      }
+    ],
+    "colors": [
+      "Black Red",
+      "Black White"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01849.jpg"
+    ],
+    "specs": {
+      "Brand": "Cycliste",
+      "What's in the box": "1 x Cycliste 31.8 mm Handlebar",
+      "Material": "AL 6061-T6 butted",
+      "Technology": "Back sweep: 9",
+      "Type": "Rise Bar",
+      "Handlebar Length": "800 mm",
+      "Color": "Black White",
+      "Genre": "MTB"
+    },
+    "matched": true
+  },
+  {
+    "id": "cycliste-h-bar-hbc01-31-8x400mm-75-125-compact-b",
+    "brand": "CYCLISTE",
+    "model_name": "H.BAR HBC01 31.8X400MM 75/125 COMPACT",
+    "category": "HANDLEBAR",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 198000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 742433,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 198000
+      }
+    ],
+    "colors": [
+      "Black Red",
+      "Black White"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01849.jpg"
+    ],
+    "specs": {
+      "Brand": "Cycliste",
+      "What's in the box": "1 x Cycliste 31.8 mm Handlebar",
+      "Material": "AL 6061-T6 butted",
+      "Technology": "Back sweep: 9",
+      "Type": "Rise Bar",
+      "Handlebar Length": "800 mm",
+      "Color": "Black White",
+      "Genre": "MTB"
+    },
+    "matched": true
+  },
+  {
     "id": "pro-h-bar-vibe-aero-s-light-comp-42cm-31-8mm",
     "brand": "PRO",
     "model_name": "H.BAR VIBE AERO S.LIGHT COMP 42CM/31.8MM",
@@ -11978,6 +12166,47 @@
     "matched": true
   },
   {
+    "id": "cateye-bell-pb1000-p",
+    "brand": "CATEYE",
+    "model_name": "BELL PB1000",
+    "category": "BELL",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 74000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 500365007,
+        "quantity": 13,
+        "ordered_quantity": null,
+        "price": 74000
+      }
+    ],
+    "colors": [
+      "Gold",
+      "Light Blue",
+      "Light Green",
+      "Pink",
+      "Purple",
+      "Black",
+      "Yellow"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/500365.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-3.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-1.jpg"
+    ],
+    "specs": {
+      "Brand": "Cateye",
+      "What's in the box": "1 x Cat Eye Bell Wind PB1000",
+      "Material": "Aluminium",
+      "Weight": "47 gr"
+    },
+    "matched": true
+  },
+  {
     "id": "cycliste-r-light-ce-30bs-brake-sensor-colorful-0",
     "brand": "CYCLISTE",
     "model_name": "R.LIGHT CE-30BS BRAKE SENSOR COLORFUL",
@@ -12430,6 +12659,78 @@
       "BB Shell Width": "68-70 mm",
       "Genre": "Road, City & Touring",
       "Weight": "93 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-bb-ebbun300b17x-68x117-5-square",
+    "brand": "SHIMANO",
+    "model_name": "BB EBBUN300B17X 68X117.5 SQUARE",
+    "category": "BB SET AND PART OF BB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 168000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 742142,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 168000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01840.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Tourney EBB-UN300 Square Bottom Bracket",
+      "Material": "Aluminum",
+      "Technology": "Cartridge Bottom Bracket",
+      "Shimano Series": "Tourney",
+      "Product Series": "EBB-UN300",
+      "BB Shell Width": "68 mm",
+      "Genre": "MTB, City & Touring",
+      "Opsi": "Standard, E-type, chain case"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-bb-ebbun300kb27x-68x127-5-square-for-cc",
+    "brand": "SHIMANO",
+    "model_name": "BB EBBUN300KB27X 68X127.5 SQUARE FOR CC",
+    "category": "BB SET AND PART OF BB",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 168000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 742504,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 168000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01840.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Tourney EBB-UN300 Square Bottom Bracket",
+      "Material": "Aluminum",
+      "Technology": "Cartridge Bottom Bracket",
+      "Shimano Series": "Tourney",
+      "Product Series": "EBB-UN300",
+      "BB Shell Width": "68 mm",
+      "Genre": "MTB, City & Touring",
+      "Opsi": "Standard, E-type, chain case"
     },
     "matched": true
   },
@@ -13841,6 +14142,129 @@
       "Bar End Plug": "Included",
       "Length": "180 cm",
       "Weight": "80 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "cateye-bell-pb1000-1g",
+    "brand": "CATEYE",
+    "model_name": "BELL PB1000",
+    "category": "BELL",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 74000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 500365002,
+        "quantity": 20,
+        "ordered_quantity": null,
+        "price": 74000
+      }
+    ],
+    "colors": [
+      "Gold",
+      "Light Blue",
+      "Light Green",
+      "Pink",
+      "Purple",
+      "Black",
+      "Yellow"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/500365.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-3.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-1.jpg"
+    ],
+    "specs": {
+      "Brand": "Cateye",
+      "What's in the box": "1 x Cat Eye Bell Wind PB1000",
+      "Material": "Aluminium",
+      "Weight": "47 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "cateye-bell-pb1000-d",
+    "brand": "CATEYE",
+    "model_name": "BELL PB1000",
+    "category": "BELL",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 74000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 500365005,
+        "quantity": 20,
+        "ordered_quantity": null,
+        "price": 74000
+      }
+    ],
+    "colors": [
+      "Gold",
+      "Light Blue",
+      "Light Green",
+      "Pink",
+      "Purple",
+      "Black",
+      "Yellow"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/500365.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-3.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-1.jpg"
+    ],
+    "specs": {
+      "Brand": "Cateye",
+      "What's in the box": "1 x Cat Eye Bell Wind PB1000",
+      "Material": "Aluminium",
+      "Weight": "47 gr"
+    },
+    "matched": true
+  },
+  {
+    "id": "cateye-bell-pb1000-y",
+    "brand": "CATEYE",
+    "model_name": "BELL PB1000",
+    "category": "BELL",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Kuning",
+    "price": 74000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 500365008,
+        "quantity": 20,
+        "ordered_quantity": null,
+        "price": 74000
+      }
+    ],
+    "colors": [
+      "Gold",
+      "Light Blue",
+      "Light Green",
+      "Pink",
+      "Purple",
+      "Black",
+      "Yellow"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/5/0/500365.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-3.jpg",
+      "https://media.rodalink.com/catalog/product/5/0/500365-1.jpg"
+    ],
+    "specs": {
+      "Brand": "Cateye",
+      "What's in the box": "1 x Cat Eye Bell Wind PB1000",
+      "Material": "Aluminium",
+      "Weight": "47 gr"
     },
     "matched": true
   },
@@ -16213,6 +16637,55 @@
     "matched": true
   },
   {
+    "id": "topeak-tribag-tc9850b-w-rain-cover-large-b",
+    "brand": "TOPEAK",
+    "model_name": "TRIBAG TC9850B W/RAIN COVER LARGE",
+    "category": "SADDLE BAG",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Hitam",
+    "price": 298000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 725549001,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 298000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa00465_d1.jpg",
+      "https://media.rodalink.com/catalog/product/P/A/PA00465.jpg",
+      "https://media.rodalink.com/catalog/product/P/A/PA00465_1.jpg",
+      "https://media.rodalink.com/catalog/product/P/A/PA00465_2.jpg",
+      "https://media.rodalink.com/catalog/product/P/A/PA00465_3.jpg"
+    ],
+    "specs": {
+      "Brand": "Topeak",
+      "What's in the box": "1 x Topeak Tribag Top Tube Bag",
+      "Material": "600 denier Polyester (inner : Water Resistant 70 denier ripstop nylon)",
+      "Technology": "Water Resistant",
+      "Type": "Top Tube/Frame Bag",
+      "Waterproof / Water Resistant": "Water Resistant",
+      "Mounting": "Nylon Straps fit to 38-52 mm diameter top tube & 53-75 mm diameter head tube",
+      "Color": "Black",
+      "Genre": "MTB, Road, City & Touring, BMX",
+      "Length": "140 mm (M) / 180 mm (L)",
+      "Width": "102 mm (M/L)",
+      "Height": "40 mm (M/L)",
+      "Weight": "65 gr (M) / 80 gr (L)",
+      "Kapasitas Optimal 0.72L": "Cukup luas untuk menyimpansmartphonehingga 6 inci, dompet, kunci, dan nutrisi penting Anda. Semua kebutuhan esensial dalam satutas top tubeyang ringkas.",
+      "Kompartemen Terorganisir & Terlindungi": "Dilengkapi satu kompartemen utama berlapis busa untuk melindungi barang berharga seperti komputer sepeda atau sensor ANT+. Ditambah dua saku samping untuk akses cepat ke barang-barang kecil.",
+      "Pemasangan Sangat Stabil": "Sistemattachmentmenggunakanstrap nylonyang kuat dan dapat disesuaikan, memastikantas sepedaini terpasang erat padatop tube(diameter ø38 - ø52 mm) danhead tube(diameter ø53 - ø75 mm) tanpa goyang, bahk",
+      "Material Tahan Cuaca Ekstrem": "Terbuat dari 600 denierpolyesteryang tangguh di bagian luar dan lapisan dalam 70 denierripstop nylonyang tahan air, menjaga isitas sepeda tahan airAnda tetap kering dan aman dari segala cuaca.",
+      "Desain Ramping & Aerodinamis": "Bentuknya yangcompactdan aerodinamis tidak akan mengganggu gerakan mengayuh Anda, bahkan saat Anda melakukan sprint atau berdiri dari sadel. Tetap fokus pada performa Anda!"
+    },
+    "matched": true
+  },
+  {
     "id": "schwalbe-tire-rron-27-5x2-25-addix-p-f-tr-b",
     "brand": "SCHWALBE",
     "model_name": "TIRE RRON 27.5X2.25 ADDIX P",
@@ -16599,6 +17072,208 @@
       "Brand": "Polygon",
       "What's in the box": "1 x Polygon Cooper Bell",
       "Material": "Aluminum"
+    },
+    "matched": true
+  },
+  {
+    "id": "polisport-baby-carrier-joy-cr-2ee",
+    "brand": "POLISPORT",
+    "model_name": "BABY CARRIER JOY CR",
+    "category": "CARRIER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 898000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 727872,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 898000
+      }
+    ],
+    "colors": [
+      "Blue Yellow",
+      "Dark Gray",
+      "Gray Cream"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa013023.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_4.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_1.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_2.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_3.jpg"
+    ],
+    "specs": {
+      "Brand": "Polisport",
+      "What's in the box": "1 x Polisport Joy Bicycle Child Seat with Carrier Mounting",
+      "Technology": "3 Point Safety Harness, childproof safety buckle, extra security frame belt",
+      "Type": "Carrier Mounting",
+      "Carrier Wheel Size": "26\", 27.5\", 650B, 700C, 28\", 29\"",
+      "Carrier Position": "Rear",
+      "Mounting": "Carrier Mounting System",
+      "Clamp Diameter": "Fitting Luggage Carrier Tubes 10 to 16 mm",
+      "Max Weight": "9 to 22 kg",
+      "Security Standards": "EN 14344",
+      "Length": "390 mm",
+      "Width": "400 mm",
+      "Height": "780 mm",
+      "Sistem Pengaman 3-Point Canggih": "Harness keselamatan 3-point yang dapat disesuaikan (dengan 2 pilihan ketinggian) danbuckle anti-anakmemastikan si kecil aman terkunci di setiap perjalanan, memberikan ketenangan pikiran bagi orang tua",
+      "Desain Ergonomis & Ventilasi Optimal": "Bentuk ergonomis yang kompatibel dengan helm, memiliki bukaan ventilasi pada sandaran untuk kenyamanan optimal, serta dilengkapi perlindungan samping yang ditingkatkan dan bentuk sandaran tangan untuk",
+      "Footrest Adjustable 4 Posisi": "Footrest dapat diatur dalam 4 posisi, menyesuaikan pertumbuhan anak dan secara efektif mencegah kontak kaki dengan roda sepeda, menjamin keamanan ekstra.",
+      "Kapasitas & Pemasangan Fleksibel": "Ideal untuk anak dengan berat 9-22 kg,kursi anak sepedaini dipasang pada carrier belakang (lebar 120-175mm, diameter 10-16mm), kompatibel dengan sepeda roda 26'' hingga 29'' dan E-Bike.",
+      "Standar Keamanan Eropa & Visibilitas Tambahan": "Telah memenuhi standar keamanan Eropa TÜV GS - EN 14344, memberikan jaminan kualitas dan ketenangan pikiran. Dilengkapi juga dengan stiker reflektif belakang untuk visibilitas tambahan, terutama saat "
+    },
+    "matched": true
+  },
+  {
+    "id": "polisport-baby-carrier-joy-cr-ly",
+    "brand": "POLISPORT",
+    "model_name": "BABY CARRIER JOY CR",
+    "category": "CARRIER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 898000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 727874,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 898000
+      }
+    ],
+    "colors": [
+      "Blue Yellow",
+      "Dark Gray",
+      "Gray Cream"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa013023.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_4.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_1.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_2.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_3.jpg"
+    ],
+    "specs": {
+      "Brand": "Polisport",
+      "What's in the box": "1 x Polisport Joy Bicycle Child Seat with Carrier Mounting",
+      "Technology": "3 Point Safety Harness, childproof safety buckle, extra security frame belt",
+      "Type": "Carrier Mounting",
+      "Carrier Wheel Size": "26\", 27.5\", 650B, 700C, 28\", 29\"",
+      "Carrier Position": "Rear",
+      "Mounting": "Carrier Mounting System",
+      "Clamp Diameter": "Fitting Luggage Carrier Tubes 10 to 16 mm",
+      "Max Weight": "9 to 22 kg",
+      "Security Standards": "EN 14344",
+      "Length": "390 mm",
+      "Width": "400 mm",
+      "Height": "780 mm",
+      "Sistem Pengaman 3-Point Canggih": "Harness keselamatan 3-point yang dapat disesuaikan (dengan 2 pilihan ketinggian) danbuckle anti-anakmemastikan si kecil aman terkunci di setiap perjalanan, memberikan ketenangan pikiran bagi orang tua",
+      "Desain Ergonomis & Ventilasi Optimal": "Bentuk ergonomis yang kompatibel dengan helm, memiliki bukaan ventilasi pada sandaran untuk kenyamanan optimal, serta dilengkapi perlindungan samping yang ditingkatkan dan bentuk sandaran tangan untuk",
+      "Footrest Adjustable 4 Posisi": "Footrest dapat diatur dalam 4 posisi, menyesuaikan pertumbuhan anak dan secara efektif mencegah kontak kaki dengan roda sepeda, menjamin keamanan ekstra.",
+      "Kapasitas & Pemasangan Fleksibel": "Ideal untuk anak dengan berat 9-22 kg,kursi anak sepedaini dipasang pada carrier belakang (lebar 120-175mm, diameter 10-16mm), kompatibel dengan sepeda roda 26'' hingga 29'' dan E-Bike.",
+      "Standar Keamanan Eropa & Visibilitas Tambahan": "Telah memenuhi standar keamanan Eropa TÜV GS - EN 14344, memberikan jaminan kualitas dan ketenangan pikiran. Dilengkapi juga dengan stiker reflektif belakang untuk visibilitas tambahan, terutama saat "
+    },
+    "matched": true
+  },
+  {
+    "id": "polisport-baby-carrier-joy-frm-ly",
+    "brand": "POLISPORT",
+    "model_name": "BABY CARRIER JOY FRM",
+    "category": "CARRIER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 898000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 727877,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 898000
+      }
+    ],
+    "colors": [
+      "Blue Yellow",
+      "Cream",
+      "Dark Gray"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01283_d1.jpg",
+      "https://media.rodalink.com/catalog/product/P/A/PA01283.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01283_1.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01283_2.jpg"
+    ],
+    "specs": {
+      "Brand": "Polisport",
+      "What's in the box": "1 x Polisport Joy Bicycle Child Seat with Frame Mounting",
+      "Technology": "4 Point Safety Harness,reduce air friction,Compliant with TV GS - EN 14344",
+      "Type": "Frame Mounting",
+      "Carrier Wheel Size": "26\", 27.5\", 650B, 700C, 28\"",
+      "Carrier Position": "Rear",
+      "Mounting": "Clamp",
+      "Clamp Diameter": "10 to 16mm",
+      "Max Weight": "10 -22 kg",
+      "Security Standards": "EN 14344",
+      "Length": "465 mm",
+      "Width": "395 mm",
+      "Height": "745 mm",
+      "Pemasangan di frame belakangsepeda, cocok untuk tabung bulat dan oval berdiameter 28-40mm.Penting": "Tidak kompatibel dengan frame berbentuk persegi, segitiga, atau serat karbon, serta sepeda dengan suspensi belakang."
+    },
+    "matched": true
+  },
+  {
+    "id": "polisport-child-bike-seat-joy-ff-cream-dark-grey",
+    "brand": "POLISPORT",
+    "model_name": "CHILD BIKE SEAT JOY FF CREAM/DARK GREY",
+    "category": "CARRIER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": "Krim/Abu-abu",
+    "price": 898000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 728644,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 898000
+      }
+    ],
+    "colors": [
+      "Blue Yellow",
+      "Cream",
+      "Dark Gray"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01283_d1.jpg",
+      "https://media.rodalink.com/catalog/product/P/A/PA01283.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01283_1.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01283_2.jpg"
+    ],
+    "specs": {
+      "Brand": "Polisport",
+      "What's in the box": "1 x Polisport Joy Bicycle Child Seat with Frame Mounting",
+      "Technology": "4 Point Safety Harness,reduce air friction,Compliant with TV GS - EN 14344",
+      "Type": "Frame Mounting",
+      "Carrier Wheel Size": "26\", 27.5\", 650B, 700C, 28\"",
+      "Carrier Position": "Rear",
+      "Mounting": "Clamp",
+      "Clamp Diameter": "10 to 16mm",
+      "Max Weight": "10 -22 kg",
+      "Security Standards": "EN 14344",
+      "Length": "465 mm",
+      "Width": "395 mm",
+      "Height": "745 mm",
+      "Pemasangan di frame belakangsepeda, cocok untuk tabung bulat dan oval berdiameter 28-40mm.Penting": "Tidak kompatibel dengan frame berbentuk persegi, segitiga, atau serat karbon, serta sepeda dengan suspensi belakang."
     },
     "matched": true
   },
@@ -17907,6 +18582,70 @@
       "Sistem kompatibel": "Shimano E-Tube system",
       "Konektivitas": "Connection of SD300 based STEPS and Di2 components",
       "Diameter plug": "6.9 x 11.5 mm"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-electric-wire-iewsd300il035-350mm",
+    "brand": "SHIMANO",
+    "model_name": "ELECTRIC WIRE IEWSD300IL035 350MM",
+    "category": "SHIFT WIRE/CASING",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 378000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 733878,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 378000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01463.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Di2 IEW-SD300-I Electric Wire",
+      "Technology": "E-TUBE system",
+      "Type": "Shifter",
+      "Diameter": "2.4 mm (cord) / 3.45 mm (plug)"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-electric-wire-iewsd300il160-1600mm",
+    "brand": "SHIMANO",
+    "model_name": "ELECTRIC WIRE IEWSD300IL160 1600MM",
+    "category": "SHIFT WIRE/CASING",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 428000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 733881,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 428000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01463.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Di2 IEW-SD300-I Electric Wire",
+      "Technology": "E-TUBE system",
+      "Type": "Shifter",
+      "Diameter": "2.4 mm (cord) / 3.45 mm (plug)"
     },
     "matched": true
   },
@@ -28260,6 +28999,42 @@
     "matched": true
   },
   {
+    "id": "elite-bottle-fly-y-ef-education-wk",
+    "brand": "ELITE",
+    "model_name": "BOTTLE FLY Y EF EDUCATION",
+    "category": "BOTTLE",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 148000,
+    "sizes": [
+      {
+        "size_code": "550 ML",
+        "article_code": 741003002,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 148000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/4/741003002.jpg"
+    ],
+    "specs": {
+      "Brand": "Elite",
+      "What's in the box": "1 x Elite Fly Team EF Pro Cycling Cannondale 550 ml Bottle",
+      "Material": "High quality plastic",
+      "Technology": "Bpa-Free & 100% Recyclable",
+      "Nozzle": "Ergonomically designed cap with a push-pull valve",
+      "Volume": "550 ml",
+      "Diameter": "74 mm",
+      "Color": "White Pink",
+      "Weight": "51 gr"
+    },
+    "matched": true
+  },
+  {
     "id": "elite-bottle-fly-team-y-cofidis-w",
     "brand": "ELITE",
     "model_name": "BOTTLE FLY TEAM Y COFIDIS",
@@ -29172,6 +29947,126 @@
       "Brake Type": "Hydraulic Disc Brake",
       "Color": "Black",
       "Genre": "MTB, City & Touring"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-f-wheel-tney-tz-emftz5007428-7sp-14-28t",
+    "brand": "SHIMANO",
+    "model_name": "F.WHEEL TNEY TZ EMFTZ5007428 7SP 14-28T",
+    "category": "SPROCKET FREEWHEEL",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": "7 Speed",
+    "color_label": null,
+    "price": 118000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 735493,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 118000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/735493.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Tourney EMF-TZ500 3x7 Speed Freewheel",
+      "Material": "Titanium",
+      "Technology": "Hyperglide, Megarange",
+      "Shimano Series": "Tourney",
+      "Product Series": "TZ500",
+      "Teeth": "14-28T",
+      "Speed": "3x7 Speed",
+      "Genre": "MTB, City & Touring",
+      "Cocok dengan rantai": "HG 8/7/6-speed",
+      "Kombinasi": "14-28T:14-16-18-20-22-24-28T14-34T:14-16-18-20-22-24-34T",
+      "14-28T": "14-16-18-20-22-24-28T",
+      "14-34T": "14-16-18-20-22-24-34T"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-f-wheel-tney-tz-emftz5007434-7sp-14-34t",
+    "brand": "SHIMANO",
+    "model_name": "F.WHEEL TNEY TZ EMFTZ5007434 7SP 14-34T",
+    "category": "SPROCKET FREEWHEEL",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": "7 Speed",
+    "color_label": null,
+    "price": 148000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 735494,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 148000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/735493.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Tourney EMF-TZ500 3x7 Speed Freewheel",
+      "Material": "Titanium",
+      "Technology": "Hyperglide, Megarange",
+      "Shimano Series": "Tourney",
+      "Product Series": "TZ500",
+      "Teeth": "14-28T",
+      "Speed": "3x7 Speed",
+      "Genre": "MTB, City & Touring",
+      "Cocok dengan rantai": "HG 8/7/6-speed",
+      "Kombinasi": "14-28T:14-16-18-20-22-24-28T14-34T:14-16-18-20-22-24-34T",
+      "14-28T": "14-16-18-20-22-24-28T",
+      "14-34T": "14-16-18-20-22-24-34T"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-f-wheel-tney-tz-emftz5107434-7sp-14-34t",
+    "brand": "SHIMANO",
+    "model_name": "F.WHEEL TNEY TZ EMFTZ5107434 7SP 14-34T",
+    "category": "SPROCKET FREEWHEEL",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": "7 Speed",
+    "color_label": null,
+    "price": 158000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 736442,
+        "quantity": 3,
+        "ordered_quantity": null,
+        "price": 158000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/7/3/735493.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Tourney EMF-TZ500 3x7 Speed Freewheel",
+      "Material": "Titanium",
+      "Technology": "Hyperglide, Megarange",
+      "Shimano Series": "Tourney",
+      "Product Series": "TZ500",
+      "Teeth": "14-28T",
+      "Speed": "3x7 Speed",
+      "Genre": "MTB, City & Touring",
+      "Cocok dengan rantai": "HG 8/7/6-speed",
+      "Kombinasi": "14-28T:14-16-18-20-22-24-28T14-34T:14-16-18-20-22-24-34T",
+      "14-28T": "14-16-18-20-22-24-28T",
+      "14-34T": "14-16-18-20-22-24-34T"
     },
     "matched": true
   },
@@ -30932,6 +31827,103 @@
       "Type": "Wired",
       "Color": "Black",
       "Width": "1.375 Inch"
+    },
+    "matched": true
+  },
+  {
+    "id": "schwalbe-tube-20x1-50-2-00-40mm-fv-sv7",
+    "brand": "SCHWALBE",
+    "model_name": "TUBE 20X1.50-2.00 40MM FV/SV7",
+    "category": "TUBE",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": "20X1.50",
+    "color_label": null,
+    "price": 99000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 703165,
+        "quantity": 8,
+        "ordered_quantity": null,
+        "price": 99000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa00329_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Schwalbe",
+      "What's in the box": "1 x Schwalbe 20 Tube",
+      "Material": "High Quality Rubber",
+      "Technology": "Schwalbe Airtightness Technology",
+      "Color": "Black"
+    },
+    "matched": true
+  },
+  {
+    "id": "schwalbe-tube-700x18-25-extralight-80mm-fv-sv20",
+    "brand": "SCHWALBE",
+    "model_name": "TUBE 700X18-25 EXTRALIGHT 80MM FV/SV20",
+    "category": "TUBE",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": "700X18",
+    "color_label": null,
+    "price": 158000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 703223,
+        "quantity": 10,
+        "ordered_quantity": null,
+        "price": 158000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/P/A/PA00332.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa00332.jpg"
+    ],
+    "specs": {
+      "Brand": "Schwalbe",
+      "What's in the box": "1 x Schwalbe Extralight Tube",
+      "Material": "High Quality Rubber",
+      "Technology": "Schwalbe Airtightness Technology",
+      "Color": "Black"
+    },
+    "matched": true
+  },
+  {
+    "id": "schwalbe-tube-20x1-125-1-50-40mm-fv-sv6",
+    "brand": "SCHWALBE",
+    "model_name": "TUBE 20X1.125-1.50 40MM FV/SV6",
+    "category": "TUBE",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 99000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 708255,
+        "quantity": 6,
+        "ordered_quantity": null,
+        "price": 99000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa00329_1.jpg"
+    ],
+    "specs": {
+      "Brand": "Schwalbe",
+      "What's in the box": "1 x Schwalbe 20 Tube",
+      "Material": "High Quality Rubber",
+      "Technology": "Schwalbe Airtightness Technology",
+      "Color": "Black"
     },
     "matched": true
   },
@@ -33600,6 +34592,59 @@
     "matched": true
   },
   {
+    "id": "polisport-baby-carrier-joy-cr-me",
+    "brand": "POLISPORT",
+    "model_name": "BABY CARRIER JOY CR",
+    "category": "CARRIER",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 898000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 741789,
+        "quantity": 2,
+        "ordered_quantity": null,
+        "price": 898000
+      }
+    ],
+    "colors": [
+      "Blue Yellow",
+      "Dark Gray",
+      "Gray Cream"
+    ],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa013023.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_4.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_1.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_2.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01302_3.jpg"
+    ],
+    "specs": {
+      "Brand": "Polisport",
+      "What's in the box": "1 x Polisport Joy Bicycle Child Seat with Carrier Mounting",
+      "Technology": "3 Point Safety Harness, childproof safety buckle, extra security frame belt",
+      "Type": "Carrier Mounting",
+      "Carrier Wheel Size": "26\", 27.5\", 650B, 700C, 28\", 29\"",
+      "Carrier Position": "Rear",
+      "Mounting": "Carrier Mounting System",
+      "Clamp Diameter": "Fitting Luggage Carrier Tubes 10 to 16 mm",
+      "Max Weight": "9 to 22 kg",
+      "Security Standards": "EN 14344",
+      "Length": "390 mm",
+      "Width": "400 mm",
+      "Height": "780 mm",
+      "Sistem Pengaman 3-Point Canggih": "Harness keselamatan 3-point yang dapat disesuaikan (dengan 2 pilihan ketinggian) danbuckle anti-anakmemastikan si kecil aman terkunci di setiap perjalanan, memberikan ketenangan pikiran bagi orang tua",
+      "Desain Ergonomis & Ventilasi Optimal": "Bentuk ergonomis yang kompatibel dengan helm, memiliki bukaan ventilasi pada sandaran untuk kenyamanan optimal, serta dilengkapi perlindungan samping yang ditingkatkan dan bentuk sandaran tangan untuk",
+      "Footrest Adjustable 4 Posisi": "Footrest dapat diatur dalam 4 posisi, menyesuaikan pertumbuhan anak dan secara efektif mencegah kontak kaki dengan roda sepeda, menjamin keamanan ekstra.",
+      "Kapasitas & Pemasangan Fleksibel": "Ideal untuk anak dengan berat 9-22 kg,kursi anak sepedaini dipasang pada carrier belakang (lebar 120-175mm, diameter 10-16mm), kompatibel dengan sepeda roda 26'' hingga 29'' dan E-Bike.",
+      "Standar Keamanan Eropa & Visibilitas Tambahan": "Telah memenuhi standar keamanan Eropa TÜV GS - EN 14344, memberikan jaminan kualitas dan ketenangan pikiran. Dilengkapi juga dengan stiker reflektif belakang untuk visibilitas tambahan, terutama saat "
+    },
+    "matched": true
+  },
+  {
     "id": "polygon-chain-9-sp-126",
     "brand": "POLYGON",
     "model_name": "CHAIN 9-SP",
@@ -34091,6 +35136,59 @@
       "COMPATIBLE MODEL": "FC-R9200, FC-R9200-P",
       "COMPATIBLE SERIES": "DURA-ACE R9200 Series",
       "MODEL NO": "WP-Y0MZ36000; WP-Y0MZ98010; WP-Y0MZ98020; WP-Y0MZ98030"
+    },
+    "matched": true
+  },
+  {
+    "id": "shimano-fc-da-ifcr9200pcx26f-52-36x170-pw-w-o-bb",
+    "brand": "SHIMANO",
+    "model_name": "FC DA IFCR9200PCX26F 52/36X170 PW W/O BB",
+    "category": "CHAINWHEEL AND PARTS",
+    "warehouse": "Outlet",
+    "variant_extra": null,
+    "wheel_size": null,
+    "color_label": null,
+    "price": 16480000,
+    "sizes": [
+      {
+        "size_code": null,
+        "article_code": 737455,
+        "quantity": 1,
+        "ordered_quantity": null,
+        "price": 16480000
+      }
+    ],
+    "colors": [],
+    "images": [
+      "https://media.rodalink.com/catalog/product/p/a/pa01611.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01611_7.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01611_1.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01611_2.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01611_3.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01611_4.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01611_5.jpg",
+      "https://media.rodalink.com/catalog/product/p/a/pa01611_6.jpg"
+    ],
+    "specs": {
+      "Brand": "Shimano",
+      "What's in the box": "1 x Shimano Dura-Ace IFC-R9200-P Power Meter 2x12 Speed Crankset",
+      "Material": "Aluminum",
+      "Technology": "SHIMANO POWER METER, HOLLOWGLIDE, HOLLOWTECH II",
+      "Shimano Series": "Dura-Ace",
+      "Product Series": "R9200",
+      "Circle Diameter": "110 mm",
+      "Chainline": "43.5 mm",
+      "Genre": "Road",
+      "Weight": "745 gr (50-34T),752 gr (52-36T),774 gr (54-40T)",
+      "Pengukuran daya": "di kedua sisi (1x sensor di crank arm kiri dan 1x sensor di crank arm kanan)",
+      "Power range": "0 to 2500 watts",
+      "Accuracy": "<1.5%",
+      "Transmission protocol": "ANT+ | Bluetooth",
+      "Battery": "Lithium-ion battery (rechargeable with EW-EC300 charging cable)",
+      "Battery life": "up to 300 hours",
+      "Waterproof": "yes",
+      "Compatibility bottom bracket": "BSA, ITA, BB30, BB92 etc. (optional, not included)",
+      "Compatibility chains": "Shimano CN-M9100 12-speed , CN-M8100 12-speed"
     },
     "matched": true
   },
@@ -36930,54 +38028,6 @@
     "matched": false
   },
   {
-    "id": "shimano-bb-ebbun300b22x-68x122-5-square",
-    "brand": "SHIMANO",
-    "model_name": "BB EBBUN300B22X 68X122.5 SQUARE",
-    "category": "BB SET AND PART OF BB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 168000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 733387,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 168000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-chain-icnhg60111126q-11sp-126",
-    "brand": "SHIMANO",
-    "model_name": "CHAIN ICNHG60111126Q 11SP",
-    "category": "CHAIN & PART OF CHAIN",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": "11 Speed",
-    "color_label": null,
-    "price": 328000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 732076001,
-        "quantity": 5,
-        "ordered_quantity": null,
-        "price": 328000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-chain-icnm6100126q-12sp-126",
     "brand": "SHIMANO",
     "model_name": "CHAIN ICNM6100126Q 12SP",
@@ -37266,78 +38316,6 @@
     "matched": false
   },
   {
-    "id": "cycliste-h-bar-hbc01-31-8x360mm-75-125-compact-b",
-    "brand": "CYCLISTE",
-    "model_name": "H.BAR HBC01 31.8X360MM 75/125 COMPACT",
-    "category": "HANDLEBAR",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 198000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 742431,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 198000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "cycliste-h-bar-hbc01-31-8x380mm-75-125-compact-b",
-    "brand": "CYCLISTE",
-    "model_name": "H.BAR HBC01 31.8X380MM 75/125 COMPACT",
-    "category": "HANDLEBAR",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 198000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 742432,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 198000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "cycliste-h-bar-hbc01-31-8x400mm-75-125-compact-b",
-    "brand": "CYCLISTE",
-    "model_name": "H.BAR HBC01 31.8X400MM 75/125 COMPACT",
-    "category": "HANDLEBAR",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 198000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 742433,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 198000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "others-h-bar-road-aero-f20-31-8x420mm-b",
     "brand": "OTHERS",
     "model_name": "H.BAR ROAD AERO F20 31.8X420MM",
@@ -37482,30 +38460,6 @@
     "matched": false
   },
   {
-    "id": "cateye-bell-pb1000-p",
-    "brand": "CATEYE",
-    "model_name": "BELL PB1000",
-    "category": "BELL",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 74000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 500365007,
-        "quantity": 13,
-        "ordered_quantity": null,
-        "price": 74000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "cycliste-brake-pads-bp01-sram-2-piston",
     "brand": "CYCLISTE",
     "model_name": "BRAKE PADS BP01 SRAM 2 PISTON",
@@ -37602,54 +38556,6 @@
     "matched": false
   },
   {
-    "id": "shimano-bb-ebbun300b17x-68x117-5-square",
-    "brand": "SHIMANO",
-    "model_name": "BB EBBUN300B17X 68X117.5 SQUARE",
-    "category": "BB SET AND PART OF BB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 168000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 742142,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 168000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-bb-ebbun300kb27x-68x127-5-square-for-cc",
-    "brand": "SHIMANO",
-    "model_name": "BB EBBUN300KB27X 68X127.5 SQUARE FOR CC",
-    "category": "BB SET AND PART OF BB",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 168000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 742504,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 168000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "others-bar-end-be-001-110mm-b",
     "brand": "OTHERS",
     "model_name": "BAR END BE-001 110MM",
@@ -37666,78 +38572,6 @@
         "quantity": 6,
         "ordered_quantity": null,
         "price": 59000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "cateye-bell-pb1000-1g",
-    "brand": "CATEYE",
-    "model_name": "BELL PB1000",
-    "category": "BELL",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 74000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 500365002,
-        "quantity": 20,
-        "ordered_quantity": null,
-        "price": 74000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "cateye-bell-pb1000-d",
-    "brand": "CATEYE",
-    "model_name": "BELL PB1000",
-    "category": "BELL",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 74000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 500365005,
-        "quantity": 20,
-        "ordered_quantity": null,
-        "price": 74000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "cateye-bell-pb1000-y",
-    "brand": "CATEYE",
-    "model_name": "BELL PB1000",
-    "category": "BELL",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Kuning",
-    "price": 74000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 500365008,
-        "quantity": 20,
-        "ordered_quantity": null,
-        "price": 74000
       }
     ],
     "colors": [],
@@ -37911,30 +38745,6 @@
     "matched": false
   },
   {
-    "id": "topeak-tribag-tc9850b-w-rain-cover-large-b",
-    "brand": "TOPEAK",
-    "model_name": "TRIBAG TC9850B W/RAIN COVER LARGE",
-    "category": "SADDLE BAG",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Hitam",
-    "price": 298000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 725549001,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 298000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-sp41-outer-black-y60098580-50m-b",
     "brand": "SHIMANO",
     "model_name": "SP41 OUTER BLACK Y60098580 50M",
@@ -38013,102 +38823,6 @@
         "quantity": 5,
         "ordered_quantity": null,
         "price": 138000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "polisport-baby-carrier-joy-cr-2ee",
-    "brand": "POLISPORT",
-    "model_name": "BABY CARRIER JOY CR",
-    "category": "CARRIER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 898000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 727872,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 898000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "polisport-baby-carrier-joy-cr-ly",
-    "brand": "POLISPORT",
-    "model_name": "BABY CARRIER JOY CR",
-    "category": "CARRIER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 898000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 727874,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 898000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "polisport-baby-carrier-joy-frm-ly",
-    "brand": "POLISPORT",
-    "model_name": "BABY CARRIER JOY FRM",
-    "category": "CARRIER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 898000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 727877,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 898000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "polisport-child-bike-seat-joy-ff-cream-dark-grey",
-    "brand": "POLISPORT",
-    "model_name": "CHILD BIKE SEAT JOY FF CREAM/DARK GREY",
-    "category": "CARRIER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": "Krim/Abu-abu",
-    "price": 898000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 728644,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 898000
       }
     ],
     "colors": [],
@@ -38299,30 +39013,6 @@
     "matched": false
   },
   {
-    "id": "shimano-electric-wire-iewsd300il035-350mm",
-    "brand": "SHIMANO",
-    "model_name": "ELECTRIC WIRE IEWSD300IL035 350MM",
-    "category": "SHIFT WIRE/CASING",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 378000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 733878,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 378000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-electric-wire-iewsd300il100-1000mm",
     "brand": "SHIMANO",
     "model_name": "ELECTRIC WIRE IEWSD300IL100 1000MM",
@@ -38339,30 +39029,6 @@
         "quantity": 2,
         "ordered_quantity": null,
         "price": 378000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-electric-wire-iewsd300il160-1600mm",
-    "brand": "SHIMANO",
-    "model_name": "ELECTRIC WIRE IEWSD300IL160 1600MM",
-    "category": "SHIFT WIRE/CASING",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 428000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 733881,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 428000
       }
     ],
     "colors": [],
@@ -39345,30 +40011,6 @@
     "matched": false
   },
   {
-    "id": "elite-bottle-fly-y-ef-education-wk",
-    "brand": "ELITE",
-    "model_name": "BOTTLE FLY Y EF EDUCATION",
-    "category": "BOTTLE",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 148000,
-    "sizes": [
-      {
-        "size_code": "550 ML",
-        "article_code": 741003002,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 148000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-d-brk-deore-emt4101jlfpra100-left-0",
     "brand": "SHIMANO",
     "model_name": "D.BRK DEORE EMT4101JLFPRA100 LEFT",
@@ -39729,78 +40371,6 @@
     "matched": false
   },
   {
-    "id": "shimano-f-wheel-tney-tz-emftz5007428-7sp-14-28t",
-    "brand": "SHIMANO",
-    "model_name": "F.WHEEL TNEY TZ EMFTZ5007428 7SP 14-28T",
-    "category": "SPROCKET FREEWHEEL",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": "7 Speed",
-    "color_label": null,
-    "price": 118000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 735493,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 118000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-f-wheel-tney-tz-emftz5007434-7sp-14-34t",
-    "brand": "SHIMANO",
-    "model_name": "F.WHEEL TNEY TZ EMFTZ5007434 7SP 14-34T",
-    "category": "SPROCKET FREEWHEEL",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": "7 Speed",
-    "color_label": null,
-    "price": 148000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 735494,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 148000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-f-wheel-tney-tz-emftz5107434-7sp-14-34t",
-    "brand": "SHIMANO",
-    "model_name": "F.WHEEL TNEY TZ EMFTZ5107434 7SP 14-34T",
-    "category": "SPROCKET FREEWHEEL",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": "7 Speed",
-    "color_label": null,
-    "price": 158000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 736442,
-        "quantity": 3,
-        "ordered_quantity": null,
-        "price": 158000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-cs-105-icshg71012136-11-36t-12sp",
     "brand": "SHIMANO",
     "model_name": "CS 105 ICSHG71012136 11-36T 12SP",
@@ -40033,78 +40603,6 @@
         "quantity": 20,
         "ordered_quantity": null,
         "price": 54000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "schwalbe-tube-20x1-50-2-00-40mm-fv-sv7",
-    "brand": "SCHWALBE",
-    "model_name": "TUBE 20X1.50-2.00 40MM FV/SV7",
-    "category": "TUBE",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": "20X1.50",
-    "color_label": null,
-    "price": 99000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 703165,
-        "quantity": 8,
-        "ordered_quantity": null,
-        "price": 99000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "schwalbe-tube-700x18-25-extralight-80mm-fv-sv20",
-    "brand": "SCHWALBE",
-    "model_name": "TUBE 700X18-25 EXTRALIGHT 80MM FV/SV20",
-    "category": "TUBE",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": "700X18",
-    "color_label": null,
-    "price": 158000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 703223,
-        "quantity": 10,
-        "ordered_quantity": null,
-        "price": 158000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "schwalbe-tube-20x1-125-1-50-40mm-fv-sv6",
-    "brand": "SCHWALBE",
-    "model_name": "TUBE 20X1.125-1.50 40MM FV/SV6",
-    "category": "TUBE",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 99000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 708255,
-        "quantity": 6,
-        "ordered_quantity": null,
-        "price": 99000
       }
     ],
     "colors": [],
@@ -40761,30 +41259,6 @@
     "matched": false
   },
   {
-    "id": "polisport-baby-carrier-joy-cr-me",
-    "brand": "POLISPORT",
-    "model_name": "BABY CARRIER JOY CR",
-    "category": "CARRIER",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 898000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 741789,
-        "quantity": 2,
-        "ordered_quantity": null,
-        "price": 898000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
     "id": "shimano-fc-tiagra-efc4700cx26-52-36x170-w-o-bb",
     "brand": "SHIMANO",
     "model_name": "FC TIAGRA EFC4700CX26 52/36X170 W/O BB",
@@ -41065,30 +41539,6 @@
         "quantity": 1,
         "ordered_quantity": null,
         "price": 1398000
-      }
-    ],
-    "colors": [],
-    "images": [],
-    "specs": {},
-    "matched": false
-  },
-  {
-    "id": "shimano-fc-da-ifcr9200pcx26f-52-36x170-pw-w-o-bb",
-    "brand": "SHIMANO",
-    "model_name": "FC DA IFCR9200PCX26F 52/36X170 PW W/O BB",
-    "category": "CHAINWHEEL AND PARTS",
-    "warehouse": "Outlet",
-    "variant_extra": null,
-    "wheel_size": null,
-    "color_label": null,
-    "price": 16480000,
-    "sizes": [
-      {
-        "size_code": null,
-        "article_code": 737455,
-        "quantity": 1,
-        "ordered_quantity": null,
-        "price": 16480000
       }
     ],
     "colors": [],
