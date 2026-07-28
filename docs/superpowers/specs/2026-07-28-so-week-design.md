@@ -4,121 +4,134 @@
 
 Roda Stock is currently read-only: it displays stock quantities sourced from a
 periodically-rebuilt Excel export, with no way to record anything back into
-the app. Staff have no way to verify that the recorded stock in the system
-actually matches what's physically on the shelf, and no lightweight way to
-flag when it doesn't.
+the app. Staff have no fast, phone-in-hand way to log a physical count while
+walking the shop.
 
 ## Goal
 
-Let one staff member, walking the shop with their phone, physically count
-products they check and immediately see whether that count matches the
-system's recorded stock — then review everything they've counted so far this
-week in one place, with mismatches surfaced first.
+Let one staff member, walking the shop with their phone, scan (or search)
+their way through products and log a physical count for each one as fast as
+possible — scan, type a number, scan the next thing — with a running list of
+everything counted so far this week to look back on.
 
-This is intentionally a minimal first version. No scheduling, no assignment
-of who counts what, no multi-user sync. It should feel like a small addition
-to the existing search/scan flow, not a separate app.
+This is intentionally a minimal first version, scoped down hard for speed
+and simplicity. It's a **counting log**, not a reconciliation tool: it does
+not look up or compare against system stock. See "Future extensions" for
+where discrepancy detection could go later.
 
 ## Non-goals (explicitly out of scope for v1)
 
+- **Comparing the count against system stock, or flagging mismatches.**
+  This was in an earlier draft of this spec and was deliberately dropped:
+  SO Week just records what was physically counted and when. No
+  system-quantity lookup, no match/mismatch calculation, no diff, anywhere
+  in the feature.
 - Multiple people counting simultaneously / shared or synced data across
   devices. Only one device does the counting.
 - A backend, database, or authentication. Counts live in the browser's
   local storage on the counting device.
 - A fixed/assigned count list ("count these 40 products this week"). Staff
-  count whatever they search or scan, opportunistically.
+  count whatever they scan or search, opportunistically.
 - Per-size/per-article-code counts. A count is one number for the whole
-  product (all sizes combined), compared against the product's total stock.
+  product (all sizes combined).
+- Any changes to the existing product detail page. Counting lives entirely
+  inside the new SO Week screen; the page staff reaches through normal
+  search is untouched.
 - Editable history across past weeks (viewing older weeks' results). Old
   data is not deleted, but v1 only surfaces the current week.
-- Notes/reasons attached to a discrepancy, or a "resolved" workflow for
-  investigated mismatches.
 
 ## Core workflow
 
-1. Staff finds a product the way they already do today — search or scan a
-   barcode — landing on the existing product detail page.
-2. A new "Hitung Fisik" (physical count) section on that page has a number
-   input and a save button.
-3. On save, the app compares the entered count against the product's current
-   total stock (`sum(sizes[].quantity)`) and shows immediate feedback:
-   - Match: "✅ Cocok" (green)
-   - Mismatch: "⚠️ Selisih: -2" / "+1" etc. (amber/red), showing the signed
-     difference (counted − system)
-4. Saving again for the same product *this week* overwrites the previous
-   entry (lets staff fix a typo without creating duplicate/confusing rows).
-5. A new "SO Week" entry point (icon/link from the home screen) opens a
-   summary screen listing every product counted this week: name, system
-   qty, counted qty, difference, and when it was counted. Mismatches sort to
-   the top; within each group (mismatches, then matches), most recently
-   counted first.
+1. **Entry point**: on the home screen, a floating pill button fixed at the
+   bottom (visually consistent with the app's existing "N Produk Dipilih"
+   compare bar) reads "SO Week · N dihitung" (N = count logged this week).
+   Tapping it opens the SO Week screen.
+2. **SO Week screen**: shows the running list of everything counted this
+   week — thumbnail, product name, time counted, quantity — most-recently
+   counted first. A floating scan button (bottom-right) opens the app's
+   existing `BarcodeScanner` component (same modal used elsewhere today, not
+   a new scanner); a small search field is also available for typing a name
+   or article code when scanning isn't practical (missing/damaged barcode,
+   faster to type a known code).
+3. **Scanning or picking a search result** slides up a bottom sheet, without
+   leaving the SO Week screen: product photo, brand/category badges, name,
+   article code, and color, plus a "Hitung fisik" number input and a "Simpan
+   & Scan Lagi" (Save & Scan Next) button.
+4. Saving closes the sheet, adds/updates the entry in the list behind it,
+   and the screen is immediately ready for the next scan — no navigation,
+   no back button, no page load in between items.
+5. Scanning or searching to a product already counted this week re-opens the
+   same sheet pre-filled with the existing count; saving overwrites that
+   entry rather than creating a duplicate (fixes a typo without cluttering
+   the list).
 
 ## Data model & storage
 
-Counts are stored in `localStorage`, keyed by ISO week (`so-week-counts-v1`
-holding an object keyed by product id), as:
+Counts are stored in `localStorage` (`so-week-counts-v1`, an object keyed by
+product id):
 
 ```ts
 interface StockCount {
   productId: string;
-  productName: string;       // denormalized so the report reads fine even
-                              // if the product dataset changes later
-  systemQty: number;         // snapshot of sum(sizes[].quantity) at count time
+  productName: string;   // denormalized so the list reads fine even if the
+                          // product dataset changes later
   countedQty: number;
-  difference: number;        // countedQty - systemQty
-  countedAt: string;         // ISO timestamp
+  countedAt: string;      // ISO timestamp
 }
 ```
 
-`systemQty` is snapshotted at count time rather than looked up live when
-displaying the report. The underlying `products.json` gets rebuilt
-periodically by the existing Python pipeline — if the report recomputed the
-system quantity live, a mismatch found on Monday could silently "resolve
-itself" by Friday just because the dataset was rebuilt, which would hide a
-real discrepancy. Snapshotting freezes what the count was actually compared
-against.
-
-"This week" = Monday–Sunday by the device's local clock. No configuration —
-computed from `countedAt` on read. Switching weeks (e.g. viewing last week)
-is not in v1; the report always shows the current week only. Data isn't
-deleted, so adding a week-picker later is a pure UI addition, no data
-migration needed.
+"This week" = Monday–Sunday by the device's local clock, computed from
+`countedAt` on read — no configuration, no explicit reset needed. Viewing
+past weeks is not in v1; the screen always shows the current week only. Data
+isn't deleted, so a week-picker is a pure UI addition later, no migration
+needed.
 
 ## UI placement
 
-- **Product detail page**: new "Hitung Fisik" section, placed near the
-  existing "Stok Tersedia" row in the info table — same neighborhood as the
-  numbers it's being compared against, so the comparison reads naturally.
-- **Home screen**: a new icon/button (near the search bar, alongside the
-  existing barcode-scan button) opens `/so-week`, the summary screen.
-- **Summary screen (`/so-week`)**: simple list, mismatches first, same
-  visual language as the rest of the app (glass cards, status dot + label
-  pattern already used for stock status elsewhere).
+- **Home screen**: floating pill button, fixed bottom-center, same visual
+  treatment as the existing compare bar (dark rounded pill, white text,
+  accent-colored icon). Reads "SO Week · N dihitung"; if nothing's been
+  counted yet this week, reads just "SO Week".
+- **`/so-week` screen**: top bar with back button, title, and a small pill
+  showing the count this week. Below it, the search fallback, then the
+  list. Floating scan button bottom-right, matching the app's existing
+  accent-blue circular icon-button style.
+- **Count sheet**: a bottom sheet (same drag-handle + rounded-top-corner
+  pattern as the existing CompareModal), not a full page — this is what
+  keeps the loop fast, since it overlays the list instead of navigating
+  away from it.
+- **Product detail page**: unchanged.
 
 ## Error handling / edge cases
 
 - Empty or non-numeric input: save button stays disabled until a valid
-  non-negative integer is entered (matches the existing manual-barcode-entry
-  pattern already in the app).
-- Product with no stored count yet: "Hitung Fisik" section shows an empty
-  input, no prior value, no match/mismatch badge.
-- Summary screen with zero counts this week: empty state message, similar
-  tone to the existing "Barang tidak ditemukan" empty state.
+  non-negative integer is entered (matches the existing manual
+  barcode-entry pattern already in the app).
+- Scanned/searched code doesn't resolve to a known product: same error
+  treatment the barcode scanner already uses today (Izin/format error
+  state), no new pattern needed.
+- SO Week screen with zero counts this week: empty state message, similar
+  tone to the existing "Barang tidak ditemukan" empty state, prompting to
+  scan or search to get started.
 
 ## Testing
 
 - Unit tests for the week-boundary calculation (Monday-start, handles week
-  wraparound correctly) and the discrepancy math (sign, zero case).
-- Unit tests for the localStorage read/write helpers (save overwrites same
-  product within the same week, doesn't clobber other products or other
-  weeks).
-- Manual verification in the browser: count a product, confirm the
-  match/mismatch badge, confirm it appears correctly in the summary screen,
-  confirm resaving overwrites rather than duplicates.
+  wraparound correctly).
+- Unit tests for the localStorage read/write helpers (save overwrites the
+  same product within the same week, doesn't clobber other products or
+  other weeks).
+- Manual verification in the browser: scan/search to a product, save a
+  count, confirm it appears in the list, confirm re-scanning the same
+  product pre-fills and overwrites rather than duplicating.
 
 ## Future extensions (not v1, noted so v1's data shape doesn't block them)
 
+- Comparing counts against system stock and flagging discrepancies (this
+  was v1's original premise; dropped per the user's explicit request to
+  keep it a pure log for now — the `StockCount` shape above has room to add
+  a `systemQty` snapshot back in later without breaking existing data).
 - Shared/synced counts across multiple devices (would need a backend).
-- Per-size counting for finer-grained discrepancy detection.
+- Per-size counting for finer-grained records.
 - Assigned count lists / progress tracking against a target list.
 - Viewing past weeks, exporting a week's results.
