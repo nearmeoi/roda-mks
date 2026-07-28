@@ -100,6 +100,43 @@ function getCropRect(
   return { sx, sy, sw, sh };
 }
 
+// Since iOS 16.3, Safari exposes each back camera lens as a separate
+// enumerable device -- the ultra-wide lens can focus much closer than the
+// default wide lens, which is the actual cause of close-range blur on
+// iPhone 12/13/14+ (a hardware minimum-focus-distance limit, not something
+// fixable via focusMode/focusDistance constraints -- those are confirmed
+// unsupported in Safari). If no matching device is found, or anything
+// about the lookup/switch fails, this silently returns the original
+// stream unchanged -- pure enhancement, never a regression.
+async function tryUseUltraWideLens(stream: MediaStream): Promise<MediaStream> {
+  try {
+    const currentTrack = stream.getVideoTracks()[0];
+    const currentDeviceId = currentTrack?.getSettings().deviceId;
+
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const ultraWide = devices.find(
+      (d) => d.kind === "videoinput" && d.label.toLowerCase().includes("ultra wide")
+    );
+
+    if (!ultraWide || ultraWide.deviceId === currentDeviceId) {
+      return stream;
+    }
+
+    const upgradedStream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        deviceId: { exact: ultraWide.deviceId },
+        width: { ideal: 1280 },
+        height: { ideal: 720 },
+      },
+    });
+
+    stream.getTracks().forEach((track) => track.stop());
+    return upgradedStream;
+  } catch {
+    return stream;
+  }
+}
+
 export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const reticleRef = useRef<HTMLDivElement>(null);
@@ -140,14 +177,19 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
           height: { ideal: 720 },
         },
       })
-      .then((stream) => {
+      .then(async (stream) => {
         if (cancelled) {
           stream.getTracks().forEach((track) => track.stop());
           return;
         }
-        streamRef.current = stream;
+        const activeStream = await tryUseUltraWideLens(stream);
+        if (cancelled) {
+          activeStream.getTracks().forEach((track) => track.stop());
+          return;
+        }
+        streamRef.current = activeStream;
         if (videoRef.current) {
-          videoRef.current.srcObject = stream;
+          videoRef.current.srcObject = activeStream;
           videoRef.current.play().catch(() => {});
         }
         startAutoScanLoop();
