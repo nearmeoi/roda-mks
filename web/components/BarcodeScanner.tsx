@@ -14,7 +14,7 @@ interface DetectedBarcode {
   rawValue: string;
 }
 interface NativeBarcodeDetector {
-  detect(source: HTMLVideoElement): Promise<DetectedBarcode[]>;
+  detect(source: HTMLVideoElement | HTMLCanvasElement): Promise<DetectedBarcode[]>;
 }
 interface NativeBarcodeDetectorConstructor {
   new (options?: { formats?: string[] }): NativeBarcodeDetector;
@@ -52,8 +52,41 @@ const ZXING_HINTS = new Map<DecodeHintType, unknown>([
   ],
 ]);
 
+// The video uses object-cover inside its container, so its rendered CSS
+// size isn't the same as its native resolution -- map the reticle overlay's
+// on-screen rect into native video pixel coordinates for the crop.
+function getCropRect(
+  video: HTMLVideoElement,
+  reticle: HTMLDivElement
+): { sx: number; sy: number; sw: number; sh: number } | null {
+  const videoRect = video.getBoundingClientRect();
+  const reticleRect = reticle.getBoundingClientRect();
+
+  if (
+    videoRect.width === 0 ||
+    videoRect.height === 0 ||
+    video.videoWidth === 0 ||
+    video.videoHeight === 0
+  ) {
+    return null;
+  }
+
+  const scaleX = video.videoWidth / videoRect.width;
+  const scaleY = video.videoHeight / videoRect.height;
+
+  const sx = (reticleRect.left - videoRect.left) * scaleX;
+  const sy = (reticleRect.top - videoRect.top) * scaleY;
+  const sw = reticleRect.width * scaleX;
+  const sh = reticleRect.height * scaleY;
+
+  if (sw <= 0 || sh <= 0) return null;
+  return { sx, sy, sw, sh };
+}
+
 export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const reticleRef = useRef<HTMLDivElement>(null);
+  const cropCanvasRef = useRef<HTMLCanvasElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const zxingReaderRef = useRef<BrowserMultiFormatReader | null>(null);
   const nativeDetectorRef = useRef<NativeBarcodeDetector | null>(null);
@@ -117,14 +150,39 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
     };
   }, []);
 
+  // Draws just the reticle-box region of the current video frame onto the
+  // (reused, off-DOM-visible) crop canvas. Returns null -- meaning "decode
+  // the full video frame instead, as before" -- if dimensions aren't ready
+  // yet or measurement fails, so a glitch here never breaks scanning.
+  function getCroppedCanvas(): HTMLCanvasElement | null {
+    const video = videoRef.current;
+    const reticle = reticleRef.current;
+    const canvas = cropCanvasRef.current;
+    if (!video || !reticle || !canvas) return null;
+
+    const rect = getCropRect(video, reticle);
+    if (!rect) return null;
+
+    canvas.width = rect.sw;
+    canvas.height = rect.sh;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+
+    ctx.drawImage(video, rect.sx, rect.sy, rect.sw, rect.sh, 0, 0, rect.sw, rect.sh);
+    return canvas;
+  }
+
   function startAutoScanLoop() {
     const tick = async () => {
       if (stoppedRef.current || !videoRef.current) return;
 
+      const cropped = getCroppedCanvas();
+      const source: HTMLVideoElement | HTMLCanvasElement = cropped ?? videoRef.current;
+
       // 1. Try Native BarcodeDetector if available
       if (nativeDetectorRef.current) {
         try {
-          const results = await nativeDetectorRef.current.detect(videoRef.current);
+          const results = await nativeDetectorRef.current.detect(source);
           if (results.length > 0 && results[0].rawValue) {
             stoppedRef.current = true;
             onScan(results[0].rawValue);
@@ -135,7 +193,10 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
       // 2. Fallback to ZXing continuous decode
       else if (zxingReaderRef.current) {
         try {
-          const result = zxingReaderRef.current.decode(videoRef.current);
+          const result =
+            source instanceof HTMLCanvasElement
+              ? zxingReaderRef.current.decodeFromCanvas(source)
+              : zxingReaderRef.current.decode(source);
           if (result && result.getText()) {
             stoppedRef.current = true;
             onScan(result.getText());
@@ -191,13 +252,17 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
           ) : (
             <>
               <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
-              
+              <canvas ref={cropCanvasRef} className="hidden" />
+
               {/* Instruction Text & Scanning Reticle Rectangle */}
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-4">
                 <span className="mb-3 text-xs font-medium text-white/90 drop-shadow-md">
                   Posisikan barcode di dalam kotak
                 </span>
-                <div className="h-32 w-64 rounded-2xl border-2 border-white/90 shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
+                <div
+                  ref={reticleRef}
+                  className="h-32 w-64 rounded-2xl border-2 border-white/90 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                />
               </div>
             </>
           )}
