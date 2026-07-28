@@ -14,8 +14,6 @@ interface CompareModalProps {
 }
 
 export function CompareModal({ products, onClose, onRemove, onClearAll }: CompareModalProps) {
-  const [showDetailedSpecs, setShowDetailedSpecs] = useState(false);
-
   if (products.length === 0) return null;
 
   // Gather all unique spec keys across selected products
@@ -186,42 +184,33 @@ export function CompareModal({ products, onClose, onRemove, onClearAll }: Compar
           {/* Detailed Specs Section */}
           {allSpecKeys.length > 0 && (
             <div className="pt-2 pb-4">
-              <button
-                type="button"
-                onClick={() => setShowDetailedSpecs(!showDetailedSpecs)}
-                className="flex w-full items-center justify-between px-4 mb-2 text-[11px] font-bold uppercase tracking-wider text-accent bg-accent/5 py-2.5 rounded-xl border border-accent/15 transition-all hover:bg-accent/10 active:scale-[0.98]"
-              >
-                <span>Spesifikasi Detail Lengkap</span>
-                <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showDetailedSpecs ? "rotate-180" : ""}`} />
-              </button>
+              <div className="mb-3 text-center text-[11px] font-bold uppercase tracking-wider text-accent bg-accent/5 py-2 rounded-xl border border-accent/15">
+                Spesifikasi Detail Lengkap
+              </div>
 
-              <div className={`grid transition-all duration-300 ease-in-out ${showDetailedSpecs ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                <div className="overflow-hidden">
-                  <div className="divide-y divide-gray-100 border-t border-gray-100 mt-1">
-                    {allSpecKeys.map((specKey) => (
-                      <div key={specKey} className="py-2.5">
-                        <div className="mb-1 text-center text-[10.5px] font-bold uppercase tracking-wider text-gray-400 bg-gray-50/80 py-1 rounded-md border border-gray-100">
-                          {specKey}
-                        </div>
-                        <div
-                          className="grid gap-2 text-center items-center"
-                          style={{
-                            gridTemplateColumns: `repeat(${colCount}, minmax(0, 1fr))`,
-                          }}
-                        >
-                          {products.map((p) => {
-                            const val = p.specs ? p.specs[specKey] : null;
-                            return (
-                              <div key={p.id} className="p-1.5 font-medium text-gray-800 leading-normal bg-gray-50/40 rounded-lg">
-                                {val || "—"}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    ))}
+              <div className="divide-y divide-gray-100 border-t border-gray-100 mt-1">
+                {allSpecKeys.map((specKey) => (
+                  <div key={specKey} className="py-2.5">
+                    <div className="mb-1 text-center text-[10.5px] font-bold uppercase tracking-wider text-gray-400 bg-gray-50/80 py-1 rounded-md border border-gray-100">
+                      {specKey}
+                    </div>
+                    <div
+                      className="grid gap-2 text-center items-center"
+                      style={{
+                        gridTemplateColumns: `repeat(${colCount}, minmax(0, 1fr))`,
+                      }}
+                    >
+                      {products.map((p) => {
+                        const val = p.specs ? p.specs[specKey] : null;
+                        return (
+                          <div key={p.id} className="p-1.5 font-medium text-gray-800 leading-normal bg-gray-50/40 rounded-lg">
+                            {val || "—"}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           )}

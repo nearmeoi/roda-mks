@@ -9,7 +9,7 @@ import { BackButton } from "@/components/BackButton";
 import { copyToClipboard, formatWhatsAppMessage } from "@/lib/copy";
 import { getRecommendations } from "@/lib/recommendations";
 import { useCompareList } from "@/lib/comparison";
-import { Copy, Check, Share2, ExternalLink, Sparkles, Package, ArrowLeftRight } from "lucide-react";
+import { Copy, Check, Share2, ExternalLink, Sparkles, Package, ArrowLeftRight, ChevronDown } from "lucide-react";
 
 export function ProductDetailContent({
   product,
@@ -19,6 +19,7 @@ export function ProductDetailContent({
   allProducts: Product[];
 }) {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const [showSpecs, setShowSpecs] = useState(false);
   const { isCompared, toggleCompare } = useCompareList();
   const compared = isCompared(product.id);
 
@@ -259,10 +260,18 @@ export function ProductDetailContent({
           {/* Full Scraped Product Specifications Section (Brand & Compatible Part Links) */}
           {product.specs && Object.keys(product.specs).length > 0 && (
             <div className="mt-5 overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
-              <div className="border-b border-black/[0.08] px-4 py-3">
-                <span className="text-[13px] font-semibold uppercase tracking-wide text-gray-400">Spesifikasi Detail</span>
-              </div>
-              <div className="divide-y divide-black/[0.06]">
+              <button
+                type="button"
+                onClick={() => setShowSpecs(!showSpecs)}
+                className="flex w-full items-center justify-between px-4 py-3 border-b border-transparent transition-colors hover:bg-gray-50 active:bg-gray-100"
+              >
+                <span className="text-[13px] font-semibold uppercase tracking-wide text-gray-700">Spesifikasi Detail Lengkap</span>
+                <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-300 ${showSpecs ? "rotate-180" : ""}`} />
+              </button>
+
+              <div className={`grid transition-all duration-300 ease-in-out ${showSpecs ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                <div className="overflow-hidden">
+                  <div className="divide-y divide-black/[0.06] border-t border-black/[0.08]">
                 {Object.entries(product.specs).map(([key, val]) => {
                   const k = key.toLowerCase();
                   const v = val.toLowerCase();
@@ -312,6 +321,8 @@ export function ProductDetailContent({
                     </div>
                   );
                 })}
+                  </div>
+                </div>
               </div>
             </div>
           )}
