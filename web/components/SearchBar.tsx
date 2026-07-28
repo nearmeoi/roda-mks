@@ -47,6 +47,14 @@ function getSpeechRecognitionCtor(): SpeechRecognitionConstructor | undefined {
   return w.SpeechRecognition || w.webkitSpeechRecognition;
 }
 
+// Desktop Chrome's speech recognition tends to insert periods at detected
+// pause/sentence boundaries ("Polygon . Strattos ." instead of "Polygon
+// Strattos") -- irrelevant punctuation for a search query, and it can
+// confuse the search field's spacing. Strip it before it becomes a query.
+function sanitizeTranscript(text: string): string {
+  return text.replace(/[.]/g, "").replace(/\s+/g, " ").trim();
+}
+
 export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps) {
   const [showScanner, setShowScanner] = useState(false);
   const [micSupported, setMicSupported] = useState(false);
@@ -78,11 +86,11 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
     const recognition = new Ctor();
     recognition.lang = "id-ID";
     recognition.continuous = false;
-    recognition.interimResults = false;
+    recognition.interimResults = true;
 
     recognition.onresult = (event) => {
       const transcript = event.results[0]?.[0]?.transcript;
-      if (transcript) onChange(transcript);
+      if (transcript) onChange(sanitizeTranscript(transcript));
     };
 
     recognition.onerror = (event) => {
