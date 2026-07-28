@@ -30,6 +30,7 @@ interface SpeechRecognitionInstance {
   interimResults: boolean;
   start(): void;
   stop(): void;
+  abort(): void;
   onresult: ((event: SpeechRecognitionEvent) => void) | null;
   onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
   onend: (() => void) | null;
@@ -57,9 +58,15 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
     setMicSupported(!!getSpeechRecognitionCtor());
   }, []);
 
+  useEffect(() => {
+    return () => {
+      recognitionRef.current?.abort();
+    };
+  }, []);
+
   const handleMicClick = () => {
     if (isListening) {
-      recognitionRef.current?.stop();
+      recognitionRef.current?.abort();
       setIsListening(false);
       return;
     }
