@@ -69,7 +69,7 @@ export function ResultRow({
           </div>
           <div className="mt-1 flex items-center gap-1 text-[11px] font-semibold text-gray-600">
             <div className="h-1.5 w-1.5 rounded-full shrink-0" style={{ background: status.dotColor }} />
-            <span>{status.label} ({qty})</span>
+            <span>{qty} Unit</span>
           </div>
         </div>
       </div>

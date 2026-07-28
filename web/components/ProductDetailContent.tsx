@@ -170,8 +170,7 @@ export function ProductDetailContent({
           {/* Stock Status Badge */}
           <div className="mb-5.5 inline-flex items-center gap-2 rounded-2xl border border-black/[0.08] bg-white/70 px-3.5 py-2">
             <div className="h-2 w-2 rounded-full" style={{ background: status.dotColor }} />
-            <span className="text-sm font-semibold text-gray-900">{status.label}</span>
-            <span className="text-[13px] text-gray-500">· {qty} unit</span>
+            <span className="text-sm font-semibold text-gray-900">{qty} Unit</span>
           </div>
 
           {/* Ready Colors Badges */}
@@ -333,7 +332,7 @@ export function ProductDetailContent({
               <div className="mb-3 flex items-center justify-between px-1">
                 <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
                   <Sparkles className="h-4 w-4 text-accent" />
-                  <span>Rekomendasi Pelengkap (Stok Ready)</span>
+                  <span>Rekomendasi Tambahan</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">

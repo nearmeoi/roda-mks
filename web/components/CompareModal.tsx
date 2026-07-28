@@ -147,7 +147,7 @@ export function CompareModal({ products, onClose, onRemove, onClearAll }: Compar
                     <span className="text-xs font-extrabold text-gray-900">{formatPrice(p.price)}</span>
                     <div className="mt-1 flex items-center gap-1 rounded-full bg-white px-2 py-0.5 border border-gray-200/80 text-[10px]">
                       <div className="h-1.5 w-1.5 rounded-full shrink-0" style={{ background: status.dotColor }} />
-                      <span className="font-semibold text-gray-700">{status.label} ({qty})</span>
+                      <span className="font-semibold text-gray-700">{qty} Unit</span>
                     </div>
                   </div>
                 </div>
