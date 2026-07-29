@@ -72,3 +72,30 @@ Output shape per entry:
 - No catalog/spec/image scraping for these SKUs.
 - No detail page / click-through for All Stock rows.
 - No changes to the existing stock pipeline or `products.json` build.
+
+## Amendment (2026-07-30): live POS price + dropping unpriced entries
+The user asked to eliminate "Hubungi toko" placeholders by pulling prices
+live from the internal POS admin (pos.rodalink.com) instead of relying only
+on the master xlsx.
+
+- `pipeline/fetch_pos_prices.py` pages through `/admin/article/all` (the
+  full company-wide article master -- its total, 13,978, matches the master
+  xlsx row count exactly) using a POS session passed via `POS_COOKIE` /
+  `POS_XSRF_TOKEN` env vars, and writes an `article_code -> price` map to
+  `data/pos_prices.json`.
+  - Tried `/admin/outlet-stock/all-new` first since it was the endpoint
+    initially shared, but it only lists articles this specific outlet is
+    allowed to order (a narrower "orderable assortment" set) -- zero overlap
+    with the unpriced items. `/admin/article/all` is the correct, unscoped
+    source.
+- `build_all_stock.py` uses `data/pos_prices.json` as a third price-fallback
+  layer (master xlsx price -> existing `products.json` price -> live POS
+  price).
+- Result: POS's live price count (9,630) exactly matches the xlsx's own
+  price count, and the live fetch filled zero additional gaps -- confirming
+  the ~3,401 remaining unpriced items have no price anywhere in the source
+  system, live or exported (not a stale-export artifact).
+- Since a priceless entry isn't useful for "what would this cost", those
+  items are now dropped from `all_stock.json` entirely rather than shown
+  with `price: null`. `AllStockEntry.price` is `number` (no longer
+  nullable) and `priceSource` is `"master" | "fallback" | "pos"`.

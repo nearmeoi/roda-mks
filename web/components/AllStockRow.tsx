@@ -30,6 +30,9 @@ export function AllStockRow({ entry }: { entry: AllStockEntry }) {
         {entry.priceSource === "fallback" && (
           <div className="text-[10px] font-medium text-gray-400">dari data stok</div>
         )}
+        {entry.priceSource === "pos" && (
+          <div className="text-[10px] font-medium text-gray-400">dari POS</div>
+        )}
       </div>
     </div>
   );

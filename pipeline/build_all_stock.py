@@ -25,7 +25,7 @@ def _price_fallback_index(products: list[dict]) -> dict[int, float]:
     return index
 
 
-def build(xlsx_path: str, products_path: str, output_path: str) -> None:
+def build(xlsx_path: str, products_path: str, output_path: str, pos_prices_path: str | None = None) -> None:
     rows = load_bike_rows(xlsx_path) + load_paa_rows(xlsx_path)
     grouped = group_rows(rows)
     print(f"[build_all_stock] {len(rows)} SKU rows grouped into {len(grouped)} entries")
@@ -35,9 +35,16 @@ def build(xlsx_path: str, products_path: str, output_path: str) -> None:
     existing_ids = {p["id"] for p in existing_products}
     price_fallback = _price_fallback_index(existing_products)
 
+    pos_prices: dict[str, float] = {}
+    if pos_prices_path and os.path.exists(pos_prices_path):
+        with open(pos_prices_path, encoding="utf-8") as f:
+            pos_prices = json.load(f)
+        print(f"[build_all_stock] loaded {len(pos_prices)} live prices from {pos_prices_path}")
+
     entries = []
     skipped_existing = 0
     fallback_used = 0
+    pos_used = 0
     no_price = 0
     for g in grouped:
         entry_id = make_id(g["brand"], g["model_name"], g["color_code"], g.get("variant_extra"))
@@ -56,8 +63,21 @@ def build(xlsx_path: str, products_path: str, output_path: str) -> None:
                     fallback_used += 1
                     break
             else:
-                price_source = "none"
-                no_price += 1
+                for s in g["sizes"]:
+                    pos_price = pos_prices.get(str(s["article_code"]))
+                    if pos_price is not None:
+                        price = pos_price
+                        price_source = "pos"
+                        pos_used += 1
+                        break
+
+        if price is None:
+            # No price anywhere -- master list, current stock data, and a live
+            # POS lookup all agree this article has no price on record. A
+            # priceless row isn't useful for "what would this cost", so skip
+            # it rather than show a dead end.
+            no_price += 1
+            continue
 
         wheel_size, color_label = decode_variant(g["model_name"], g["category"], g.get("color_code"))
         entries.append({
@@ -72,7 +92,8 @@ def build(xlsx_path: str, products_path: str, output_path: str) -> None:
         })
 
     print(f"[build_all_stock] {skipped_existing} already covered by main catalog, "
-          f"{fallback_used} filled from stock-price fallback, {no_price} still without a price")
+          f"{fallback_used} filled from stock-price fallback, {pos_used} filled from live POS price, "
+          f"{no_price} dropped for having no price anywhere")
     print(f"[build_all_stock] wrote {len(entries)} entries to {output_path}")
 
     with open(output_path, "w", encoding="utf-8") as f:
@@ -93,5 +114,6 @@ if __name__ == "__main__":
     parser.add_argument("--xlsx", required=True)
     parser.add_argument("--products", default="data/products.json")
     parser.add_argument("--output", default="data/all_stock.json")
+    parser.add_argument("--pos-prices", default="data/pos_prices.json")
     args = parser.parse_args()
-    build(args.xlsx, args.products, args.output)
+    build(args.xlsx, args.products, args.output, pos_prices_path=args.pos_prices)

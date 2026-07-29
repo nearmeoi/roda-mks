@@ -10,8 +10,8 @@ export interface AllStockEntry {
   category: string;
   wheel_size: string | null;
   color_label: string | null;
-  price: number | null;
-  priceSource: "master" | "fallback" | "none";
+  price: number;
+  priceSource: "master" | "fallback" | "pos";
 }
 
 const options = {
