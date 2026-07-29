@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { formatPrice, getStockStatus, primaryArticleCode, titleCase, totalOrderedQuantity, totalQuantity } from "@/lib/format";
@@ -9,7 +9,26 @@ import { BackButton } from "@/components/BackButton";
 import { copyToClipboard, formatWhatsAppMessage } from "@/lib/copy";
 import { getRecommendations } from "@/lib/recommendations";
 import { useCompareList } from "@/lib/comparison";
-import { Copy, Check, Share2, ExternalLink, Sparkles, Package, ArrowLeftRight, ChevronDown } from "lucide-react";
+import { Copy, Check, Share2, ExternalLink, Sparkles, Package, ArrowLeftRight, ChevronDown, Search, X } from "lucide-react";
+
+function highlightMatch(text: string, query: string) {
+  if (!query.trim()) return text;
+  const escaped = query.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const parts = text.split(new RegExp(`(${escaped})`, "gi"));
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === query.trim().toLowerCase() ? (
+          <mark key={i} className="rounded-xs bg-amber-200 text-gray-900 px-0.5 font-bold">
+            {part}
+          </mark>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
 
 export function ProductDetailContent({
   product,
@@ -20,6 +39,9 @@ export function ProductDetailContent({
 }) {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [showSpecs, setShowSpecs] = useState(false);
+  const [specQuery, setSpecQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
   const { isCompared, toggleCompare } = useCompareList();
   const compared = isCompared(product.id);
 
@@ -80,6 +102,32 @@ export function ProductDetailContent({
   const hasSizes = product.sizes.length > 1 || (product.sizes[0]?.size_code != null);
   const recommendations = getRecommendations(product, allProducts, 4);
 
+  const cleanQuery = specQuery.trim().toLowerCase();
+
+  // Filter info rows based on spec search query
+  const filteredInfoRows = infoRows.filter((row) => {
+    if (!cleanQuery) return true;
+    return row.label.toLowerCase().includes(cleanQuery) || row.value.toLowerCase().includes(cleanQuery);
+  });
+
+  // Filter detailed specs dictionary
+  const rawSpecsEntries = product.specs ? Object.entries(product.specs) : [];
+  const filteredSpecsEntries = rawSpecsEntries.filter(([key, val]) => {
+    if (!cleanQuery) return true;
+    return key.toLowerCase().includes(cleanQuery) || val.toLowerCase().includes(cleanQuery);
+  });
+
+  const handleSpecSearchChange = (val: string) => {
+    setSpecQuery(val);
+    if (val.trim().length > 0) {
+      setShowSpecs(true);
+    }
+  };
+
+  const focusSearchInput = () => {
+    searchInputRef.current?.focus();
+  };
+
   return (
     <div className="min-h-screen pb-16 [animation:slideInRight_0.28s_ease]">
       {/* Toast Feedback Banner */}
@@ -91,9 +139,19 @@ export function ProductDetailContent({
       )}
 
       {/* Header Bar */}
-      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/[0.08] bg-[#f6f6f8]/80 px-5 py-3 backdrop-blur-xl">
+      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/[0.08] bg-[#f6f6f8]/80 px-5 py-3 backdrop-blur-xl gap-2">
         <BackButton />
         <div className="flex items-center gap-2">
+          {/* Quick Focus Spec Search Icon */}
+          <button
+            type="button"
+            onClick={focusSearchInput}
+            title="Cari spesifikasi (warna, material, shifter...)"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white text-gray-700 hover:bg-gray-50 active:scale-95 transition-all"
+          >
+            <Search className="h-4 w-4" />
+          </button>
+
           <button
             type="button"
             onClick={() => {
@@ -101,10 +159,11 @@ export function ProductDetailContent({
               showToast(compared ? "Dikeluarkan dari perbandingan" : "Ditambahkan ke perbandingan!");
             }}
             title={compared ? "Dibandingkan" : "Bandingkan"}
-            className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all active:scale-95 ${compared
-              ? "border-accent bg-accent text-white"
-              : "border-black/10 bg-white text-gray-700 hover:bg-gray-50"
-              }`}
+            className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all active:scale-95 ${
+              compared
+                ? "border-accent bg-accent text-white"
+                : "border-black/10 bg-white text-gray-700 hover:bg-gray-50"
+            }`}
           >
             <ArrowLeftRight className="h-3.5 w-3.5" />
           </button>
@@ -115,7 +174,7 @@ export function ProductDetailContent({
             className="flex items-center gap-1.5 rounded-full bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-95"
           >
             <Share2 className="h-3.5 w-3.5" />
-            <span>Salin seluruh info</span>
+            <span>Salin WA</span>
           </button>
         </div>
       </div>
@@ -190,33 +249,69 @@ export function ProductDetailContent({
             </div>
           )}
 
-          {/* Core Product Details Table */}
-          <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
-            {infoRows.map((row, i) => (
-              <div
-                key={row.label}
-                className={`flex items-center justify-between px-4 py-3.5 ${i < infoRows.length - 1 ? "border-b border-black/[0.08]" : ""}`}
-              >
-                <span className="text-sm text-gray-500">{row.label}</span>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-gray-900">{row.value}</span>
-                  {row.copyable && (
-                    <button
-                      type="button"
-                      onClick={() => handleCopyText(row.value, row.label)}
-                      className="text-gray-400 hover:text-accent p-0.5"
-                      title={`Salin ${row.label}`}
-                    >
-                      <Copy className="h-3.5 w-3.5" />
-                    </button>
-                  )}
-                </div>
+          {/* Spec Search Bar Section */}
+          <div className="mb-5 relative">
+            <div className="flex items-center gap-2 rounded-2xl border border-black/10 bg-white px-3.5 py-2 shadow-xs transition-all focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/20">
+              <Search className="h-4 w-4 shrink-0 text-gray-400" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={specQuery}
+                onChange={(e) => handleSpecSearchChange(e.target.value)}
+                placeholder="Cari spesifikasi (warna, material, shifter, ban...)"
+                className="w-full bg-transparent text-sm text-gray-900 outline-none placeholder:text-gray-400"
+              />
+              {specQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSpecQuery("")}
+                  className="rounded-full bg-black/10 p-1 text-gray-500 hover:text-gray-700"
+                  aria-label="Bersihkan pencarian spesifikasi"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              )}
+            </div>
+            {cleanQuery && (
+              <div className="mt-1.5 px-1 text-[11.5px] font-semibold text-gray-500">
+                Menampilkan hasil spesifikasi cocok dengan &quot;<span className="text-accent">{cleanQuery}</span>&quot;
               </div>
-            ))}
+            )}
           </div>
 
+          {/* Core Product Details Table */}
+          {filteredInfoRows.length > 0 && (
+            <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
+              {filteredInfoRows.map((row, i) => (
+                <div
+                  key={row.label}
+                  className={`flex items-center justify-between px-4 py-3.5 ${
+                    i < filteredInfoRows.length - 1 ? "border-b border-black/[0.08]" : ""
+                  }`}
+                >
+                  <span className="text-sm text-gray-500">{highlightMatch(row.label, cleanQuery)}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-gray-900">
+                      {highlightMatch(row.value, cleanQuery)}
+                    </span>
+                    {row.copyable && (
+                      <button
+                        type="button"
+                        onClick={() => handleCopyText(row.value, row.label)}
+                        className="text-gray-400 hover:text-accent p-0.5"
+                        title={`Salin ${row.label}`}
+                      >
+                        <Copy className="h-3.5 w-3.5" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* Per-Size Stock Table */}
-          {hasSizes && (
+          {hasSizes && !cleanQuery && (
             <div className="mt-5 overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
               <div className="border-b border-black/[0.08] px-4 py-3">
                 <span className="text-[13px] font-semibold uppercase tracking-wide text-gray-400">Stok per Ukuran</span>
@@ -256,78 +351,101 @@ export function ProductDetailContent({
             </div>
           )}
 
-          {/* Full Scraped Product Specifications Section (Brand & Compatible Part Links) */}
-          {product.specs && Object.keys(product.specs).length > 0 && (
+          {/* Full Scraped Product Specifications Section */}
+          {rawSpecsEntries.length > 0 && (
             <div className="mt-5 overflow-hidden rounded-2xl border border-black/[0.08] bg-white/70 backdrop-blur-lg">
               <button
                 type="button"
                 onClick={() => setShowSpecs(!showSpecs)}
                 className="flex w-full items-center justify-between px-4 py-3 border-b border-transparent transition-colors hover:bg-gray-50 active:bg-gray-100"
               >
-                <span className="text-[13px] font-semibold uppercase tracking-wide text-gray-700">Spesifikasi Detail Lengkap</span>
-                <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-300 ${showSpecs ? "rotate-180" : ""}`} />
+                <span className="text-[13px] font-semibold uppercase tracking-wide text-gray-700">
+                  Spesifikasi Detail Lengkap {cleanQuery ? `(${filteredSpecsEntries.length})` : ""}
+                </span>
+                <ChevronDown
+                  className={`h-4 w-4 text-gray-500 transition-transform duration-300 ${
+                    showSpecs ? "rotate-180" : ""
+                  }`}
+                />
               </button>
 
-              <div className={`grid transition-all duration-300 ease-in-out ${showSpecs ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${
+                  showSpecs ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
                 <div className="overflow-hidden">
                   <div className="divide-y divide-black/[0.06] border-t border-black/[0.08]">
-                {Object.entries(product.specs).map(([key, val]) => {
-                  const k = key.toLowerCase();
-                  const v = val.toLowerCase();
+                    {filteredSpecsEntries.length > 0 ? (
+                      filteredSpecsEntries.map(([key, val]) => {
+                        const k = key.toLowerCase();
+                        const v = val.toLowerCase();
 
-                  // Only make Brand and Compatible Parts/Components clickable links
-                  const isPartOrCompatibility =
-                    k === "brand" ||
-                    k.includes("kompatib") ||
-                    k.includes("compatib") ||
-                    v.includes("kompatib") ||
-                    v.includes("compatib") ||
-                    [
-                      "bottom bracket",
-                      "bb",
-                      "shifter",
-                      "cassette",
-                      "crank",
-                      "chain",
-                      "derailleur",
-                      "brake rotor",
-                      "brake lever",
-                      "head set",
-                      "front hub",
-                      "rear hub",
-                    ].some((partKey) => k.includes(partKey));
+                        const isPartOrCompatibility =
+                          k === "brand" ||
+                          k.includes("kompatib") ||
+                          k.includes("compatib") ||
+                          v.includes("kompatib") ||
+                          v.includes("compatib") ||
+                          [
+                            "bottom bracket",
+                            "bb",
+                            "shifter",
+                            "cassette",
+                            "crank",
+                            "chain",
+                            "derailleur",
+                            "brake rotor",
+                            "brake lever",
+                            "head set",
+                            "front hub",
+                            "rear hub",
+                          ].some((partKey) => k.includes(partKey));
 
-                  const isClickable = isPartOrCompatibility && val.length > 1 && val.length < 90;
-                  const searchTarget = k === "brand" ? val.trim() : val.split(",")[0].split(" FOR ")[0].trim();
+                        const isClickable = isPartOrCompatibility && val.length > 1 && val.length < 90;
+                        const searchTarget =
+                          k === "brand" ? val.trim() : val.split(",")[0].split(" FOR ")[0].trim();
 
-                  return (
-                    <div key={key} className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-500 sm:w-1/3">{key}</span>
-                      <div className="sm:w-2/3 sm:text-right">
-                        {isClickable ? (
-                          <Link
-                            href={`/?q=${encodeURIComponent(searchTarget)}`}
-                            className="inline-flex items-center gap-1 text-xs font-medium text-accent hover:underline"
-                            title={`Cari stok part/brand "${searchTarget}"`}
+                        return (
+                          <div
+                            key={key}
+                            className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:items-center justify-between"
                           >
-                            <span>{val}</span>
-                            <ExternalLink className="h-3 w-3 shrink-0" />
-                          </Link>
-                        ) : (
-                          <span className="text-xs font-medium text-gray-800">{val}</span>
-                        )}
+                            <span className="text-xs font-semibold text-gray-500 sm:w-1/3">
+                              {highlightMatch(key, cleanQuery)}
+                            </span>
+                            <div className="sm:w-2/3 sm:text-right">
+                              {isClickable ? (
+                                <Link
+                                  href={`/?q=${encodeURIComponent(searchTarget)}`}
+                                  className="inline-flex items-center gap-1 text-xs font-medium text-accent hover:underline"
+                                  title={`Cari stok part/brand "${searchTarget}"`}
+                                >
+                                  <span>{highlightMatch(val, cleanQuery)}</span>
+                                  <ExternalLink className="h-3 w-3 shrink-0" />
+                                </Link>
+                              ) : (
+                                <span className="text-xs font-medium text-gray-800">
+                                  {highlightMatch(val, cleanQuery)}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <div className="px-4 py-4 text-center text-xs text-gray-500">
+                        Tidak ada spesifikasi detail yang cocok dengan &quot;{cleanQuery}&quot;
                       </div>
-                    </div>
-                  );
-                })}
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Smart Recommendations Section (Blue Link Cards) */}
-          {recommendations.length > 0 && (
+          {/* Smart Recommendations Section */}
+          {recommendations.length > 0 && !cleanQuery && (
             <div className="mt-6">
               <div className="mb-3 flex items-center justify-between px-1">
                 <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
