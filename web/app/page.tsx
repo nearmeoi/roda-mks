@@ -13,7 +13,7 @@ import { useRecentSearches } from "@/lib/recentSearches";
 import { useCompareList } from "@/lib/comparison";
 import { useStockCounts } from "@/lib/soWeek";
 import { copyToClipboard, formatBulkWhatsAppMessage } from "@/lib/copy";
-import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy, BookOpen } from "lucide-react";
+import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy, BookOpen, Wallet } from "lucide-react";
 
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
@@ -170,6 +170,16 @@ function HomeContent() {
           isSelectMode={isSelectMode}
           onToggleSelectMode={() => setIsSelectMode(!isSelectMode)}
         />
+
+        {!hasQuery && !isSelectMode && (
+          <Link
+            href="/rekomendasi"
+            className="flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 px-4 py-2 text-xs font-semibold text-gray-700 backdrop-blur-md transition-all hover:border-black/20 active:scale-95"
+          >
+            <Wallet className="h-3.5 w-3.5 text-accent" />
+            <span>Rekomendasi Budget</span>
+          </Link>
+        )}
 
         {/* Recent Searches Chips */}
         {recent.length > 0 && !hasQuery && (
