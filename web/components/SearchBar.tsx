@@ -55,12 +55,37 @@ function sanitizeTranscript(text: string): string {
   return text.replace(/[.]/g, "").replace(/\s+/g, " ").trim();
 }
 
+// Some iOS Safari versions hang indefinitely after the user stops talking --
+// no onresult, no onend, no onerror ever fires, leaving the mic button stuck
+// listening forever (a documented WebKit reliability issue, not something
+// fixable from this side). This is a sliding safety-net timeout: it resets
+// on every result (interim or final), so a normal, slower sentence never
+// trips it, but a session with zero activity for this long gets force-reset.
+const STALL_TIMEOUT_MS = 7000;
+
 export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps) {
   const [showScanner, setShowScanner] = useState(false);
   const [micSupported, setMicSupported] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [micError, setMicError] = useState<string | null>(null);
   const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
+  const stallTimerRef = useRef<number | null>(null);
+
+  const clearStallTimer = () => {
+    if (stallTimerRef.current !== null) {
+      window.clearTimeout(stallTimerRef.current);
+      stallTimerRef.current = null;
+    }
+  };
+
+  const armStallTimer = () => {
+    clearStallTimer();
+    stallTimerRef.current = window.setTimeout(() => {
+      recognitionRef.current?.abort();
+      setIsListening(false);
+      setMicError("Tidak terdengar, coba lagi.");
+    }, STALL_TIMEOUT_MS);
+  };
 
   useEffect(() => {
     setMicSupported(!!getSpeechRecognitionCtor());
@@ -68,12 +93,14 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
 
   useEffect(() => {
     return () => {
+      clearStallTimer();
       recognitionRef.current?.abort();
     };
   }, []);
 
   const handleMicClick = () => {
     if (isListening) {
+      clearStallTimer();
       recognitionRef.current?.abort();
       setIsListening(false);
       return;
@@ -89,22 +116,26 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
     recognition.interimResults = true;
 
     recognition.onresult = (event) => {
+      armStallTimer();
       const transcript = event.results[0]?.[0]?.transcript;
       if (transcript) onChange(sanitizeTranscript(transcript));
     };
 
     recognition.onerror = (event) => {
+      clearStallTimer();
       if (event.error === "not-allowed") {
         setMicError("Izin mikrofon ditolak atau tidak tersedia.");
       }
     };
 
     recognition.onend = () => {
+      clearStallTimer();
       setIsListening(false);
     };
 
     recognitionRef.current = recognition;
     setIsListening(true);
+    armStallTimer();
     recognition.start();
   };
 
