@@ -13,7 +13,7 @@ import { useRecentSearches } from "@/lib/recentSearches";
 import { useCompareList } from "@/lib/comparison";
 import { useStockCounts } from "@/lib/soWeek";
 import { copyToClipboard, formatBulkWhatsAppMessage } from "@/lib/copy";
-import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy } from "lucide-react";
+import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy, BookOpen } from "lucide-react";
 
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
@@ -149,9 +149,17 @@ function HomeContent() {
 
       {/* Main Content Area */}
       <div className="relative z-[1] flex w-full max-w-[560px] flex-col items-center gap-4 px-5">
-        <div className="flex items-center gap-2.5">
+        <div className="relative flex w-full items-center justify-center gap-2.5">
           <img src="/logo.png" alt="Rodalink Logo" className="h-9 w-auto object-contain" />
           <span className="text-[17px] font-bold tracking-tight text-gray-900">Roda Stock</span>
+          <Link
+            href="/guide"
+            aria-label="Panduan Staff"
+            title="Panduan Staff"
+            className="absolute right-0 flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.08] bg-white/80 text-gray-600 backdrop-blur-md transition-all hover:border-black/20 hover:text-accent active:scale-95"
+          >
+            <BookOpen className="h-[18px] w-[18px]" />
+          </Link>
         </div>
 
         <SearchBar
