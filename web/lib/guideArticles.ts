@@ -101,7 +101,7 @@ export const guideArticles: GuideArticle[] = [
       { type: "bullets", items: ["Apex (entry)", "Rival", "Force", "Red / Red AXS (tertinggi)"] },
       { type: "heading", text: "SRAM - MTB (Eagle)" },
       { type: "bullets", items: ["SX Eagle (entry)", "NX Eagle", "GX Eagle", "X0 Eagle", "XX1 / XX Eagle (tertinggi)"] },
-      { type: "paragraph", text: "GX Eagle dan NX Eagle (SRAM) serta 105 dan Deore (Shimano) adalah tingkatan yang paling sering tersedia di stok kita — untuk pelanggan harian/commuting, tingkatan menengah ini biasanya sudah lebih dari cukup." },
+      { type: "paragraph", text: "GX Eagle (SRAM) serta 105 dan Deore (Shimano) adalah tingkatan yang paling sering tersedia di stok kita — untuk pelanggan harian/commuting, tingkatan menengah ini biasanya sudah lebih dari cukup." },
     ],
   },
   {

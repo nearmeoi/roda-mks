@@ -11,6 +11,7 @@ import { useCompareList } from "@/lib/comparison";
 import { titleCase } from "@/lib/format";
 
 const allProducts = getAllProducts();
+const RESULT_LIMIT = 15;
 
 function uniqueSorted(values: string[]): string[] {
   return [...new Set(values)].sort((a, b) => a.localeCompare(b));
@@ -70,6 +71,9 @@ export default function RekomendasiPage() {
                 inputMode="numeric"
                 value={budgetDisplay}
                 onChange={(e) => setBudgetDigits(e.target.value.replace(/\D/g, ""))}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSearch();
+                }}
                 placeholder="10.000.000"
                 className="w-full border-none bg-transparent text-sm text-gray-900 outline-none"
               />
@@ -130,7 +134,7 @@ export default function RekomendasiPage() {
                   </div>
                 )}
                 <div className="flex flex-col gap-2.5">
-                  {result.products.map((product) => (
+                  {result.products.slice(0, RESULT_LIMIT).map((product) => (
                     <Link key={product.id} href={`/product/${product.id}`}>
                       <ResultRow
                         product={product}

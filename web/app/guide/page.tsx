@@ -45,7 +45,7 @@ export default function GuidePage() {
     <div className="min-h-screen pb-16">
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/[0.08] bg-[#f6f6f8]/80 px-5 py-3 backdrop-blur-xl">
         <BackButton />
-        <span className="text-sm font-semibold text-gray-900">Guide</span>
+        <span className="text-sm font-semibold text-gray-900">Panduan Staff</span>
         <div className="w-[68px]" />
       </div>
 
