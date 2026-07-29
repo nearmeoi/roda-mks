@@ -1,6 +1,6 @@
 import type { Product } from "@/lib/types";
 import { formatPrice, getStockStatus, primaryArticleCode, titleCase, totalQuantity } from "@/lib/format";
-import { getKeySpecLines, getKelebihanBullets } from "@/lib/copyInfo";
+import { getProductInfoLines, getDetailedSpecLines, getKelebihanBullets } from "@/lib/copyInfo";
 
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {
@@ -26,14 +26,24 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 
 export function formatWhatsAppMessage(product: Product): string {
   const qty = totalQuantity(product.sizes);
-  const mainArticleCode = primaryArticleCode(product.sizes);
   const status = getStockStatus(qty);
-  const { label: specLabel, lines: specLines } = getKeySpecLines(product);
+
+  const infoLines = getProductInfoLines(product);
+  const { label: specLabel, lines: specLines } = getDetailedSpecLines(product);
   const kelebihan = getKelebihanBullets(product.specs);
 
   let msg = `*RODA STOCK INFO - RODALINK MAKASSAR* 🚲\n\n`;
   msg += `*${titleCase(product.model_name)}*\n`;
-  msg += `${formatPrice(product.price)}\n`;
+  if (product.price) {
+    msg += `${formatPrice(product.price)}\n`;
+  }
+
+  if (infoLines.length > 0) {
+    msg += `\n*Informasi Produk:*\n`;
+    infoLines.forEach((line) => {
+      msg += `• ${line}\n`;
+    });
+  }
 
   if (specLines.length > 0) {
     msg += `\n*${specLabel}:*\n`;
@@ -49,7 +59,11 @@ export function formatWhatsAppMessage(product: Product): string {
     });
   }
 
-  msg += `\nKode: ${mainArticleCode}\n`;
+  const articleCodes = Array.from(
+    new Set(product.sizes.map((s) => s.article_code).filter(Boolean))
+  ).join(", ");
+
+  msg += `\nKode: ${articleCodes || primaryArticleCode(product.sizes)}\n`;
   msg += `Stok: ${status.label} (${qty} unit)`;
 
   return msg;
