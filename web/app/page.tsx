@@ -5,15 +5,17 @@ import Link from "next/link";
 import { useSearchParams, usePathname } from "next/navigation";
 import { SearchBar } from "@/components/SearchBar";
 import { ResultRow } from "@/components/ResultRow";
+import { AllStockRow } from "@/components/AllStockRow";
 import { CompareModal } from "@/components/CompareModal";
 import { getAllProducts } from "@/lib/products";
 import { searchProducts } from "@/lib/search";
+import { useAllStock, searchAllStock } from "@/lib/allStock";
 import { useFavorites } from "@/lib/favorites";
 import { useRecentSearches } from "@/lib/recentSearches";
 import { useCompareList } from "@/lib/comparison";
 import { useStockCounts } from "@/lib/soWeek";
 import { copyToClipboard, formatBulkWhatsAppMessage } from "@/lib/copy";
-import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy, BookOpen, Wallet } from "lucide-react";
+import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy, BookOpen, Wallet, Boxes } from "lucide-react";
 
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
@@ -66,6 +68,12 @@ function HomeContent() {
     if (!hasQuery) return [];
     return searchProducts(allProducts, query).slice(0, RESULT_LIMIT);
   }, [query, hasQuery]);
+
+  const allStockEntries = useAllStock(hasQuery);
+  const allStockResults = useMemo(() => {
+    if (!hasQuery) return [];
+    return searchAllStock(allStockEntries, query).slice(0, RESULT_LIMIT);
+  }, [allStockEntries, query, hasQuery]);
 
   const favoriteProducts = useMemo(() => {
     if (favorites.length === 0) return [];
@@ -241,6 +249,18 @@ function HomeContent() {
                 </Link>
               )
             )}
+          </div>
+        )}
+
+        {allStockResults.length > 0 && (
+          <div className="flex w-full flex-col gap-2.5 pt-1 [animation:fadeSlideUp_0.25s_ease]">
+            <div className="flex items-center gap-1.5 px-1 text-xs font-semibold uppercase tracking-wider text-gray-400">
+              <Boxes className="h-3.5 w-3.5" />
+              <span>All Stock · Harga Referensi</span>
+            </div>
+            {allStockResults.map((entry) => (
+              <AllStockRow key={entry.id} entry={entry} />
+            ))}
           </div>
         )}
 
