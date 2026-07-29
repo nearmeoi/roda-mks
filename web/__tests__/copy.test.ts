@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatWhatsAppMessage } from "@/lib/copy";
+import { formatWhatsAppMessage, formatBulkWhatsAppMessage } from "@/lib/copy";
 import type { Product } from "@/lib/types";
 
 function buildProduct(overrides: Partial<Product>): Product {
@@ -113,5 +113,33 @@ describe("formatWhatsAppMessage", () => {
 
     expect(msg).toContain("Kode: 742286004");
     expect(msg).toContain("Stok: Tersedia (8 unit)");
+  });
+});
+
+describe("formatBulkWhatsAppMessage", () => {
+  it("formats multiple selected products into a structured summary list", () => {
+    const p1 = buildProduct({
+      id: "strattos-3",
+      model_name: "STRATTOS 3",
+      price: 9300000,
+      colors: ["Black"],
+      sizes: [{ size_code: "S", article_code: 101, quantity: 2, ordered_quantity: null, price: 9300000 }],
+    });
+    const p2 = buildProduct({
+      id: "strattos-7",
+      model_name: "STRATTOS 7",
+      price: 25000000,
+      colors: ["Black"],
+      sizes: [{ size_code: "M", article_code: 102, quantity: 1, ordered_quantity: null, price: 25000000 }],
+    });
+
+    const msg = formatBulkWhatsAppMessage([p1, p2]);
+
+    expect(msg).toContain("*DAFTAR HARGA & STOK - RODALINK MAKASSAR* 🚲");
+    expect(msg).toContain("1. *Strattos 3* - Rp 9.300.000");
+    expect(msg).toContain("• Stok: Ready (2 unit) | Ukuran: S | Warna: Black");
+    expect(msg).toContain("2. *Strattos 7* - Rp 25.000.000");
+    expect(msg).toContain("• Stok: Ready (1 unit) | Ukuran: M | Warna: Black");
+    expect(msg).toContain("Total: 2 produk");
   });
 });

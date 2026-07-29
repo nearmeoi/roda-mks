@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Mic } from "lucide-react";
+import { Mic, ListChecks } from "lucide-react";
 import { BarcodeScanner } from "./BarcodeScanner";
 
 interface SearchBarProps {
@@ -9,6 +9,8 @@ interface SearchBarProps {
   onChange: (value: string) => void;
   hasQuery: boolean;
   onClear: () => void;
+  isSelectMode?: boolean;
+  onToggleSelectMode?: () => void;
 }
 
 interface SpeechRecognitionResultItem {
@@ -47,23 +49,20 @@ function getSpeechRecognitionCtor(): SpeechRecognitionConstructor | undefined {
   return w.SpeechRecognition || w.webkitSpeechRecognition;
 }
 
-// Desktop Chrome's speech recognition tends to insert periods at detected
-// pause/sentence boundaries ("Polygon . Strattos ." instead of "Polygon
-// Strattos") -- irrelevant punctuation for a search query, and it can
-// confuse the search field's spacing. Strip it before it becomes a query.
 function sanitizeTranscript(text: string): string {
   return text.replace(/[.]/g, "").replace(/\s+/g, " ").trim();
 }
 
-// Some iOS Safari versions hang indefinitely after the user stops talking --
-// no onresult, no onend, no onerror ever fires, leaving the mic button stuck
-// listening forever (a documented WebKit reliability issue, not something
-// fixable from this side). This is a sliding safety-net timeout: it resets
-// on every result (interim or final), so a normal, slower sentence never
-// trips it, but a session with zero activity for this long gets force-reset.
 const STALL_TIMEOUT_MS = 7000;
 
-export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps) {
+export function SearchBar({
+  value,
+  onChange,
+  hasQuery,
+  onClear,
+  isSelectMode = false,
+  onToggleSelectMode,
+}: SearchBarProps) {
   const [showScanner, setShowScanner] = useState(false);
   const [micSupported, setMicSupported] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -173,6 +172,19 @@ export function SearchBar({ value, onChange, hasQuery, onClear }: SearchBarProps
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
               <path d="M5 5L19 19M19 5L5 19" stroke="#5b5b60" strokeWidth="2.4" strokeLinecap="round" />
             </svg>
+          </button>
+        )}
+        {onToggleSelectMode && (
+          <button
+            type="button"
+            onClick={onToggleSelectMode}
+            aria-label={isSelectMode ? "Matikan mode seleksi" : "Aktifkan mode seleksi"}
+            className={`mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all active:scale-95 ${
+              isSelectMode ? "bg-accent text-white shadow-xs" : "bg-black/10 text-[#5b5b60] hover:bg-black/15"
+            }`}
+            title={isSelectMode ? "Matikan mode seleksi" : "Mode Ceklis (Copy Banyak Produk)"}
+          >
+            <ListChecks className="h-[18px] w-[18px]" />
           </button>
         )}
         {micSupported && (

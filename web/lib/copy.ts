@@ -68,3 +68,47 @@ export function formatWhatsAppMessage(product: Product): string {
 
   return msg;
 }
+
+export function formatBulkWhatsAppMessage(products: Product[]): string {
+  if (products.length === 0) return "";
+  if (products.length === 1) return formatWhatsAppMessage(products[0]);
+
+  let msg = `*DAFTAR HARGA & STOK - RODALINK MAKASSAR* 🚲\n\n`;
+
+  products.forEach((product, idx) => {
+    const qty = totalQuantity(product.sizes);
+    const priceStr = product.price ? formatPrice(product.price) : "";
+    const infoParts: string[] = [];
+
+    infoParts.push(`Stok: ${qty > 0 ? "Ready (" + qty + " unit)" : "Habis"}`);
+
+    const readySizes = Array.from(
+      new Set(
+        (product.sizes || [])
+          .filter((s) => s.quantity > 0)
+          .map((s) => (s.size_code && s.size_code.toUpperCase() !== "NONE" ? s.size_code : "All Size"))
+      )
+    );
+    if (readySizes.length > 0) {
+      infoParts.push(`Ukuran: ${readySizes.join(", ")}`);
+    }
+
+    const colorStr =
+      product.colors && product.colors.length > 0
+        ? product.colors.map(titleCase).join(", ")
+        : product.color_label
+        ? titleCase(product.color_label)
+        : null;
+    if (colorStr) {
+      infoParts.push(`Warna: ${colorStr}`);
+    }
+
+    msg += `${idx + 1}. *${titleCase(product.model_name)}*`;
+    if (priceStr) msg += ` - ${priceStr}`;
+    msg += `\n   • ${infoParts.join(" | ")}\n\n`;
+  });
+
+  msg += `Total: ${products.length} produk`;
+
+  return msg.trimEnd();
+}

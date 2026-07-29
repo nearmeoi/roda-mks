@@ -1,6 +1,6 @@
 import type { Product } from "@/lib/types";
 import { formatPrice, getStockStatus, titleCase, totalQuantity } from "@/lib/format";
-import { ArrowLeftRight, Star, Package } from "lucide-react";
+import { ArrowLeftRight, Star, Package, Check } from "lucide-react";
 
 export function ResultRow({
   product,
@@ -8,12 +8,18 @@ export function ResultRow({
   onToggleFav,
   isCompared = false,
   onToggleCompare,
+  selectable = false,
+  isSelected = false,
+  onToggleSelect,
 }: {
   product: Product;
   isFav?: boolean;
   onToggleFav?: (e: React.MouseEvent) => void;
   isCompared?: boolean;
   onToggleCompare?: (e: React.MouseEvent) => void;
+  selectable?: boolean;
+  isSelected?: boolean;
+  onToggleSelect?: (e: React.MouseEvent) => void;
 }) {
   const qty = totalQuantity(product.sizes);
   const status = getStockStatus(qty);
@@ -33,10 +39,45 @@ export function ResultRow({
       ? [product.color_label]
       : [];
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (selectable && onToggleSelect) {
+      e.preventDefault();
+      e.stopPropagation();
+      onToggleSelect(e);
+    }
+  };
+
   return (
-    <div className="group flex cursor-pointer flex-col gap-2 rounded-[22px] border border-white/70 bg-white/85 p-3.5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] backdrop-blur-2xl transition-all hover:border-white hover:bg-white hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)] active:scale-[0.99]">
-      {/* Top Row: Thumbnail Image + Full Model Name + Large Top-Right Price */}
+    <div
+      onClick={handleCardClick}
+      className={`group flex cursor-pointer flex-col gap-2 rounded-[22px] border p-3.5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] backdrop-blur-2xl transition-all active:scale-[0.99] ${
+        selectable && isSelected
+          ? "border-accent/60 bg-accent/[0.06] shadow-[0_4px_20px_rgba(10,124,255,0.12)]"
+          : "border-white/70 bg-white/85 hover:border-white hover:bg-white hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)]"
+      }`}
+    >
+      {/* Top Row: Select Checkbox + Thumbnail Image + Full Model Name + Price */}
       <div className="flex items-start gap-3">
+        {/* Selection Checkbox (if in select mode) */}
+        {selectable && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (onToggleSelect) onToggleSelect(e);
+            }}
+            className={`mt-3 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-all active:scale-95 ${
+              isSelected
+                ? "border-accent bg-accent text-white shadow-xs"
+                : "border-gray-300 bg-white hover:border-gray-400"
+            }`}
+            aria-label={isSelected ? "Batal pilih produk" : "Pilih produk"}
+          >
+            {isSelected && <Check className="h-3.5 w-3.5 stroke-[3]" />}
+          </button>
+        )}
+
         {/* Product Image Thumbnail */}
         {product.images && product.images.length > 0 ? (
           <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-black/[0.05] bg-white p-1 shadow-xs">
@@ -52,7 +93,7 @@ export function ResultRow({
           </div>
         )}
 
-        {/* Full Model Name & Subtitle (Left/Middle) */}
+        {/* Full Model Name & Subtitle */}
         <div className="min-w-0 flex-1 pr-1">
           <h3 className="text-[15px] font-semibold leading-snug tracking-tight text-gray-900 break-words">
             {titleCase(product.model_name)}
@@ -62,7 +103,7 @@ export function ResultRow({
           </div>
         </div>
 
-        {/* Top Right: Large Price aligned with Name */}
+        {/* Top Right: Price aligned with Name */}
         <div className="flex flex-col items-end shrink-0 pl-1">
           <div className="text-[16px] font-bold tracking-tight text-gray-900">
             {formatPrice(product.price)}
@@ -74,7 +115,7 @@ export function ResultRow({
         </div>
       </div>
 
-      {/* Bottom Footer Row: Colors & Action Buttons (Compare & Star) */}
+      {/* Bottom Footer Row: Colors & Action Buttons */}
       <div className="flex items-center justify-between gap-2 border-t border-black/[0.04] pt-2 mt-0.5">
         {/* Left: Ready Colors Pill Badges */}
         {displayColors.length > 0 ? (
@@ -97,45 +138,48 @@ export function ResultRow({
           <div />
         )}
 
-        {/* Right: iOS Action Buttons (Compare & Star) */}
-        <div className="flex shrink-0 items-center gap-1.5 ml-auto">
-          {onToggleCompare && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                onToggleCompare(e);
-              }}
-              className={`flex h-7 w-7 items-center justify-center rounded-full border transition-all active:scale-95 ${isCompared
-                ? "border-accent bg-accent text-white shadow-xs"
-                : "border-black/[0.08] bg-black/[0.02] text-gray-600 hover:text-accent hover:border-accent/40"
+        {/* Right: Action Buttons (Compare & Star) - hidden in select mode if desired, or shown */}
+        {!selectable && (
+          <div className="flex shrink-0 items-center gap-1.5 ml-auto">
+            {onToggleCompare && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onToggleCompare(e);
+                }}
+                className={`flex h-7 w-7 items-center justify-center rounded-full border transition-all active:scale-95 ${
+                  isCompared
+                    ? "border-accent bg-accent text-white shadow-xs"
+                    : "border-black/[0.08] bg-black/[0.02] text-gray-600 hover:text-accent hover:border-accent/40"
                 }`}
-              title={isCompared ? "Keluarkan dari perbandingan" : "Tambahkan ke perbandingan"}
-            >
-              <ArrowLeftRight className="h-3 w-3" />
-            </button>
-          )}
+                title={isCompared ? "Keluarkan dari perbandingan" : "Tambahkan ke perbandingan"}
+              >
+                <ArrowLeftRight className="h-3 w-3" />
+              </button>
+            )}
 
-          {onToggleFav && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                onToggleFav(e);
-              }}
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-black/[0.06] bg-black/[0.02] transition-all hover:bg-black/[0.08] active:scale-95"
-              title={isFav ? "Hapus dari favorit" : "Tambahkan ke favorit"}
-            >
-              <Star
-                className="h-3.5 w-3.5"
-                fill={isFav ? "#f59e0b" : "none"}
-                stroke={isFav ? "#d97706" : "#9ca3af"}
-              />
-            </button>
-          )}
-        </div>
+            {onToggleFav && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onToggleFav(e);
+                }}
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-black/[0.06] bg-black/[0.02] transition-all hover:bg-black/[0.08] active:scale-95"
+                title={isFav ? "Hapus dari favorit" : "Tambahkan ke favorit"}
+              >
+                <Star
+                  className="h-3.5 w-3.5"
+                  fill={isFav ? "#f59e0b" : "none"}
+                  stroke={isFav ? "#d97706" : "#9ca3af"}
+                />
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

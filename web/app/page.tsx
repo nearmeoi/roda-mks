@@ -12,7 +12,8 @@ import { useFavorites } from "@/lib/favorites";
 import { useRecentSearches } from "@/lib/recentSearches";
 import { useCompareList } from "@/lib/comparison";
 import { useStockCounts } from "@/lib/soWeek";
-import { Star, History, X, ArrowLeftRight, ClipboardList } from "lucide-react";
+import { copyToClipboard, formatBulkWhatsAppMessage } from "@/lib/copy";
+import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy } from "lucide-react";
 
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
@@ -24,6 +25,11 @@ function HomeContent() {
   const urlQuery = searchParams.get("q") || "";
   const [query, setQuery] = useState(urlQuery);
   const [showCompareModal, setShowCompareModal] = useState(false);
+
+  // Multi-select / Checklist state
+  const [isSelectMode, setIsSelectMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [copiedToast, setCopiedToast] = useState(false);
 
   const { favorites, toggle, isFav } = useFavorites();
   const { recent, addSearch, removeSearch } = useRecentSearches();
@@ -71,10 +77,55 @@ function HomeContent() {
     return allProducts.filter((p) => compareIds.includes(p.id));
   }, [compareIds]);
 
+  const activeVisibleProducts = hasQuery ? results : favoriteProducts;
+
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+  const allVisibleSelected =
+    activeVisibleProducts.length > 0 &&
+    activeVisibleProducts.every((p) => selectedIds.has(p.id));
+
+  const handleSelectAllVisible = () => {
+    if (allVisibleSelected) {
+      setSelectedIds((prev) => {
+        const next = new Set(prev);
+        activeVisibleProducts.forEach((p) => next.delete(p.id));
+        return next;
+      });
+    } else {
+      setSelectedIds((prev) => {
+        const next = new Set(prev);
+        activeVisibleProducts.forEach((p) => next.add(p.id));
+        return next;
+      });
+    }
+  };
+
+  const handleCopyBulk = async () => {
+    if (selectedIds.size === 0) return;
+    const selectedProducts = allProducts.filter((p) => selectedIds.has(p.id));
+    const text = formatBulkWhatsAppMessage(selectedProducts);
+    const ok = await copyToClipboard(text);
+    if (ok) {
+      setCopiedToast(true);
+      setTimeout(() => setCopiedToast(false), 2000);
+    }
+  };
+
   const noResults = hasQuery && results.length === 0;
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center overflow-x-hidden pb-20 pt-6">
+    <div className="relative flex min-h-screen flex-col items-center overflow-x-hidden pb-24 pt-6">
       {/* Background Blobs */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex h-[450px] justify-center overflow-hidden">
         <div className="relative w-full max-w-[600px] shrink-0">
@@ -103,7 +154,14 @@ function HomeContent() {
           <span className="text-[17px] font-bold tracking-tight text-gray-900">Roda Stock</span>
         </div>
 
-        <SearchBar value={query} onChange={handleQueryChange} hasQuery={hasQuery} onClear={() => handleQueryChange("")} />
+        <SearchBar
+          value={query}
+          onChange={handleQueryChange}
+          hasQuery={hasQuery}
+          onClear={() => handleQueryChange("")}
+          isSelectMode={isSelectMode}
+          onToggleSelectMode={() => setIsSelectMode(!isSelectMode)}
+        />
 
         {/* Recent Searches Chips */}
         {recent.length > 0 && !hasQuery && (
@@ -144,17 +202,27 @@ function HomeContent() {
 
         {!noResults && results.length > 0 && (
           <div className="flex w-full flex-col gap-2.5 [animation:fadeSlideUp_0.25s_ease]">
-            {results.map((product) => (
-              <Link key={product.id} href={`/product/${product.id}`}>
+            {results.map((product) =>
+              isSelectMode ? (
                 <ResultRow
+                  key={product.id}
                   product={product}
-                  isFav={isFav(product.id)}
-                  onToggleFav={() => toggle(product.id)}
-                  isCompared={isCompared(product.id)}
-                  onToggleCompare={() => toggleCompare(product.id)}
+                  selectable={true}
+                  isSelected={selectedIds.has(product.id)}
+                  onToggleSelect={() => toggleSelect(product.id)}
                 />
-              </Link>
-            ))}
+              ) : (
+                <Link key={product.id} href={`/product/${product.id}`}>
+                  <ResultRow
+                    product={product}
+                    isFav={isFav(product.id)}
+                    onToggleFav={() => toggle(product.id)}
+                    isCompared={isCompared(product.id)}
+                    onToggleCompare={() => toggleCompare(product.id)}
+                  />
+                </Link>
+              )
+            )}
           </div>
         )}
 
@@ -169,17 +237,27 @@ function HomeContent() {
                     <span>Stok Favorit Dipin ({favoriteProducts.length})</span>
                   </div>
                 </div>
-                {favoriteProducts.map((product) => (
-                  <Link key={product.id} href={`/product/${product.id}`}>
+                {favoriteProducts.map((product) =>
+                  isSelectMode ? (
                     <ResultRow
+                      key={product.id}
                       product={product}
-                      isFav={true}
-                      onToggleFav={() => toggle(product.id)}
-                      isCompared={isCompared(product.id)}
-                      onToggleCompare={() => toggleCompare(product.id)}
+                      selectable={true}
+                      isSelected={selectedIds.has(product.id)}
+                      onToggleSelect={() => toggleSelect(product.id)}
                     />
-                  </Link>
-                ))}
+                  ) : (
+                    <Link key={product.id} href={`/product/${product.id}`}>
+                      <ResultRow
+                        product={product}
+                        isFav={true}
+                        onToggleFav={() => toggle(product.id)}
+                        isCompared={isCompared(product.id)}
+                        onToggleCompare={() => toggleCompare(product.id)}
+                      />
+                    </Link>
+                  )
+                )}
               </div>
             )}
 
@@ -192,8 +270,46 @@ function HomeContent() {
 
       <div className="min-h-4 flex-auto" />
 
+      {/* Sticky Bottom Bar for Multi-Select Mode */}
+      {isSelectMode && (
+        <div className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/20 bg-gray-900/95 px-4 py-2.5 text-white shadow-[0_10px_35px_rgba(0,0,0,0.35)] backdrop-blur-2xl [animation:fadeSlideUp_0.25s_ease]">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-gray-200 pr-1">
+            <span>{selectedIds.size} Dipilih</span>
+          </div>
+          {activeVisibleProducts.length > 0 && (
+            <button
+              type="button"
+              onClick={handleSelectAllVisible}
+              className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/25 active:scale-95 transition-all"
+            >
+              {allVisibleSelected ? "Batal Semua" : "Pilih Semua"}
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={handleCopyBulk}
+            disabled={selectedIds.size === 0}
+            className="flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-95 active:scale-95 transition-all disabled:opacity-40"
+          >
+            {copiedToast ? <Check className="h-3.5 w-3.5 stroke-[3]" /> : <Copy className="h-3.5 w-3.5" />}
+            <span>{copiedToast ? "Tercopy!" : "Salin WA"}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setIsSelectMode(false);
+              setSelectedIds(new Set());
+            }}
+            className="ml-0.5 rounded-full p-1.5 text-gray-400 hover:bg-white/10 hover:text-white transition-all"
+            aria-label="Tutup mode seleksi"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      )}
+
       {/* Sticky Bottom Bar for Active Comparisons */}
-      {compareIds.length > 0 && (
+      {!isSelectMode && compareIds.length > 0 && (
         <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/20 bg-gray-900/90 px-5 py-2.5 text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl [animation:fadeSlideUp_0.25s_ease]">
           <div className="flex items-center gap-2 text-xs font-semibold tracking-tight">
             <ArrowLeftRight className="h-4 w-4 text-accent" />
@@ -210,7 +326,7 @@ function HomeContent() {
       )}
 
       {/* SO Week Entry Point */}
-      {!hasQuery && compareIds.length === 0 && (
+      {!isSelectMode && !hasQuery && compareIds.length === 0 && (
         <Link
           href="/so-week"
           className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/20 bg-gray-900/90 px-5 py-2.5 text-xs font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl transition-all active:scale-95 [animation:fadeSlideUp_0.25s_ease]"
@@ -238,11 +354,13 @@ function HomeContent() {
 
 export default function HomePage() {
   return (
-    <Suspense fallback={
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent" />
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent" />
+        </div>
+      }
+    >
       <HomeContent />
     </Suspense>
   );
