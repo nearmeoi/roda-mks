@@ -29,3 +29,18 @@ export interface StockCount {
   countedQty: number;
   countedAt: string; // ISO timestamp
 }
+
+export type ContentBlock =
+  | { type: "heading"; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "bullets"; items: string[] }
+  | { type: "table"; headers: string[]; rows: string[][] };
+
+export interface GuideArticle {
+  id: string;
+  category: string;
+  title: string;
+  summary: string;
+  tags?: string[];
+  blocks: ContentBlock[];
+}
