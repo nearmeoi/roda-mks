@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getWeekStart, isInCurrentWeek, mergeStockCount, removeStockCount } from "@/lib/soWeek";
+import { getWeekStart, isInCurrentWeek, mergeStockCount, removeStockCount, formatSoWeekReport } from "@/lib/soWeek";
 import type { StockCount } from "@/lib/types";
 
 // January 1, 2024 was a Monday -- used as a fixed, known anchor so these
@@ -60,18 +60,18 @@ describe("isInCurrentWeek", () => {
 
 describe("mergeStockCount", () => {
   const existing: Record<string, StockCount> = {
-    "product-a": { productId: "product-a", productName: "Product A", countedQty: 3, countedAt: "2024-01-01T08:00:00.000Z" },
+    "product-a": { productId: "product-a", productName: "Product A", countedQty: 3, shQty: 2, whQty: 1, countedAt: "2024-01-01T08:00:00.000Z" },
   };
 
   it("overwrites the entry for the same product id", () => {
-    const entry: StockCount = { productId: "product-a", productName: "Product A", countedQty: 5, countedAt: "2024-01-02T08:00:00.000Z" };
+    const entry: StockCount = { productId: "product-a", productName: "Product A", countedQty: 5, shQty: 3, whQty: 2, countedAt: "2024-01-02T08:00:00.000Z" };
     const result = mergeStockCount(existing, entry);
     expect(Object.keys(result)).toEqual(["product-a"]);
     expect(result["product-a"].countedQty).toBe(5);
   });
 
   it("keeps existing entries for other product ids", () => {
-    const entry: StockCount = { productId: "product-b", productName: "Product B", countedQty: 7, countedAt: "2024-01-02T08:00:00.000Z" };
+    const entry: StockCount = { productId: "product-b", productName: "Product B", countedQty: 7, shQty: 5, whQty: 2, countedAt: "2024-01-02T08:00:00.000Z" };
     const result = mergeStockCount(existing, entry);
     expect(result["product-a"].countedQty).toBe(3);
     expect(result["product-b"].countedQty).toBe(7);
@@ -80,8 +80,8 @@ describe("mergeStockCount", () => {
 
 describe("removeStockCount", () => {
   const existing: Record<string, StockCount> = {
-    "product-a": { productId: "product-a", productName: "Product A", countedQty: 3, countedAt: "2024-01-01T08:00:00.000Z" },
-    "product-b": { productId: "product-b", productName: "Product B", countedQty: 5, countedAt: "2024-01-01T09:00:00.000Z" },
+    "product-a": { productId: "product-a", productName: "Product A", countedQty: 3, shQty: 2, whQty: 1, countedAt: "2024-01-01T08:00:00.000Z" },
+    "product-b": { productId: "product-b", productName: "Product B", countedQty: 5, shQty: 5, whQty: 0, countedAt: "2024-01-01T09:00:00.000Z" },
   };
 
   it("removes the entry with specified product id", () => {
@@ -95,4 +95,30 @@ describe("removeStockCount", () => {
     expect(Object.keys(result)).toHaveLength(2);
   });
 });
+
+describe("formatSoWeekReport", () => {
+  it("formats counts with SH, WH, totals, and PIC name", () => {
+    const counts: StockCount[] = [
+      {
+        productId: "p1",
+        productName: "Bar Tape Cambium",
+        articleCode: "735551001",
+        brand: "Brooks",
+        countedQty: 3,
+        shQty: 2,
+        whQty: 1,
+        price: 748000,
+        countedAt: "2024-01-01T08:00:00.000Z",
+      },
+    ];
+    const report = formatSoWeekReport(counts, "Cintya");
+    expect(report).toContain("LAPORAN SO WEEK");
+    expect(report).toContain("CINTYA");
+    expect(report).toContain("735551001");
+    expect(report).toContain("SH: 2");
+    expect(report).toContain("WH: 1");
+    expect(report).toContain("Total: 3 unit");
+  });
+});
+
 

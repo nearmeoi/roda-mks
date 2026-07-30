@@ -26,8 +26,14 @@ export interface Product {
 export interface StockCount {
   productId: string;
   productName: string;
-  countedQty: number;
-  countedAt: string; // ISO timestamp
+  countedQty: number; // total = shQty + whQty
+  shQty: number;      // Showroom / Display Qty
+  whQty: number;      // Warehouse / Gudang Qty
+  articleCode?: string | number;
+  brand?: string;
+  category?: string;
+  price?: number | null;
+  countedAt: string;  // ISO timestamp
 }
 
 export type ContentBlock =

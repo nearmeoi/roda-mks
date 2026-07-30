@@ -40,6 +40,26 @@ export function removeStockCount(
   return next;
 }
 
+const PIC_KEY = "rodalink_so_pic_name";
+
+export function getPicName(): string {
+  if (typeof window === "undefined") return "";
+  try {
+    return localStorage.getItem(PIC_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
+export function savePicName(name: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(PIC_KEY, name.trim());
+  } catch (e) {
+    console.error("Failed to save PIC name", e);
+  }
+}
+
 export function getStockCounts(): Record<string, StockCount> {
   if (typeof window === "undefined") return {};
   try {
@@ -50,13 +70,35 @@ export function getStockCounts(): Record<string, StockCount> {
   }
 }
 
-export function saveStockCount(productId: string, productName: string, countedQty: number): StockCount {
+export function saveStockCount(
+  productId: string,
+  productName: string,
+  shQtyOrTotal: number,
+  whQty: number = 0,
+  meta?: {
+    articleCode?: string | number;
+    brand?: string;
+    category?: string;
+    price?: number | null;
+  }
+): StockCount {
+  const sh = Math.max(0, shQtyOrTotal || 0);
+  const wh = Math.max(0, whQty || 0);
+  const total = sh + wh;
+
   const entry: StockCount = {
     productId,
     productName,
-    countedQty,
+    countedQty: total,
+    shQty: sh,
+    whQty: wh,
+    articleCode: meta?.articleCode,
+    brand: meta?.brand,
+    category: meta?.category,
+    price: meta?.price,
     countedAt: new Date().toISOString(),
   };
+
   try {
     const updated = mergeStockCount(getStockCounts(), entry);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
@@ -90,16 +132,79 @@ export function getCurrentWeekCounts(): StockCount[] {
     .sort((a, b) => new Date(b.countedAt).getTime() - new Date(a.countedAt).getTime());
 }
 
+export function formatSoWeekReport(counts: StockCount[], picName: string = ""): string {
+  const dateStr = new Date().toLocaleDateString("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  let totalSH = 0;
+  let totalWH = 0;
+  let totalAll = 0;
+
+  const lines: string[] = [];
+  lines.push(`📋 *LAPORAN SO WEEK (STOCK OPNAME)*`);
+  lines.push(`📅 Tanggal: ${dateStr}`);
+  if (picName) {
+    lines.push(`👤 PIC: ${picName.toUpperCase()}`);
+  }
+  lines.push(`-----------------------------------`);
+
+  counts.forEach((c, idx) => {
+    const sh = c.shQty ?? c.countedQty ?? 0;
+    const wh = c.whQty ?? 0;
+    const total = sh + wh;
+    totalSH += sh;
+    totalWH += wh;
+    totalAll += total;
+
+    const codeStr = c.articleCode ? ` [${c.articleCode}]` : "";
+    const brandStr = c.brand ? `${c.brand.toUpperCase()} - ` : "";
+    const priceStr = c.price ? ` | Rp ${c.price.toLocaleString("id-ID")}` : "";
+
+    lines.push(`${idx + 1}. ${brandStr}${c.productName}${codeStr}`);
+    lines.push(`   📍 SH: ${sh} | WH: ${wh} | *Total: ${total} unit*${priceStr}`);
+  });
+
+  lines.push(`-----------------------------------`);
+  lines.push(`📊 *RINGKASAN TOTAL:*`);
+  lines.push(`• Total Showroom (SH): *${totalSH} unit*`);
+  lines.push(`• Total Gudang (WH): *${totalWH} unit*`);
+  lines.push(`• Grand Total Fisik: *${totalAll} unit*`);
+
+  return lines.join("\n");
+}
+
 export function useStockCounts() {
   const [counts, setCounts] = useState<StockCount[]>([]);
+  const [pic, setPic] = useState<string>("");
 
   useEffect(() => {
     setCounts(getCurrentWeekCounts());
+    setPic(getPicName());
   }, []);
 
-  const saveCount = (productId: string, productName: string, countedQty: number) => {
-    saveStockCount(productId, productName, countedQty);
+  const saveCount = (
+    productId: string,
+    productName: string,
+    shQty: number,
+    whQty: number = 0,
+    meta?: {
+      articleCode?: string | number;
+      brand?: string;
+      category?: string;
+      price?: number | null;
+    }
+  ) => {
+    saveStockCount(productId, productName, shQty, whQty, meta);
     setCounts(getCurrentWeekCounts());
+  };
+
+  const updatePic = (name: string) => {
+    savePicName(name);
+    setPic(name.trim());
   };
 
   const deleteCount = (productId: string) => {
@@ -115,6 +220,7 @@ export function useStockCounts() {
   const getCount = (productId: string): StockCount | undefined =>
     counts.find((c) => c.productId === productId);
 
-  return { counts, saveCount, deleteCount, clearCounts, getCount };
+  return { counts, pic, updatePic, saveCount, deleteCount, clearCounts, getCount };
 }
+
 

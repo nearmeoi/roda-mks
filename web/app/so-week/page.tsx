@@ -3,23 +3,26 @@
 import { useMemo, useState } from "react";
 import { getAllProducts } from "@/lib/products";
 import { searchProducts } from "@/lib/search";
-import { useStockCounts } from "@/lib/soWeek";
-import { titleCase } from "@/lib/format";
+import { useStockCounts, formatSoWeekReport } from "@/lib/soWeek";
+import { titleCase, primaryArticleCode, formatPrice } from "@/lib/format";
+import { copyToClipboard } from "@/lib/copy";
 import { BarcodeScanner } from "@/components/BarcodeScanner";
 import { StockCountSheet } from "@/components/StockCountSheet";
 import { BackButton } from "@/components/BackButton";
 import type { Product } from "@/lib/types";
-import { Package, ScanLine, Pencil, Trash2, CheckCircle2 } from "lucide-react";
+import { Package, ScanLine, Pencil, Trash2, CheckCircle2, UserCheck, Share2, Store, Warehouse } from "lucide-react";
 
 const allProducts = getAllProducts();
 
 export default function SoWeekPage() {
-  const { counts, saveCount, deleteCount, clearCounts, getCount } = useStockCounts();
+  const { counts, pic, updatePic, saveCount, deleteCount, clearCounts, getCount } = useStockCounts();
   const [showScanner, setShowScanner] = useState(false);
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
   const [query, setQuery] = useState("");
   const [notFoundMsg, setNotFoundMsg] = useState<string | null>(null);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const [isPicEditing, setIsPicEditing] = useState(false);
+  const [picInput, setPicInput] = useState(pic);
 
   const productMap = useMemo(() => {
     const map = new Map<string, Product>();
@@ -33,6 +36,20 @@ export default function SoWeekPage() {
     if (query.trim().length === 0) return [];
     return searchProducts(allProducts, query).slice(0, 8);
   }, [query]);
+
+  const totals = useMemo(() => {
+    let sh = 0;
+    let wh = 0;
+    let total = 0;
+    for (const c of counts) {
+      const cSh = c.shQty ?? c.countedQty ?? 0;
+      const cWh = c.whQty ?? 0;
+      sh += cSh;
+      wh += cWh;
+      total += (cSh + cWh);
+    }
+    return { sh, wh, total };
+  }, [counts]);
 
   const showToast = (msg: string) => {
     setToastMsg(msg);
@@ -63,11 +80,24 @@ export default function SoWeekPage() {
     setActiveProduct(p);
   };
 
-  const handleSaveCount = (qty: number) => {
+  const handleSaveCount = (shQty: number, whQty: number) => {
     if (!activeProduct) return;
     const isEdit = getCount(activeProduct.id) !== undefined;
-    saveCount(activeProduct.id, titleCase(activeProduct.model_name), qty);
-    showToast(isEdit ? `Hitungan ${titleCase(activeProduct.model_name)} diperbarui ke ${qty}` : `Berhasil menyimpan ${qty} unit ${titleCase(activeProduct.model_name)}`);
+    const articleCode = primaryArticleCode(activeProduct.sizes);
+
+    saveCount(activeProduct.id, titleCase(activeProduct.model_name), shQty, whQty, {
+      articleCode: articleCode || activeProduct.id,
+      brand: activeProduct.brand,
+      category: activeProduct.category,
+      price: activeProduct.price,
+    });
+
+    const total = shQty + whQty;
+    showToast(
+      isEdit
+        ? `Diperbarui: SH ${shQty} | WH ${whQty} (Total: ${total})`
+        : `Tersimpan: SH ${shQty} | WH ${whQty} (Total: ${total} unit)`
+    );
     setActiveProduct(null);
     setShowScanner(true);
   };
@@ -82,12 +112,26 @@ export default function SoWeekPage() {
     }
   };
 
+  const handleExportReport = async () => {
+    if (counts.length === 0) return;
+    const text = formatSoWeekReport(counts, pic);
+    const ok = await copyToClipboard(text);
+    if (ok) {
+      showToast("Laporan SO Week tercopy ke clipboard! Siap kirim ke WA.");
+    }
+  };
+
+  const handleSavePic = () => {
+    updatePic(picInput);
+    setIsPicEditing(false);
+    showToast(`PIC SO disimpan: ${picInput.trim() || "Tidak diisi"}`);
+  };
+
   const handleEditItem = (c: { productId: string; productName: string }) => {
     const p = productMap.get(c.productId);
     if (p) {
       setActiveProduct(p);
     } else {
-      // Fallback synthetic product if product object not in catalog
       setActiveProduct({
         id: c.productId,
         brand: "Rodalink",
@@ -108,7 +152,7 @@ export default function SoWeekPage() {
   };
 
   return (
-    <div className="min-h-screen pb-28">
+    <div className="min-h-screen pb-28 bg-[#f8f9fa]">
       {toastMsg && (
         <div className="fixed top-16 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full bg-gray-900 px-4 py-2.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
@@ -116,13 +160,21 @@ export default function SoWeekPage() {
         </div>
       )}
 
-      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/[0.08] bg-[#f6f6f8]/80 px-5 py-3 backdrop-blur-xl">
+      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/[0.08] bg-white/90 px-4 py-3 backdrop-blur-xl">
         <BackButton />
-        <span className="text-sm font-semibold text-gray-900">SO Week (Stock Opname)</span>
+        <span className="text-sm font-bold text-gray-900">SO Week (Stock Opname)</span>
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-semibold text-accent">
-            {counts.length} item
-          </span>
+          {counts.length > 0 && (
+            <button
+              type="button"
+              onClick={handleExportReport}
+              title="Salin Laporan SO ke WhatsApp"
+              className="flex items-center gap-1 rounded-full bg-emerald-600 px-2.5 py-1 text-[11px] font-bold text-white shadow-sm hover:bg-emerald-700 active:scale-95 transition-all"
+            >
+              <Share2 className="h-3 w-3" />
+              <span>Salin WA</span>
+            </button>
+          )}
           {counts.length > 0 && (
             <button
               type="button"
@@ -133,7 +185,7 @@ export default function SoWeekPage() {
                 }
               }}
               title="Kosongkan semua hitungan minggu ini"
-              className="rounded-full bg-red-50 px-2 py-1 text-[11px] font-medium text-red-600 hover:bg-red-100"
+              className="rounded-full bg-red-50 px-2 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-100"
             >
               Reset
             </button>
@@ -141,31 +193,109 @@ export default function SoWeekPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[560px] px-5 pt-4">
+      <div className="mx-auto max-w-[560px] px-4 pt-3">
+        {/* PIC Header & Summary Banner */}
+        <div className="mb-3.5 flex flex-col gap-2 rounded-2xl border border-black/[0.06] bg-white p-3.5 shadow-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <UserCheck className="h-4 w-4 text-accent" />
+              <span className="text-xs font-semibold text-gray-500">PIC SO:</span>
+              {isPicEditing ? (
+                <div className="flex items-center gap-1.5">
+                  <input
+                    type="text"
+                    value={picInput}
+                    onChange={(e) => setPicInput(e.target.value)}
+                    placeholder="Nama PIC (misal: Cintya)"
+                    className="rounded-lg border border-black/15 bg-gray-50 px-2.5 py-1 text-xs font-bold text-gray-900 outline-none focus:border-accent"
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    onClick={handleSavePic}
+                    className="rounded-lg bg-accent px-2.5 py-1 text-xs font-semibold text-white"
+                  >
+                    Simpan
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPicInput(pic);
+                    setIsPicEditing(true);
+                  }}
+                  className="flex items-center gap-1 text-xs font-bold text-gray-900 hover:text-accent"
+                >
+                  <span>{pic || "Set Nama PIC..."}</span>
+                  <Pencil className="h-3 w-3 text-gray-400" />
+                </button>
+              )}
+            </div>
+            <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-extrabold text-accent">
+              {counts.length} Item Terhitung
+            </span>
+          </div>
+
+          {counts.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 pt-1 border-t border-black/[0.05]">
+              <div className="flex flex-col items-center rounded-xl bg-accent/5 p-1.5">
+                <span className="flex items-center gap-1 text-[10px] font-bold text-accent">
+                  <Store className="h-3 w-3" />
+                  SH (Showroom)
+                </span>
+                <span className="text-xs font-extrabold text-gray-900">{totals.sh} unit</span>
+              </div>
+              <div className="flex flex-col items-center rounded-xl bg-emerald-50 p-1.5">
+                <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-700">
+                  <Warehouse className="h-3 w-3" />
+                  WH (Gudang)
+                </span>
+                <span className="text-xs font-extrabold text-gray-900">{totals.wh} unit</span>
+              </div>
+              <div className="flex flex-col items-center rounded-xl bg-gray-900 text-white p-1.5">
+                <span className="text-[10px] font-semibold text-gray-300">Grand Total</span>
+                <span className="text-xs font-extrabold">{totals.total} unit</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Search input */}
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Cari nama atau kode artikel..."
-          className="w-full rounded-full border border-black/[0.08] bg-white px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-accent"
+          className="w-full rounded-full border border-black/[0.08] bg-white px-4 py-2.5 text-sm text-gray-900 outline-none shadow-sm focus:border-accent"
         />
 
         {searchResults.length > 0 && (
           <div className="mt-2 flex flex-col gap-1.5">
             {searchResults.map((p) => {
               const existingCount = getCount(p.id);
+              const artCode = primaryArticleCode(p.sizes);
+
               return (
                 <button
                   key={p.id}
                   type="button"
                   onClick={() => handlePickResult(p)}
-                  className="flex items-center justify-between rounded-xl border border-black/[0.06] bg-white px-3.5 py-2.5 text-left text-sm font-medium text-gray-800 transition-all hover:border-accent"
+                  className="flex items-center justify-between rounded-2xl border border-black/[0.06] bg-white px-4 py-2.5 text-left text-sm font-medium text-gray-800 transition-all hover:border-accent shadow-sm"
                 >
-                  <span>{titleCase(p.model_name)}</span>
-                  {existingCount && (
-                    <span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-[11px] font-bold text-amber-700">
-                      Edit ({existingCount.countedQty})
+                  <div className="min-w-0 flex-1 pr-2">
+                    <div className="truncate text-xs font-bold text-gray-900">{titleCase(p.model_name)}</div>
+                    <div className="text-[11px] text-gray-400">
+                      Art Code: <span className="font-semibold text-gray-700">{artCode || p.id}</span>
+                      {p.brand ? ` · ${p.brand}` : ""}
+                    </div>
+                  </div>
+                  {existingCount ? (
+                    <span className="shrink-0 rounded-full bg-amber-500/10 px-2.5 py-1 text-[11px] font-bold text-amber-700">
+                      SH: {existingCount.shQty ?? existingCount.countedQty} | WH: {existingCount.whQty ?? 0}
                     </span>
+                  ) : (
+                    <span className="shrink-0 text-xs font-semibold text-accent">+ Hitung</span>
                   )}
                 </button>
               );
@@ -175,62 +305,85 @@ export default function SoWeekPage() {
 
         {notFoundMsg && <p className="mt-2 text-center text-xs text-red-500">{notFoundMsg}</p>}
 
-        <div className="mt-5 flex flex-col gap-2.5">
+        {/* Counted Items List */}
+        <div className="mt-4 flex flex-col gap-2.5">
           {counts.length === 0 && (
-            <p className="pt-10 text-center text-sm text-gray-400">
-              Belum ada barang dihitung minggu ini.
+            <div className="pt-10 text-center text-sm text-gray-400">
+              <Package className="mx-auto mb-2 h-10 w-10 text-gray-300" />
+              Belum ada barang terhitung minggu ini.
               <br />
-              Scan atau cari barang untuk mulai hitung fisik.
-            </p>
+              Scan barcode atau cari kode artikel di atas untuk mulai.
+            </div>
           )}
           {counts.map((c) => {
             const matchedP = productMap.get(c.productId);
             const imageUrl = matchedP?.images?.[0];
+            const sh = c.shQty ?? c.countedQty ?? 0;
+            const wh = c.whQty ?? 0;
+            const total = sh + wh;
+            const artCode = c.articleCode || (matchedP ? primaryArticleCode(matchedP.sizes) : c.productId);
 
             return (
               <div
                 key={c.productId}
-                className="group flex items-center gap-3 rounded-2xl border border-black/[0.06] bg-white p-3 transition-all hover:border-black/15 shadow-sm"
+                className="group flex flex-col gap-2 rounded-2xl border border-black/[0.06] bg-white p-3.5 transition-all hover:border-black/15 shadow-sm"
               >
-                {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt={c.productName}
-                    className="h-10 w-10 shrink-0 rounded-xl border border-black/[0.06] object-contain bg-white"
-                  />
-                ) : (
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black/[0.04] text-gray-400">
-                    <Package className="h-5 w-5" />
+                <div className="flex items-center gap-3">
+                  {imageUrl ? (
+                    <img
+                      src={imageUrl}
+                      alt={c.productName}
+                      className="h-12 w-12 shrink-0 rounded-xl border border-black/[0.06] object-contain bg-white p-0.5"
+                    />
+                  ) : (
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-black/[0.04] text-gray-400">
+                      <Package className="h-6 w-6" />
+                    </div>
+                  )}
+
+                  <div className="min-w-0 flex-1 cursor-pointer" onClick={() => handleEditItem(c)}>
+                    <div className="truncate text-xs font-bold text-gray-900 group-hover:text-accent">
+                      {c.productName}
+                    </div>
+                    <div className="mt-0.5 flex flex-wrap items-center gap-2 text-[11px] text-gray-500">
+                      <span>Kode: <span className="font-semibold text-gray-800">{artCode}</span></span>
+                      {c.price && <span>· {formatPrice(c.price)}</span>}
+                    </div>
                   </div>
-                )}
-                <div className="min-w-0 flex-1 cursor-pointer" onClick={() => handleEditItem(c)}>
-                  <div className="truncate text-[13px] font-semibold text-gray-900 group-hover:text-accent">
-                    {c.productName}
-                  </div>
-                  <div className="text-[11px] text-gray-400">
-                    Waktu: {new Date(c.countedAt).toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" })}
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => handleEditItem(c)}
+                      title="Edit hitungan"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-black/[0.04] text-gray-600 transition-all hover:bg-accent/10 hover:text-accent active:scale-95"
+                    >
+                      <Pencil className="h-3.5 w-3.5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteCount(c.productId, c.productName)}
+                      title="Hapus hitungan"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-red-50 text-red-500 transition-all hover:bg-red-100 active:scale-95"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                    </button>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="rounded-xl bg-black/[0.04] px-3 py-1.5 text-sm font-bold text-gray-900">
-                    {c.countedQty} unit
+
+                {/* Breakdown Badges SH & WH */}
+                <div className="flex items-center justify-between rounded-xl bg-gray-50 px-3 py-1.5 text-xs">
+                  <div className="flex items-center gap-3">
+                    <span className="font-medium text-gray-600">
+                      SH: <span className="font-bold text-accent">{sh}</span>
+                    </span>
+                    <span className="font-medium text-gray-600">
+                      WH: <span className="font-bold text-emerald-600">{wh}</span>
+                    </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => handleEditItem(c)}
-                    title="Edit hitungan"
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-black/[0.04] text-gray-600 transition-all hover:bg-accent/10 hover:text-accent active:scale-95"
-                  >
-                    <Pencil className="h-3.5 w-3.5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteCount(c.productId, c.productName)}
-                    title="Hapus hitungan"
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-red-50 text-red-500 transition-all hover:bg-red-100 active:scale-95"
-                  >
-                    <Trash2 className="h-3.5 w-3.5" />
-                  </button>
+                  <div className="font-bold text-gray-900">
+                    Total: <span className="text-accent">{total} unit</span>
+                  </div>
                 </div>
               </div>
             );
@@ -252,6 +405,8 @@ export default function SoWeekPage() {
       {activeProduct && (
         <StockCountSheet
           product={activeProduct}
+          initialShQty={getCount(activeProduct.id)?.shQty}
+          initialWhQty={getCount(activeProduct.id)?.whQty}
           initialQty={getCount(activeProduct.id)?.countedQty}
           onSave={handleSaveCount}
           onDelete={
@@ -265,4 +420,5 @@ export default function SoWeekPage() {
     </div>
   );
 }
+
 
