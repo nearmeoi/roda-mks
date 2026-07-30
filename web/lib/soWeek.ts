@@ -31,6 +31,15 @@ export function mergeStockCount(
   return { ...existing, [entry.productId]: entry };
 }
 
+export function removeStockCount(
+  existing: Record<string, StockCount>,
+  productId: string
+): Record<string, StockCount> {
+  const next = { ...existing };
+  delete next[productId];
+  return next;
+}
+
 export function getStockCounts(): Record<string, StockCount> {
   if (typeof window === "undefined") return {};
   try {
@@ -57,6 +66,23 @@ export function saveStockCount(productId: string, productName: string, countedQt
   return entry;
 }
 
+export function deleteStockCount(productId: string): void {
+  try {
+    const updated = removeStockCount(getStockCounts(), productId);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+  } catch (e) {
+    console.error("Failed to delete stock count", e);
+  }
+}
+
+export function clearAllStockCounts(): void {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (e) {
+    console.error("Failed to clear stock counts", e);
+  }
+}
+
 export function getCurrentWeekCounts(): StockCount[] {
   const all = Object.values(getStockCounts());
   return all
@@ -76,8 +102,19 @@ export function useStockCounts() {
     setCounts(getCurrentWeekCounts());
   };
 
+  const deleteCount = (productId: string) => {
+    deleteStockCount(productId);
+    setCounts(getCurrentWeekCounts());
+  };
+
+  const clearCounts = () => {
+    clearAllStockCounts();
+    setCounts(getCurrentWeekCounts());
+  };
+
   const getCount = (productId: string): StockCount | undefined =>
     counts.find((c) => c.productId === productId);
 
-  return { counts, saveCount, getCount };
+  return { counts, saveCount, deleteCount, clearCounts, getCount };
 }
+

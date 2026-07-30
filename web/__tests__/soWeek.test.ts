@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getWeekStart, isInCurrentWeek, mergeStockCount } from "@/lib/soWeek";
+import { getWeekStart, isInCurrentWeek, mergeStockCount, removeStockCount } from "@/lib/soWeek";
 import type { StockCount } from "@/lib/types";
 
 // January 1, 2024 was a Monday -- used as a fixed, known anchor so these
@@ -77,3 +77,22 @@ describe("mergeStockCount", () => {
     expect(result["product-b"].countedQty).toBe(7);
   });
 });
+
+describe("removeStockCount", () => {
+  const existing: Record<string, StockCount> = {
+    "product-a": { productId: "product-a", productName: "Product A", countedQty: 3, countedAt: "2024-01-01T08:00:00.000Z" },
+    "product-b": { productId: "product-b", productName: "Product B", countedQty: 5, countedAt: "2024-01-01T09:00:00.000Z" },
+  };
+
+  it("removes the entry with specified product id", () => {
+    const result = removeStockCount(existing, "product-a");
+    expect(result["product-a"]).toBeUndefined();
+    expect(result["product-b"].countedQty).toBe(5);
+  });
+
+  it("returns unchanged copy if product id does not exist", () => {
+    const result = removeStockCount(existing, "product-c");
+    expect(Object.keys(result)).toHaveLength(2);
+  });
+});
+
