@@ -15,7 +15,7 @@ import { useRecentSearches } from "@/lib/recentSearches";
 import { useCompareList } from "@/lib/comparison";
 import { useStockCounts } from "@/lib/soWeek";
 import { copyToClipboard, formatBulkWhatsAppMessage } from "@/lib/copy";
-import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy, BookOpen, Wallet, Boxes } from "lucide-react";
+import { Star, History, X, ArrowLeftRight, ClipboardList, Check, Copy, BookOpen, Wallet, Boxes, ShieldCheck } from "lucide-react";
 
 const RESULT_LIMIT = 15;
 const allProducts = getAllProducts();
@@ -180,13 +180,22 @@ function HomeContent() {
         />
 
         {!hasQuery && !isSelectMode && (
-          <Link
-            href="/rekomendasi"
-            className="flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 px-4 py-2 text-xs font-semibold text-gray-700 backdrop-blur-md transition-all hover:border-black/20 active:scale-95"
-          >
-            <Wallet className="h-3.5 w-3.5 text-accent" />
-            <span>Rekomendasi Budget</span>
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/rekomendasi"
+              className="flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 px-4 py-2 text-xs font-semibold text-gray-700 backdrop-blur-md transition-all hover:border-black/20 active:scale-95"
+            >
+              <Wallet className="h-3.5 w-3.5 text-accent" />
+              <span>Rekomendasi Budget</span>
+            </Link>
+            <Link
+              href="/specs-audit"
+              className="flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 px-4 py-2 text-xs font-semibold text-gray-700 backdrop-blur-md transition-all hover:border-black/20 active:scale-95"
+            >
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+              <span>Verifikasi Spek</span>
+            </Link>
+          </div>
         )}
 
         {/* Recent Searches Chips */}
