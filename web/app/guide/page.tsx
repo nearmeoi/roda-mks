@@ -69,7 +69,7 @@ export default function GuidePage() {
               ))}
             </div>
           ) : (
-            <p className="pt-8 text-center text-sm text-gray-500">Artikel tidak ditemukan.</p>
+            <p className="pt-8 text-center text-sm text-gray-500">Tidak ditemukan</p>
           )
         ) : (
           <div className="mt-5 flex flex-col gap-6">

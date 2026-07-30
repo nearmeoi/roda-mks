@@ -40,26 +40,6 @@ export function removeStockCount(
   return next;
 }
 
-const PIC_KEY = "rodalink_so_pic_name";
-
-export function getPicName(): string {
-  if (typeof window === "undefined") return "";
-  try {
-    return localStorage.getItem(PIC_KEY) || "";
-  } catch {
-    return "";
-  }
-}
-
-export function savePicName(name: string): void {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.setItem(PIC_KEY, name.trim());
-  } catch (e) {
-    console.error("Failed to save PIC name", e);
-  }
-}
-
 export function getStockCounts(): Record<string, StockCount> {
   if (typeof window === "undefined") return {};
   try {
@@ -132,7 +112,7 @@ export function getCurrentWeekCounts(): StockCount[] {
     .sort((a, b) => new Date(b.countedAt).getTime() - new Date(a.countedAt).getTime());
 }
 
-export function formatSoWeekReport(counts: StockCount[], picName: string = ""): string {
+export function formatSoWeekReport(counts: StockCount[]): string {
   const dateStr = new Date().toLocaleDateString("id-ID", {
     weekday: "long",
     day: "numeric",
@@ -147,9 +127,6 @@ export function formatSoWeekReport(counts: StockCount[], picName: string = ""): 
   const lines: string[] = [];
   lines.push(`📋 *LAPORAN SO WEEK (STOCK OPNAME)*`);
   lines.push(`📅 Tanggal: ${dateStr}`);
-  if (picName) {
-    lines.push(`👤 PIC: ${picName.toUpperCase()}`);
-  }
   lines.push(`-----------------------------------`);
 
   counts.forEach((c, idx) => {
@@ -179,11 +156,9 @@ export function formatSoWeekReport(counts: StockCount[], picName: string = ""): 
 
 export function useStockCounts() {
   const [counts, setCounts] = useState<StockCount[]>([]);
-  const [pic, setPic] = useState<string>("");
 
   useEffect(() => {
     setCounts(getCurrentWeekCounts());
-    setPic(getPicName());
   }, []);
 
   const saveCount = (
@@ -202,11 +177,6 @@ export function useStockCounts() {
     setCounts(getCurrentWeekCounts());
   };
 
-  const updatePic = (name: string) => {
-    savePicName(name);
-    setPic(name.trim());
-  };
-
   const deleteCount = (productId: string) => {
     deleteStockCount(productId);
     setCounts(getCurrentWeekCounts());
@@ -220,7 +190,7 @@ export function useStockCounts() {
   const getCount = (productId: string): StockCount | undefined =>
     counts.find((c) => c.productId === productId);
 
-  return { counts, pic, updatePic, saveCount, deleteCount, clearCounts, getCount };
+  return { counts, saveCount, deleteCount, clearCounts, getCount };
 }
 
 

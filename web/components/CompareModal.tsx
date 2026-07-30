@@ -69,10 +69,7 @@ export function CompareModal({ products, onClose, onRemove, onClearAll }: Compar
             <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-accent/10 text-accent border border-accent/20">
               <ArrowLeftRight className="h-4 w-4" />
             </div>
-            <div>
-              <h2 className="text-base font-bold tracking-tight text-gray-900">Perbandingan Produk ({products.length})</h2>
-              <p className="text-[11px] font-medium text-gray-500">Perbandingan spesifikasi & harga bersisian</p>
-            </div>
+            <h2 className="text-base font-bold tracking-tight text-gray-900">Bandingkan ({products.length})</h2>
           </div>
           <div className="flex items-center gap-2">
             <button

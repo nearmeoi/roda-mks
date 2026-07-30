@@ -97,7 +97,7 @@ describe("removeStockCount", () => {
 });
 
 describe("formatSoWeekReport", () => {
-  it("formats counts with SH, WH, totals, and PIC name", () => {
+  it("formats counts with SH, WH, and totals", () => {
     const counts: StockCount[] = [
       {
         productId: "p1",
@@ -111,9 +111,8 @@ describe("formatSoWeekReport", () => {
         countedAt: "2024-01-01T08:00:00.000Z",
       },
     ];
-    const report = formatSoWeekReport(counts, "Cintya");
+    const report = formatSoWeekReport(counts);
     expect(report).toContain("LAPORAN SO WEEK");
-    expect(report).toContain("CINTYA");
     expect(report).toContain("735551001");
     expect(report).toContain("SH: 2");
     expect(report).toContain("WH: 1");

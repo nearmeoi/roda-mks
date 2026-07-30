@@ -125,7 +125,7 @@ export default function RekomendasiPage() {
         {result && (
           <div className="mt-5">
             {result.products.length === 0 ? (
-              <p className="pt-8 text-center text-sm text-gray-500">Barang tidak ditemukan.</p>
+              <p className="pt-8 text-center text-sm text-gray-500">Tidak ditemukan</p>
             ) : (
               <>
                 {result.isFallback && (

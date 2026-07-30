@@ -10,19 +10,17 @@ import { BarcodeScanner } from "@/components/BarcodeScanner";
 import { StockCountSheet } from "@/components/StockCountSheet";
 import { BackButton } from "@/components/BackButton";
 import type { Product } from "@/lib/types";
-import { Package, ScanLine, Pencil, Trash2, CheckCircle2, UserCheck, Share2, Store, Warehouse } from "lucide-react";
+import { Package, ScanLine, Pencil, Trash2, CheckCircle2, Share2, Store, Warehouse } from "lucide-react";
 
 const allProducts = getAllProducts();
 
 export default function SoWeekPage() {
-  const { counts, pic, updatePic, saveCount, deleteCount, clearCounts, getCount } = useStockCounts();
+  const { counts, saveCount, deleteCount, clearCounts, getCount } = useStockCounts();
   const [showScanner, setShowScanner] = useState(false);
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
   const [query, setQuery] = useState("");
   const [notFoundMsg, setNotFoundMsg] = useState<string | null>(null);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
-  const [isPicEditing, setIsPicEditing] = useState(false);
-  const [picInput, setPicInput] = useState(pic);
 
   const productMap = useMemo(() => {
     const map = new Map<string, Product>();
@@ -60,7 +58,7 @@ export default function SoWeekPage() {
     setNotFoundMsg(null);
     const results = searchProducts(allProducts, code);
     if (results.length === 0) {
-      setNotFoundMsg(`Produk dengan kode "${code}" tidak ditemukan.`);
+      setNotFoundMsg(`Kode "${code}" tidak ditemukan.`);
       return;
     }
     if (results.length === 1) {
@@ -105,7 +103,7 @@ export default function SoWeekPage() {
   const handleDeleteCount = (productId: string, productName: string) => {
     if (window.confirm(`Hapus hitungan untuk "${productName}"?`)) {
       deleteCount(productId);
-      showToast(`Hitungan ${productName} dihapus.`);
+      showToast(`${productName} dihapus.`);
       if (activeProduct?.id === productId) {
         setActiveProduct(null);
       }
@@ -114,17 +112,11 @@ export default function SoWeekPage() {
 
   const handleExportReport = async () => {
     if (counts.length === 0) return;
-    const text = formatSoWeekReport(counts, pic);
+    const text = formatSoWeekReport(counts);
     const ok = await copyToClipboard(text);
     if (ok) {
-      showToast("Laporan SO Week tercopy ke clipboard! Siap kirim ke WA.");
+      showToast("Laporan tersalin.");
     }
-  };
-
-  const handleSavePic = () => {
-    updatePic(picInput);
-    setIsPicEditing(false);
-    showToast(`PIC SO disimpan: ${picInput.trim() || "Tidak diisi"}`);
   };
 
   const handleEditItem = (c: { productId: string; productName: string }) => {
@@ -168,7 +160,7 @@ export default function SoWeekPage() {
             <button
               type="button"
               onClick={handleExportReport}
-              title="Salin Laporan SO ke WhatsApp"
+              title="Salin ke WA"
               className="flex items-center gap-1 rounded-full bg-emerald-600 px-2.5 py-1 text-[11px] font-bold text-white shadow-sm hover:bg-emerald-700 active:scale-95 transition-all"
             >
               <Share2 className="h-3 w-3" />
@@ -181,10 +173,10 @@ export default function SoWeekPage() {
               onClick={() => {
                 if (window.confirm("Apakah Anda yakin ingin menghapus SELURUH daftar hitungan minggu ini?")) {
                   clearCounts();
-                  showToast("Daftar SO Week telah dikosongkan.");
+                  showToast("Daftar dikosongkan.");
                 }
               }}
-              title="Kosongkan semua hitungan minggu ini"
+              title="Kosongkan semua"
               className="rounded-full bg-red-50 px-2 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-100"
             >
               Reset
@@ -194,46 +186,12 @@ export default function SoWeekPage() {
       </div>
 
       <div className="mx-auto max-w-[560px] px-4 pt-3">
-        {/* PIC Header & Summary Banner */}
+        {/* Summary Banner */}
         <div className="mb-3.5 flex flex-col gap-2 rounded-2xl border border-black/[0.06] bg-white p-3.5 shadow-sm">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <UserCheck className="h-4 w-4 text-accent" />
-              <span className="text-xs font-semibold text-gray-500">PIC SO:</span>
-              {isPicEditing ? (
-                <div className="flex items-center gap-1.5">
-                  <input
-                    type="text"
-                    value={picInput}
-                    onChange={(e) => setPicInput(e.target.value)}
-                    placeholder="Nama PIC (misal: Cintya)"
-                    className="rounded-lg border border-black/15 bg-gray-50 px-2.5 py-1 text-xs font-bold text-gray-900 outline-none focus:border-accent"
-                    autoFocus
-                  />
-                  <button
-                    type="button"
-                    onClick={handleSavePic}
-                    className="rounded-lg bg-accent px-2.5 py-1 text-xs font-semibold text-white"
-                  >
-                    Simpan
-                  </button>
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setPicInput(pic);
-                    setIsPicEditing(true);
-                  }}
-                  className="flex items-center gap-1 text-xs font-bold text-gray-900 hover:text-accent"
-                >
-                  <span>{pic || "Set Nama PIC..."}</span>
-                  <Pencil className="h-3 w-3 text-gray-400" />
-                </button>
-              )}
-            </div>
-            <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-extrabold text-accent">
-              {counts.length} Item Terhitung
+            <span className="text-xs font-semibold text-gray-500">Hitungan Minggu Ini</span>
+            <span className="shrink-0 whitespace-nowrap rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-extrabold text-accent">
+              {counts.length} Terhitung
             </span>
           </div>
 
@@ -310,9 +268,9 @@ export default function SoWeekPage() {
           {counts.length === 0 && (
             <div className="pt-10 text-center text-sm text-gray-400">
               <Package className="mx-auto mb-2 h-10 w-10 text-gray-300" />
-              Belum ada barang terhitung minggu ini.
+              Belum ada barang terhitung.
               <br />
-              Scan barcode atau cari kode artikel di atas untuk mulai.
+              Scan atau cari kode di atas.
             </div>
           )}
           {counts.map((c) => {

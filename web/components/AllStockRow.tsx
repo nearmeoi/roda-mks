@@ -8,7 +8,7 @@ export function AllStockRow({ entry }: { entry: AllStockEntry }) {
     .join(" · ");
 
   return (
-    <div className="flex items-center gap-3 rounded-[22px] border border-black/[0.06] bg-white/60 p-3.5 backdrop-blur-2xl">
+    <div className="flex items-center gap-3 p-3.5">
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-black/[0.03] text-gray-400 border border-black/[0.04]">
         <Package className="h-5 w-5 opacity-40" />
       </div>

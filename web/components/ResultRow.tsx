@@ -11,6 +11,7 @@ export function ResultRow({
   selectable = false,
   isSelected = false,
   onToggleSelect,
+  inGroup = false,
 }: {
   product: Product;
   isFav?: boolean;
@@ -20,6 +21,10 @@ export function ResultRow({
   selectable?: boolean;
   isSelected?: boolean;
   onToggleSelect?: (e: React.MouseEvent) => void;
+  // When true, renders as a flat row (padding + hover feedback only) so a
+  // shared container can supply the card chrome once for the whole list,
+  // instead of every row carrying its own border/shadow/blur.
+  inGroup?: boolean;
 }) {
   const qty = totalQuantity(product.sizes);
   const status = getStockStatus(qty);
@@ -47,14 +52,17 @@ export function ResultRow({
     }
   };
 
+  const standaloneChrome = `rounded-[22px] border shadow-[0_4px_20px_rgba(0,0,0,0.04)] backdrop-blur-2xl active:scale-[0.99] ${
+    selectable && isSelected
+      ? "border-accent/60 bg-accent/[0.06] shadow-[0_4px_20px_rgba(10,124,255,0.12)]"
+      : "border-white/70 bg-white/85 hover:border-white hover:bg-white hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)]"
+  }`;
+  const groupedChrome = selectable && isSelected ? "bg-accent/[0.06]" : "active:bg-black/[0.03]";
+
   return (
     <div
       onClick={handleCardClick}
-      className={`group flex cursor-pointer flex-col gap-2 rounded-[22px] border p-3.5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] backdrop-blur-2xl transition-all active:scale-[0.99] ${
-        selectable && isSelected
-          ? "border-accent/60 bg-accent/[0.06] shadow-[0_4px_20px_rgba(10,124,255,0.12)]"
-          : "border-white/70 bg-white/85 hover:border-white hover:bg-white hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)]"
-      }`}
+      className={`group flex cursor-pointer flex-col gap-2 p-3.5 transition-all ${inGroup ? groupedChrome : standaloneChrome}`}
     >
       {/* Top Row: Select Checkbox + Thumbnail Image + Full Model Name + Price */}
       <div className="flex items-start gap-3">

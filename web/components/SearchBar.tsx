@@ -182,7 +182,7 @@ export function SearchBar({
             className={`mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all active:scale-95 ${
               isSelectMode ? "bg-accent text-white shadow-xs" : "bg-black/10 text-[#5b5b60] hover:bg-black/15"
             }`}
-            title={isSelectMode ? "Matikan mode seleksi" : "Mode Ceklis (Copy Banyak Produk)"}
+            title={isSelectMode ? "Matikan mode seleksi" : "Mode Ceklis"}
           >
             <ListChecks className="h-[18px] w-[18px]" />
           </button>

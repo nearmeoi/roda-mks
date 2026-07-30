@@ -53,7 +53,7 @@ export function ProductDetailContent({
   const handleCopyText = async (text: string, label: string) => {
     const success = await copyToClipboard(text);
     if (success) {
-      showToast(`${label} berhasil disalin!`);
+      showToast(`${label} disalin`);
     }
   };
 
@@ -61,7 +61,7 @@ export function ProductDetailContent({
     const waText = formatWhatsAppMessage(product);
     const success = await copyToClipboard(waText);
     if (success) {
-      showToast("Info WhatsApp berhasil disalin!");
+      showToast("Info disalin");
     }
   };
 
@@ -156,7 +156,7 @@ export function ProductDetailContent({
             type="button"
             onClick={() => {
               toggleCompare(product.id);
-              showToast(compared ? "Dikeluarkan dari perbandingan" : "Ditambahkan ke perbandingan!");
+              showToast(compared ? "Dihapus" : "Ditambahkan");
             }}
             title={compared ? "Dibandingkan" : "Bandingkan"}
             className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all active:scale-95 ${

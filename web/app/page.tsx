@@ -62,6 +62,16 @@ function HomeContent() {
     }
   };
 
+  // The X button is a full reset, not just a text clear: any select/compare
+  // tool state left over from this search should close with it, so the
+  // floating bottom bars don't linger on the now-empty home screen.
+  const handleClearSearch = () => {
+    handleQueryChange("");
+    setIsSelectMode(false);
+    setSelectedIds(new Set());
+    clearCompare();
+  };
+
   const hasQuery = query.trim().length > 0;
 
   const results = useMemo(() => {
@@ -174,34 +184,29 @@ function HomeContent() {
           value={query}
           onChange={handleQueryChange}
           hasQuery={hasQuery}
-          onClear={() => handleQueryChange("")}
+          onClear={handleClearSearch}
           isSelectMode={isSelectMode}
           onToggleSelectMode={() => setIsSelectMode(!isSelectMode)}
         />
 
         {!hasQuery && !isSelectMode && (
-          <div className="flex items-center gap-2">
-            <Link
-              href="/rekomendasi"
-              className="flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 px-4 py-2 text-xs font-semibold text-gray-700 backdrop-blur-md transition-all hover:border-black/20 active:scale-95"
-            >
-              <Wallet className="h-3.5 w-3.5 text-accent" />
-              <span>Rekomendasi Budget</span>
-            </Link>
-          </div>
+          <Link
+            href="/rekomendasi"
+            className="flex items-center gap-1.5 text-[12.5px] font-semibold text-gray-500 transition-colors hover:text-accent"
+          >
+            <Wallet className="h-3.5 w-3.5 text-accent/70" />
+            <span>Rekomendasi Budget</span>
+          </Link>
         )}
 
-        {/* Recent Searches Chips */}
+        {/* Recent Searches -- single-row horizontal scroll, never wraps */}
         {recent.length > 0 && !hasQuery && (
-          <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
-            <div className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">
-              <History className="h-3 w-3" />
-              <span>Riwayat</span>
-            </div>
+          <div className="flex w-full items-center gap-1.5 overflow-x-auto pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <History className="h-3 w-3 shrink-0 text-gray-300" />
             {recent.map((term) => (
               <div
                 key={term}
-                className="group inline-flex items-center gap-1 rounded-full border border-black/[0.08] bg-white/80 px-2.5 py-0.5 text-xs font-semibold text-gray-700 backdrop-blur-md transition-all hover:border-black/20"
+                className="group inline-flex shrink-0 items-center gap-1 rounded-full bg-black/[0.035] px-2.5 py-1 text-[11.5px] font-medium text-gray-500 transition-colors hover:bg-black/[0.06]"
               >
                 <button
                   type="button"
@@ -226,10 +231,10 @@ function HomeContent() {
           </div>
         )}
 
-        {noResults && <div className="pt-2 text-center text-sm text-gray-500">Barang tidak ditemukan.</div>}
+        {noResults && <div className="pt-2 text-center text-sm text-gray-500">Tidak ditemukan</div>}
 
         {!noResults && results.length > 0 && (
-          <div className="flex w-full flex-col gap-2.5 [animation:fadeSlideUp_0.25s_ease]">
+          <div className="w-full divide-y divide-black/[0.05] overflow-hidden rounded-[26px] border border-white/70 bg-white/85 shadow-[0_4px_20px_rgba(0,0,0,0.04)] backdrop-blur-2xl [animation:fadeSlideUp_0.25s_ease]">
             {results.map((product) =>
               isSelectMode ? (
                 <ResultRow
@@ -238,6 +243,7 @@ function HomeContent() {
                   selectable={true}
                   isSelected={selectedIds.has(product.id)}
                   onToggleSelect={() => toggleSelect(product.id)}
+                  inGroup
                 />
               ) : (
                 <Link key={product.id} href={`/product/${product.id}`}>
@@ -247,6 +253,7 @@ function HomeContent() {
                     onToggleFav={() => toggle(product.id)}
                     isCompared={isCompared(product.id)}
                     onToggleCompare={() => toggleCompare(product.id)}
+                    inGroup
                   />
                 </Link>
               )
@@ -255,14 +262,16 @@ function HomeContent() {
         )}
 
         {allStockResults.length > 0 && (
-          <div className="flex w-full flex-col gap-2.5 pt-1 [animation:fadeSlideUp_0.25s_ease]">
+          <div className="flex w-full flex-col gap-2 pt-1 [animation:fadeSlideUp_0.25s_ease]">
             <div className="flex items-center gap-1.5 px-1 text-xs font-semibold uppercase tracking-wider text-gray-400">
               <Boxes className="h-3.5 w-3.5" />
-              <span>All Stock · Harga Referensi</span>
+              <span>All Stock</span>
             </div>
-            {allStockResults.map((entry) => (
-              <AllStockRow key={entry.id} entry={entry} />
-            ))}
+            <div className="w-full divide-y divide-black/[0.05] overflow-hidden rounded-[26px] border border-black/[0.06] bg-white/60 backdrop-blur-2xl">
+              {allStockResults.map((entry) => (
+                <AllStockRow key={entry.id} entry={entry} />
+              ))}
+            </div>
           </div>
         )}
 
@@ -270,39 +279,43 @@ function HomeContent() {
           <div className="flex w-full flex-col gap-4 pt-1">
             {/* Favorites / Pinned Items Section */}
             {favoriteProducts.length > 0 && (
-              <div className="flex w-full flex-col gap-2.5">
+              <div className="flex w-full flex-col gap-2">
                 <div className="flex items-center justify-between px-1">
                   <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-amber-600">
                     <Star className="h-3.5 w-3.5 fill-amber-400 stroke-amber-500" />
-                    <span>Stok Favorit Dipin ({favoriteProducts.length})</span>
+                    <span>Favorit ({favoriteProducts.length})</span>
                   </div>
                 </div>
-                {favoriteProducts.map((product) =>
-                  isSelectMode ? (
-                    <ResultRow
-                      key={product.id}
-                      product={product}
-                      selectable={true}
-                      isSelected={selectedIds.has(product.id)}
-                      onToggleSelect={() => toggleSelect(product.id)}
-                    />
-                  ) : (
-                    <Link key={product.id} href={`/product/${product.id}`}>
+                <div className="w-full divide-y divide-black/[0.05] overflow-hidden rounded-[26px] border border-white/70 bg-white/85 shadow-[0_4px_20px_rgba(0,0,0,0.04)] backdrop-blur-2xl">
+                  {favoriteProducts.map((product) =>
+                    isSelectMode ? (
                       <ResultRow
+                        key={product.id}
                         product={product}
-                        isFav={true}
-                        onToggleFav={() => toggle(product.id)}
-                        isCompared={isCompared(product.id)}
-                        onToggleCompare={() => toggleCompare(product.id)}
+                        selectable={true}
+                        isSelected={selectedIds.has(product.id)}
+                        onToggleSelect={() => toggleSelect(product.id)}
+                        inGroup
                       />
-                    </Link>
-                  )
-                )}
+                    ) : (
+                      <Link key={product.id} href={`/product/${product.id}`}>
+                        <ResultRow
+                          product={product}
+                          isFav={true}
+                          onToggleFav={() => toggle(product.id)}
+                          isCompared={isCompared(product.id)}
+                          onToggleCompare={() => toggleCompare(product.id)}
+                          inGroup
+                        />
+                      </Link>
+                    )
+                  )}
+                </div>
               </div>
             )}
 
             <p className="text-center text-[13px] text-gray-400 pt-2">
-              Ketik nama model, kode artikel, atau brand untuk mencari stok
+              Cari model, kode, atau brand
             </p>
           </div>
         )}
@@ -310,29 +323,34 @@ function HomeContent() {
 
       <div className="min-h-4 flex-auto" />
 
-      {/* Sticky Bottom Bar for Multi-Select Mode */}
+      {/* Sticky Bottom Bar for Multi-Select Mode -- iOS-style frosted capsule:
+          translucent (not near-opaque) so backdrop-blur reads as glass, and
+          tighter padding/type scale so it stays compact. */}
       {isSelectMode && (
-        <div className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/20 bg-gray-900/95 px-4 py-2.5 text-white shadow-[0_10px_35px_rgba(0,0,0,0.35)] backdrop-blur-2xl [animation:fadeSlideUp_0.25s_ease]">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-gray-200 pr-1">
-            <span>{selectedIds.size} Dipilih</span>
-          </div>
+        <div className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-white/15 bg-gray-900/70 px-3 py-1.5 text-white shadow-[0_8px_28px_rgba(0,0,0,0.28)] backdrop-blur-2xl backdrop-saturate-150 [animation:fadeSlideUp_0.25s_ease]">
+          <span
+            aria-label={`${selectedIds.size} dipilih`}
+            className="flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-white/10 px-1 text-[11px] font-bold tabular-nums text-white"
+          >
+            {selectedIds.size}
+          </span>
           {activeVisibleProducts.length > 0 && (
             <button
               type="button"
               onClick={handleSelectAllVisible}
-              className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/25 active:scale-95 transition-all"
+              className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-white/20 active:scale-95 transition-all"
             >
-              {allVisibleSelected ? "Batal Semua" : "Pilih Semua"}
+              {allVisibleSelected ? "Batal" : "Pilih"}
             </button>
           )}
           <button
             type="button"
             onClick={handleCopyBulk}
             disabled={selectedIds.size === 0}
-            className="flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-95 active:scale-95 transition-all disabled:opacity-40"
+            className="flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-[11px] font-bold text-white shadow-sm hover:opacity-95 active:scale-95 transition-all disabled:opacity-40"
           >
-            {copiedToast ? <Check className="h-3.5 w-3.5 stroke-[3]" /> : <Copy className="h-3.5 w-3.5" />}
-            <span>{copiedToast ? "Tercopy!" : "Salin WA"}</span>
+            {copiedToast ? <Check className="h-3 w-3 stroke-[3]" /> : <Copy className="h-3 w-3" />}
+            <span>{copiedToast ? "Tersalin!" : "Salin"}</span>
           </button>
           <button
             type="button"
@@ -340,25 +358,26 @@ function HomeContent() {
               setIsSelectMode(false);
               setSelectedIds(new Set());
             }}
-            className="ml-0.5 rounded-full p-1.5 text-gray-400 hover:bg-white/10 hover:text-white transition-all"
+            className="ml-0.5 rounded-full p-1 text-gray-400 hover:bg-white/10 hover:text-white transition-all"
             aria-label="Tutup mode seleksi"
           >
-            <X className="h-4 w-4" />
+            <X className="h-3.5 w-3.5" />
           </button>
         </div>
       )}
 
-      {/* Sticky Bottom Bar for Active Comparisons */}
+      {/* Sticky Bottom Bar for Active Comparisons -- same compact frosted
+          capsule as the multi-select bar. */}
       {!isSelectMode && compareIds.length > 0 && (
-        <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/20 bg-gray-900/90 px-5 py-2.5 text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl [animation:fadeSlideUp_0.25s_ease]">
-          <div className="flex items-center gap-2 text-xs font-semibold tracking-tight">
-            <ArrowLeftRight className="h-4 w-4 text-accent" />
-            <span>{compareIds.length} Produk Dipilih</span>
-          </div>
+        <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-white/15 bg-gray-900/70 px-3 py-1.5 text-white shadow-[0_8px_28px_rgba(0,0,0,0.28)] backdrop-blur-2xl backdrop-saturate-150 [animation:fadeSlideUp_0.25s_ease]">
+          <ArrowLeftRight className="ml-0.5 h-3.5 w-3.5 text-accent" />
+          <span className="flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-white/10 px-1 text-[11px] font-bold tabular-nums text-white">
+            {compareIds.length}
+          </span>
           <button
             type="button"
             onClick={() => setShowCompareModal(true)}
-            className="rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-95 active:scale-95 transition-all"
+            className="rounded-full bg-accent px-3 py-1 text-[11px] font-bold text-white shadow-sm hover:opacity-95 active:scale-95 transition-all"
           >
             Bandingkan
           </button>
