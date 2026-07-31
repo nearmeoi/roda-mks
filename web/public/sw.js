@@ -1,4 +1,4 @@
-const CACHE_NAME = "rodastock-v1";
+const CACHE_NAME = "rodastock-v2";
 const STATIC_ASSETS = [
   "/",
   "/guide",
@@ -40,60 +40,56 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch Event - Hybrid Caching Strategy
+// Fetch Event - Robust Offline Interceptor
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Ignore non-GET requests or chrome-extension requests
+  // Ignore non-GET or non-HTTP requests
   if (request.method !== "GET" || !url.protocol.startsWith("http")) return;
 
-  // Strategy 1: Static assets & Next.js immutable bundles -> Stale While Revalidate
-  if (
-    url.pathname.startsWith("/_next/static/") ||
-    url.pathname.match(/\.(png|jpg|jpeg|svg|ico|css|js|json)$/)
-  ) {
-    event.respondWith(
-      caches.open(CACHE_NAME).then(async (cache) => {
-        const cachedResponse = await cache.match(request);
-        const fetchPromise = fetch(request)
-          .then((networkResponse) => {
-            if (networkResponse.status === 200) {
-              cache.put(request, networkResponse.clone());
-            }
-            return networkResponse;
-          })
-          .catch(() => cachedResponse);
-
-        return cachedResponse || fetchPromise;
-      })
-    );
-    return;
-  }
-
-  // Strategy 2: Page Navigation (HTML) -> Network First, Fallback to Cache
-  if (request.mode === "navigate" || request.headers.get("accept")?.includes("text/html")) {
-    event.respondWith(
-      fetch(request)
-        .then(async (networkResponse) => {
-          if (networkResponse.status === 200) {
-            const cache = await caches.open(CACHE_NAME);
-            cache.put(request, networkResponse.clone());
-          }
-          return networkResponse;
-        })
-        .catch(async () => {
-          const cachedResponse = await caches.match(request);
-          if (cachedResponse) return cachedResponse;
-          // Fallback to home page if specific route is not cached
-          return caches.match("/");
-        })
-    );
-    return;
-  }
-
-  // Default Network First with Cache Fallback
   event.respondWith(
-    fetch(request).catch(() => caches.match(request))
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+
+      try {
+        // Try fetching over network
+        const networkResponse = await fetch(request);
+        if (networkResponse && networkResponse.status === 200) {
+          // Cache successful responses for offline fallback
+          cache.put(request, networkResponse.clone());
+        }
+        return networkResponse;
+      } catch (err) {
+        // Network failed (Offline Mode)
+        // 1. Try exact request match in cache
+        const cachedResponse = await cache.match(request);
+        if (cachedResponse) return cachedResponse;
+
+        // 2. Try match by pathname without search params (stripping ?_rsc=...)
+        const pathnameResponse = await cache.match(url.pathname);
+        if (pathnameResponse) return pathnameResponse;
+
+        // 3. Fallback for Page Navigation / RSC requests
+        const acceptHeader = request.headers.get("accept") || "";
+        const isPageOrRsc =
+          request.mode === "navigate" ||
+          acceptHeader.includes("text/html") ||
+          acceptHeader.includes("text/x-component") ||
+          url.searchParams.has("_rsc");
+
+        if (isPageOrRsc) {
+          const homeFallback = await cache.match("/");
+          if (homeFallback) return homeFallback;
+        }
+
+        // Return offline response fallback
+        return new Response("Offline", {
+          status: 503,
+          statusText: "Offline",
+          headers: { "Content-Type": "text/plain" },
+        });
+      }
+    })()
   );
 });

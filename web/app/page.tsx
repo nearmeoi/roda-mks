@@ -7,7 +7,9 @@ import { SearchBar } from "@/components/SearchBar";
 import { ResultRow } from "@/components/ResultRow";
 import { AllStockRow } from "@/components/AllStockRow";
 import { CompareModal } from "@/components/CompareModal";
+import { ProductDetailModal } from "@/components/ProductDetailModal";
 import { getAllProducts } from "@/lib/products";
+import type { Product } from "@/lib/types";
 import { searchProducts } from "@/lib/search";
 import { useAllStock, searchAllStock } from "@/lib/allStock";
 import { useFavorites } from "@/lib/favorites";
@@ -27,6 +29,7 @@ function HomeContent() {
   const urlQuery = searchParams.get("q") || "";
   const [query, setQuery] = useState(urlQuery);
   const [showCompareModal, setShowCompareModal] = useState(false);
+  const [activeDetailProduct, setActiveDetailProduct] = useState<Product | null>(null);
 
   // Multi-select / Checklist state
   const [isSelectMode, setIsSelectMode] = useState(false);
@@ -246,7 +249,10 @@ function HomeContent() {
                   inGroup
                 />
               ) : (
-                <Link key={product.id} href={`/product/${product.id}`}>
+                <div
+                  key={product.id}
+                  onClick={() => setActiveDetailProduct(product)}
+                >
                   <ResultRow
                     product={product}
                     isFav={isFav(product.id)}
@@ -255,7 +261,7 @@ function HomeContent() {
                     onToggleCompare={() => toggleCompare(product.id)}
                     inGroup
                   />
-                </Link>
+                </div>
               )
             )}
           </div>
@@ -298,7 +304,10 @@ function HomeContent() {
                         inGroup
                       />
                     ) : (
-                      <Link key={product.id} href={`/product/${product.id}`}>
+                      <div
+                        key={product.id}
+                        onClick={() => setActiveDetailProduct(product)}
+                      >
                         <ResultRow
                           product={product}
                           isFav={true}
@@ -307,7 +316,7 @@ function HomeContent() {
                           onToggleCompare={() => toggleCompare(product.id)}
                           inGroup
                         />
-                      </Link>
+                      </div>
                     )
                   )}
                 </div>
@@ -393,6 +402,15 @@ function HomeContent() {
           <ClipboardList className="h-4 w-4 text-accent" />
           <span>{stockCounts.length > 0 ? `SO Week · ${stockCounts.length} dihitung` : "SO Week"}</span>
         </Link>
+      )}
+
+      {/* Product Detail Modal for Instant Offline Viewing */}
+      {activeDetailProduct && (
+        <ProductDetailModal
+          product={activeDetailProduct}
+          allProducts={allProducts}
+          onClose={() => setActiveDetailProduct(null)}
+        />
       )}
 
       {/* Compare Modal */}
