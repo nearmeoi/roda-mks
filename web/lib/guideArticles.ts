@@ -315,4 +315,123 @@ export const guideArticles: GuideArticle[] = [
       { type: "bullets", items: ["Buka lewat tombol \"SO Week\" di beranda.", "Scan atau cari produk, lalu masukkan jumlah stok fisik yang dihitung."] },
     ],
   },
+  {
+    id: "kompatibilitas-komponen-sepeda",
+    category: "Kompatibilitas",
+    title: "Panduan Kompatibilitas Komponen Sepeda (Shimano Lineup Spec)",
+    summary: "Aturan kompatibilitas resmi Shimano: CUES LINKGLIDE vs Hyperglide, Road vs MTB pull ratio, Micro Spline vs HG Freehub, dan selang rem BH59 vs BH90.",
+    tags: [
+      "kompatibilitas",
+      "shimano",
+      "cues",
+      "linkglide",
+      "hyperglide",
+      "road",
+      "mtb",
+      "pull ratio",
+      "freehub",
+      "micro spline",
+      "bh59",
+      "bh90",
+      "gravel",
+      "grx",
+    ],
+    blocks: [
+      { type: "heading", text: "1. Shimano CUES (LINKGLIDE) vs Legacy Hyperglide (HG)" },
+      {
+        type: "paragraph",
+        text: "Shimano CUES adalah ekosistem standar baru yang menggantikan Altus, Acera, Alivio, dan Deore 9/10/11-speed legacy. CUES menggunakan teknologi LINKGLIDE dengan rasio ditariknya kabel (cable pull ratio) yang sama antara 9s, 10s, dan 11s.",
+      },
+      {
+        type: "bullets",
+        items: [
+          "Aturan Utama CUES: Shifter CUES (U4000, U6000, U8000) HANYA kompatibel dengan Rear Derailleur CUES dan sproket CUES LINKGLIDE.",
+          "Tidak Kompatibel: Shifter / RD CUES TIDAK BISA dicampur dengan Shifter / RD Shimano 9s/10s/11s legacy (Altus, Acera, Alivio, Deore HG, SLX HG, XT HG) karena rasio tarik kabel berbeda.",
+          "Rantai CUES: Semua drivetrain CUES (baik 9-speed, 10-speed, maupun 11-speed) menggunakan RANTAI 11-SPEED (misal CN-LG500 atau CN-HG601).",
+        ],
+      },
+      { type: "heading", text: "2. Kompatibilitas Shifter & Rear Derailleur (Road vs MTB vs Gravel)" },
+      {
+        type: "table",
+        headers: ["Kategori Speed", "Kombinasi Shifter & Rear Derailleur", "Status", "Catatan Teknis"],
+        rows: [
+          [
+            "8 & 9-Speed (Road & MTB)",
+            "Shifter Road 8/9s + RD MTB 8/9s (Sora/Claris + Acera/Alivio)",
+            "KOMPATIBEL",
+            "Menggunakan rasio tarik kabel tradisional Shimano 1.7 yang sama.",
+          ],
+          [
+            "10-Speed Road vs MTB",
+            "Shifter Tiagra 4700 (10s) + RD MTB 10s (Deore M6000)",
+            "TIDAK KOMPATIBEL",
+            "Tiagra 4700 memakai rasio SLR-EV (11s road). MTB 10s memakai Dyna-Sys.",
+          ],
+          [
+            "11-Speed Road vs MTB",
+            "Shifter 105 R7000 (11s) + RD MTB 11s (Deore M5100 / XT M8000)",
+            "TIDAK KOMPATIBEL",
+            "Rasio tarik kabel beda. Membutuhkan adapter rasio kabel khusus (Tanpan).",
+          ],
+          [
+            "10 & 11-Speed GRX Gravel",
+            "Shifter GRX RX400/RX600 + RD Road 105 / Ultegra",
+            "KOMPATIBEL",
+            "GRX 10s & 11s menggunakan rasio tarik kabel yang sama dengan Road 11s.",
+          ],
+          [
+            "CUES 9/10/11-Speed",
+            "Shifter CUES + RD CUES (U4000/U6000/U8000)",
+            "KOMPATIBEL",
+            "Hanya kompatibel sesama komponen CUES LINKGLIDE.",
+          ],
+        ],
+      },
+      { type: "heading", text: "3. Kompatibilitas Freehub Body & Sproket" },
+      {
+        type: "table",
+        headers: ["Tipe Freehub Body", "Sproket yang Kompatibel", "Syarat Spacer"],
+        rows: [
+          [
+            "Standard HG (MTB / Urban)",
+            "Sproket MTB 8/9/10/11s, Sproket CUES 9/10/11s, Sproket Road 8/9/10s",
+            "Sproket Road 10s butuh spacer 1.0mm.",
+          ],
+          [
+            "Road 11s HG Spline",
+            "Sproket Road 11/12s, plus Sproket MTB 8/9/10/11s",
+            "Sproket MTB/Road 8-10s & MTB 11s butuh spacer 1.85mm.",
+          ],
+          [
+            "Micro Spline (MS)",
+            "Sproket MTB 12-speed Shimano (Deore M6100, SLX M7100, XT M8100, XTR M9100)",
+            "Khusus sproket 12-speed MTB dengan COG terkecil 10T.",
+          ],
+          [
+            "HG L2 (Road 12-Speed)",
+            "Sproket Road 12s (Dura-Ace R9200, Ultegra R8100, 105 R7100)",
+            "Backwards-compatible ke body HG standar 11s.",
+          ],
+        ],
+      },
+      { type: "heading", text: "4. Kompatibilitas Rem Hidrolik (Minyak & Selang BH59 vs BH90)" },
+      {
+        type: "bullets",
+        items: [
+          "Minyak Rem (Fluid): Semua rem hidrolik Shimano WAJIB menggunakan Shimano Mineral Oil. DILARANG KERAS menggunakan minyak rem DOT (DOT 4/5.1) karena merusak seal karet.",
+          "Selang Rem BH59 vs BH90: BH59 memiliki lubang dalam lebih lebar (pin insert kuningan/kuning). BH90 memiliki lubang dalam lebih sempit (pin insert silver/perak) untuk tekanan hidrolik lebih presisi.",
+          "Pin Insert Warning: Pin insert BH59 (kuningan) dan BH90 (silver) TIDAK BISA DITUKAR. Selalu pasang pin insert yang sesuai dengan tipe selang.",
+        ],
+      },
+      { type: "heading", text: "5. Standard Frame & Chainline (Boost vs Non-Boost)" },
+      {
+        type: "bullets",
+        items: [
+          "Non-Boost (135mm QR / 142mm TA): Chainline 48.8mm - 50mm.",
+          "Boost (148mm Thru-Axle): Chainline 51.8mm - 52mm. Wajib menggunakan crankset / chainring versi Boost agar posisi rantai ke sproket terbesar sejajar.",
+        ],
+      },
+    ],
+  },
 ];
+
