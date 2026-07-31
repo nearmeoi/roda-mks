@@ -1,10 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { PwaRegister } from "@/components/PwaRegister";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Roda Stock - Rodalink Outlet Stock Checker",
-  description: "Cari & Cek Stok Sepeda, Part, Aksesoris, & Apparel Rodalink Outlet",
+  description: "Cari & Cek Stok Sepeda, Part, Aksesoris, & Promo Rodalink Outlet",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Roda Stock",
+  },
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png" },
@@ -15,14 +22,26 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="id">
       <head>
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/icon.png" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
-      <body>{children}</body>
+      <body>
+        <PwaRegister />
+        {children}
+      </body>
     </html>
   );
 }
