@@ -6,7 +6,7 @@ import { BackButton } from "@/components/BackButton";
 import { guideArticles } from "@/lib/guideArticles";
 import { searchGuideArticles } from "@/lib/guideSearch";
 import type { GuideArticle } from "@/lib/types";
-import { Search } from "lucide-react";
+import { Search, Tag } from "lucide-react";
 
 function groupByCategory(articles: GuideArticle[]): [string, GuideArticle[]][] {
   const map = new Map<string, GuideArticle[]>();
@@ -60,6 +60,26 @@ export default function GuidePage() {
             className="w-full border-none bg-transparent text-sm text-gray-900 outline-none"
           />
         </div>
+
+        {!hasQuery && (
+          <Link
+            href="/guide/promo-diskon-aktif"
+            className="mt-3.5 flex items-center justify-between rounded-2xl border border-rose-200/80 bg-gradient-to-r from-rose-500/10 via-amber-500/10 to-rose-500/5 p-4 shadow-xs transition-all hover:scale-[1.01] active:scale-[0.99]"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-rose-600 text-white shadow-xs">
+                <Tag className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-gray-900">Promo & Diskon Aktif (Agustus 2026)</h3>
+                <p className="text-xs text-gray-600">Cek & scan barcode 1.442+ barang promo Buku Saku</p>
+              </div>
+            </div>
+            <span className="rounded-full bg-rose-600 px-3 py-1 text-xs font-semibold text-white shrink-0">
+              Cek Barang
+            </span>
+          </Link>
+        )}
 
         {hasQuery ? (
           results.length > 0 ? (

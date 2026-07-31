@@ -1,0 +1,287 @@
+{
+  "I107": {
+    "name": "RODALINK HQ",
+    "city": null,
+    "active": false
+  },
+  "I259": {
+    "name": "RODALINK BANDUNG CIMAREME",
+    "city": "BANDUNG",
+    "active": true
+  },
+  "I260": {
+    "name": "RODALINK YOGYAKARTA BARAT",
+    "city": "JOGJAKARTA",
+    "active": true
+  },
+  "I261": {
+    "name": "RODALINK JAKARTA PONDOK INDAH",
+    "city": "JAKARTA SELATAN",
+    "active": true
+  },
+  "I262": {
+    "name": "RODALINK CILEGON",
+    "city": "BANTEN",
+    "active": true
+  },
+  "I263": {
+    "name": "RODALINK DEPOK MARGONDA",
+    "city": "DEPOK",
+    "active": true
+  },
+  "I265": {
+    "name": "RODALINK MEDAN S.PARMAN",
+    "city": "MEDAN",
+    "active": true
+  },
+  "I266": {
+    "name": "RODALINK JAKARTA KELAPA GADING",
+    "city": "JAKARTA UTARA",
+    "active": true
+  },
+  "I267": {
+    "name": "RODALINK TANGERANG SERPONG",
+    "city": "TANGERANG",
+    "active": true
+  },
+  "I268": {
+    "name": "RODALINK SEMARANG KATAMSO",
+    "city": "SEMARANG",
+    "active": true
+  },
+  "I269": {
+    "name": "RODALINK SIDOARJO WARU",
+    "city": "SIDOARJO",
+    "active": true
+  },
+  "I270": {
+    "name": "RODALINK MALANG GATSU",
+    "city": "MALANG",
+    "active": true
+  },
+  "I271": {
+    "name": "RODALINK SURABAYA MULYOSARI",
+    "city": "SURABAYA",
+    "active": true
+  },
+  "I272": {
+    "name": "RODALINK TANGERANG BINTARO",
+    "city": "TANGERANG SELATAN",
+    "active": true
+  },
+  "I273": {
+    "name": "RODALINK DENPASAR",
+    "city": "DENPASAR",
+    "active": true
+  },
+  "I274": {
+    "name": "RODALINK BEKASI KALIMALANG",
+    "city": "BEKASI",
+    "active": true
+  },
+  "I275": {
+    "name": "RODALINK SOLO",
+    "city": "Surakarta",
+    "active": true
+  },
+  "I276": {
+    "name": "RODALINK BALIKPAPAN",
+    "city": "BALIKPAPAN",
+    "active": true
+  },
+  "I277": {
+    "name": "RODALINK DEPOK CINERE",
+    "city": "DEPOK",
+    "active": true
+  },
+  "I278": {
+    "name": "RODALINK MADIUN",
+    "city": "MADIUN",
+    "active": true
+  },
+  "I279": {
+    "name": "RODALINK JAKARTA PESANGGRAHAN",
+    "city": "JAKARTA BARAT",
+    "active": true
+  },
+  "I280": {
+    "name": "RODALINK BANDUNG OTISTA",
+    "city": "BANDUNG",
+    "active": true
+  },
+  "I282": {
+    "name": "RODALINK YOGYAKARTA ADISUCIPTO",
+    "city": "JOGJAKARTA",
+    "active": true
+  },
+  "I283": {
+    "name": "RODALINK SALATIGA",
+    "city": "SALATIGA",
+    "active": true
+  },
+  "I284": {
+    "name": "RODALINK SURABAYA HR MUHAMMAD",
+    "city": "SURABAYA",
+    "active": true
+  },
+  "I285": {
+    "name": "RODALINK SIDOARJO PAHLAWAN",
+    "city": "SIDOARJO",
+    "active": true
+  },
+  "I286": {
+    "name": "RODALINK MALANG SUTOYO",
+    "city": "MALANG",
+    "active": true
+  },
+  "I287": {
+    "name": "RODALINK MEDAN RING ROAD",
+    "city": "SUMATRA UTARA",
+    "active": true
+  },
+  "I288": {
+    "name": "RODALINK KUDUS",
+    "city": "KUDUS",
+    "active": true
+  },
+  "I289": {
+    "name": "RODALINK BOGOR SILIWANGI",
+    "city": "BOGOR",
+    "active": true
+  },
+  "I290": {
+    "name": "RODALINK KARAWANG",
+    "city": "KARAWANG",
+    "active": true
+  },
+  "I291": {
+    "name": "RODALINK SAMARINDA",
+    "city": "SAMARINDA",
+    "active": true
+  },
+  "I292": {
+    "name": "RODALINK BANJARMASIN",
+    "city": "BANJARMASIN",
+    "active": true
+  },
+  "I293": {
+    "name": "RODALINK JEMBER",
+    "city": "JEMBER",
+    "active": true
+  },
+  "I294": {
+    "name": "RODALINK TANGERANG CITRA RAYA",
+    "city": "TANGERANG",
+    "active": true
+  },
+  "I295": {
+    "name": "RODALINK TASIKMALAYA",
+    "city": "TASIKMALAYA",
+    "active": true
+  },
+  "I296": {
+    "name": "RODALINK PALEMBANG",
+    "city": "PALEMBANG",
+    "active": true
+  },
+  "I297": {
+    "name": "RODALINK JAKARTA CIJANTUNG",
+    "city": "JAKARTA",
+    "active": true
+  },
+  "I298": {
+    "name": "RODALINK BEKASI CIBUBUR",
+    "city": "BEKASI",
+    "active": true
+  },
+  "I299": {
+    "name": "RODALINK EVENT INDONESIA",
+    "city": "JAKARTA",
+    "active": true
+  },
+  "I300": {
+    "name": "RODALINK KEDIRI",
+    "city": "KEDIRI",
+    "active": true
+  },
+  "I301": {
+    "name": "RODALINK SUKABUMI",
+    "city": "SUKABUMI",
+    "active": true
+  },
+  "I302": {
+    "name": "RODALINK LAMPUNG",
+    "city": "BANDAR LAMPUNG",
+    "active": true
+  },
+  "I303": {
+    "name": "RODALINK TEGAL",
+    "city": "TEGAL",
+    "active": true
+  },
+  "I304": {
+    "name": "RODALINK BEKASI TAMBUN",
+    "city": "BEKASI",
+    "active": true
+  },
+  "I305": {
+    "name": "RODALINK TANGERANG PAMULANG",
+    "city": "TANGERANG",
+    "active": true
+  },
+  "I306": {
+    "name": "RODALINK BOGOR CIBINONG",
+    "city": "BOGOR",
+    "active": true
+  },
+  "I307": {
+    "name": "RODALINK SEMARANG SETIABUDI",
+    "city": "SEMARANG",
+    "active": true
+  },
+  "I308": {
+    "name": "RODALINK BEKASI JATIWARINGIN",
+    "city": "BEKASI",
+    "active": true
+  },
+  "I309": {
+    "name": "PT RODALINK INDO TAMA",
+    "city": null,
+    "active": true
+  },
+  "I310": {
+    "name": "RODALINK BANDUNG PASIRKALIKI",
+    "city": "BANDUNG",
+    "active": true
+  },
+  "I311": {
+    "name": "RODALINK MAKASSAR",
+    "city": "MAKASSAR",
+    "active": true
+  },
+  "I801": {
+    "name": "RODALINK PEKANBARU (M)",
+    "city": "PEKANBARU",
+    "active": true
+  },
+  "I802": {
+    "name": "RODALINK SURABAYA RUNGKUT",
+    "city": "SURABAYA",
+    "active": true
+  },
+  "I804": {
+    "name": "RODALINK MAKASSAR PANAKUKANG",
+    "city": "MAKASSAR",
+    "active": true
+  },
+  "I806": {
+    "name": "RODALINK MAKASSAR PETTARANI",
+    "city": "MAKASSAR",
+    "active": true
+  },
+  "I809": {
+    "name": "RODALINK GRESIK (M)",
+    "city": "GRESIK",
+    "active": true
+  }
+}

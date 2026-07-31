@@ -76,3 +76,40 @@ that need interpreting.
   single-item lookup only, to keep POS traffic minimal.
 - Sales-person report (separate feature, tackled after this one).
 - Any POS write action.
+
+## Amendment (2026-07-30): snapshot instead of live queries, always-visible button
+
+**Snapshot, not live.** The user raised a real concern: an unbounded number
+of live per-click POS queries throughout the day (across all staff) is a
+much less predictable traffic pattern than the batch-fetch scripts already
+in use, and could plausibly strain or trip something on POS's side. Fixed
+by inverting the architecture:
+
+- `pipeline/fetch_pos_outlet_stock.py` -- one bulk paginated fetch of
+  `/admin/outlet-stock/all-new` with no article filter (all ~14k articles),
+  same env-var credential pattern as the other fetch scripts. Note: this
+  endpoint 500s above `limit=200` (unlike `/admin/article/all`, which
+  tolerates `limit=1000`) -- confirmed by testing 100/200/300 directly.
+  ~70 requests, each retried up to 3x with exponential backoff on failure
+  (needed in practice: two transient 500s occurred mid-run and both
+  recovered on retry). Output is sparse -- only outlets with qty > 0, plus
+  raw `HQ`/`BS` values -- written to `data/pos_outlet_stock.json` (~1.5MB
+  for ~4,000 articles that have stock anywhere), synced to
+  `web/lib/pos_outlet_stock.json`.
+- `/api/outlet-stock/route.ts` no longer calls POS at all. It reads
+  `pos_outlet_stock.json` directly (exact article-code match, or a
+  case-insensitive substring match against `description`, capped at 20
+  results) and resolves outlet names from `pos_outlets.json`, all in
+  memory. Zero POS traffic per lookup, however often it's used.
+- Trade-off, stated plainly: this is "as of last fetch," not real-time.
+  Same staleness class as the rest of the app's stock data, which is
+  itself refreshed periodically from a stock export, not live either.
+  Re-run the fetch script whenever fresher data is wanted -- no fixed
+  schedule, just re-run manually with a fresh POS session when needed.
+
+**Button visibility.** Originally gated on `qty === 0` (this outlet's
+stock). Dropped that condition -- every product currently in the catalog
+has stock >= 1, so the button would essentially never have appeared. It's
+now always shown on the product detail page; useful beyond "out of stock"
+too (e.g. checking whether another outlet has a size/color not carried
+here at all).

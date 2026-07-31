@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { formatPrice, getStockStatus, primaryArticleCode, titleCase, totalOrderedQuantity, totalQuantity } from "@/lib/format";
 import { ProductCarousel } from "@/components/ProductCarousel";
+import { OtherOutletStock } from "@/components/OtherOutletStock";
 import { BackButton } from "@/components/BackButton";
 import { copyToClipboard, formatWhatsAppMessage } from "@/lib/copy";
 import { getRecommendations } from "@/lib/recommendations";
@@ -231,6 +232,8 @@ export function ProductDetailContent({
             <div className="h-2 w-2 rounded-full" style={{ background: status.dotColor }} />
             <span className="text-sm font-semibold text-gray-900">{qty} Unit</span>
           </div>
+
+          <OtherOutletStock query={product.model_name} />
 
           {/* Ready Colors Badges */}
           {product.colors && product.colors.length > 0 && (
