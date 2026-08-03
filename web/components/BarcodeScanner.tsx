@@ -123,47 +123,25 @@ async function tryUseUltraWideLens(stream: MediaStream): Promise<MediaStream> {
     const currentTrack = stream.getVideoTracks()[0];
     const currentDeviceId = currentTrack?.getSettings().deviceId;
 
+    if (!navigator.mediaDevices?.enumerateDevices) return stream;
+
     const devices = await navigator.mediaDevices.enumerateDevices();
     const ultraWide = devices.find(
       (d) => d.kind === "videoinput" && d.label.toLowerCase().includes("ultra wide")
     );
 
-    if (!ultraWide || ultraWide.deviceId === currentDeviceId) {
+    if (!ultraWide || !ultraWide.deviceId || ultraWide.deviceId === currentDeviceId) {
       return stream;
     }
 
     const upgradedStream = await navigator.mediaDevices.getUserMedia({
       video: {
         deviceId: { exact: ultraWide.deviceId },
-        width: { ideal: 1280 },
-        height: { ideal: 720 },
       },
     });
 
-    // Labeled "ultra wide" is a safe signal on iOS (confirmed close-focus
-    // lens), but some Android devices expose a labeled, fixed-focus
-    // (hyperfocal) ultra-wide lens where switching would make close-range
-    // scanning worse -- the opposite of this feature's intent. If the new
-    // track's capabilities affirmatively report a non-environment facing
-    // mode, fall back to the original stream. If getCapabilities throws,
-    // also fall back. But if capabilities are simply missing/empty (as can
-    // happen on iOS Safari for a track pinned by deviceId), proceed with the
-    // swap -- trust the earlier label match rather than treating "unknown"
-    // as "wrong."
-    try {
-      const upgradedTrack = upgradedStream.getVideoTracks()[0];
-      const caps = upgradedTrack?.getCapabilities?.();
-      const facingModes = caps?.facingMode;
-      // Only reject the swap when capabilities are present AND affirmatively
-      // exclude "environment" -- iOS Safari may not reliably report
-      // facingMode for a track pinned by deviceId right after getUserMedia,
-      // so missing/empty capabilities should not be treated as "not a back
-      // camera." In that case, trust the earlier "ultra wide" label match.
-      if (facingModes && facingModes.length > 0 && !facingModes.includes("environment")) {
-        upgradedStream.getTracks().forEach((track) => track.stop());
-        return stream;
-      }
-    } catch {
+    const upgradedTrack = upgradedStream.getVideoTracks()[0];
+    if (!upgradedTrack || upgradedTrack.readyState !== "live") {
       upgradedStream.getTracks().forEach((track) => track.stop());
       return stream;
     }
@@ -189,6 +167,14 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
   const [manualCode, setManualCode] = useState("");
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  useEffect(() => {
     const Ctor = (window as unknown as { BarcodeDetector?: NativeBarcodeDetectorConstructor })
       .BarcodeDetector;
     if (Ctor) {
@@ -207,37 +193,47 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
       return;
     }
 
-    navigator.mediaDevices
-      .getUserMedia({
-        video: {
-          facingMode: { ideal: "environment" },
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
-        },
-      })
-      .then(async (stream) => {
-        if (cancelled) {
-          stream.getTracks().forEach((track) => track.stop());
+    async function initCamera() {
+      let stream: MediaStream | null = null;
+
+      // 1. Try environment (back) camera
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: "environment" } },
+        });
+      } catch {
+        // 2. Fallback to default/any camera if environment constraint fails
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        } catch (err) {
+          if (!cancelled) {
+            console.error("Camera access error:", err);
+            setError("Izin kamera ditolak atau tidak tersedia. Masukkan kode secara manual.");
+          }
           return;
         }
-        const activeStream = await tryUseUltraWideLens(stream);
-        if (cancelled) {
-          activeStream.getTracks().forEach((track) => track.stop());
-          return;
-        }
-        streamRef.current = activeStream;
-        if (videoRef.current) {
-          videoRef.current.srcObject = activeStream;
-          videoRef.current.play().catch(() => {});
-        }
-        startAutoScanLoop();
-      })
-      .catch((err) => {
-        if (!cancelled) {
-          console.error("Camera access error:", err);
-          setError("Izin kamera ditolak atau tidak tersedia. Masukkan kode secara manual.");
-        }
-      });
+      }
+
+      if (cancelled || !stream) {
+        stream?.getTracks().forEach((track) => track.stop());
+        return;
+      }
+
+      const activeStream = await tryUseUltraWideLens(stream);
+      if (cancelled) {
+        activeStream.getTracks().forEach((track) => track.stop());
+        return;
+      }
+
+      streamRef.current = activeStream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = activeStream;
+        videoRef.current.play().catch(() => {});
+      }
+      startAutoScanLoop();
+    }
+
+    initCamera();
 
     return () => {
       cancelled = true;
@@ -279,7 +275,10 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
       // 1. Try Native BarcodeDetector if available
       if (nativeDetectorRef.current) {
         try {
-          const results = await nativeDetectorRef.current.detect(source);
+          let results = await nativeDetectorRef.current.detect(source);
+          if (results.length === 0 && source !== videoRef.current && videoRef.current) {
+            results = await nativeDetectorRef.current.detect(videoRef.current);
+          }
           if (results.length > 0 && results[0].rawValue) {
             stoppedRef.current = true;
             onScan(results[0].rawValue);
@@ -290,16 +289,32 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
       // 2. Fallback to ZXing continuous decode
       else if (zxingReaderRef.current) {
         try {
-          const result =
+          let result =
             source instanceof HTMLCanvasElement
               ? zxingReaderRef.current.decodeFromCanvas(source)
               : zxingReaderRef.current.decode(source);
+
+          if ((!result || !result.getText()) && source !== videoRef.current && videoRef.current) {
+            result = zxingReaderRef.current.decode(videoRef.current);
+          }
+
           if (result && result.getText()) {
             stoppedRef.current = true;
             onScan(result.getText());
             return;
           }
-        } catch {}
+        } catch {
+          if (source !== videoRef.current && videoRef.current && zxingReaderRef.current) {
+            try {
+              const result = zxingReaderRef.current.decode(videoRef.current);
+              if (result && result.getText()) {
+                stoppedRef.current = true;
+                onScan(result.getText());
+                return;
+              }
+            } catch {}
+          }
+        }
       }
 
       if (!stoppedRef.current) {
@@ -348,7 +363,16 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
             </div>
           ) : (
             <>
-              <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
+              <video
+                ref={videoRef}
+                className="h-full w-full object-cover"
+                autoPlay
+                playsInline
+                muted
+                onLoadedMetadata={() => {
+                  videoRef.current?.play().catch(() => {});
+                }}
+              />
               <canvas ref={cropCanvasRef} className="hidden" />
 
               {/* Instruction Text & Scanning Reticle Rectangle */}

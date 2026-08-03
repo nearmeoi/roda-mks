@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import type { Product } from "@/lib/types";
 import { formatPrice, getStockStatus, primaryArticleCode, titleCase, totalQuantity } from "@/lib/format";
@@ -14,6 +14,14 @@ interface CompareModalProps {
 }
 
 export function CompareModal({ products, onClose, onRemove, onClearAll }: CompareModalProps) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   if (products.length === 0) return null;
 
   // Gather all unique spec keys across selected products

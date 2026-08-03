@@ -2,19 +2,38 @@
 
 import { useRouter } from "next/navigation";
 
-export function BackButton() {
+interface BackButtonProps {
+  onClick?: () => void;
+}
+
+export function BackButton({ onClick }: BackButtonProps = {}) {
   const router = useRouter();
+
+  const handleBack = () => {
+    if (onClick) {
+      onClick();
+      return;
+    }
+
+    if (typeof window !== "undefined") {
+      const isInternalReferrer =
+        Boolean(document.referrer) && document.referrer.includes(window.location.host);
+      const hasHistory = window.history.length > 1;
+
+      if (isInternalReferrer || hasHistory) {
+        router.back();
+      } else {
+        router.push("/");
+      }
+    } else {
+      router.push("/");
+    }
+  };
 
   return (
     <button
       type="button"
-      onClick={() => {
-        if (window.history.length > 1) {
-          router.back();
-        } else {
-          router.push("/");
-        }
-      }}
+      onClick={handleBack}
       className="flex items-center gap-1 text-base font-medium transition-opacity hover:opacity-80"
     >
       <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
@@ -30,3 +49,4 @@ export function BackButton() {
     </button>
   );
 }
+

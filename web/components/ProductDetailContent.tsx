@@ -34,9 +34,11 @@ function highlightMatch(text: string, query: string) {
 export function ProductDetailContent({
   product,
   allProducts,
+  onBack,
 }: {
   product: Product;
   allProducts: Product[];
+  onBack?: () => void;
 }) {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [showSpecs, setShowSpecs] = useState(false);
@@ -141,7 +143,7 @@ export function ProductDetailContent({
 
       {/* Header Bar */}
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/[0.08] bg-[#f6f6f8]/80 px-5 py-3 backdrop-blur-xl gap-2">
-        <BackButton />
+        <BackButton onClick={onBack} />
         <div className="flex items-center gap-2">
           {/* Quick Focus Spec Search Icon */}
           <button

@@ -233,6 +233,7 @@ export function PromoProductsViewer({ initialCategory = "Semua" }: { initialCate
         <BarcodeScanner
           onScan={(code) => {
             setShowScanner(false);
+            setSelectedCategory("Semua");
             setQuery(code);
             setDisplayCount(ITEMS_PER_PAGE);
           }}
