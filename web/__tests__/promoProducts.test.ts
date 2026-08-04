@@ -36,5 +36,13 @@ describe("promoProducts module", () => {
     const results = searchPromoProducts(promoProducts, "helmet");
     expect(results.length).toBeGreaterThan(0);
   });
+
+  it("filters items by store stock availability when onlyInStock is true", () => {
+    const allPromos = searchPromoProducts(promoProducts, "", "Semua", false);
+    const stockPromos = searchPromoProducts(promoProducts, "", "Semua", true);
+
+    expect(stockPromos.length).toBeLessThan(allPromos.length);
+    expect(stockPromos.every((p) => p.inStoreStock === true)).toBe(true);
+  });
 });
 

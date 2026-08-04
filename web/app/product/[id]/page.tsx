@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import { getAllProducts, getProductById } from "@/lib/products";
 import { ProductDetailContent } from "@/components/ProductDetailContent";
 
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  return getAllProducts().map((p) => ({ id: p.id }));
+  return getAllProducts().slice(0, 300).map((p) => ({ id: p.id }));
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {

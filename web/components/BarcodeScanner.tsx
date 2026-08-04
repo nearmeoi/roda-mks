@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { BrowserMultiFormatReader } from "@zxing/browser";
 import { BarcodeFormat, DecodeHintType } from "@zxing/library";
 import { X, AlertCircle } from "lucide-react";
@@ -325,6 +326,12 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
     tick();
   }
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleManualSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (manualCode.trim()) {
@@ -332,7 +339,9 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
     }
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-xl transition-all [animation:fadeIn_0.2s_ease]"
       onClick={onClose}
@@ -409,6 +418,7 @@ export function BarcodeScanner({ onScan, onClose }: BarcodeScannerProps) {
           </form>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

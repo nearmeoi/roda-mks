@@ -116,9 +116,8 @@ export function ResultRow({
           <div className="text-[16px] font-bold tracking-tight text-gray-900">
             {formatPrice(product.price)}
           </div>
-          <div className="mt-1 flex items-center gap-1 text-[11px] font-semibold text-gray-600">
-            <div className="h-1.5 w-1.5 rounded-full shrink-0" style={{ background: status.dotColor }} />
-            <span>{qty} Unit</span>
+          <div className="mt-0.5 text-[11.5px] font-medium text-gray-500">
+            {qty} Unit
           </div>
         </div>
       </div>
@@ -157,7 +156,7 @@ export function ResultRow({
                   e.stopPropagation();
                   onToggleCompare(e);
                 }}
-                className={`flex h-7 w-7 items-center justify-center rounded-full border transition-all active:scale-95 ${
+                className={`inline-flex h-7 items-center gap-1 rounded-full border px-2.5 text-[10.5px] font-semibold transition-all active:scale-95 ${
                   isCompared
                     ? "border-accent bg-accent text-white shadow-xs"
                     : "border-black/[0.08] bg-black/[0.02] text-gray-600 hover:text-accent hover:border-accent/40"
@@ -165,6 +164,7 @@ export function ResultRow({
                 title={isCompared ? "Keluarkan dari perbandingan" : "Tambahkan ke perbandingan"}
               >
                 <ArrowLeftRight className="h-3 w-3" />
+                <span>{isCompared ? "Dibandingkan" : "Bandingkan"}</span>
               </button>
             )}
 

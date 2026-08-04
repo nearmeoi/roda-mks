@@ -35,10 +35,14 @@ export function ProductDetailContent({
   product,
   allProducts,
   onBack,
+  onSelectProduct,
+  onSearchQuery,
 }: {
   product: Product;
   allProducts: Product[];
   onBack?: () => void;
+  onSelectProduct?: (p: Product) => void;
+  onSearchQuery?: (q: string) => void;
 }) {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [showSpecs, setShowSpecs] = useState(false);
@@ -423,6 +427,12 @@ export function ProductDetailContent({
                               {isClickable ? (
                                 <Link
                                   href={`/?q=${encodeURIComponent(searchTarget)}`}
+                                  onClick={(e) => {
+                                    if (onSearchQuery) {
+                                      e.preventDefault();
+                                      onSearchQuery(searchTarget);
+                                    }
+                                  }}
                                   className="inline-flex items-center gap-1 text-xs font-medium text-accent hover:underline"
                                   title={`Cari stok part/brand "${searchTarget}"`}
                                 >
@@ -463,6 +473,12 @@ export function ProductDetailContent({
                   <Link
                     key={rec.id}
                     href={`/product/${rec.id}`}
+                    onClick={(e) => {
+                      if (onSelectProduct) {
+                        e.preventDefault();
+                        onSelectProduct(rec);
+                      }
+                    }}
                     className="group flex flex-col justify-between rounded-xl border border-accent/20 bg-white p-3 backdrop-blur-md transition-all hover:border-accent hover:shadow-md"
                   >
                     <div className="flex flex-col gap-2">

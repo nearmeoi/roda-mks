@@ -18,9 +18,8 @@ export function BackButton({ onClick }: BackButtonProps = {}) {
     if (typeof window !== "undefined") {
       const isInternalReferrer =
         Boolean(document.referrer) && document.referrer.includes(window.location.host);
-      const hasHistory = window.history.length > 1;
 
-      if (isInternalReferrer || hasHistory) {
+      if (isInternalReferrer) {
         router.back();
       } else {
         router.push("/");

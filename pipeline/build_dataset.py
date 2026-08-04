@@ -17,7 +17,18 @@ def make_id(brand: str, model_name: str, color_code: str | None, variant_extra: 
     return raw.strip("-")
 
 
-def merge_product(matched: dict) -> dict:
+def find_pos_price(sizes: list[dict], pos_prices: dict[str, float]) -> float | None:
+    for s in sizes:
+        ac = str(s.get("article_code"))
+        if ac in pos_prices:
+            return pos_prices[ac]
+        clean_ac = ac.lstrip("0")
+        if clean_ac and clean_ac in pos_prices:
+            return pos_prices[clean_ac]
+    return None
+
+
+def merge_product(matched: dict, pos_prices: dict[str, float] | None = None) -> dict:
     catalog = matched["catalog"]
     wheel_size, color_label = decode_variant(matched["model_name"], matched["category"], matched.get("color_code"))
     sizes = [
@@ -25,6 +36,10 @@ def merge_product(matched: dict) -> dict:
         for s in matched["sizes"]
     ]
     cleaned_name = clean_model_name(matched["model_name"], matched["category"])
+    price = matched["price"] if matched["price"] is not None else catalog.get("price")
+    if price is None and pos_prices:
+        price = find_pos_price(sizes, pos_prices)
+
     return {
         "id": make_id(matched["brand"], matched["model_name"], matched["color_code"], matched.get("variant_extra")),
         "brand": matched["brand"],
@@ -34,7 +49,7 @@ def merge_product(matched: dict) -> dict:
         "variant_extra": matched.get("variant_extra"),
         "wheel_size": wheel_size,
         "color_label": color_label,
-        "price": matched["price"] if matched["price"] is not None else catalog.get("price"),
+        "price": price,
         "sizes": sizes,
         "colors": catalog.get("colors", []),
         "images": catalog.get("images", []),
@@ -43,13 +58,17 @@ def merge_product(matched: dict) -> dict:
     }
 
 
-def merge_unmatched(product: dict) -> dict:
+def merge_unmatched(product: dict, pos_prices: dict[str, float] | None = None) -> dict:
     wheel_size, color_label = decode_variant(product["model_name"], product["category"], product.get("color_code"))
     sizes = [
         {**s, "size_code": decode_paa_size_code(s["size_code"], product["category"])}
         for s in product["sizes"]
     ]
     cleaned_name = clean_model_name(product["model_name"], product["category"])
+    price = product["price"]
+    if price is None and pos_prices:
+        price = find_pos_price(sizes, pos_prices)
+
     return {
         "id": make_id(product["brand"], product["model_name"], product["color_code"], product.get("variant_extra")),
         "brand": product["brand"],
@@ -59,7 +78,7 @@ def merge_unmatched(product: dict) -> dict:
         "variant_extra": product.get("variant_extra"),
         "wheel_size": wheel_size,
         "color_label": color_label,
-        "price": product["price"],
+        "price": price,
         "sizes": sizes,
         "colors": [],
         "images": [],
@@ -95,7 +114,14 @@ def build(xlsx_path: str, catalog_partial_path: str, catalog_output_path: str,
     matched, unmatched = match_products(grouped, catalog, overrides=overrides)
     print(f"[build_dataset] matched {len(matched)}, unmatched {len(unmatched)}")
 
-    products = [merge_product(m) for m in matched] + [merge_unmatched(u) for u in unmatched]
+    pos_prices: dict[str, float] = {}
+    pos_prices_path = os.path.join("data", "pos_prices.json")
+    if os.path.exists(pos_prices_path):
+        with open(pos_prices_path, encoding="utf-8") as f:
+            pos_prices = json.load(f)
+        print(f"[build_dataset] loaded {len(pos_prices)} POS prices from {pos_prices_path}")
+
+    products = [merge_product(m, pos_prices) for m in matched] + [merge_unmatched(u, pos_prices) for u in unmatched]
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(products, f, ensure_ascii=False, indent=2)
     print(f"[build_dataset] wrote {len(products)} products to {output_path}")

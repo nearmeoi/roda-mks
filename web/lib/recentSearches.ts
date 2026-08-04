@@ -20,8 +20,18 @@ export function addRecentSearch(query: string): string[] {
   if (!q || q.length < 2) return getRecentSearches();
 
   try {
-    const list = getRecentSearches().filter((item) => item.toLowerCase() !== q.toLowerCase());
-    const updated = [q, ...list].slice(0, MAX_RECENT);
+    const list = getRecentSearches();
+    const qLower = q.toLowerCase();
+
+    // Filter out items that are exact matches or incomplete prefixes of q (e.g. "tam" when adding "tambora")
+    const filtered = list.filter((item) => {
+      const itemLower = item.toLowerCase();
+      if (itemLower === qLower) return false;
+      if (qLower.startsWith(itemLower)) return false;
+      return true;
+    });
+
+    const updated = [q, ...filtered].slice(0, MAX_RECENT);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     return updated;
   } catch {

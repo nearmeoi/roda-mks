@@ -48,6 +48,18 @@ function HomeContent() {
     if (q) addSearch(q);
   }, [searchParams]);
 
+  // Debounced search recording: record completed queries, preventing keystroke fragments ("tam", "tambo")
+  useEffect(() => {
+    const trimmed = query.trim();
+    if (trimmed.length < 3) return;
+
+    const timer = setTimeout(() => {
+      addSearch(trimmed);
+    }, 750);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
   // Update URL state synchronously
   const updateUrlParams = (newQuery: string) => {
     const params = new URLSearchParams();
@@ -60,9 +72,6 @@ function HomeContent() {
   const handleQueryChange = (val: string) => {
     setQuery(val);
     updateUrlParams(val);
-    if (val.trim().length >= 3) {
-      addSearch(val.trim());
-    }
   };
 
   // The X button is a full reset, not just a text clear: any select/compare
@@ -393,11 +402,11 @@ function HomeContent() {
         </div>
       )}
 
-      {/* SO Week Entry Point */}
+      {/* SO Week Entry Point - Light Theme / White */}
       {!isSelectMode && !hasQuery && compareIds.length === 0 && (
         <Link
           href="/so-week"
-          className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/20 bg-gray-900/90 px-5 py-2.5 text-xs font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-2xl transition-all active:scale-95 [animation:fadeSlideUp_0.25s_ease]"
+          className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-black/10 bg-white/90 px-5 py-2.5 text-xs font-bold text-gray-900 shadow-[0_8px_25px_rgba(0,0,0,0.12)] backdrop-blur-2xl transition-all hover:bg-white active:scale-95 [animation:fadeSlideUp_0.25s_ease]"
         >
           <ClipboardList className="h-4 w-4 text-accent" />
           <span>{stockCounts.length > 0 ? `SO Week · ${stockCounts.length} dihitung` : "SO Week"}</span>
@@ -410,6 +419,11 @@ function HomeContent() {
           product={activeDetailProduct}
           allProducts={allProducts}
           onClose={() => setActiveDetailProduct(null)}
+          onSelectProduct={(p) => setActiveDetailProduct(p)}
+          onSearchQuery={(q) => {
+            setActiveDetailProduct(null);
+            handleQueryChange(q);
+          }}
         />
       )}
 

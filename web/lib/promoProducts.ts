@@ -8,6 +8,7 @@ export interface PromoProduct {
   retailPrice: number;
   discountLabel: string;
   nettPrice: number;
+  inStoreStock?: boolean;
 }
 
 export const promoProducts: PromoProduct[] = promoProductsData as PromoProduct[];
@@ -15,20 +16,26 @@ export const promoProducts: PromoProduct[] = promoProductsData as PromoProduct[]
 export function searchPromoProducts(
   products: PromoProduct[],
   query: string,
-  categoryFilter?: string
+  categoryFilter?: string,
+  onlyInStock?: boolean
 ): PromoProduct[] {
+  let list = products;
+  if (onlyInStock) {
+    list = list.filter((p) => p.inStoreStock);
+  }
+
   const q = query.trim().toLowerCase();
   if (!q) {
     if (categoryFilter && categoryFilter !== "Semua") {
-      return products.filter((p) => p.promoCategory === categoryFilter);
+      return list.filter((p) => p.promoCategory === categoryFilter);
     }
-    return products;
+    return list;
   }
 
   // Clean leading zeros for barcode/article code matching
   const qClean = q.replace(/^0+/, "");
 
-  return products.filter((p) => {
+  return list.filter((p) => {
     const artCodeStr = String(p.articleCode).toLowerCase();
     const artCodeClean = artCodeStr.replace(/^0+/, "");
 

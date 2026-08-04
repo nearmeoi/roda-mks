@@ -76,6 +76,19 @@ export function searchOutletStock(query: string): OutletStockResult[] {
     matches = Object.entries(stockCache)
       .filter(([, entry]) => entry.description.toLowerCase().includes(needle))
       .slice(0, MAX_RESULTS);
+
+    // Fallback: Multi-token match if exact substring search returns 0 results
+    if (matches.length === 0) {
+      const tokens = needle.replace(/[^\w\s]/g, "").split(/\s+/).filter((t) => t.length >= 2);
+      if (tokens.length > 0) {
+        matches = Object.entries(stockCache)
+          .filter(([, entry]) => {
+            const desc = entry.description.toLowerCase();
+            return tokens.every((token) => desc.includes(token));
+          })
+          .slice(0, MAX_RESULTS);
+      }
+    }
   }
 
   return matches.map(([articleCode, entry]) => {

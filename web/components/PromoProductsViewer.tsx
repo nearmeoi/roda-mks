@@ -37,13 +37,18 @@ function getCategoryBadgeColor(cat: string) {
 export function PromoProductsViewer({ initialCategory = "Semua" }: { initialCategory?: string }) {
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [onlyInStock, setOnlyInStock] = useState(true);
   const [showScanner, setShowScanner] = useState(false);
   const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
+  const storeStockCount = useMemo(() => {
+    return promoProducts.filter((p) => p.inStoreStock).length;
+  }, []);
+
   const filtered = useMemo(() => {
-    return searchPromoProducts(promoProducts, query, selectedCategory);
-  }, [query, selectedCategory]);
+    return searchPromoProducts(promoProducts, query, selectedCategory, onlyInStock);
+  }, [query, selectedCategory, onlyInStock]);
 
   const visibleItems = useMemo(() => {
     return filtered.slice(0, displayCount);
@@ -120,6 +125,45 @@ export function PromoProductsViewer({ initialCategory = "Semua" }: { initialCate
         </button>
       </div>
 
+      {/* Stock Scope Filter Switch & Header Stats */}
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-gray-100/70 p-1.5 border border-black/5">
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => {
+              setOnlyInStock(true);
+              setDisplayCount(ITEMS_PER_PAGE);
+            }}
+            className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold transition-all ${
+              onlyInStock
+                ? "bg-white text-emerald-700 shadow-xs ring-1 ring-emerald-500/20"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            Hanya Stok Toko ({storeStockCount.toLocaleString()})
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setOnlyInStock(false);
+              setDisplayCount(ITEMS_PER_PAGE);
+            }}
+            className={`rounded-xl px-3 py-1.5 text-xs font-bold transition-all ${
+              !onlyInStock
+                ? "bg-white text-gray-900 shadow-xs ring-1 ring-black/10"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            Semua Barang Promo ({promoProducts.length.toLocaleString()})
+          </button>
+        </div>
+
+        <span className="hidden sm:inline-block px-3 text-[11px] font-medium text-gray-500">
+          {onlyInStock ? "Menampilkan promo khusus stok toko" : "Menampilkan seluruh promo Buku Saku"}
+        </span>
+      </div>
+
       {/* Category Filter Pills */}
       <div className="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-1">
         {CATEGORIES.map((cat) => {
@@ -146,8 +190,24 @@ export function PromoProductsViewer({ initialCategory = "Semua" }: { initialCate
 
       {/* Products Table / Cards */}
       {filtered.length === 0 ? (
-        <div className="py-12 text-center text-sm text-gray-500">
-          Tidak ditemukan barang promo yang cocok dengan &quot;{query}&quot;
+        <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
+          <p className="text-sm font-medium text-gray-700">
+            Tidak ditemukan barang promo yang cocok {query ? `dengan "${query}"` : ""}
+          </p>
+          <p className="mt-1 text-xs text-gray-400">
+            {onlyInStock
+              ? "Coba matikan filter 'Hanya Stok Toko' untuk melihat seluruh katalog promo Buku Saku."
+              : "Coba ubah kata kunci pencarian atau pilih kategori promo lain."}
+          </p>
+          {onlyInStock && (
+            <button
+              type="button"
+              onClick={() => setOnlyInStock(false)}
+              className="mt-3 rounded-full bg-accent/10 px-4 py-1.5 text-xs font-semibold text-accent hover:bg-accent/20"
+            >
+              Lihat Semua Barang Promo ({promoProducts.length.toLocaleString()})
+            </button>
+          )}
         </div>
       ) : (
         <div className="flex flex-col gap-3">
@@ -167,19 +227,26 @@ export function PromoProductsViewer({ initialCategory = "Semua" }: { initialCate
                 {visibleItems.map((item, idx) => (
                   <tr key={`${item.articleCode}-${idx}`} className="hover:bg-gray-50/60 transition-colors">
                     <td className="whitespace-nowrap px-3.5 py-2.5 font-mono text-xs font-semibold text-gray-800">
-                      <button
-                        type="button"
-                        onClick={() => handleCopyCode(item.articleCode)}
-                        className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 hover:bg-gray-200 transition-colors"
-                        title="Klik untuk salin kode"
-                      >
-                        <span>{item.articleCode}</span>
-                        {copiedCode === item.articleCode ? (
-                          <Check className="h-3 w-3 text-emerald-600" />
-                        ) : (
-                          <Copy className="h-3 w-3 text-gray-400" />
+                      <div className="flex flex-col gap-1 items-start">
+                        <button
+                          type="button"
+                          onClick={() => handleCopyCode(item.articleCode)}
+                          className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 hover:bg-gray-200 transition-colors"
+                          title="Klik untuk salin kode"
+                        >
+                          <span>{item.articleCode}</span>
+                          {copiedCode === item.articleCode ? (
+                            <Check className="h-3 w-3 text-emerald-600" />
+                          ) : (
+                            <Copy className="h-3 w-3 text-gray-400" />
+                          )}
+                        </button>
+                        {item.inStoreStock && (
+                          <span className="text-[10px] font-semibold text-gray-500">
+                            Stok Toko
+                          </span>
                         )}
-                      </button>
+                      </div>
                     </td>
                     <td className="px-3.5 py-2.5">
                       <div className="font-semibold text-gray-900">{item.description}</div>

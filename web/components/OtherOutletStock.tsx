@@ -37,8 +37,8 @@ function OutletRow({ outlet }: { outlet: OutletEntry }) {
         <div className="truncate text-[13px] font-medium text-gray-800">{shortOutletName(outlet.name)}</div>
         {outlet.city && <div className="truncate text-[11px] text-gray-400">{titleCase(outlet.city)}</div>}
       </div>
-      <span className="shrink-0 rounded-full bg-black/[0.05] px-2 py-0.5 text-[11px] font-bold tabular-nums text-gray-700">
-        {outlet.qty}
+      <span className="shrink-0 text-xs font-semibold tabular-nums text-gray-700">
+        {outlet.qty} unit
       </span>
     </div>
   );

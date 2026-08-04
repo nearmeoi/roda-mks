@@ -9,6 +9,7 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export function PwaRegister() {
+  const [mounted, setMounted] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallBanner, setShowInstallBanner] = useState(false);
@@ -17,9 +18,11 @@ export function PwaRegister() {
   const [showIosGuide, setShowIosGuide] = useState(false);
 
   useEffect(() => {
-    // 1. Register Service Worker
+    setMounted(true);
+
+    // 1. Register Service Worker immediately
     if (typeof window !== "undefined" && "serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
+      const registerSw = () => {
         navigator.serviceWorker
           .register("/sw.js")
           .then((reg) => {
@@ -28,10 +31,16 @@ export function PwaRegister() {
           .catch((err) => {
             console.error("ServiceWorker registration failed:", err);
           });
-      });
+      };
+
+      if (document.readyState === "complete") {
+        registerSw();
+      } else {
+        window.addEventListener("load", registerSw);
+      }
     }
 
-    // 2. Check if already running in standalone PWA mode
+    // 2. Check if already running in standalone PWA mode or dismissed
     if (typeof window !== "undefined") {
       const standalone =
         window.matchMedia("(display-mode: standalone)").matches ||
@@ -43,8 +52,9 @@ export function PwaRegister() {
       const iosDevice = /iphone|ipad|ipod/.test(ua);
       setIsIos(iosDevice);
 
-      // Show install banner for mobile non-standalone users
-      if (!standalone) {
+      // Show install banner for mobile non-standalone users if not dismissed
+      const isDismissed = localStorage.getItem("roda_pwa_banner_dismissed") === "true";
+      if (!standalone && !isDismissed) {
         setShowInstallBanner(true);
       }
     }
@@ -63,7 +73,10 @@ export function PwaRegister() {
     const handleBeforeInstall = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      setShowInstallBanner(true);
+      const isDismissed = typeof window !== "undefined" && localStorage.getItem("roda_pwa_banner_dismissed") === "true";
+      if (!isDismissed) {
+        setShowInstallBanner(true);
+      }
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstall);
@@ -75,12 +88,19 @@ export function PwaRegister() {
     };
   }, []);
 
+  const handleDismissBanner = () => {
+    setShowInstallBanner(false);
+    try {
+      localStorage.setItem("roda_pwa_banner_dismissed", "true");
+    } catch {}
+  };
+
   const handleInstallClick = async () => {
     if (deferredPrompt) {
       await deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === "accepted") {
-        setShowInstallBanner(false);
+        handleDismissBanner();
       }
       setDeferredPrompt(null);
     } else if (isIos) {
@@ -94,7 +114,7 @@ export function PwaRegister() {
     }
   };
 
-  if (isStandalone) return null;
+  if (!mounted || isStandalone) return null;
 
   return (
     <>
@@ -106,18 +126,18 @@ export function PwaRegister() {
         </div>
       )}
 
-      {/* PWA Install App Floating Banner */}
+      {/* PWA Install App Floating Banner - Light Theme / White */}
       {showInstallBanner && (
-        <div className="fixed bottom-20 left-1/2 z-50 flex w-[92%] max-w-md -translate-x-1/2 items-center justify-between gap-3 rounded-2xl border border-white/20 bg-gray-900/95 p-3 text-white shadow-2xl backdrop-blur-xl transition-all">
+        <div className="fixed bottom-20 left-1/2 z-50 flex w-[92%] max-w-md -translate-x-1/2 items-center justify-between gap-3 rounded-2xl border border-black/10 bg-white/95 p-3.5 text-gray-900 shadow-2xl backdrop-blur-xl transition-all">
           <div className="flex items-center gap-3">
             <img
               src="/icon.png"
               alt="Roda Stock"
-              className="h-10 w-10 shrink-0 rounded-xl object-cover shadow-sm border border-white/10"
+              className="h-10 w-10 shrink-0 rounded-xl object-cover shadow-xs border border-black/10"
             />
             <div>
-              <p className="text-xs font-bold text-white">Install Roda Stock</p>
-              <p className="text-[11px] text-gray-300">Pasang di HP/Tablet untuk akses cepat offline</p>
+              <p className="text-xs font-bold text-gray-900">Install Roda Stock</p>
+              <p className="text-[11px] font-medium text-gray-500">Pasang di HP/Tablet untuk akses cepat offline</p>
             </div>
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
@@ -131,8 +151,9 @@ export function PwaRegister() {
             </button>
             <button
               type="button"
-              onClick={() => setShowInstallBanner(false)}
-              className="flex h-7 w-7 items-center justify-center rounded-lg text-gray-400 hover:text-white"
+              onClick={handleDismissBanner}
+              title="Tutup & Jangan Tampilkan Lagi"
+              className="flex h-7 w-7 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-all"
             >
               <X className="h-4 w-4" />
             </button>
