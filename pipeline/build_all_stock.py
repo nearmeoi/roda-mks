@@ -48,10 +48,6 @@ def build(xlsx_path: str, products_path: str, output_path: str, pos_prices_path:
     no_price = 0
     for g in grouped:
         entry_id = make_id(g["brand"], g["model_name"], g["color_code"], g.get("variant_extra"))
-        if entry_id in existing_ids:
-            skipped_existing += 1
-            continue
-
         price = g["price"]
         price_source = "master"
         if price is None:
