@@ -1,7 +1,18 @@
-const CACHE_NAME = "rodastock-v3";
+const CACHE_NAME = "rodastock-v4";
 const STATIC_ASSETS = [
   "/",
   "/guide",
+  "/guide/ukuran-sepeda-road-hybrid-gravel",
+  "/guide/ukuran-sepeda-mtb",
+  "/guide/ukuran-sepeda-anak",
+  "/guide/tingkatan-groupset",
+  "/guide/ukuran-helm",
+  "/guide/ukuran-jersey-apparel",
+  "/guide/ukuran-sepatu-sepeda",
+  "/guide/promo-diskon-aktif",
+  "/guide/kebijakan-garansi-servis",
+  "/guide/cara-menggunakan-roda-stock",
+  "/guide/kompatibilitas-komponen-sepeda",
   "/so-week",
   "/rekomendasi",
   "/manifest.json",
@@ -51,15 +62,21 @@ self.addEventListener("fetch", (event) => {
   const isNextStatic =
     url.pathname.startsWith("/_next/static/") ||
     url.pathname.endsWith(".png") ||
-    url.pathname.endsWith(".json") ||
-    url.pathname.endsWith(".ico") ||
+    url.pathname.endsWith(".jpg") ||
+    url.pathname.endsWith(".jpeg") ||
+    url.pathname.endsWith(".webp") ||
     url.pathname.endsWith(".svg") ||
+    url.pathname.endsWith(".gif") ||
+    url.pathname.endsWith(".ico") ||
+    url.pathname.endsWith(".json") ||
     url.pathname.endsWith(".js") ||
-    url.pathname.endsWith(".css");
+    url.pathname.endsWith(".css") ||
+    url.hostname.includes("rodalink") ||
+    url.hostname.includes("polygonbikes");
 
   // Strategy 1: For Static Assets (JS chunks, CSS, images, JSON data)
   // Use Cache-First with Stale-While-Revalidate
-  // Allows app shell and JS scripts to load instantly when opening/closing app offline!
+  // Allows app shell, images, and JS scripts to load instantly when opening/closing app offline!
   if (isNextStatic) {
     event.respondWith(
       (async () => {
@@ -69,7 +86,7 @@ self.addEventListener("fetch", (event) => {
         // Fetch background update if online
         const fetchPromise = fetch(request)
           .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
+            if (networkResponse && (networkResponse.status === 200 || networkResponse.status === 0)) {
               cache.put(request, networkResponse.clone());
             }
             return networkResponse;
